@@ -1,18 +1,20 @@
 //
-//  MNContactCardViewController.m
+//  MNContactViewController.m
 //  Contact Card
 //
-//  Created by Ravi Vooda on 01/02/14.
+//  Created by Ravi Vooda on 05/02/14.
 //  Copyright (c) 2014 Mafians. All rights reserved.
 //
 
-#import "MNContactCardViewController.h"
+#import "MNContactViewController.h"
 
-@interface MNContactCardViewController ()
+@interface MNContactViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel *label;
 
 @end
 
-@implementation MNContactCardViewController
+@implementation MNContactViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,9 +28,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    MNContact *contact = [[MNContact alloc] init];
+    [self.label setText:[NSString stringWithFormat:@"%@ %@",contact.firstName, contact.lastName]];
+    
+    [self.imageView setImage:contact.imageOfPerson];
+    
 	// Do any additional setup after loading the view.
-    [self.nameOfContact setText:@"Ravi Vooda"];
-    [self.nameOfContact setFont:[UIFont fontWithName:@"Thonburi" size:18.0f]];
 }
 
 - (void)didReceiveMemoryWarning
