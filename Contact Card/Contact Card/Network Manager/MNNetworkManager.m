@@ -8,6 +8,21 @@
 
 #import "MNNetworkManager.h"
 
+@interface MNNetworkManager ()
+
+@property (strong, nonatomic) NSOperationQueue *operationsQueue;
+@property (strong, nonatomic) NSMutableArray *operationsArray;
+
+@end
+
 @implementation MNNetworkManager
+
+-(void) sendContactCard:(MNContact *)contactCard viaMedium:(sharingOptions)sharingOption withCompletionBlock:(CompletionBlock)completion withErrorBlock:(ErrorBlock)error {
+    
+}
+
+-(void) sendCompanyCard:(MNCompany *)companyCard viaMedium:(sharingOptions)sharingOption withCompletionBlock:(CompletionBlock)completion withErrorBlock:(ErrorBlock)error {
+    
+}
 
 @end

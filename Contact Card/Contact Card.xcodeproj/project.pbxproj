@@ -69,6 +69,7 @@
 		9763F7EF189D113700C628E4 /* cat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat.png; sourceTree = "<group>"; };
 		97B9FC1618A377D5001BDF52 /* MNNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNNetworkManager.h; sourceTree = "<group>"; };
 		97B9FC1718A377D5001BDF52 /* MNNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNNetworkManager.m; sourceTree = "<group>"; };
+		97B9FC1A18A3EDFA001BDF52 /* MNConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +183,7 @@
 		9763F7B8189D0F3A00C628E4 /* Contact Card */ = {
 			isa = PBXGroup;
 			children = (
+				97B9FC1918A3EDB9001BDF52 /* Utilities */,
 				97B9FC1518A377BE001BDF52 /* Network Manager */,
 				9722248618A27DAE00D64BC2 /* Controllers */,
 				9722248718A27DAE00D64BC2 /* Models */,
@@ -256,6 +258,14 @@
 				97B9FC1718A377D5001BDF52 /* MNNetworkManager.m */,
 			);
 			path = "Network Manager";
+			sourceTree = "<group>";
+		};
+		97B9FC1918A3EDB9001BDF52 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				97B9FC1A18A3EDFA001BDF52 /* MNConstants.h */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

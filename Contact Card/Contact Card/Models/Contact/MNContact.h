@@ -10,7 +10,7 @@
 #import "MNCompany.h"
 #import "MNAddress.h"
 
-@interface MNContact : NSObject
+@interface MNContact : NSObject <NSSecureCoding, UIActivityItemSource>
 
 @property (strong, nonatomic, readonly) UIImage *imageOfPerson;
 

@@ -13,4 +13,10 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+
+
+    #import "MNContact.h"
+    #import "MNCompany.h"
+
+    #import "MNConstants.h"
 #endif

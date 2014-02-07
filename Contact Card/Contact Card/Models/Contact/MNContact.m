@@ -20,6 +20,11 @@
     return self;
 }
 
+#pragma mark - NSCoding implementations
+-(void) encodeWithCoder:(NSCoder *)aCoder {
+    
+}
+
 //@property (strong, nonatomic, readonly) NSString *jobTitle;
 //@property (strong, nonatomic, readonly) NSString *companyName;
 //
@@ -48,15 +53,15 @@
     if (self) {
         _imageOfPerson = [dictionary objectForKey:@"image"];
         
-        _suffixName = [dictionary objectForKey:@"suffixName"];
-        _firstName = [dictionary objectForKey:@"firstName"];
-        _lastName = [dictionary objectForKey:@"lastName"];
-        _middleName = [dictionary objectForKey:@"middleName"];
-        _nickName = [dictionary objectForKey:@"nickName"];
+        _suffixName = [dictionary objectForKey:kContactsuffixName];
+        _firstName = [dictionary objectForKey:kContactfirstName];
+        _lastName = [dictionary objectForKey:kContactlastName];
+        _middleName = [dictionary objectForKey:kContactmiddleName];
+        _nickName = [dictionary objectForKey:kContactnickName];
         
-        _firstTitle = [dictionary objectForKey:@"firstTitle"];
-        _secondaryTitle = [dictionary objectForKey:@"secondaryTitle"];
-        _jobTitle = [dictionary objectForKey:@"jobTitle"];
+        _firstTitle = [dictionary objectForKey:kContactfirstTitle];
+        _secondaryTitle = [dictionary objectForKey:kContactsecondaryTitle];
+        _jobTitle = [dictionary objectForKey:kContactjobTitle];
         
     }
     return self;
@@ -66,14 +71,14 @@
     NSMutableDictionary *retDictionary = [[NSMutableDictionary alloc] init];
     [retDictionary setObject:_imageOfPerson forKey:@"image"];
     
-    [retDictionary setObject:_suffixName forKey:@"suffixName"];
-    [retDictionary setObject:_firstName forKey:@"firstName"];
-    [retDictionary setObject:_lastName forKey:@"lastName"];
-    [retDictionary setObject:_middleName forKey:@"middleName"];
-    [retDictionary setObject:_nickName forKey:@"nickName"];
+    [retDictionary setObject:_suffixName forKey:kContactsuffixName];
+    [retDictionary setObject:_firstName forKey:kContactfirstName];
+    [retDictionary setObject:_lastName forKey:kContactlastName];
+    [retDictionary setObject:_middleName forKey:kContactmiddleName];
+    [retDictionary setObject:_nickName forKey:kContactnickName];
     
-    [retDictionary setObject:_firstTitle forKey:@"firstTitle"];
-    [retDictionary setObject:_secondaryTitle forKey:@"secondaryTitle"];
+    [retDictionary setObject:_firstTitle forKey:kContactfirstTitle];
+    [retDictionary setObject:_secondaryTitle forKey:kContactsecondaryTitle];
     return retDictionary;
 }
 
