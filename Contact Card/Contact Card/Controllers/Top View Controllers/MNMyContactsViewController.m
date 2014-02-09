@@ -8,6 +8,7 @@
 
 #import "MNMyContactsViewController.h"
 #import "UIViewController+ECSlidingViewController.h"
+#import <AddressBook/AddressBook.h>
 
 @interface MNMyContactsViewController ()
 
@@ -26,6 +27,19 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
+    
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, nil);
+    CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
+    CFIndex nPeople = ABAddressBookGetPersonCount(addressBook);
+    
+    NSLog(@"start loop");
+    for( int i = 0 ; i < nPeople ; i++ )
+    {
+        ABRecordRef ref = CFArrayGetValueAtIndex(allPeople, i );
+        NSLog(@"inside loop");
+    }
+    
+    NSLog(@"end loop");
 }
 
 - (void)didReceiveMemoryWarning
