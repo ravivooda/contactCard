@@ -7,6 +7,13 @@
 //
 
 #import "MNContactsManager.h"
+#import <AddressBook/AddressBook.h>
+
+@interface MNContactsManager ()
+
+@property (strong, nonatomic) NSArray *contactsArray;
+
+@end
 
 @implementation MNContactsManager
 
@@ -40,6 +47,21 @@ static MNContactsManager *singletonInstance = nil;
     self = [super init];
     if (self) {
         // Import all the contacts
+        ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, nil);
+        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
+            if (granted) {
+                CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
+                CFIndex nPeople = ABAddressBookGetPersonCount(addressBook);
+                
+                NSLog(@"start loop");
+                for( int i = 0 ; i < nPeople ; i++ ) {
+                    ABRecordRef ref = CFArrayGetValueAtIndex(allPeople, i );
+                    MNContact *contact = [[MNContact alloc] initWithRecordReference:ref];
+                }
+                
+                NSLog(@"end loop");
+            }
+        });
     }
     return self;
 }

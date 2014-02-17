@@ -14,9 +14,13 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 
+    #import <AddressBook/AddressBook.h>
 
     #import "MNContact.h"
     #import "MNCompany.h"
 
     #import "MNConstants.h"
+    #import "MNContactsManager.h"
+
+    MNContactsManager *contactManager;
 #endif

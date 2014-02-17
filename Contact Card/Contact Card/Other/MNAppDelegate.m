@@ -14,6 +14,9 @@
 {
     // Override point for customization after application launch.
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    contactManager = [MNContactsManager sharedInstance];
+    
     return YES;
 }
 							

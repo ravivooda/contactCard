@@ -12,40 +12,55 @@
 
 @interface MNContact : NSObject <NSSecureCoding, UIActivityItemSource>
 
-@property (strong, nonatomic, readonly) UIImage *imageOfPerson;
+// Identifier of the card
+@property (nonatomic, readonly) int contactID;
 
-@property (strong, nonatomic, readonly) NSString *suffixName;
+// Images
+@property (strong, nonatomic, readonly) UIImage *imageOfPerson;
+@property (strong, nonatomic, readonly) UIImage *backgroundImage;
+
+// Identification i.e. Name
+@property (strong, nonatomic, readonly) NSString *prefixName;
 @property (strong, nonatomic, readonly) NSString *firstName;
 @property (strong, nonatomic, readonly) NSString *middleName;
 @property (strong, nonatomic, readonly) NSString *lastName;
+@property (strong, nonatomic, readonly) NSString *suffixName;
 @property (strong, nonatomic, readonly) NSString *nickName;
 
+// Maybe they want to show different details on the card
 @property (strong, nonatomic, readonly) NSString *firstTitle;
 @property (strong, nonatomic, readonly) NSString *secondaryTitle;
+
+// Work Details
 @property (strong, nonatomic, readonly) NSString *jobTitle;
 @property (strong, nonatomic, readonly) NSString *companyName;
+@property (strong, nonatomic, readonly) NSString *departmentName;
 
-#warning How many should be used, Phone numbers should be a list?
-@property (strong, nonatomic, readonly) NSString *mainPhoneNumber;
-@property (strong, nonatomic, readonly) NSString *homePhoneNumber;
-@property (strong, nonatomic, readonly) NSString *mobileNumber;
+// Phone Number
+@property (strong, nonatomic, readonly) NSString *phoneNumber;
 
-@property (strong, nonatomic, readonly) NSString *personalEmail;
-@property (strong, nonatomic, readonly) NSString *workEmail;
+// Email
+@property (strong, nonatomic, readonly) NSString *email;
 
 #warning Some Social Networking links Need to add more or remove
+// Social Networking links
 @property (strong, nonatomic, readonly) NSString *facebookUserName;
 @property (strong, nonatomic, readonly) NSString *linkedInUserName;
 @property (strong, nonatomic, readonly) NSString *twitterUserName;
 
-#warning Address should be an array?
+// Website
 @property (strong, nonatomic, readonly) NSString *website;
-@property (strong, nonatomic, readonly) NSString *address;
-@property (strong, nonatomic, readonly) NSString *officeLocation;
 
+// Addresses
+@property (strong, nonatomic, readonly) NSString *homeAddress;
+@property (strong, nonatomic, readonly) NSString *officeAddress;
+
+// Notes
 @property (strong, nonatomic, readonly) NSString *notesOfContact;
 
 - (MNContact*) initWithContactCard:(NSDictionary*) dictionary;
+
+- (MNContact*) initWithRecordReference:(ABRecordRef)ref;
 
 -(NSDictionary*) dictionaryOfContactCard;
 
