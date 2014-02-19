@@ -52,8 +52,7 @@
 @property (strong, nonatomic, readonly) NSString *website;
 
 // Addresses
-@property (strong, nonatomic, readonly) NSString *homeAddress;
-@property (strong, nonatomic, readonly) NSString *officeAddress;
+@property (strong, nonatomic, readonly) MNAddress *address;
 
 // Notes
 @property (strong, nonatomic, readonly) NSString *notesOfContact;
@@ -61,6 +60,8 @@
 - (MNContact*) initWithContactCard:(NSDictionary*) dictionary;
 
 - (MNContact*) initWithRecordReference:(ABRecordRef)ref;
+
++ (NSArray*) getContactCardsFromReference:(ABRecordRef)ref;
 
 -(NSDictionary*) dictionaryOfContactCard;
 

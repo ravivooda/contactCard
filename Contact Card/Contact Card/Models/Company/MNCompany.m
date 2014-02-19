@@ -10,4 +10,12 @@
 
 @implementation MNCompany
 
+-(MNCompany*) initWithRecordReference:(ABRecordRef)ref {
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
 @end

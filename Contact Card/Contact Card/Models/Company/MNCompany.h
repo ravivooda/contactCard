@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MNAddress.h"
 
 @interface MNCompany : NSObject
 
@@ -17,7 +18,6 @@
 #warning need to rename realName
 @property (strong, nonatomic, readonly) NSString *companyName;
 @property (strong, nonatomic, readonly) NSString *tagLine;
-
 
 @property (strong, nonatomic, readonly) NSString *phoneNumber;
 @property (strong, nonatomic, readonly) NSString *email;
@@ -30,7 +30,9 @@
 @property (strong, nonatomic, readonly) NSString *blog;
 @property (strong, nonatomic, readonly) NSString *news;
 
-#warning Address to be changed to array or mnaddress
-@property (strong, nonatomic, readonly) NSString *address;
+@property (strong, nonatomic, readonly) MNAddress *address;
+
+- (MNCompany*) initWithRecordReference:(ABRecordRef)ref;
+
 
 @end

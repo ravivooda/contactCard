@@ -55,8 +55,12 @@ static MNContactsManager *singletonInstance = nil;
                 
                 NSLog(@"start loop");
                 for( int i = 0 ; i < nPeople ; i++ ) {
-                    ABRecordRef ref = CFArrayGetValueAtIndex(allPeople, i );
-                    MNContact *contact = [[MNContact alloc] initWithRecordReference:ref];
+                    ABRecordRef ref = CFArrayGetValueAtIndex(allPeople, i);
+                    if (ABRecordCopyValue(ref, kABPersonKindProperty) == kABPersonKindPerson) {
+                        MNContact *contact = [[MNContact alloc] initWithRecordReference:ref];
+                    } else if (ABRecordCopyValue(ref, kABPersonKindProperty) == kABPersonKindOrganization) {
+                        MNCompany *company = [[MNCompany alloc] initWithRecordReference:ref];
+                    }
                 }
                 
                 NSLog(@"end loop");
