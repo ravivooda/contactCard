@@ -11,6 +11,7 @@
 		9722249118A2843700D64BC2 /* MNContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 9722249018A2843700D64BC2 /* MNContact.m */; };
 		9722249418A2844900D64BC2 /* MNCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 9722249318A2844900D64BC2 /* MNCompany.m */; };
 		9722249718A284A800D64BC2 /* MNAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 9722249618A284A800D64BC2 /* MNAddress.m */; };
+		9750F5A118B7734E00445D2F /* MNContactPersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9750F5A018B7734E00445D2F /* MNContactPersonCell.m */; };
 		975D141118A629C600933968 /* ECPercentDrivenInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 975D140518A629C600933968 /* ECPercentDrivenInteractiveTransition.m */; };
 		975D141218A629C600933968 /* ECSlidingAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975D140718A629C600933968 /* ECSlidingAnimationController.m */; };
 		975D141318A629C600933968 /* ECSlidingInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 975D140A18A629C600933968 /* ECSlidingInteractiveTransition.m */; };
@@ -60,6 +61,8 @@
 		9722249318A2844900D64BC2 /* MNCompany.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCompany.m; sourceTree = "<group>"; };
 		9722249518A284A800D64BC2 /* MNAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNAddress.h; sourceTree = "<group>"; };
 		9722249618A284A800D64BC2 /* MNAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNAddress.m; sourceTree = "<group>"; };
+		9750F59F18B7734E00445D2F /* MNContactPersonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNContactPersonCell.h; sourceTree = "<group>"; };
+		9750F5A018B7734E00445D2F /* MNContactPersonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNContactPersonCell.m; sourceTree = "<group>"; };
 		975D140418A629C600933968 /* ECPercentDrivenInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECPercentDrivenInteractiveTransition.h; sourceTree = "<group>"; };
 		975D140518A629C600933968 /* ECPercentDrivenInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECPercentDrivenInteractiveTransition.m; sourceTree = "<group>"; };
 		975D140618A629C600933968 /* ECSlidingAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingAnimationController.h; sourceTree = "<group>"; };
@@ -158,6 +161,7 @@
 		9722248818A27DAE00D64BC2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9750F59E18B76E4C00445D2F /* Top View Controllers */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,6 +191,15 @@
 				9722249018A2843700D64BC2 /* MNContact.m */,
 			);
 			path = Contact;
+			sourceTree = "<group>";
+		};
+		9750F59E18B76E4C00445D2F /* Top View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9750F59F18B7734E00445D2F /* MNContactPersonCell.h */,
+				9750F5A018B7734E00445D2F /* MNContactPersonCell.m */,
+			);
+			path = "Top View Controllers";
 			sourceTree = "<group>";
 		};
 		975D140218A629BD00933968 /* Libraries */ = {
@@ -499,6 +512,7 @@
 				975D141618A629C600933968 /* UIViewController+ECSlidingViewController.m in Sources */,
 				975D141218A629C600933968 /* ECSlidingAnimationController.m in Sources */,
 				9722249118A2843700D64BC2 /* MNContact.m in Sources */,
+				9750F5A118B7734E00445D2F /* MNContactPersonCell.m in Sources */,
 				975D141418A629C600933968 /* ECSlidingSegue.m in Sources */,
 				9722248518A27D7300D64BC2 /* MNAppDelegate.m in Sources */,
 				97B9FC1818A377D5001BDF52 /* MNNetworkManager.m in Sources */,
@@ -645,6 +659,7 @@
 				INFOPLIST_FILE = "Contact Card/Contact Card-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0994FE7C-140D-456C-BD18-1C4372266CFA";
+				"PROVISIONING_PROFILE[sdk=*]" = "0994FE7C-140D-456C-BD18-1C4372266CFA";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -661,6 +676,7 @@
 				INFOPLIST_FILE = "Contact Card/Contact Card-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0994FE7C-140D-456C-BD18-1C4372266CFA";
+				"PROVISIONING_PROFILE[sdk=*]" = "0994FE7C-140D-456C-BD18-1C4372266CFA";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

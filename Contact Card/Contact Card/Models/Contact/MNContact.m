@@ -8,46 +8,64 @@
 
 #import "MNContact.h"
 
+#define kProfileArchiveKey @"contactArchiveKey"
+NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile";
+
 @implementation MNContact
 
--(id) init {
-    self = [super init];
-    if (self) {
-        _firstName = @"Ravi";
-        _lastName = @"Vooda";
-        _imageOfPerson = [UIImage imageNamed:@"cat"];
-    }
-    return self;
+#pragma mark - Activity item source implementations
+-(id) activityViewController:(UIActivityViewController *)activityViewController itemForActivityType:(NSString *)activityType {
+    return [self securelyArchiveRootObject:self];
 }
 
-#pragma mark - NSCoding implementations
+-(id) activityViewControllerPlaceholderItem:(UIActivityViewController *)activityViewController {
+    return [NSData data];
+}
+
+-(NSString*) activityViewController:(UIActivityViewController *)activityViewController dataTypeIdentifierForActivityType:(NSString *)activityType {
+    return kCustomFileUTI;
+}
+
+-(NSString*) activityViewController:(UIActivityViewController *)activityViewController subjectForActivityType:(NSString *)activityType {
+    return @"Transer contact";
+}
+
+-(UIImage*) activityViewController:(UIActivityViewController *)activityViewController thumbnailImageForActivityType:(NSString *)activityType suggestedSize:(CGSize)size {
+    return nil;
+}
+
+- (NSData*) securelyArchiveRootObject:(id) object {
+    //Use secure encoding because files could be transfered from anywhere by anyone
+    NSMutableData *data = [NSMutableData data];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    
+    //Ensure that secure encoding is used
+    [archiver setRequiresSecureCoding:YES];
+    [archiver encodeObject:object forKey:kProfileArchiveKey];
+    [archiver finishEncoding];
+    
+    return data;
+}
+
+#pragma mark - Secure coding implementations
 -(void) encodeWithCoder:(NSCoder *)aCoder {
     
 }
 
-//@property (strong, nonatomic, readonly) NSString *jobTitle;
-//@property (strong, nonatomic, readonly) NSString *companyName;
-//
-//#warning How many should be used, Phone numbers should be a list?
-//@property (strong, nonatomic, readonly) NSString *mainPhoneNumber;
-//@property (strong, nonatomic, readonly) NSString *homePhoneNumber;
-//@property (strong, nonatomic, readonly) NSString *mobileNumber;
-//
-//@property (strong, nonatomic, readonly) NSString *personalEmail;
-//@property (strong, nonatomic, readonly) NSString *workEmail;
-//
-//#warning Some Social Networking links Need to add more or remove
-//@property (strong, nonatomic, readonly) NSString *facebookUserName;
-//@property (strong, nonatomic, readonly) NSString *linkedInUserName;
-//@property (strong, nonatomic, readonly) NSString *twitterUserName;
+-(id) initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
 
-//#warning Address should be an array?
-//@property (strong, nonatomic, readonly) NSString *website;
-//@property (strong, nonatomic, readonly) NSString *address;
-//@property (strong, nonatomic, readonly) NSString *officeLocation;
-//
-//@property (strong, nonatomic, readonly) NSString *notesOfContact;
++(BOOL) supportsSecureCoding {
+    return YES;
+}
 
+
+#pragma mark - Different initializations
 -(MNContact*) initWithContactCard:(NSDictionary *)dictionary {
     self = [super init];
     if (self) {

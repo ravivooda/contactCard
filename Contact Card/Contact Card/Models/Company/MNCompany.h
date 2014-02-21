@@ -11,6 +11,9 @@
 
 @interface MNCompany : NSObject
 
+@property (strong, nonatomic, readonly) UIImage *imageOfCompany;
+@property (strong, nonatomic, readonly) UIImage *backgroundImage;
+
 @property (strong, nonatomic, readonly) NSString *firstName;
 @property (strong, nonatomic, readonly) NSString *lastName;
 
@@ -31,6 +34,8 @@
 @property (strong, nonatomic, readonly) NSString *news;
 
 @property (strong, nonatomic, readonly) MNAddress *address;
+
+@property (strong, nonatomic, readonly) NSString *notes;
 
 - (MNCompany*) initWithRecordReference:(ABRecordRef)ref;
 

@@ -11,6 +11,12 @@
 
 @interface MNContactsManager ()
 
+@property (nonatomic) bool hasLoadedContactsFromDevice;
+
+@end
+
+@interface MNContactsManager ()
+
 @property (strong, nonatomic) NSArray *contactsArray;
 
 @end
@@ -47,27 +53,42 @@ static MNContactsManager *singletonInstance = nil;
     self = [super init];
     if (self) {
         // Import all the contacts
-        ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, nil);
-        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
-            if (granted) {
-                CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
-                CFIndex nPeople = ABAddressBookGetPersonCount(addressBook);
-                
-                NSLog(@"start loop");
-                for( int i = 0 ; i < nPeople ; i++ ) {
-                    ABRecordRef ref = CFArrayGetValueAtIndex(allPeople, i);
-                    if (ABRecordCopyValue(ref, kABPersonKindProperty) == kABPersonKindPerson) {
-                        MNContact *contact = [[MNContact alloc] initWithRecordReference:ref];
-                    } else if (ABRecordCopyValue(ref, kABPersonKindProperty) == kABPersonKindOrganization) {
-                        MNCompany *company = [[MNCompany alloc] initWithRecordReference:ref];
-                    }
-                }
-                
-                NSLog(@"end loop");
-            }
-        });
+        [self loadContactsFromPhone];
     }
     return self;
+}
+
+-(void) loadContactsFromPhone {
+    // Import all the contacts
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, nil);
+    ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
+        if (granted) {
+            CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
+            CFIndex nPeople = ABAddressBookGetPersonCount(addressBook);
+            
+            NSMutableArray *contactsArray = [[NSMutableArray alloc] init];
+            NSMutableArray *companyArray = [[NSMutableArray alloc] init];
+            
+            for( int i = 0 ; i < nPeople ; i++ ) {
+                ABRecordRef ref = CFArrayGetValueAtIndex(allPeople, i);
+                if (ABRecordCopyValue(ref, kABPersonKindProperty) == kABPersonKindPerson) {
+                    MNContact *contact = [[MNContact alloc] initWithRecordReference:ref];
+                    [contactsArray addObject:contact];
+                } else if (ABRecordCopyValue(ref, kABPersonKindProperty) == kABPersonKindOrganization) {
+                    MNCompany *company = [[MNCompany alloc] initWithRecordReference:ref];
+                    [companyArray addObject:company];
+                }
+            }
+            
+            self.hasLoadedContactsFromDevice = YES;
+            _personContacts = [[NSArray alloc] initWithArray:contactsArray copyItems:YES];
+            _companyContacts = [[NSArray alloc] initWithArray:companyArray copyItems:YES];
+        } else {
+            _personContacts = nil;
+            _companyContacts= nil;
+            self.hasLoadedContactsFromDevice = NO;
+        }
+    });
 }
 
 @end

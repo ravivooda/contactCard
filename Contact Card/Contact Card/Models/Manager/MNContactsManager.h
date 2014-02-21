@@ -17,4 +17,7 @@
  */
 +(MNContactsManager*) sharedInstance;
 
+@property (strong, readonly, nonatomic) NSArray *personContacts;
+@property (strong, readonly, nonatomic) NSArray *companyContacts;
+
 @end
