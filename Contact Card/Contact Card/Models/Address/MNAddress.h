@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MNAddress : NSObject
+@interface MNAddress : NSObject <NSSecureCoding, NSCopying>
 
 @property (readonly, strong, nonatomic) NSString *street;
 @property (readonly, strong, nonatomic) NSString *city;

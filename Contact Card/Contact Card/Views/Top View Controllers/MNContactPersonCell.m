@@ -7,6 +7,11 @@
 //
 
 #import "MNContactPersonCell.h"
+#import "MNLineView.h"
+
+@interface MNContactPersonCell ()
+
+@end
 
 @implementation MNContactPersonCell
 
@@ -24,6 +29,17 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(void) setContact:(MNContact *)contact {
+    _contact = contact;
+    
+    [_cellBackgroundImage setImage:contact.backgroundImage];
+    [_contactImageView setImage:contact.imageOfPerson];
+    [_firstLine setText:contact.firstTitle];
+    [_secondLine setText:contact.secondaryTitle];
+    
+    
 }
 
 @end

@@ -10,7 +10,7 @@
 #import "MNCompany.h"
 #import "MNAddress.h"
 
-@interface MNContact : NSObject <NSSecureCoding, UIActivityItemSource>
+@interface MNContact : NSObject <NSSecureCoding, UIActivityItemSource, NSCopying>
 
 // Identifier of the card
 @property (nonatomic, readonly) int contactID;
@@ -37,10 +37,10 @@
 @property (strong, nonatomic, readonly) NSString *departmentName;
 
 // Phone Number
-@property (strong, nonatomic, readonly) NSString *phoneNumber;
+@property (strong, readonly, nonatomic) NSArray *phoneNumbers;
 
 // Email
-@property (strong, nonatomic, readonly) NSString *email;
+@property (strong, nonatomic, readonly) NSArray *emails;
 
 #warning Some Social Networking links Need to add more or remove
 // Social Networking links

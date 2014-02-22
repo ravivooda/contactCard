@@ -7,9 +7,60 @@
 //
 
 #import "MNContact.h"
+#import "MNPhoneNumber.h"
+#import "MNEmail.h"
 
 #define kProfileArchiveKey @"contactArchiveKey"
 NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile";
+
+@interface MNContact ()
+
+// Identifier of the card
+@property (nonatomic) int contactID;
+
+// Images
+@property (strong, nonatomic) UIImage *imageOfPerson;
+@property (strong, nonatomic) UIImage *backgroundImage;
+
+// Identification i.e. Name
+@property (strong, nonatomic) NSString *prefixName;
+@property (strong, nonatomic) NSString *firstName;
+@property (strong, nonatomic) NSString *middleName;
+@property (strong, nonatomic) NSString *lastName;
+@property (strong, nonatomic) NSString *suffixName;
+@property (strong, nonatomic) NSString *nickName;
+
+// Maybe they want to show different details on the card
+@property (strong, nonatomic) NSString *firstTitle;
+@property (strong, nonatomic) NSString *secondaryTitle;
+
+// Work Details
+@property (strong, nonatomic) NSString *jobTitle;
+@property (strong, nonatomic) NSString *companyName;
+@property (strong, nonatomic) NSString *departmentName;
+
+// Phone Number
+@property (strong, nonatomic) NSArray *phoneNumbers;
+
+// Email
+@property (strong, nonatomic) NSArray *emails;
+
+#warning Some Social Networking links Need to add more or remove
+// Social Networking links
+@property (strong, nonatomic) NSString *facebookUserName;
+@property (strong, nonatomic) NSString *linkedInUserName;
+@property (strong, nonatomic) NSString *twitterUserName;
+
+// Website
+@property (strong, nonatomic) NSString *website;
+
+// Addresses
+@property (strong, nonatomic) MNAddress *address;
+
+// Notes
+@property (strong, nonatomic) NSString *notesOfContact;
+
+@end
 
 @implementation MNContact
 
@@ -47,7 +98,7 @@ NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile"
     return data;
 }
 
-#pragma mark - Secure coding implementations
+#pragma mark - Secure Coding Protocol implementations
 -(void) encodeWithCoder:(NSCoder *)aCoder {
     
 }
@@ -62,6 +113,45 @@ NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile"
 
 +(BOOL) supportsSecureCoding {
     return YES;
+}
+
+#pragma mark - Copying Protocol implementations
+-(id) copyWithZone:(NSZone *)zone {
+    MNContact *retObject = [[[self class] allocWithZone:zone] init];
+    if (retObject) {
+        retObject.contactID = _contactID;
+
+        retObject.imageOfPerson = [UIImage imageWithCGImage:_imageOfPerson.CGImage];
+        retObject.backgroundImage = [UIImage imageWithCGImage:_backgroundImage.CGImage];
+        
+        retObject.prefixName = [_prefixName copyWithZone:zone];
+        retObject.firstName = [_firstName copyWithZone:zone];
+        retObject.middleName = [_middleName copyWithZone:zone];
+        retObject.lastName = [_lastName copyWithZone:zone];
+        retObject.suffixName = [_suffixName copyWithZone:zone];
+        retObject.nickName = [_nickName copyWithZone:zone];
+        
+        retObject.firstTitle = [_firstTitle copyWithZone:zone];
+        retObject.secondaryTitle = [_secondaryTitle copyWithZone:zone];
+        
+        retObject.jobTitle = [_jobTitle copyWithZone:zone];
+        retObject.departmentName = [_departmentName copyWithZone:zone];
+        retObject.companyName = [_companyName copyWithZone:zone];
+        
+        retObject.phoneNumbers = [_phoneNumbers copyWithZone:zone];
+        retObject.emails = [_emails copyWithZone:zone];
+        
+        retObject.facebookUserName = [_facebookUserName copyWithZone:zone];
+        retObject.twitterUserName = [_twitterUserName copyWithZone:zone];
+        retObject.linkedInUserName   = [_linkedInUserName copyWithZone:zone];
+        
+        retObject.website = [_website copyWithZone:zone];
+        
+        retObject.address = [_address copyWithZone:zone];
+        
+        retObject.notesOfContact = [_notesOfContact copyWithZone:zone];
+    }
+    return retObject;
 }
 
 
@@ -127,14 +217,20 @@ NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile"
         _secondaryTitle = [NSString stringWithFormat:@"%@, %@",_jobTitle,_companyName];
         
         ABMultiValueRef multiPhones = (ABRecordCopyValue(ref, kABPersonPhoneProperty));
-        if (ABMultiValueGetCount(multiPhones) > 0) {
-            _phoneNumber = (__bridge NSString*)ABMultiValueCopyValueAtIndex(multiPhones, 0);
+        NSMutableArray *phoneArr = [[NSMutableArray alloc] init];
+        for (int i = 0; i < ABMultiValueGetCount(multiPhones); i++) {
+            MNPhoneNumber *phoneNumber = [[MNPhoneNumber alloc] initWithLabelName:(__bridge NSString *)(ABMultiValueCopyLabelAtIndex(multiPhones, i)) andPhoneNumber:(__bridge NSString *)(ABMultiValueCopyValueAtIndex(multiPhones, i))];
+            [phoneArr addObject:phoneNumber];
         }
+        _phoneNumbers = [[NSArray alloc] initWithArray:phoneArr copyItems:YES];
         
         ABMultiValueRef multiEmails = (ABRecordCopyValue(ref, kABPersonEmailProperty));
-        if (ABMultiValueGetCount(multiEmails) > 0) {
-            _email = (__bridge NSString*)ABMultiValueCopyValueAtIndex(multiEmails, 0);
+        NSMutableArray *emailsArr = [[NSMutableArray alloc] init];
+        for (int i = 0; i < ABMultiValueGetCount(multiEmails); i++) {
+            MNEmail *email = [[MNEmail alloc] initWithLabelName:(__bridge NSString *)(ABMultiValueCopyLabelAtIndex(multiEmails, i)) andEmail:(__bridge NSString *)(ABMultiValueCopyValueAtIndex(multiEmails, i))];
+            [emailsArr addObject:email];
         }
+        _emails = [[NSArray alloc] initWithArray:emailsArr copyItems:YES];
         
         ABMultiValueRef socialApps = (ABRecordCopyValue(ref, kABPersonSocialProfileProperty));
         for (int i = 0; i < ABMultiValueGetCount(socialApps); i++) {
