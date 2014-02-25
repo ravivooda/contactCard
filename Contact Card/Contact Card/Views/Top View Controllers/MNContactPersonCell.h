@@ -14,7 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *firstLine;
 @property (weak, nonatomic) IBOutlet UILabel *secondLine;
 
-@property (weak, nonatomic) IBOutlet UIImageView *cellBackgroundImage;
 @property (weak, nonatomic) IBOutlet UIScrollView *cellScrollView;
 
 @property (strong, nonatomic) MNContact *contact;

@@ -10,4 +10,6 @@
 
 @interface MNMyContactsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (strong, nonatomic) NSArray *contacts;
+
 @end
