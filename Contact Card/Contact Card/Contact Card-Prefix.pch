@@ -18,6 +18,8 @@
 
     #import "MNContact.h"
     #import "MNCompany.h"
+    #import "MNPhoneNumber.h"
+    #import "MNEmail.h"
 
     #import "MNConstants.h"
     #import "MNContactsManager.h"

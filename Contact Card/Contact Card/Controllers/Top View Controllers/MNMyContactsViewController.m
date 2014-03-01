@@ -8,13 +8,17 @@
 
 #import "MNMyContactsViewController.h"
 #import "MNContactPersonCell.h"
+#import "MNContactDetailsViewController.h"
 
 @interface MNMyContactsViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *allContactsTableview;
+
 @end
 
-@implementation MNMyContactsViewController
+@implementation MNMyContactsViewController {
+    MNContact *selectedContact;
+}
 
 - (void)viewDidLoad
 {
@@ -68,6 +72,21 @@
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 60;
+}
+
+#pragma mark - Table view delegate methods
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    MNContactPersonCell *selectedCell = (MNContactPersonCell*)[tableView cellForRowAtIndexPath:indexPath];
+    selectedContact = selectedCell.contact;
+    [self performSegueWithIdentifier:@"detailsContactSegue" sender:self];
+}
+
+#pragma mark - Segue methods
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"detailsContactSegue"]) {
+        MNContactDetailsViewController *dvc = segue.destinationViewController;
+        dvc.contact = selectedContact;
+    }
 }
 
 @end

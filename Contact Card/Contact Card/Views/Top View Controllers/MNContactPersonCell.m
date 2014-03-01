@@ -11,17 +11,6 @@
 #import "MNPhoneNumber.h"
 #import "MNEmail.h"
 
-#define imageNameViewHeight 120.0f
-#define paddingValue 20.0f
-#define phoneNumberViewHeight 50.0f
-#define phoneTypeLabelHeight 15.0f
-
-#define mainLabelFont [UIFont fontWithName:@"Trebuchet MS" size:14]
-#define mainLabelColor [UIColor colorWithWhite:0.613 alpha:1.000]
-
-#define mainValueFont [UIFont fontWithName:@"Trebuchet MS" size:20]
-#define mainValueColor [UIColor blackColor]
-
 @interface MNContactPersonCell ()
 
 @end

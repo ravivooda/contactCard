@@ -219,7 +219,7 @@ NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile"
         ABMultiValueRef multiPhones = (ABRecordCopyValue(ref, kABPersonPhoneProperty));
         NSMutableArray *phoneArr = [[NSMutableArray alloc] init];
         for (int i = 0; i < ABMultiValueGetCount(multiPhones); i++) {
-            MNPhoneNumber *phoneNumber = [[MNPhoneNumber alloc] initWithLabelName:(__bridge NSString *)(ABMultiValueCopyLabelAtIndex(multiPhones, i)) andPhoneNumber:(__bridge NSString *)(ABMultiValueCopyValueAtIndex(multiPhones, i))];
+            MNPhoneNumber *phoneNumber = [[MNPhoneNumber alloc] initWithLabelName:(__bridge NSString *)ABAddressBookCopyLocalizedLabel((ABMultiValueCopyLabelAtIndex(multiPhones, i))) andPhoneNumber:(__bridge NSString *)ABAddressBookCopyLocalizedLabel((ABMultiValueCopyValueAtIndex(multiPhones, i)))];
             [phoneArr addObject:phoneNumber];
         }
         _phoneNumbers = [[NSArray alloc] initWithArray:phoneArr copyItems:YES];
@@ -227,7 +227,7 @@ NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile"
         ABMultiValueRef multiEmails = (ABRecordCopyValue(ref, kABPersonEmailProperty));
         NSMutableArray *emailsArr = [[NSMutableArray alloc] init];
         for (int i = 0; i < ABMultiValueGetCount(multiEmails); i++) {
-            MNEmail *email = [[MNEmail alloc] initWithLabelName:(__bridge NSString *)(ABMultiValueCopyLabelAtIndex(multiEmails, i)) andEmail:(__bridge NSString *)(ABMultiValueCopyValueAtIndex(multiEmails, i))];
+            MNEmail *email = [[MNEmail alloc] initWithLabelName:(__bridge NSString *)ABAddressBookCopyLocalizedLabel((ABMultiValueCopyLabelAtIndex(multiPhones, i))) andEmail:(__bridge NSString *)ABAddressBookCopyLocalizedLabel((ABMultiValueCopyValueAtIndex(multiEmails, i)))];
             [emailsArr addObject:email];
         }
         _emails = [[NSArray alloc] initWithArray:emailsArr copyItems:YES];

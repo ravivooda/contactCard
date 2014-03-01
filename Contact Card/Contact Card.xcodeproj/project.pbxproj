@@ -43,6 +43,7 @@
 		97B9FC1818A377D5001BDF52 /* MNNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B9FC1718A377D5001BDF52 /* MNNetworkManager.m */; };
 		97DD5DA818B87140000FE387 /* MNPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DD5DA718B87140000FE387 /* MNPhoneNumber.m */; };
 		97DD5DAB18B8714E000FE387 /* MNEmail.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DD5DAA18B8714E000FE387 /* MNEmail.m */; };
+		97F506C918BC8031009720A0 /* MNContactDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F506C818BC8031009720A0 /* MNContactDetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,8 @@
 		97DD5DA718B87140000FE387 /* MNPhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNPhoneNumber.m; sourceTree = "<group>"; };
 		97DD5DA918B8714E000FE387 /* MNEmail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNEmail.h; sourceTree = "<group>"; };
 		97DD5DAA18B8714E000FE387 /* MNEmail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNEmail.m; sourceTree = "<group>"; };
+		97F506C718BC8031009720A0 /* MNContactDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNContactDetailsViewController.h; sourceTree = "<group>"; };
+		97F506C818BC8031009720A0 /* MNContactDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNContactDetailsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +152,7 @@
 		9722248618A27DAE00D64BC2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				97F506C618BC801A009720A0 /* Details View Controllers */,
 				975D141B18A62FBF00933968 /* Left Side Panel View Controllers */,
 				975D141C18A62FBF00933968 /* Sliding Panel View Controllers */,
 				975D141D18A62FBF00933968 /* Top View Controllers */,
@@ -438,6 +442,15 @@
 			path = "Phone Number";
 			sourceTree = "<group>";
 		};
+		97F506C618BC801A009720A0 /* Details View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				97F506C718BC8031009720A0 /* MNContactDetailsViewController.h */,
+				97F506C818BC8031009720A0 /* MNContactDetailsViewController.m */,
+			);
+			path = "Details View Controllers";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -550,6 +563,7 @@
 				975D143618A7908F00933968 /* MNContactsManager.m in Sources */,
 				975D141518A629C600933968 /* ECSlidingViewController.m in Sources */,
 				975D141618A629C600933968 /* UIViewController+ECSlidingViewController.m in Sources */,
+				97F506C918BC8031009720A0 /* MNContactDetailsViewController.m in Sources */,
 				975D141218A629C600933968 /* ECSlidingAnimationController.m in Sources */,
 				9722249118A2843700D64BC2 /* MNContact.m in Sources */,
 				9750F5A118B7734E00445D2F /* MNContactPersonCell.m in Sources */,
