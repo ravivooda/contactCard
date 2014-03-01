@@ -19,14 +19,19 @@
 		975D141418A629C600933968 /* ECSlidingSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 975D140C18A629C600933968 /* ECSlidingSegue.m */; };
 		975D141518A629C600933968 /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975D140E18A629C600933968 /* ECSlidingViewController.m */; };
 		975D141618A629C600933968 /* UIViewController+ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975D141018A629C600933968 /* UIViewController+ECSlidingViewController.m */; };
-		975D142018A62FCE00933968 /* MNSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975D141F18A62FCE00933968 /* MNSlidingViewController.m */; };
-		975D142318A62FF800933968 /* MNLeftSidePanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975D142218A62FF800933968 /* MNLeftSidePanelViewController.m */; };
-		975D142618A6301200933968 /* MNMyContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975D142518A6301200933968 /* MNMyContactsViewController.m */; };
 		975D142F18A75D3300933968 /* MEZoomAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975D142E18A75D3300933968 /* MEZoomAnimationController.m */; };
 		975D143218A78EC200933968 /* MNUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 975D143118A78EC200933968 /* MNUtilities.m */; };
 		975D143618A7908F00933968 /* MNContactsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 975D143518A7908F00933968 /* MNContactsManager.m */; };
 		975D143918A795C400933968 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 975D143718A795C400933968 /* AddressBook.framework */; };
 		975D143A18A795C400933968 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 975D143818A795C400933968 /* AddressBookUI.framework */; };
+		975E59B518C1F51C00B97284 /* MNMyContactCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 975E59B418C1F51C00B97284 /* MNMyContactCardCell.m */; };
+		975E59B918C1F60B00B97284 /* MNContactCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 975E59B818C1F60B00B97284 /* MNContactCard.m */; };
+		975E59C818C1F7E500B97284 /* MNContactDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975E59BD18C1F7E500B97284 /* MNContactDetailsViewController.m */; };
+		975E59C918C1F7E500B97284 /* MNMyContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975E59C018C1F7E500B97284 /* MNMyContactsViewController.m */; };
+		975E59CA18C1F7E500B97284 /* MNLeftSidePanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975E59C418C1F7E500B97284 /* MNLeftSidePanelViewController.m */; };
+		975E59CB18C1F7E500B97284 /* MNSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975E59C718C1F7E500B97284 /* MNSlidingViewController.m */; };
+		975E59D118C1F83A00B97284 /* MNMyCardsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975E59D018C1F83A00B97284 /* MNMyCardsTableViewController.m */; };
+		975E59D418C1F84D00B97284 /* MNMyCardDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975E59D318C1F84D00B97284 /* MNMyCardDetailsViewController.m */; };
 		9763F7B3189D0F3A00C628E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9763F7B2189D0F3A00C628E4 /* Foundation.framework */; };
 		9763F7B5189D0F3A00C628E4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9763F7B4189D0F3A00C628E4 /* CoreGraphics.framework */; };
 		9763F7B7189D0F3A00C628E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9763F7B6189D0F3A00C628E4 /* UIKit.framework */; };
@@ -43,7 +48,6 @@
 		97B9FC1818A377D5001BDF52 /* MNNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B9FC1718A377D5001BDF52 /* MNNetworkManager.m */; };
 		97DD5DA818B87140000FE387 /* MNPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DD5DA718B87140000FE387 /* MNPhoneNumber.m */; };
 		97DD5DAB18B8714E000FE387 /* MNEmail.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DD5DAA18B8714E000FE387 /* MNEmail.m */; };
-		97F506C918BC8031009720A0 /* MNContactDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F506C818BC8031009720A0 /* MNContactDetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,12 +86,6 @@
 		975D140E18A629C600933968 /* ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingViewController.m; sourceTree = "<group>"; };
 		975D140F18A629C600933968 /* UIViewController+ECSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ECSlidingViewController.h"; sourceTree = "<group>"; };
 		975D141018A629C600933968 /* UIViewController+ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ECSlidingViewController.m"; sourceTree = "<group>"; };
-		975D141E18A62FCE00933968 /* MNSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNSlidingViewController.h; sourceTree = "<group>"; };
-		975D141F18A62FCE00933968 /* MNSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNSlidingViewController.m; sourceTree = "<group>"; };
-		975D142118A62FF800933968 /* MNLeftSidePanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNLeftSidePanelViewController.h; sourceTree = "<group>"; };
-		975D142218A62FF800933968 /* MNLeftSidePanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNLeftSidePanelViewController.m; sourceTree = "<group>"; };
-		975D142418A6301200933968 /* MNMyContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNMyContactsViewController.h; sourceTree = "<group>"; };
-		975D142518A6301200933968 /* MNMyContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNMyContactsViewController.m; sourceTree = "<group>"; };
 		975D142D18A75D3300933968 /* MEZoomAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEZoomAnimationController.h; sourceTree = "<group>"; };
 		975D142E18A75D3300933968 /* MEZoomAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEZoomAnimationController.m; sourceTree = "<group>"; };
 		975D143018A78EC200933968 /* MNUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNUtilities.h; sourceTree = "<group>"; };
@@ -96,6 +94,22 @@
 		975D143518A7908F00933968 /* MNContactsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNContactsManager.m; sourceTree = "<group>"; };
 		975D143718A795C400933968 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		975D143818A795C400933968 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		975E59B318C1F51C00B97284 /* MNMyContactCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNMyContactCardCell.h; sourceTree = "<group>"; };
+		975E59B418C1F51C00B97284 /* MNMyContactCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNMyContactCardCell.m; sourceTree = "<group>"; };
+		975E59B718C1F60B00B97284 /* MNContactCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNContactCard.h; sourceTree = "<group>"; };
+		975E59B818C1F60B00B97284 /* MNContactCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNContactCard.m; sourceTree = "<group>"; };
+		975E59BC18C1F7E500B97284 /* MNContactDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNContactDetailsViewController.h; sourceTree = "<group>"; };
+		975E59BD18C1F7E500B97284 /* MNContactDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNContactDetailsViewController.m; sourceTree = "<group>"; };
+		975E59BF18C1F7E500B97284 /* MNMyContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNMyContactsViewController.h; sourceTree = "<group>"; };
+		975E59C018C1F7E500B97284 /* MNMyContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNMyContactsViewController.m; sourceTree = "<group>"; };
+		975E59C318C1F7E500B97284 /* MNLeftSidePanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNLeftSidePanelViewController.h; sourceTree = "<group>"; };
+		975E59C418C1F7E500B97284 /* MNLeftSidePanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNLeftSidePanelViewController.m; sourceTree = "<group>"; };
+		975E59C618C1F7E500B97284 /* MNSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNSlidingViewController.h; sourceTree = "<group>"; };
+		975E59C718C1F7E500B97284 /* MNSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNSlidingViewController.m; sourceTree = "<group>"; };
+		975E59CF18C1F83A00B97284 /* MNMyCardsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNMyCardsTableViewController.h; sourceTree = "<group>"; };
+		975E59D018C1F83A00B97284 /* MNMyCardsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNMyCardsTableViewController.m; sourceTree = "<group>"; };
+		975E59D218C1F84D00B97284 /* MNMyCardDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNMyCardDetailsViewController.h; sourceTree = "<group>"; };
+		975E59D318C1F84D00B97284 /* MNMyCardDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNMyCardDetailsViewController.m; sourceTree = "<group>"; };
 		9763F7AF189D0F3A00C628E4 /* Contact Card.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Contact Card.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9763F7B2189D0F3A00C628E4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9763F7B4189D0F3A00C628E4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -119,8 +133,6 @@
 		97DD5DA718B87140000FE387 /* MNPhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNPhoneNumber.m; sourceTree = "<group>"; };
 		97DD5DA918B8714E000FE387 /* MNEmail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNEmail.h; sourceTree = "<group>"; };
 		97DD5DAA18B8714E000FE387 /* MNEmail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNEmail.m; sourceTree = "<group>"; };
-		97F506C718BC8031009720A0 /* MNContactDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNContactDetailsViewController.h; sourceTree = "<group>"; };
-		97F506C818BC8031009720A0 /* MNContactDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNContactDetailsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,10 +164,9 @@
 		9722248618A27DAE00D64BC2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				97F506C618BC801A009720A0 /* Details View Controllers */,
-				975D141B18A62FBF00933968 /* Left Side Panel View Controllers */,
-				975D141C18A62FBF00933968 /* Sliding Panel View Controllers */,
-				975D141D18A62FBF00933968 /* Top View Controllers */,
+				975E59CC18C1F82200B97284 /* My Cards View Controllers */,
+				975E59BA18C1F7E500B97284 /* My Contacts View Controllers */,
+				975E59C118C1F7E500B97284 /* Split View Controllers */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -163,6 +174,7 @@
 		9722248718A27DAE00D64BC2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				975E59B618C1F5FA00B97284 /* Card */,
 				97DD5DA418B87123000FE387 /* Email */,
 				97DD5DA518B87123000FE387 /* Phone Number */,
 				975D143318A7906200933968 /* Manager */,
@@ -214,6 +226,8 @@
 			children = (
 				9750F59F18B7734E00445D2F /* MNContactPersonCell.h */,
 				9750F5A018B7734E00445D2F /* MNContactPersonCell.m */,
+				975E59B318C1F51C00B97284 /* MNMyContactCardCell.h */,
+				975E59B418C1F51C00B97284 /* MNMyContactCardCell.m */,
 			);
 			path = "Top View Controllers";
 			sourceTree = "<group>";
@@ -257,33 +271,6 @@
 			path = ECSlidingViewController;
 			sourceTree = "<group>";
 		};
-		975D141B18A62FBF00933968 /* Left Side Panel View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				975D142118A62FF800933968 /* MNLeftSidePanelViewController.h */,
-				975D142218A62FF800933968 /* MNLeftSidePanelViewController.m */,
-			);
-			path = "Left Side Panel View Controllers";
-			sourceTree = "<group>";
-		};
-		975D141C18A62FBF00933968 /* Sliding Panel View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				975D141E18A62FCE00933968 /* MNSlidingViewController.h */,
-				975D141F18A62FCE00933968 /* MNSlidingViewController.m */,
-			);
-			path = "Sliding Panel View Controllers";
-			sourceTree = "<group>";
-		};
-		975D141D18A62FBF00933968 /* Top View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				975D142418A6301200933968 /* MNMyContactsViewController.h */,
-				975D142518A6301200933968 /* MNMyContactsViewController.m */,
-			);
-			path = "Top View Controllers";
-			sourceTree = "<group>";
-		};
 		975D142718A6370800933968 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +285,96 @@
 				975D143518A7908F00933968 /* MNContactsManager.m */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		975E59B618C1F5FA00B97284 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				975E59B718C1F60B00B97284 /* MNContactCard.h */,
+				975E59B818C1F60B00B97284 /* MNContactCard.m */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		975E59BA18C1F7E500B97284 /* My Contacts View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				975E59BB18C1F7E500B97284 /* My Contact Details View Controller */,
+				975E59BE18C1F7E500B97284 /* My Contacts Table View Controller */,
+			);
+			path = "My Contacts View Controllers";
+			sourceTree = "<group>";
+		};
+		975E59BB18C1F7E500B97284 /* My Contact Details View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				975E59BC18C1F7E500B97284 /* MNContactDetailsViewController.h */,
+				975E59BD18C1F7E500B97284 /* MNContactDetailsViewController.m */,
+			);
+			path = "My Contact Details View Controller";
+			sourceTree = "<group>";
+		};
+		975E59BE18C1F7E500B97284 /* My Contacts Table View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				975E59BF18C1F7E500B97284 /* MNMyContactsViewController.h */,
+				975E59C018C1F7E500B97284 /* MNMyContactsViewController.m */,
+			);
+			path = "My Contacts Table View Controller";
+			sourceTree = "<group>";
+		};
+		975E59C118C1F7E500B97284 /* Split View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				975E59C218C1F7E500B97284 /* Left Side Panel View Controller */,
+				975E59C518C1F7E500B97284 /* Sliding Panel View Controller */,
+			);
+			path = "Split View Controllers";
+			sourceTree = "<group>";
+		};
+		975E59C218C1F7E500B97284 /* Left Side Panel View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				975E59C318C1F7E500B97284 /* MNLeftSidePanelViewController.h */,
+				975E59C418C1F7E500B97284 /* MNLeftSidePanelViewController.m */,
+			);
+			path = "Left Side Panel View Controller";
+			sourceTree = "<group>";
+		};
+		975E59C518C1F7E500B97284 /* Sliding Panel View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				975E59C618C1F7E500B97284 /* MNSlidingViewController.h */,
+				975E59C718C1F7E500B97284 /* MNSlidingViewController.m */,
+			);
+			path = "Sliding Panel View Controller";
+			sourceTree = "<group>";
+		};
+		975E59CC18C1F82200B97284 /* My Cards View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				975E59CD18C1F82200B97284 /* My Card Detail View Controller */,
+				975E59CE18C1F82200B97284 /* My Cards Table View Controller */,
+			);
+			path = "My Cards View Controllers";
+			sourceTree = "<group>";
+		};
+		975E59CD18C1F82200B97284 /* My Card Detail View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				975E59D218C1F84D00B97284 /* MNMyCardDetailsViewController.h */,
+				975E59D318C1F84D00B97284 /* MNMyCardDetailsViewController.m */,
+			);
+			path = "My Card Detail View Controller";
+			sourceTree = "<group>";
+		};
+		975E59CE18C1F82200B97284 /* My Cards Table View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				975E59CF18C1F83A00B97284 /* MNMyCardsTableViewController.h */,
+				975E59D018C1F83A00B97284 /* MNMyCardsTableViewController.m */,
+			);
+			path = "My Cards Table View Controller";
 			sourceTree = "<group>";
 		};
 		9763F7A6189D0F3A00C628E4 = {
@@ -442,15 +519,6 @@
 			path = "Phone Number";
 			sourceTree = "<group>";
 		};
-		97F506C618BC801A009720A0 /* Details View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				97F506C718BC8031009720A0 /* MNContactDetailsViewController.h */,
-				97F506C818BC8031009720A0 /* MNContactDetailsViewController.m */,
-			);
-			path = "Details View Controllers";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -550,27 +618,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				975D142618A6301200933968 /* MNMyContactsViewController.m in Sources */,
+				975E59D118C1F83A00B97284 /* MNMyCardsTableViewController.m in Sources */,
 				975D142F18A75D3300933968 /* MEZoomAnimationController.m in Sources */,
 				97DD5DA818B87140000FE387 /* MNPhoneNumber.m in Sources */,
+				975E59B918C1F60B00B97284 /* MNContactCard.m in Sources */,
 				975D143218A78EC200933968 /* MNUtilities.m in Sources */,
+				975E59C918C1F7E500B97284 /* MNMyContactsViewController.m in Sources */,
 				975D141318A629C600933968 /* ECSlidingInteractiveTransition.m in Sources */,
 				9722249418A2844900D64BC2 /* MNCompany.m in Sources */,
-				975D142318A62FF800933968 /* MNLeftSidePanelViewController.m in Sources */,
-				975D142018A62FCE00933968 /* MNSlidingViewController.m in Sources */,
 				9763F7BF189D0F3A00C628E4 /* main.m in Sources */,
+				975E59D418C1F84D00B97284 /* MNMyCardDetailsViewController.m in Sources */,
 				975D141118A629C600933968 /* ECPercentDrivenInteractiveTransition.m in Sources */,
 				975D143618A7908F00933968 /* MNContactsManager.m in Sources */,
 				975D141518A629C600933968 /* ECSlidingViewController.m in Sources */,
 				975D141618A629C600933968 /* UIViewController+ECSlidingViewController.m in Sources */,
-				97F506C918BC8031009720A0 /* MNContactDetailsViewController.m in Sources */,
+				975E59CA18C1F7E500B97284 /* MNLeftSidePanelViewController.m in Sources */,
 				975D141218A629C600933968 /* ECSlidingAnimationController.m in Sources */,
+				975E59B518C1F51C00B97284 /* MNMyContactCardCell.m in Sources */,
 				9722249118A2843700D64BC2 /* MNContact.m in Sources */,
 				9750F5A118B7734E00445D2F /* MNContactPersonCell.m in Sources */,
 				975D141418A629C600933968 /* ECSlidingSegue.m in Sources */,
+				975E59C818C1F7E500B97284 /* MNContactDetailsViewController.m in Sources */,
 				9722248518A27D7300D64BC2 /* MNAppDelegate.m in Sources */,
 				9750F5A518B7A25100445D2F /* MNLineView.m in Sources */,
 				97B9FC1818A377D5001BDF52 /* MNNetworkManager.m in Sources */,
+				975E59CB18C1F7E500B97284 /* MNSlidingViewController.m in Sources */,
 				9722249718A284A800D64BC2 /* MNAddress.m in Sources */,
 				97DD5DAB18B8714E000FE387 /* MNEmail.m in Sources */,
 			);
