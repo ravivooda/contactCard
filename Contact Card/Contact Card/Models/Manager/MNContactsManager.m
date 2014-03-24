@@ -82,7 +82,7 @@ static MNContactsManager *singletonInstance = nil;
             
             self.hasLoadedContactsFromDevice = YES;
             _personContacts = [[NSArray alloc] initWithArray:contactsArray copyItems:YES];
-            _companyContacts = [[NSArray alloc] initWithArray:companyArray copyItems:YES];
+//            _companyContacts = [[NSArray alloc] initWithArray:companyArray copyItems:YES];
         } else {
             _personContacts = nil;
             _companyContacts= nil;
