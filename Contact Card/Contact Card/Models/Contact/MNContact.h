@@ -61,6 +61,8 @@
 
 - (MNContact*) initWithRecordReference:(ABRecordRef)ref;
 
+- (ABRecordRef) convertToRecordRef;
+
 + (NSArray*) getContactCardsFromReference:(ABRecordRef)ref;
 
 -(NSDictionary*) dictionaryOfContactCard;

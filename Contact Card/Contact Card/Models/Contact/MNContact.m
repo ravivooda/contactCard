@@ -15,6 +15,8 @@ NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile"
 
 @interface MNContact ()
 
+@property (nonatomic) ABRecordRef recordRef;
+
 // Identifier of the card
 @property (nonatomic) int contactID;
 
@@ -150,6 +152,8 @@ NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile"
         retObject.address = [_address copyWithZone:zone];
         
         retObject.notesOfContact = [_notesOfContact copyWithZone:zone];
+        
+        retObject.recordRef = self.recordRef;
     }
     return retObject;
 }
@@ -194,7 +198,7 @@ NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile"
     self = [super init];
     if (self) {
         
-#warning Need to set the background image to some default image.
+        self.recordRef = ref;
         
         if (ABPersonHasImageData(ref)) {
             NSData *imageData = (__bridge NSData *)(ABPersonCopyImageDataWithFormat(ref, kABPersonImageFormatOriginalSize));
@@ -259,6 +263,10 @@ NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile"
         
     }
     return self;
+}
+
+-(ABRecordRef) convertToRecordRef {
+    return self.recordRef;
 }
 
 +(NSArray*) getContactCardsFromReference:(ABRecordRef)ref {

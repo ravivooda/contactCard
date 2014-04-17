@@ -20,4 +20,6 @@
 @property (strong, readonly, nonatomic) NSArray *personContacts;
 @property (strong, readonly, nonatomic) NSArray *companyContacts;
 
+typedef void (^ContactsLoadedCompletionBlock)(void);
+
 @end

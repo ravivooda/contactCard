@@ -13,13 +13,15 @@
 
 @property (nonatomic) bool hasLoadedContactsFromDevice;
 
-@end
-
-@interface MNContactsManager ()
+@property (strong, nonatomic) NSArray *personContacts;
+@property (strong, nonatomic) NSArray *companyContacts;
 
 @property (strong, nonatomic) NSArray *contactsArray;
 
+@property (nonatomic) dispatch_semaphore_t sema;
+
 @end
+
 
 @implementation MNContactsManager
 
@@ -59,6 +61,7 @@ static MNContactsManager *singletonInstance = nil;
 }
 
 -(void) loadContactsFromPhone {
+    self.sema = dispatch_semaphore_create(0);
     // Import all the contacts
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, nil);
     ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
@@ -88,7 +91,9 @@ static MNContactsManager *singletonInstance = nil;
             _companyContacts= nil;
             self.hasLoadedContactsFromDevice = NO;
         }
+        dispatch_semaphore_signal(self.sema);
     });
+    dispatch_semaphore_wait(self.sema, DISPATCH_TIME_FOREVER);
 }
 
 @end

@@ -8,7 +8,7 @@
 
 #import "MNMyContactsViewController.h"
 #import "MNContactPersonCell.h"
-#import "MNContactDetailsViewController.h"
+#import <AddressBookUI/AddressBookUI.h>
 
 @interface MNMyContactsViewController ()
 
@@ -29,7 +29,6 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     self.contacts = contactManager.personContacts;
 }
 
@@ -84,8 +83,8 @@
 #pragma mark - Segue methods
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"detailsContactSegue"]) {
-        MNContactDetailsViewController *dvc = segue.destinationViewController;
-        dvc.contact = selectedContact;
+        ABPersonViewController *dvc = segue.destinationViewController;
+        dvc.displayedPerson = [selectedContact convertToRecordRef];
     }
 }
 
