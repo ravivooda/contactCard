@@ -66,7 +66,8 @@ static MNContactsManager *singletonInstance = nil;
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, nil);
     ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
         if (granted) {
-            CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
+            ABRecordRef source = ABAddressBookCopyDefaultSource(addressBook);
+            CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering(addressBook, source, kABPersonSortByFirstName);
             CFIndex nPeople = ABAddressBookGetPersonCount(addressBook);
             
             NSMutableArray *contactsArray = [[NSMutableArray alloc] init];

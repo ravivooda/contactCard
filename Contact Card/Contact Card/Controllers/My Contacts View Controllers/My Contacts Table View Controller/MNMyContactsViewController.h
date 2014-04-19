@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MNMyContactsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface MNMyContactsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate>
 
 @property (strong, nonatomic) NSArray *contacts;
 

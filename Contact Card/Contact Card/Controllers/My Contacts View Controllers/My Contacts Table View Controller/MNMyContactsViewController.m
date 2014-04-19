@@ -88,4 +88,6 @@
     }
 }
 
+#pragma mark - Search Bar Delegate
+
 @end

@@ -9,7 +9,9 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="VBm-pv-OKs" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="contacts" id="SQ6-3E-IZu"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pGd-O1-WDv">
+                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -251,6 +253,9 @@
         <scene sceneID="x61-8h-haa">
             <objects>
                 <tabBarController definesPresentationContext="YES" id="xWO-9b-WMB" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Xlt-ab-VlW">
+                        <barButtonItem key="rightBarButtonItem" title="Exchange" id="Bof-k5-UC0"/>
+                    </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="cnF-sT-jTe">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>

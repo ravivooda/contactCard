@@ -212,13 +212,29 @@ NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile"
         _suffixName = (__bridge NSString *)(ABRecordCopyValue(ref, kABPersonSuffixProperty));
         _nickName = (__bridge NSString *)(ABRecordCopyValue(ref, kABPersonNicknameProperty));
         
-        _firstTitle = [NSString stringWithFormat:@"%@ %@",_firstName,_lastName];
+        if (_firstName && _lastName) {
+            _firstTitle = [NSString stringWithFormat:@"%@ %@",_firstName,_lastName];
+        } else if (_firstName) {
+            _firstTitle = [NSString stringWithFormat:@"%@",_firstName];
+        } else if (_lastName) {
+            _firstTitle = [NSString stringWithFormat:@"%@",_lastName];
+        } else {
+            _firstTitle = @"Unknown Contact";
+        }
         
         _companyName = (__bridge NSString *)(ABRecordCopyValue(ref, kABPersonOrganizationProperty));
         _jobTitle = (__bridge NSString *)(ABRecordCopyValue(ref, kABPersonJobTitleProperty));
         _departmentName = (__bridge NSString *)(ABRecordCopyValue(ref, kABPersonDepartmentProperty));
         
-        _secondaryTitle = [NSString stringWithFormat:@"%@, %@",_jobTitle,_companyName];
+        if (_jobTitle && _companyName) {
+            _secondaryTitle = [NSString stringWithFormat:@"%@, %@",_jobTitle,_companyName];
+        } else if (_jobTitle) {
+            _secondaryTitle = [_jobTitle copy];
+        } else if (_companyName) {
+            _secondaryTitle = [_companyName copy];
+        } else {
+            _secondaryTitle = @"";
+        }
         
         ABMultiValueRef multiPhones = (ABRecordCopyValue(ref, kABPersonPhoneProperty));
         NSMutableArray *phoneArr = [[NSMutableArray alloc] init];
