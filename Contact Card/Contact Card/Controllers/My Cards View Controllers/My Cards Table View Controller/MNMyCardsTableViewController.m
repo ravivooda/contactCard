@@ -7,8 +7,11 @@
 //
 
 #import "MNMyCardsTableViewController.h"
+#import <AddressBookUI/AddressBookUI.h>
 
 @interface MNMyCardsTableViewController ()
+
+@property (strong, nonatomic) UIBarButtonItem *defaultRightBarButtonItem;
 
 @end
 
@@ -116,5 +119,34 @@
 }
 
  */
+
+#pragma mark - Add new card
+- (IBAction)addNewCard:(UIButton *)sender {
+    ABNewPersonViewController *newPersonViewController = [[ABNewPersonViewController alloc] init];
+    
+    self.defaultRightBarButtonItem = newPersonViewController.navigationItem.rightBarButtonItem;
+    
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, nil);
+    
+    newPersonViewController.addressBook = addressBook;
+    newPersonViewController.newPersonViewDelegate = self;
+    
+    UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:newPersonViewController];
+    UIBarButtonItem *saveBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(savePressed)];
+    newPersonViewController.navigationItem.rightBarButtonItem = saveBtn;
+    
+    [self presentViewController:navigation animated:YES completion:nil];
+}
+
+#pragma mark - New Person Delegate
+-(void) newPersonViewController:(ABNewPersonViewController *)newPersonView didCompleteWithNewPerson:(ABRecordRef)person {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Private Methods
+- (void) savePressed {
+    
+}
+
 
 @end

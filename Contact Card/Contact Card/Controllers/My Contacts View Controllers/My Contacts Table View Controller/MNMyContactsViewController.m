@@ -77,16 +77,21 @@
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     MNContactPersonCell *selectedCell = (MNContactPersonCell*)[tableView cellForRowAtIndexPath:indexPath];
     selectedContact = selectedCell.contact;
-    [self performSegueWithIdentifier:@"detailsContactSegue" sender:self];
+    
+    ABPersonViewController *picker = [[ABPersonViewController alloc] init];
+    picker.displayedPerson = [selectedContact convertToRecordRef];
+    picker.allowsActions = NO;
+    
+    [self.navigationController pushViewController:picker animated:YES];
 }
 
-#pragma mark - Segue methods
--(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"detailsContactSegue"]) {
-        ABPersonViewController *dvc = segue.destinationViewController;
-        dvc.displayedPerson = [selectedContact convertToRecordRef];
-    }
-}
+//#pragma mark - Segue methods
+//-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    if ([segue.identifier isEqualToString:@"detailsContactSegue"]) {
+//        ABPersonViewController *dvc = segue.destinationViewController;
+//        dvc.displayedPerson = [selectedContact convertToRecordRef];
+//    }
+//}
 
 #pragma mark - Search Bar Delegate
 

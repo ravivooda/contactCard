@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xWO-9b-WMB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xWO-9b-WMB">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -96,7 +96,6 @@
                     <connections>
                         <outlet property="allContactsTableview" destination="Mwd-m0-eyH" id="hh5-Fk-wQl"/>
                         <outlet property="searchDisplayController" destination="ZRQ-0V-3Rg" id="C2B-Hh-x4Y"/>
-                        <segue destination="chq-8G-Qd4" kind="push" identifier="detailsContactSegue" id="tLz-9i-OEO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zGU-Hc-Oq9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -112,27 +111,7 @@
             </objects>
             <point key="canvasLocation" x="3435" y="-172"/>
         </scene>
-        <!--Person View Controller-->
-        <scene sceneID="VYG-ku-4k5">
-            <objects>
-                <viewController id="chq-8G-Qd4" customClass="ABPersonViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Kox-Io-CPs"/>
-                        <viewControllerLayoutGuide type="bottom" id="TQA-kr-5u3"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="HGt-U9-vRA">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" id="GyA-AC-h9C"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="db3-c5-1V2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3982" y="-172"/>
-        </scene>
-        <!--My Cards Table View Controller - Root View Controller-->
+        <!--My Cards Table View Controller - My Cards-->
         <scene sceneID="Vxn-Rh-zqd">
             <objects>
                 <tableViewController id="9Yh-wG-l7M" customClass="MNMyCardsTableViewController" sceneMemberID="viewController">
@@ -167,71 +146,25 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="DNp-c1-1WN"/>
-                    <connections>
-                        <segue destination="Bnf-Oh-cfw" kind="push" identifier="showCardDetailsSegue" id="M83-Va-i74"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="My Cards" id="DNp-c1-1WN">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="wg2-4Y-Qav">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fee-Hx-ar1">
+                                <rect key="frame" x="233" y="5" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="+">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addNewCard:" destination="9Yh-wG-l7M" eventType="touchUpInside" id="lHU-tV-iLn"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zvl-50-aZE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3435" y="562"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="oNT-Is-ZXB">
-            <objects>
-                <viewController id="Bnf-Oh-cfw" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="XJA-uP-7h2"/>
-                        <viewControllerLayoutGuide type="bottom" id="b9G-8a-dZ6"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="haA-tA-NKl">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yiz-Tr-yYf">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RPO-gs-P1u">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="225"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xbe-rT-SB2">
-                                        <rect key="frame" x="100" y="20" width="120" height="120"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="goY-NM-uxf">
-                                        <rect key="frame" x="0.0" y="162" width="320" height="63"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ravi Vooda" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Amm-4N-SGW">
-                                                <rect key="frame" x="20" y="17" width="280" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lead iOS Developer, Housing.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDX-Bt-Oky">
-                                                <rect key="frame" x="20" y="41" width="280" height="17"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
-                                                <color key="textColor" white="0.58363785280000002" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </view>
-                                </subviews>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" id="dl5-6K-tIT"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="k4h-r2-PAV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3982" y="562"/>
         </scene>
         <!--Navigation Controller - My Cards-->
         <scene sceneID="95C-tE-tnl">

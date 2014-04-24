@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AddressBookUI/AddressBookUI.h>
 
-@interface MNMyCardsTableViewController : UITableViewController
+@interface MNMyCardsTableViewController : UITableViewController <ABNewPersonViewControllerDelegate>
 
 @end

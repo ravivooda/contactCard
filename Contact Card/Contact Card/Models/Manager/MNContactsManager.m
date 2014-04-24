@@ -18,6 +18,8 @@
 
 @property (strong, nonatomic) NSArray *contactsArray;
 
+@property (strong, nonatomic) NSArray *userCards;
+
 @property (nonatomic) dispatch_semaphore_t sema;
 
 @end
