@@ -13,6 +13,8 @@
 
 @property (strong, nonatomic) UIBarButtonItem *defaultRightBarButtonItem;
 
+@property (weak, nonatomic) ABNewPersonViewController *cardNewController;
+
 @end
 
 @implementation MNMyCardsTableViewController
@@ -124,6 +126,8 @@
 - (IBAction)addNewCard:(UIButton *)sender {
     ABNewPersonViewController *newPersonViewController = [[ABNewPersonViewController alloc] init];
     
+    self.cardNewController = newPersonViewController;
+    
     self.defaultRightBarButtonItem = newPersonViewController.navigationItem.rightBarButtonItem;
     
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, nil);
@@ -140,7 +144,22 @@
 
 #pragma mark - New Person Delegate
 -(void) newPersonViewController:(ABNewPersonViewController *)newPersonView didCompleteWithNewPerson:(ABRecordRef)person {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if (newPersonView == self.cardNewController) {
+        
+        ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, nil);
+        CFErrorRef err = NULL;
+        ABAddressBookRemoveRecord(addressBook, person, &err);
+        ABAddressBookSave(addressBook, &err);
+        
+        /* Validating the card: Checking for minimal entries */
+        NSString *alertSentence;
+        
+//        if () {
+//            <#statements#>
+//        }
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 #pragma mark - Private Methods
