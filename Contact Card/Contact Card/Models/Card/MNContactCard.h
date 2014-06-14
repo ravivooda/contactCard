@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MNContactCard : NSObject
+@interface MNContactCard : NSObject <NSCopying, NSCoding>
 
 @property (strong, nonatomic) MNContact *contact;
 @property (strong, nonatomic) NSString *contactCardName;

@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <AddressBookUI/AddressBookUI.h>
 
-@interface MNMyCardsTableViewController : UITableViewController <ABNewPersonViewControllerDelegate>
+@interface MNMyCardsTableViewController : UITableViewController <ABNewPersonViewControllerDelegate, UIAlertViewDelegate>
 
 @end

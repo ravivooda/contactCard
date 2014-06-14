@@ -18,7 +18,7 @@
 
 @property (strong, nonatomic) NSArray *contactsArray;
 
-@property (strong, nonatomic) NSArray *userCards;
+@property (strong, nonatomic) NSMutableArray *privateUserCards;
 
 @property (nonatomic) dispatch_semaphore_t sema;
 
@@ -88,7 +88,7 @@ static MNContactsManager *singletonInstance = nil;
             
             self.hasLoadedContactsFromDevice = YES;
             _personContacts = [[NSArray alloc] initWithArray:contactsArray copyItems:YES];
-//            _companyContacts = [[NSArray alloc] initWithArray:companyArray copyItems:YES];
+            //            _companyContacts = [[NSArray alloc] initWithArray:companyArray copyItems:YES];
         } else {
             _personContacts = nil;
             _companyContacts= nil;
@@ -97,6 +97,22 @@ static MNContactsManager *singletonInstance = nil;
         dispatch_semaphore_signal(self.sema);
     });
     dispatch_semaphore_wait(self.sema, DISPATCH_TIME_FOREVER);
+}
+
+-(void) addNewContactCard:(MNContactCard *)card {
+    if (!self.privateUserCards) {
+        self.privateUserCards = [[NSMutableArray alloc] init];
+    }
+    
+    [self.privateUserCards addObject:card];
+}
+
+-(NSArray*)userCards {
+    if (!self.privateUserCards) {
+        return nil;
+    }
+    NSArray *retArray = [[NSArray alloc] initWithArray:self.privateUserCards copyItems:YES];
+    return retArray;
 }
 
 @end

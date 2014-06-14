@@ -10,4 +10,27 @@
 
 @implementation MNContactCard
 
+-(void) encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.contactCardName forKey:@"cardName"];
+    [aCoder encodeObject:self.contact forKey:@"contact"];
+}
+
+-(id) initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    if (self) {
+        self.contactCardName = [aDecoder decodeObjectForKey:@"cardName"];
+        self.contact = [aDecoder decodeObjectForKey:@"contact"];
+    }
+    return self;
+}
+
+-(id) copyWithZone:(NSZone *)zone {
+    MNContactCard *returnObject = [[[self class] allocWithZone:zone] init];
+    if (returnObject) {
+        returnObject.contactCardName = [self.contactCardName copyWithZone:zone];
+        returnObject.contact = [self.contact copyWithZone:zone];
+    }
+    return returnObject;
+}
+
 @end
