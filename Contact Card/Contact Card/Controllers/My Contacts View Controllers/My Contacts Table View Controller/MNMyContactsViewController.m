@@ -80,7 +80,8 @@
     
     ABPersonViewController *picker = [[ABPersonViewController alloc] init];
     picker.displayedPerson = [selectedContact convertToRecordRef];
-    picker.allowsActions = NO;
+    picker.allowsActions = YES;
+    picker.allowsEditing = NO;
     
     [self.navigationController pushViewController:picker animated:YES];
 }

@@ -131,6 +131,14 @@
 
 #pragma mark - Add new card
 - (IBAction)addNewCard:(UIButton *)sender {
+    //TODO: Need to create the logic for purchase here. i.e If not purchased, dont allow them add. If did go to -(void)addCard
+    
+    // Finally
+    [self addCard];
+}
+
+#pragma mark - Post Purchase Methods
+-(void) addCard {
     ABNewPersonViewController *newPersonViewController = [[ABNewPersonViewController alloc] init];
     
     self.cardNewController = newPersonViewController;
@@ -141,13 +149,9 @@
     
     newPersonViewController.addressBook = addressBook;
     newPersonViewController.newPersonViewDelegate = self;
-    
-    
-    
+
     UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:newPersonViewController];
     newPersonViewController.navigationItem.title = @"New Card";
-    UIBarButtonItem *saveBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(savePressed)];
-    newPersonViewController.navigationItem.rightBarButtonItem = saveBtn;
     
     [self presentViewController:navigation animated:YES completion:nil];
 }

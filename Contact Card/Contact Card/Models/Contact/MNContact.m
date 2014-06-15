@@ -9,6 +9,7 @@
 #import "MNContact.h"
 #import "MNPhoneNumber.h"
 #import "MNEmail.h"
+#import <malloc/malloc.h>
 
 #define kProfileArchiveKey @"contactArchiveKey"
 NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile";
