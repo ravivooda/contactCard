@@ -7,522 +7,561 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		970D093618DB5B9600E6B77A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970D093518DB5B9600E6B77A /* StoreKit.framework */; };
-		9718BB0E194DA61800940EED /* MNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9718BB0D194DA61800940EED /* MNAppDelegate.m */; };
-		9722249418A2844900D64BC2 /* MNCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 9722249318A2844900D64BC2 /* MNCompany.m */; };
-		9750F5A118B7734E00445D2F /* MNContactPersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9750F5A018B7734E00445D2F /* MNContactPersonCell.m */; };
-		9750F5A518B7A25100445D2F /* MNLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9750F5A418B7A25100445D2F /* MNLineView.m */; };
-		975D141118A629C600933968 /* ECPercentDrivenInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 975D140518A629C600933968 /* ECPercentDrivenInteractiveTransition.m */; };
-		975D141218A629C600933968 /* ECSlidingAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975D140718A629C600933968 /* ECSlidingAnimationController.m */; };
-		975D141318A629C600933968 /* ECSlidingInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 975D140A18A629C600933968 /* ECSlidingInteractiveTransition.m */; };
-		975D141418A629C600933968 /* ECSlidingSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 975D140C18A629C600933968 /* ECSlidingSegue.m */; };
-		975D141518A629C600933968 /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975D140E18A629C600933968 /* ECSlidingViewController.m */; };
-		975D141618A629C600933968 /* UIViewController+ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975D141018A629C600933968 /* UIViewController+ECSlidingViewController.m */; };
-		975D142F18A75D3300933968 /* MEZoomAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975D142E18A75D3300933968 /* MEZoomAnimationController.m */; };
-		975D143218A78EC200933968 /* MNUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 975D143118A78EC200933968 /* MNUtilities.m */; };
-		975D143618A7908F00933968 /* MNContactsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 975D143518A7908F00933968 /* MNContactsManager.m */; };
-		975D143918A795C400933968 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 975D143718A795C400933968 /* AddressBook.framework */; };
-		975D143A18A795C400933968 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 975D143818A795C400933968 /* AddressBookUI.framework */; };
-		975E59B518C1F51C00B97284 /* MNMyContactCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 975E59B418C1F51C00B97284 /* MNMyContactCardCell.m */; };
-		975E59C918C1F7E500B97284 /* MNMyContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975E59C018C1F7E500B97284 /* MNMyContactsViewController.m */; };
-		975E59CA18C1F7E500B97284 /* MNLeftSidePanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975E59C418C1F7E500B97284 /* MNLeftSidePanelViewController.m */; };
-		975E59CB18C1F7E500B97284 /* MNSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975E59C718C1F7E500B97284 /* MNSlidingViewController.m */; };
-		975E59D118C1F83A00B97284 /* MNMyCardsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975E59D018C1F83A00B97284 /* MNMyCardsTableViewController.m */; };
-		975E59D418C1F84D00B97284 /* MNMyCardDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975E59D318C1F84D00B97284 /* MNMyCardDetailsViewController.m */; };
-		9763F7B3189D0F3A00C628E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9763F7B2189D0F3A00C628E4 /* Foundation.framework */; };
-		9763F7B5189D0F3A00C628E4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9763F7B4189D0F3A00C628E4 /* CoreGraphics.framework */; };
-		9763F7B7189D0F3A00C628E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9763F7B6189D0F3A00C628E4 /* UIKit.framework */; };
-		9763F7BD189D0F3A00C628E4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9763F7BB189D0F3A00C628E4 /* InfoPlist.strings */; };
-		9763F7BF189D0F3A00C628E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9763F7BE189D0F3A00C628E4 /* main.m */; };
-		9763F7C6189D0F3A00C628E4 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9763F7C4189D0F3A00C628E4 /* Main_iPhone.storyboard */; };
-		9763F7C9189D0F3A00C628E4 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9763F7C7189D0F3A00C628E4 /* Main_iPad.storyboard */; };
-		9763F7CE189D0F3A00C628E4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9763F7CD189D0F3A00C628E4 /* Images.xcassets */; };
-		9763F7D5189D0F3A00C628E4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9763F7D4189D0F3A00C628E4 /* XCTest.framework */; };
-		9763F7D6189D0F3A00C628E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9763F7B2189D0F3A00C628E4 /* Foundation.framework */; };
-		9763F7D7189D0F3A00C628E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9763F7B6189D0F3A00C628E4 /* UIKit.framework */; };
-		9763F7DF189D0F3A00C628E4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9763F7DD189D0F3A00C628E4 /* InfoPlist.strings */; };
-		9763F7E1189D0F3A00C628E4 /* Contact_CardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9763F7E0189D0F3A00C628E4 /* Contact_CardTests.m */; };
-		97A784E7194DC53900E7B34A /* cards@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A784E6194DC53900E7B34A /* cards@2x.png */; };
-		97A784EA194DC73000E7B34A /* plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A784E9194DC73000E7B34A /* plus@2x.png */; };
-		97B9F7C6195FDA1400B9BF6A /* Contact.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 97B9F7C4195FDA1400B9BF6A /* Contact.xcdatamodeld */; };
-		97B9F823195FE8A400B9BF6A /* PhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B9F822195FE8A400B9BF6A /* PhoneNumber.m */; };
-		97B9F826195FE8A400B9BF6A /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B9F825195FE8A400B9BF6A /* Address.m */; };
-		97B9F829195FE8A400B9BF6A /* Email.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B9F828195FE8A400B9BF6A /* Email.m */; };
-		97B9F82C195FE8A400B9BF6A /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B9F82B195FE8A400B9BF6A /* Card.m */; };
-		97B9F832195FF43600B9BF6A /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B9F831195FF43600B9BF6A /* Contact.m */; };
-		97B9FC1818A377D5001BDF52 /* MNNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B9FC1718A377D5001BDF52 /* MNNetworkManager.m */; };
+		97B61608195FFF18007E1842 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B61607195FFF18007E1842 /* Foundation.framework */; };
+		97B6160A195FFF18007E1842 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B61609195FFF18007E1842 /* CoreGraphics.framework */; };
+		97B6160C195FFF18007E1842 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B6160B195FFF18007E1842 /* UIKit.framework */; };
+		97B6160E195FFF18007E1842 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B6160D195FFF18007E1842 /* CoreData.framework */; };
+		97B61614195FFF18007E1842 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 97B61612195FFF18007E1842 /* InfoPlist.strings */; };
+		97B61616195FFF18007E1842 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61615195FFF18007E1842 /* main.m */; };
+		97B6161D195FFF18007E1842 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97B6161B195FFF18007E1842 /* Main_iPhone.storyboard */; };
+		97B61620195FFF18007E1842 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97B6161E195FFF18007E1842 /* Main_iPad.storyboard */; };
+		97B61623195FFF18007E1842 /* Contact_Card.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 97B61621195FFF18007E1842 /* Contact_Card.xcdatamodeld */; };
+		97B6162B195FFF19007E1842 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97B6162A195FFF19007E1842 /* Images.xcassets */; };
+		97B61632195FFF19007E1842 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B61631195FFF19007E1842 /* XCTest.framework */; };
+		97B61633195FFF19007E1842 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B61607195FFF18007E1842 /* Foundation.framework */; };
+		97B61634195FFF19007E1842 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B6160B195FFF18007E1842 /* UIKit.framework */; };
+		97B61635195FFF19007E1842 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B6160D195FFF18007E1842 /* CoreData.framework */; };
+		97B6163D195FFF19007E1842 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 97B6163B195FFF19007E1842 /* InfoPlist.strings */; };
+		97B6163F195FFF19007E1842 /* Contact_CardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6163E195FFF19007E1842 /* Contact_CardTests.m */; };
+		97B616AA195FFF99007E1842 /* MNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6164A195FFF99007E1842 /* MNAppDelegate.m */; };
+		97B616AB195FFF99007E1842 /* MNMyCardDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6164F195FFF99007E1842 /* MNMyCardDetailsViewController.m */; };
+		97B616AC195FFF99007E1842 /* MNMyCardsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61652195FFF99007E1842 /* MNMyCardsTableViewController.m */; };
+		97B616AD195FFF99007E1842 /* MNMyContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61656195FFF99007E1842 /* MNMyContactsViewController.m */; };
+		97B616AE195FFF99007E1842 /* MNLeftSidePanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6165A195FFF99007E1842 /* MNLeftSidePanelViewController.m */; };
+		97B616AF195FFF99007E1842 /* MNSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6165D195FFF99007E1842 /* MNSlidingViewController.m */; };
+		97B616B0195FFF99007E1842 /* ECPercentDrivenInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61661195FFF99007E1842 /* ECPercentDrivenInteractiveTransition.m */; };
+		97B616B1195FFF99007E1842 /* ECSlidingAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61663195FFF99007E1842 /* ECSlidingAnimationController.m */; };
+		97B616B2195FFF99007E1842 /* ECSlidingInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61666195FFF99007E1842 /* ECSlidingInteractiveTransition.m */; };
+		97B616B3195FFF99007E1842 /* ECSlidingSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61668195FFF99007E1842 /* ECSlidingSegue.m */; };
+		97B616B4195FFF99007E1842 /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6166A195FFF99007E1842 /* ECSlidingViewController.m */; };
+		97B616B5195FFF99007E1842 /* MEZoomAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6166C195FFF99007E1842 /* MEZoomAnimationController.m */; };
+		97B616B6195FFF99007E1842 /* UIViewController+ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6166E195FFF99007E1842 /* UIViewController+ECSlidingViewController.m */; };
+		97B616B7195FFF99007E1842 /* MNCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61672195FFF99007E1842 /* MNCompany.m */; };
+		97B616B8195FFF99007E1842 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61674195FFF99007E1842 /* Contact.m */; };
+		97B616B9195FFF99007E1842 /* Contact.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 97B61676195FFF99007E1842 /* Contact.xcdatamodeld */; };
+		97B616BA195FFF99007E1842 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6167A195FFF99007E1842 /* Address.m */; };
+		97B616BB195FFF99007E1842 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6167C195FFF99007E1842 /* Card.m */; };
+		97B616BC195FFF99007E1842 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6167E195FFF99007E1842 /* Contact.m */; };
+		97B616BD195FFF99007E1842 /* Email.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61680195FFF99007E1842 /* Email.m */; };
+		97B616BE195FFF99007E1842 /* PhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61682195FFF99007E1842 /* PhoneNumber.m */; };
+		97B616BF195FFF99007E1842 /* MNContactsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61685195FFF99007E1842 /* MNContactsManager.m */; };
+		97B616C0195FFF99007E1842 /* MNAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61687195FFF99007E1842 /* MNAddress.m */; };
+		97B616C1195FFF99007E1842 /* MNContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61689195FFF99007E1842 /* MNContact.m */; };
+		97B616C2195FFF99007E1842 /* MNContactCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6168B195FFF99007E1842 /* MNContactCard.m */; };
+		97B616C3195FFF99007E1842 /* MNEmail.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6168D195FFF99007E1842 /* MNEmail.m */; };
+		97B616C4195FFF99007E1842 /* MNPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6168F195FFF99007E1842 /* MNPhoneNumber.m */; };
+		97B616C5195FFF99007E1842 /* MNNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61692195FFF99007E1842 /* MNNetworkManager.m */; };
+		97B616C6195FFF99007E1842 /* plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B61696195FFF99007E1842 /* plus@2x.png */; };
+		97B616C7195FFF99007E1842 /* sort_pointer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B61698195FFF99007E1842 /* sort_pointer@2x.png */; };
+		97B616C8195FFF99007E1842 /* sort_option_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B6169A195FFF99007E1842 /* sort_option_background@2x.png */; };
+		97B616C9195FFF99007E1842 /* cards@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B6169C195FFF99007E1842 /* cards@2x.png */; };
+		97B616CA195FFF99007E1842 /* MNUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B616A0195FFF99007E1842 /* MNUtilities.m */; };
+		97B616CB195FFF99007E1842 /* MNLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B616A4195FFF99007E1842 /* MNLineView.m */; };
+		97B616CC195FFF99007E1842 /* MNContactPersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B616A7195FFF99007E1842 /* MNContactPersonCell.m */; };
+		97B616CD195FFF99007E1842 /* MNMyContactCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B616A9195FFF99007E1842 /* MNMyContactCardCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		9763F7D8189D0F3A00C628E4 /* PBXContainerItemProxy */ = {
+		97B61636195FFF19007E1842 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9763F7A7189D0F3A00C628E4 /* Project object */;
+			containerPortal = 97B615FC195FFF18007E1842 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9763F7AE189D0F3A00C628E4;
+			remoteGlobalIDString = 97B61603195FFF18007E1842;
 			remoteInfo = "Contact Card";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		970D093218DB5B6E00E6B77A /* Contact Card.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Contact Card.entitlements"; sourceTree = "<group>"; };
-		970D093518DB5B9600E6B77A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		9718BB0C194DA61800940EED /* MNAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNAppDelegate.h; sourceTree = "<group>"; };
-		9718BB0D194DA61800940EED /* MNAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNAppDelegate.m; sourceTree = "<group>"; };
-		9722249218A2844900D64BC2 /* MNCompany.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNCompany.h; sourceTree = "<group>"; };
-		9722249318A2844900D64BC2 /* MNCompany.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCompany.m; sourceTree = "<group>"; };
-		9750F59F18B7734E00445D2F /* MNContactPersonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNContactPersonCell.h; sourceTree = "<group>"; };
-		9750F5A018B7734E00445D2F /* MNContactPersonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNContactPersonCell.m; sourceTree = "<group>"; };
-		9750F5A318B7A25100445D2F /* MNLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNLineView.h; sourceTree = "<group>"; };
-		9750F5A418B7A25100445D2F /* MNLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNLineView.m; sourceTree = "<group>"; };
-		975D140418A629C600933968 /* ECPercentDrivenInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECPercentDrivenInteractiveTransition.h; sourceTree = "<group>"; };
-		975D140518A629C600933968 /* ECPercentDrivenInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECPercentDrivenInteractiveTransition.m; sourceTree = "<group>"; };
-		975D140618A629C600933968 /* ECSlidingAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingAnimationController.h; sourceTree = "<group>"; };
-		975D140718A629C600933968 /* ECSlidingAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingAnimationController.m; sourceTree = "<group>"; };
-		975D140818A629C600933968 /* ECSlidingConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingConstants.h; sourceTree = "<group>"; };
-		975D140918A629C600933968 /* ECSlidingInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingInteractiveTransition.h; sourceTree = "<group>"; };
-		975D140A18A629C600933968 /* ECSlidingInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingInteractiveTransition.m; sourceTree = "<group>"; };
-		975D140B18A629C600933968 /* ECSlidingSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingSegue.h; sourceTree = "<group>"; };
-		975D140C18A629C600933968 /* ECSlidingSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingSegue.m; sourceTree = "<group>"; };
-		975D140D18A629C600933968 /* ECSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingViewController.h; sourceTree = "<group>"; };
-		975D140E18A629C600933968 /* ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingViewController.m; sourceTree = "<group>"; };
-		975D140F18A629C600933968 /* UIViewController+ECSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ECSlidingViewController.h"; sourceTree = "<group>"; };
-		975D141018A629C600933968 /* UIViewController+ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ECSlidingViewController.m"; sourceTree = "<group>"; };
-		975D142D18A75D3300933968 /* MEZoomAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEZoomAnimationController.h; sourceTree = "<group>"; };
-		975D142E18A75D3300933968 /* MEZoomAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEZoomAnimationController.m; sourceTree = "<group>"; };
-		975D143018A78EC200933968 /* MNUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNUtilities.h; sourceTree = "<group>"; };
-		975D143118A78EC200933968 /* MNUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNUtilities.m; sourceTree = "<group>"; };
-		975D143418A7908F00933968 /* MNContactsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNContactsManager.h; sourceTree = "<group>"; };
-		975D143518A7908F00933968 /* MNContactsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNContactsManager.m; sourceTree = "<group>"; };
-		975D143718A795C400933968 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
-		975D143818A795C400933968 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
-		975E59B318C1F51C00B97284 /* MNMyContactCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNMyContactCardCell.h; sourceTree = "<group>"; };
-		975E59B418C1F51C00B97284 /* MNMyContactCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNMyContactCardCell.m; sourceTree = "<group>"; };
-		975E59BF18C1F7E500B97284 /* MNMyContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNMyContactsViewController.h; sourceTree = "<group>"; };
-		975E59C018C1F7E500B97284 /* MNMyContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNMyContactsViewController.m; sourceTree = "<group>"; };
-		975E59C318C1F7E500B97284 /* MNLeftSidePanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNLeftSidePanelViewController.h; sourceTree = "<group>"; };
-		975E59C418C1F7E500B97284 /* MNLeftSidePanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNLeftSidePanelViewController.m; sourceTree = "<group>"; };
-		975E59C618C1F7E500B97284 /* MNSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNSlidingViewController.h; sourceTree = "<group>"; };
-		975E59C718C1F7E500B97284 /* MNSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNSlidingViewController.m; sourceTree = "<group>"; };
-		975E59CF18C1F83A00B97284 /* MNMyCardsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNMyCardsTableViewController.h; sourceTree = "<group>"; };
-		975E59D018C1F83A00B97284 /* MNMyCardsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNMyCardsTableViewController.m; sourceTree = "<group>"; };
-		975E59D218C1F84D00B97284 /* MNMyCardDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNMyCardDetailsViewController.h; sourceTree = "<group>"; };
-		975E59D318C1F84D00B97284 /* MNMyCardDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNMyCardDetailsViewController.m; sourceTree = "<group>"; };
-		9763F7AF189D0F3A00C628E4 /* Contact Card.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Contact Card.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9763F7B2189D0F3A00C628E4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		9763F7B4189D0F3A00C628E4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		9763F7B6189D0F3A00C628E4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		9763F7BA189D0F3A00C628E4 /* Contact Card-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Contact Card-Info.plist"; sourceTree = "<group>"; };
-		9763F7BC189D0F3A00C628E4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9763F7BE189D0F3A00C628E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9763F7C0189D0F3A00C628E4 /* Contact Card-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Contact Card-Prefix.pch"; sourceTree = "<group>"; };
-		9763F7C5189D0F3A00C628E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		9763F7C8189D0F3A00C628E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		9763F7CD189D0F3A00C628E4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Contact Card/Images.xcassets"; sourceTree = "<group>"; };
-		9763F7D3189D0F3A00C628E4 /* Contact CardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Contact CardTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9763F7D4189D0F3A00C628E4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		9763F7DC189D0F3A00C628E4 /* Contact CardTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Contact CardTests-Info.plist"; sourceTree = "<group>"; };
-		9763F7DE189D0F3A00C628E4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9763F7E0189D0F3A00C628E4 /* Contact_CardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Contact_CardTests.m; sourceTree = "<group>"; };
-		97A784E6194DC53900E7B34A /* cards@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cards@2x.png"; sourceTree = "<group>"; };
-		97A784E9194DC73000E7B34A /* plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus@2x.png"; sourceTree = "<group>"; };
-		97B9F7C5195FDA1400B9BF6A /* Contact.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Contact.xcdatamodel; sourceTree = "<group>"; };
-		97B9F821195FE8A400B9BF6A /* PhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumber.h; sourceTree = "<group>"; };
-		97B9F822195FE8A400B9BF6A /* PhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneNumber.m; sourceTree = "<group>"; };
-		97B9F824195FE8A400B9BF6A /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
-		97B9F825195FE8A400B9BF6A /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
-		97B9F827195FE8A400B9BF6A /* Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Email.h; sourceTree = "<group>"; };
-		97B9F828195FE8A400B9BF6A /* Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Email.m; sourceTree = "<group>"; };
-		97B9F82A195FE8A400B9BF6A /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
-		97B9F82B195FE8A400B9BF6A /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
-		97B9F830195FF43600B9BF6A /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
-		97B9F831195FF43600B9BF6A /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
-		97B9FC1618A377D5001BDF52 /* MNNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNNetworkManager.h; sourceTree = "<group>"; };
-		97B9FC1718A377D5001BDF52 /* MNNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNNetworkManager.m; sourceTree = "<group>"; };
-		97B9FC1A18A3EDFA001BDF52 /* MNConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNConstants.h; sourceTree = "<group>"; };
+		97B61604195FFF18007E1842 /* Contact Card.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Contact Card.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		97B61607195FFF18007E1842 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		97B61609195FFF18007E1842 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		97B6160B195FFF18007E1842 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		97B6160D195FFF18007E1842 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		97B61611195FFF18007E1842 /* Contact Card-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Contact Card-Info.plist"; sourceTree = "<group>"; };
+		97B61613195FFF18007E1842 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		97B61615195FFF18007E1842 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		97B61617195FFF18007E1842 /* Contact Card-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Contact Card-Prefix.pch"; sourceTree = "<group>"; };
+		97B6161C195FFF18007E1842 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		97B6161F195FFF18007E1842 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		97B61622195FFF18007E1842 /* Contact_Card.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Contact_Card.xcdatamodel; sourceTree = "<group>"; };
+		97B6162A195FFF19007E1842 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		97B61630195FFF19007E1842 /* Contact CardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Contact CardTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		97B61631195FFF19007E1842 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		97B6163A195FFF19007E1842 /* Contact CardTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Contact CardTests-Info.plist"; sourceTree = "<group>"; };
+		97B6163C195FFF19007E1842 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		97B6163E195FFF19007E1842 /* Contact_CardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Contact_CardTests.m; sourceTree = "<group>"; };
+		97B61649195FFF99007E1842 /* MNAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNAppDelegate.h; sourceTree = "<group>"; };
+		97B6164A195FFF99007E1842 /* MNAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNAppDelegate.m; sourceTree = "<group>"; };
+		97B6164E195FFF99007E1842 /* MNMyCardDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNMyCardDetailsViewController.h; sourceTree = "<group>"; };
+		97B6164F195FFF99007E1842 /* MNMyCardDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNMyCardDetailsViewController.m; sourceTree = "<group>"; };
+		97B61651195FFF99007E1842 /* MNMyCardsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNMyCardsTableViewController.h; sourceTree = "<group>"; };
+		97B61652195FFF99007E1842 /* MNMyCardsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNMyCardsTableViewController.m; sourceTree = "<group>"; };
+		97B61655195FFF99007E1842 /* MNMyContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNMyContactsViewController.h; sourceTree = "<group>"; };
+		97B61656195FFF99007E1842 /* MNMyContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNMyContactsViewController.m; sourceTree = "<group>"; };
+		97B61659195FFF99007E1842 /* MNLeftSidePanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNLeftSidePanelViewController.h; sourceTree = "<group>"; };
+		97B6165A195FFF99007E1842 /* MNLeftSidePanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNLeftSidePanelViewController.m; sourceTree = "<group>"; };
+		97B6165C195FFF99007E1842 /* MNSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNSlidingViewController.h; sourceTree = "<group>"; };
+		97B6165D195FFF99007E1842 /* MNSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNSlidingViewController.m; sourceTree = "<group>"; };
+		97B61660195FFF99007E1842 /* ECPercentDrivenInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECPercentDrivenInteractiveTransition.h; sourceTree = "<group>"; };
+		97B61661195FFF99007E1842 /* ECPercentDrivenInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECPercentDrivenInteractiveTransition.m; sourceTree = "<group>"; };
+		97B61662195FFF99007E1842 /* ECSlidingAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingAnimationController.h; sourceTree = "<group>"; };
+		97B61663195FFF99007E1842 /* ECSlidingAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingAnimationController.m; sourceTree = "<group>"; };
+		97B61664195FFF99007E1842 /* ECSlidingConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingConstants.h; sourceTree = "<group>"; };
+		97B61665195FFF99007E1842 /* ECSlidingInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingInteractiveTransition.h; sourceTree = "<group>"; };
+		97B61666195FFF99007E1842 /* ECSlidingInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingInteractiveTransition.m; sourceTree = "<group>"; };
+		97B61667195FFF99007E1842 /* ECSlidingSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingSegue.h; sourceTree = "<group>"; };
+		97B61668195FFF99007E1842 /* ECSlidingSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingSegue.m; sourceTree = "<group>"; };
+		97B61669195FFF99007E1842 /* ECSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingViewController.h; sourceTree = "<group>"; };
+		97B6166A195FFF99007E1842 /* ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingViewController.m; sourceTree = "<group>"; };
+		97B6166B195FFF99007E1842 /* MEZoomAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEZoomAnimationController.h; sourceTree = "<group>"; };
+		97B6166C195FFF99007E1842 /* MEZoomAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEZoomAnimationController.m; sourceTree = "<group>"; };
+		97B6166D195FFF99007E1842 /* UIViewController+ECSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ECSlidingViewController.h"; sourceTree = "<group>"; };
+		97B6166E195FFF99007E1842 /* UIViewController+ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ECSlidingViewController.m"; sourceTree = "<group>"; };
+		97B61671195FFF99007E1842 /* MNCompany.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNCompany.h; sourceTree = "<group>"; };
+		97B61672195FFF99007E1842 /* MNCompany.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCompany.m; sourceTree = "<group>"; };
+		97B61673195FFF99007E1842 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		97B61674195FFF99007E1842 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
+		97B61677195FFF99007E1842 /* Contact.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Contact.xcdatamodel; sourceTree = "<group>"; };
+		97B61679195FFF99007E1842 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
+		97B6167A195FFF99007E1842 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
+		97B6167B195FFF99007E1842 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		97B6167C195FFF99007E1842 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
+		97B6167D195FFF99007E1842 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		97B6167E195FFF99007E1842 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
+		97B6167F195FFF99007E1842 /* Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Email.h; sourceTree = "<group>"; };
+		97B61680195FFF99007E1842 /* Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Email.m; sourceTree = "<group>"; };
+		97B61681195FFF99007E1842 /* PhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumber.h; sourceTree = "<group>"; };
+		97B61682195FFF99007E1842 /* PhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneNumber.m; sourceTree = "<group>"; };
+		97B61684195FFF99007E1842 /* MNContactsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNContactsManager.h; sourceTree = "<group>"; };
+		97B61685195FFF99007E1842 /* MNContactsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNContactsManager.m; sourceTree = "<group>"; };
+		97B61686195FFF99007E1842 /* MNAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNAddress.h; sourceTree = "<group>"; };
+		97B61687195FFF99007E1842 /* MNAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNAddress.m; sourceTree = "<group>"; };
+		97B61688195FFF99007E1842 /* MNContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNContact.h; sourceTree = "<group>"; };
+		97B61689195FFF99007E1842 /* MNContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNContact.m; sourceTree = "<group>"; };
+		97B6168A195FFF99007E1842 /* MNContactCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNContactCard.h; sourceTree = "<group>"; };
+		97B6168B195FFF99007E1842 /* MNContactCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNContactCard.m; sourceTree = "<group>"; };
+		97B6168C195FFF99007E1842 /* MNEmail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNEmail.h; sourceTree = "<group>"; };
+		97B6168D195FFF99007E1842 /* MNEmail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNEmail.m; sourceTree = "<group>"; };
+		97B6168E195FFF99007E1842 /* MNPhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNPhoneNumber.h; sourceTree = "<group>"; };
+		97B6168F195FFF99007E1842 /* MNPhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNPhoneNumber.m; sourceTree = "<group>"; };
+		97B61691195FFF99007E1842 /* MNNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNNetworkManager.h; sourceTree = "<group>"; };
+		97B61692195FFF99007E1842 /* MNNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNNetworkManager.m; sourceTree = "<group>"; };
+		97B61696195FFF99007E1842 /* plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus@2x.png"; sourceTree = "<group>"; };
+		97B61698195FFF99007E1842 /* sort_pointer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sort_pointer@2x.png"; sourceTree = "<group>"; };
+		97B6169A195FFF99007E1842 /* sort_option_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sort_option_background@2x.png"; sourceTree = "<group>"; };
+		97B6169C195FFF99007E1842 /* cards@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cards@2x.png"; sourceTree = "<group>"; };
+		97B6169E195FFF99007E1842 /* MNConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNConstants.h; sourceTree = "<group>"; };
+		97B6169F195FFF99007E1842 /* MNUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNUtilities.h; sourceTree = "<group>"; };
+		97B616A0195FFF99007E1842 /* MNUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNUtilities.m; sourceTree = "<group>"; };
+		97B616A3195FFF99007E1842 /* MNLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNLineView.h; sourceTree = "<group>"; };
+		97B616A4195FFF99007E1842 /* MNLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNLineView.m; sourceTree = "<group>"; };
+		97B616A6195FFF99007E1842 /* MNContactPersonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNContactPersonCell.h; sourceTree = "<group>"; };
+		97B616A7195FFF99007E1842 /* MNContactPersonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNContactPersonCell.m; sourceTree = "<group>"; };
+		97B616A8195FFF99007E1842 /* MNMyContactCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNMyContactCardCell.h; sourceTree = "<group>"; };
+		97B616A9195FFF99007E1842 /* MNMyContactCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNMyContactCardCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9763F7AC189D0F3A00C628E4 /* Frameworks */ = {
+		97B61601195FFF18007E1842 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				975D143918A795C400933968 /* AddressBook.framework in Frameworks */,
-				975D143A18A795C400933968 /* AddressBookUI.framework in Frameworks */,
-				9763F7B5189D0F3A00C628E4 /* CoreGraphics.framework in Frameworks */,
-				970D093618DB5B9600E6B77A /* StoreKit.framework in Frameworks */,
-				9763F7B7189D0F3A00C628E4 /* UIKit.framework in Frameworks */,
-				9763F7B3189D0F3A00C628E4 /* Foundation.framework in Frameworks */,
+				97B6160A195FFF18007E1842 /* CoreGraphics.framework in Frameworks */,
+				97B6160E195FFF18007E1842 /* CoreData.framework in Frameworks */,
+				97B6160C195FFF18007E1842 /* UIKit.framework in Frameworks */,
+				97B61608195FFF18007E1842 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9763F7D0189D0F3A00C628E4 /* Frameworks */ = {
+		97B6162D195FFF19007E1842 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9763F7D5189D0F3A00C628E4 /* XCTest.framework in Frameworks */,
-				9763F7D7189D0F3A00C628E4 /* UIKit.framework in Frameworks */,
-				9763F7D6189D0F3A00C628E4 /* Foundation.framework in Frameworks */,
+				97B61632195FFF19007E1842 /* XCTest.framework in Frameworks */,
+				97B61635195FFF19007E1842 /* CoreData.framework in Frameworks */,
+				97B61634195FFF19007E1842 /* UIKit.framework in Frameworks */,
+				97B61633195FFF19007E1842 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9718BB0B194DA61800940EED /* App Delegate */ = {
+		97B615FB195FFF18007E1842 = {
 			isa = PBXGroup;
 			children = (
-				9718BB0C194DA61800940EED /* MNAppDelegate.h */,
-				9718BB0D194DA61800940EED /* MNAppDelegate.m */,
-			);
-			path = "App Delegate";
-			sourceTree = "<group>";
-		};
-		9722248618A27DAE00D64BC2 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				975E59CC18C1F82200B97284 /* My Cards View Controllers */,
-				975E59BA18C1F7E500B97284 /* My Contacts View Controllers */,
-				975E59C118C1F7E500B97284 /* Split View Controllers */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		9722248718A27DAE00D64BC2 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				97B9F7C3195FD9F700B9BF6A /* Core Data */,
-				975D143318A7906200933968 /* Manager */,
-				9722248D18A2843700D64BC2 /* Company */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		9722248818A27DAE00D64BC2 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				9750F5A218B7A22800445D2F /* Line Views */,
-				9750F59E18B76E4C00445D2F /* Top View Controllers */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		9722248D18A2843700D64BC2 /* Company */ = {
-			isa = PBXGroup;
-			children = (
-				9722249218A2844900D64BC2 /* MNCompany.h */,
-				9722249318A2844900D64BC2 /* MNCompany.m */,
-			);
-			path = Company;
-			sourceTree = "<group>";
-		};
-		9750F59E18B76E4C00445D2F /* Top View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				9750F59F18B7734E00445D2F /* MNContactPersonCell.h */,
-				9750F5A018B7734E00445D2F /* MNContactPersonCell.m */,
-				975E59B318C1F51C00B97284 /* MNMyContactCardCell.h */,
-				975E59B418C1F51C00B97284 /* MNMyContactCardCell.m */,
-			);
-			path = "Top View Controllers";
-			sourceTree = "<group>";
-		};
-		9750F5A218B7A22800445D2F /* Line Views */ = {
-			isa = PBXGroup;
-			children = (
-				9750F5A318B7A25100445D2F /* MNLineView.h */,
-				9750F5A418B7A25100445D2F /* MNLineView.m */,
-			);
-			path = "Line Views";
-			sourceTree = "<group>";
-		};
-		975D140218A629BD00933968 /* Libraries */ = {
-			isa = PBXGroup;
-			children = (
-				975D140318A629C600933968 /* ECSlidingViewController */,
-			);
-			path = Libraries;
-			sourceTree = "<group>";
-		};
-		975D140318A629C600933968 /* ECSlidingViewController */ = {
-			isa = PBXGroup;
-			children = (
-				975D142D18A75D3300933968 /* MEZoomAnimationController.h */,
-				975D142E18A75D3300933968 /* MEZoomAnimationController.m */,
-				975D140418A629C600933968 /* ECPercentDrivenInteractiveTransition.h */,
-				975D140518A629C600933968 /* ECPercentDrivenInteractiveTransition.m */,
-				975D140618A629C600933968 /* ECSlidingAnimationController.h */,
-				975D140718A629C600933968 /* ECSlidingAnimationController.m */,
-				975D140818A629C600933968 /* ECSlidingConstants.h */,
-				975D140918A629C600933968 /* ECSlidingInteractiveTransition.h */,
-				975D140A18A629C600933968 /* ECSlidingInteractiveTransition.m */,
-				975D140B18A629C600933968 /* ECSlidingSegue.h */,
-				975D140C18A629C600933968 /* ECSlidingSegue.m */,
-				975D140D18A629C600933968 /* ECSlidingViewController.h */,
-				975D140E18A629C600933968 /* ECSlidingViewController.m */,
-				975D140F18A629C600933968 /* UIViewController+ECSlidingViewController.h */,
-				975D141018A629C600933968 /* UIViewController+ECSlidingViewController.m */,
-			);
-			path = ECSlidingViewController;
-			sourceTree = "<group>";
-		};
-		975D143318A7906200933968 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				975D143418A7908F00933968 /* MNContactsManager.h */,
-				975D143518A7908F00933968 /* MNContactsManager.m */,
-			);
-			path = Manager;
-			sourceTree = "<group>";
-		};
-		975E59BA18C1F7E500B97284 /* My Contacts View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				975E59BE18C1F7E500B97284 /* My Contacts Table View Controller */,
-			);
-			path = "My Contacts View Controllers";
-			sourceTree = "<group>";
-		};
-		975E59BE18C1F7E500B97284 /* My Contacts Table View Controller */ = {
-			isa = PBXGroup;
-			children = (
-				975E59BF18C1F7E500B97284 /* MNMyContactsViewController.h */,
-				975E59C018C1F7E500B97284 /* MNMyContactsViewController.m */,
-			);
-			path = "My Contacts Table View Controller";
-			sourceTree = "<group>";
-		};
-		975E59C118C1F7E500B97284 /* Split View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				975E59C218C1F7E500B97284 /* Left Side Panel View Controller */,
-				975E59C518C1F7E500B97284 /* Sliding Panel View Controller */,
-			);
-			path = "Split View Controllers";
-			sourceTree = "<group>";
-		};
-		975E59C218C1F7E500B97284 /* Left Side Panel View Controller */ = {
-			isa = PBXGroup;
-			children = (
-				975E59C318C1F7E500B97284 /* MNLeftSidePanelViewController.h */,
-				975E59C418C1F7E500B97284 /* MNLeftSidePanelViewController.m */,
-			);
-			path = "Left Side Panel View Controller";
-			sourceTree = "<group>";
-		};
-		975E59C518C1F7E500B97284 /* Sliding Panel View Controller */ = {
-			isa = PBXGroup;
-			children = (
-				975E59C618C1F7E500B97284 /* MNSlidingViewController.h */,
-				975E59C718C1F7E500B97284 /* MNSlidingViewController.m */,
-			);
-			path = "Sliding Panel View Controller";
-			sourceTree = "<group>";
-		};
-		975E59CC18C1F82200B97284 /* My Cards View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				975E59CD18C1F82200B97284 /* My Card Detail View Controller */,
-				975E59CE18C1F82200B97284 /* My Cards Table View Controller */,
-			);
-			path = "My Cards View Controllers";
-			sourceTree = "<group>";
-		};
-		975E59CD18C1F82200B97284 /* My Card Detail View Controller */ = {
-			isa = PBXGroup;
-			children = (
-				975E59D218C1F84D00B97284 /* MNMyCardDetailsViewController.h */,
-				975E59D318C1F84D00B97284 /* MNMyCardDetailsViewController.m */,
-			);
-			path = "My Card Detail View Controller";
-			sourceTree = "<group>";
-		};
-		975E59CE18C1F82200B97284 /* My Cards Table View Controller */ = {
-			isa = PBXGroup;
-			children = (
-				975E59CF18C1F83A00B97284 /* MNMyCardsTableViewController.h */,
-				975E59D018C1F83A00B97284 /* MNMyCardsTableViewController.m */,
-			);
-			path = "My Cards Table View Controller";
-			sourceTree = "<group>";
-		};
-		9763F7A6189D0F3A00C628E4 = {
-			isa = PBXGroup;
-			children = (
-				9763F7B8189D0F3A00C628E4 /* Contact Card */,
-				9763F7CD189D0F3A00C628E4 /* Images.xcassets */,
-				9763F7DA189D0F3A00C628E4 /* Contact CardTests */,
-				9763F7B1189D0F3A00C628E4 /* Frameworks */,
-				9763F7B0189D0F3A00C628E4 /* Products */,
+				97B6160F195FFF18007E1842 /* Contact Card */,
+				97B61638195FFF19007E1842 /* Contact CardTests */,
+				97B61606195FFF18007E1842 /* Frameworks */,
+				97B61605195FFF18007E1842 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		9763F7B0189D0F3A00C628E4 /* Products */ = {
+		97B61605195FFF18007E1842 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9763F7AF189D0F3A00C628E4 /* Contact Card.app */,
-				9763F7D3189D0F3A00C628E4 /* Contact CardTests.xctest */,
+				97B61604195FFF18007E1842 /* Contact Card.app */,
+				97B61630195FFF19007E1842 /* Contact CardTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9763F7B1189D0F3A00C628E4 /* Frameworks */ = {
+		97B61606195FFF18007E1842 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				970D093518DB5B9600E6B77A /* StoreKit.framework */,
-				975D143718A795C400933968 /* AddressBook.framework */,
-				975D143818A795C400933968 /* AddressBookUI.framework */,
-				9763F7B2189D0F3A00C628E4 /* Foundation.framework */,
-				9763F7B4189D0F3A00C628E4 /* CoreGraphics.framework */,
-				9763F7B6189D0F3A00C628E4 /* UIKit.framework */,
-				9763F7D4189D0F3A00C628E4 /* XCTest.framework */,
+				97B61607195FFF18007E1842 /* Foundation.framework */,
+				97B61609195FFF18007E1842 /* CoreGraphics.framework */,
+				97B6160B195FFF18007E1842 /* UIKit.framework */,
+				97B6160D195FFF18007E1842 /* CoreData.framework */,
+				97B61631195FFF19007E1842 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9763F7B8189D0F3A00C628E4 /* Contact Card */ = {
+		97B6160F195FFF18007E1842 /* Contact Card */ = {
 			isa = PBXGroup;
 			children = (
-				97A784E3194DC53900E7B34A /* Resources */,
-				9718BB0B194DA61800940EED /* App Delegate */,
-				970D093218DB5B6E00E6B77A /* Contact Card.entitlements */,
-				975D140218A629BD00933968 /* Libraries */,
-				97B9FC1918A3EDB9001BDF52 /* Utilities */,
-				97B9FC1518A377BE001BDF52 /* Network Manager */,
-				9722248718A27DAE00D64BC2 /* Models */,
-				9722248618A27DAE00D64BC2 /* Controllers */,
-				9722248818A27DAE00D64BC2 /* Views */,
-				9763F7EC189D0FD600C628E4 /* StoryBoards */,
-				9763F7B9189D0F3A00C628E4 /* Supporting Files */,
+				97B61648195FFF99007E1842 /* App Delegate */,
+				97B6164B195FFF99007E1842 /* Controllers */,
+				97B6165E195FFF99007E1842 /* Libraries */,
+				97B6166F195FFF99007E1842 /* Models */,
+				97B61690195FFF99007E1842 /* Network Manager */,
+				97B61693195FFF99007E1842 /* Resources */,
+				97B6169D195FFF99007E1842 /* Utilities */,
+				97B616A1195FFF99007E1842 /* Views */,
+				97B6161B195FFF18007E1842 /* Main_iPhone.storyboard */,
+				97B6161E195FFF18007E1842 /* Main_iPad.storyboard */,
+				97B6162A195FFF19007E1842 /* Images.xcassets */,
+				97B61621195FFF18007E1842 /* Contact_Card.xcdatamodeld */,
+				97B61610195FFF18007E1842 /* Supporting Files */,
 			);
 			path = "Contact Card";
 			sourceTree = "<group>";
 		};
-		9763F7B9189D0F3A00C628E4 /* Supporting Files */ = {
+		97B61610195FFF18007E1842 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9763F7BA189D0F3A00C628E4 /* Contact Card-Info.plist */,
-				9763F7BB189D0F3A00C628E4 /* InfoPlist.strings */,
-				9763F7BE189D0F3A00C628E4 /* main.m */,
-				9763F7C0189D0F3A00C628E4 /* Contact Card-Prefix.pch */,
+				97B61611195FFF18007E1842 /* Contact Card-Info.plist */,
+				97B61612195FFF18007E1842 /* InfoPlist.strings */,
+				97B61615195FFF18007E1842 /* main.m */,
+				97B61617195FFF18007E1842 /* Contact Card-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9763F7DA189D0F3A00C628E4 /* Contact CardTests */ = {
+		97B61638195FFF19007E1842 /* Contact CardTests */ = {
 			isa = PBXGroup;
 			children = (
-				9763F7E0189D0F3A00C628E4 /* Contact_CardTests.m */,
-				9763F7DB189D0F3A00C628E4 /* Supporting Files */,
+				97B6163E195FFF19007E1842 /* Contact_CardTests.m */,
+				97B61639195FFF19007E1842 /* Supporting Files */,
 			);
 			path = "Contact CardTests";
 			sourceTree = "<group>";
 		};
-		9763F7DB189D0F3A00C628E4 /* Supporting Files */ = {
+		97B61639195FFF19007E1842 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9763F7DC189D0F3A00C628E4 /* Contact CardTests-Info.plist */,
-				9763F7DD189D0F3A00C628E4 /* InfoPlist.strings */,
+				97B6163A195FFF19007E1842 /* Contact CardTests-Info.plist */,
+				97B6163B195FFF19007E1842 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9763F7EC189D0FD600C628E4 /* StoryBoards */ = {
+		97B61648195FFF99007E1842 /* App Delegate */ = {
 			isa = PBXGroup;
 			children = (
-				9763F7C4189D0F3A00C628E4 /* Main_iPhone.storyboard */,
-				9763F7C7189D0F3A00C628E4 /* Main_iPad.storyboard */,
+				97B61649195FFF99007E1842 /* MNAppDelegate.h */,
+				97B6164A195FFF99007E1842 /* MNAppDelegate.m */,
 			);
-			name = StoryBoards;
+			path = "App Delegate";
 			sourceTree = "<group>";
 		};
-		97A784E3194DC53900E7B34A /* Resources */ = {
+		97B6164B195FFF99007E1842 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				97A784E4194DC53900E7B34A /* Images */,
+				97B6164C195FFF99007E1842 /* My Cards View Controllers */,
+				97B61653195FFF99007E1842 /* My Contacts View Controllers */,
+				97B61657195FFF99007E1842 /* Split View Controllers */,
 			);
-			path = Resources;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
-		97A784E4194DC53900E7B34A /* Images */ = {
+		97B6164C195FFF99007E1842 /* My Cards View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				97A784E8194DC73000E7B34A /* Cards Table View Assets */,
-				97A784E5194DC53900E7B34A /* Tab Icons */,
+				97B6164D195FFF99007E1842 /* My Card Detail View Controller */,
+				97B61650195FFF99007E1842 /* My Cards Table View Controller */,
 			);
-			path = Images;
+			path = "My Cards View Controllers";
 			sourceTree = "<group>";
 		};
-		97A784E5194DC53900E7B34A /* Tab Icons */ = {
+		97B6164D195FFF99007E1842 /* My Card Detail View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				97A784E6194DC53900E7B34A /* cards@2x.png */,
+				97B6164E195FFF99007E1842 /* MNMyCardDetailsViewController.h */,
+				97B6164F195FFF99007E1842 /* MNMyCardDetailsViewController.m */,
 			);
-			path = "Tab Icons";
+			path = "My Card Detail View Controller";
 			sourceTree = "<group>";
 		};
-		97A784E8194DC73000E7B34A /* Cards Table View Assets */ = {
+		97B61650195FFF99007E1842 /* My Cards Table View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				97A784E9194DC73000E7B34A /* plus@2x.png */,
+				97B61651195FFF99007E1842 /* MNMyCardsTableViewController.h */,
+				97B61652195FFF99007E1842 /* MNMyCardsTableViewController.m */,
 			);
-			path = "Cards Table View Assets";
+			path = "My Cards Table View Controller";
 			sourceTree = "<group>";
 		};
-		97B9F7C3195FD9F700B9BF6A /* Core Data */ = {
+		97B61653195FFF99007E1842 /* My Contacts View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				97B9F81D195FE88A00B9BF6A /* Core Data Models */,
-				97B9F7C4195FDA1400B9BF6A /* Contact.xcdatamodeld */,
+				97B61654195FFF99007E1842 /* My Contacts Table View Controller */,
+			);
+			path = "My Contacts View Controllers";
+			sourceTree = "<group>";
+		};
+		97B61654195FFF99007E1842 /* My Contacts Table View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				97B61655195FFF99007E1842 /* MNMyContactsViewController.h */,
+				97B61656195FFF99007E1842 /* MNMyContactsViewController.m */,
+			);
+			path = "My Contacts Table View Controller";
+			sourceTree = "<group>";
+		};
+		97B61657195FFF99007E1842 /* Split View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				97B61658195FFF99007E1842 /* Left Side Panel View Controller */,
+				97B6165B195FFF99007E1842 /* Sliding Panel View Controller */,
+			);
+			path = "Split View Controllers";
+			sourceTree = "<group>";
+		};
+		97B61658195FFF99007E1842 /* Left Side Panel View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				97B61659195FFF99007E1842 /* MNLeftSidePanelViewController.h */,
+				97B6165A195FFF99007E1842 /* MNLeftSidePanelViewController.m */,
+			);
+			path = "Left Side Panel View Controller";
+			sourceTree = "<group>";
+		};
+		97B6165B195FFF99007E1842 /* Sliding Panel View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				97B6165C195FFF99007E1842 /* MNSlidingViewController.h */,
+				97B6165D195FFF99007E1842 /* MNSlidingViewController.m */,
+			);
+			path = "Sliding Panel View Controller";
+			sourceTree = "<group>";
+		};
+		97B6165E195FFF99007E1842 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				97B6165F195FFF99007E1842 /* ECSlidingViewController */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		97B6165F195FFF99007E1842 /* ECSlidingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				97B61660195FFF99007E1842 /* ECPercentDrivenInteractiveTransition.h */,
+				97B61661195FFF99007E1842 /* ECPercentDrivenInteractiveTransition.m */,
+				97B61662195FFF99007E1842 /* ECSlidingAnimationController.h */,
+				97B61663195FFF99007E1842 /* ECSlidingAnimationController.m */,
+				97B61664195FFF99007E1842 /* ECSlidingConstants.h */,
+				97B61665195FFF99007E1842 /* ECSlidingInteractiveTransition.h */,
+				97B61666195FFF99007E1842 /* ECSlidingInteractiveTransition.m */,
+				97B61667195FFF99007E1842 /* ECSlidingSegue.h */,
+				97B61668195FFF99007E1842 /* ECSlidingSegue.m */,
+				97B61669195FFF99007E1842 /* ECSlidingViewController.h */,
+				97B6166A195FFF99007E1842 /* ECSlidingViewController.m */,
+				97B6166B195FFF99007E1842 /* MEZoomAnimationController.h */,
+				97B6166C195FFF99007E1842 /* MEZoomAnimationController.m */,
+				97B6166D195FFF99007E1842 /* UIViewController+ECSlidingViewController.h */,
+				97B6166E195FFF99007E1842 /* UIViewController+ECSlidingViewController.m */,
+			);
+			path = ECSlidingViewController;
+			sourceTree = "<group>";
+		};
+		97B6166F195FFF99007E1842 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				97B61670195FFF99007E1842 /* Company */,
+				97B61673195FFF99007E1842 /* Contact.h */,
+				97B61674195FFF99007E1842 /* Contact.m */,
+				97B61675195FFF99007E1842 /* Core Data */,
+				97B61683195FFF99007E1842 /* Manager */,
+				97B61686195FFF99007E1842 /* MNAddress.h */,
+				97B61687195FFF99007E1842 /* MNAddress.m */,
+				97B61688195FFF99007E1842 /* MNContact.h */,
+				97B61689195FFF99007E1842 /* MNContact.m */,
+				97B6168A195FFF99007E1842 /* MNContactCard.h */,
+				97B6168B195FFF99007E1842 /* MNContactCard.m */,
+				97B6168C195FFF99007E1842 /* MNEmail.h */,
+				97B6168D195FFF99007E1842 /* MNEmail.m */,
+				97B6168E195FFF99007E1842 /* MNPhoneNumber.h */,
+				97B6168F195FFF99007E1842 /* MNPhoneNumber.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		97B61670195FFF99007E1842 /* Company */ = {
+			isa = PBXGroup;
+			children = (
+				97B61671195FFF99007E1842 /* MNCompany.h */,
+				97B61672195FFF99007E1842 /* MNCompany.m */,
+			);
+			path = Company;
+			sourceTree = "<group>";
+		};
+		97B61675195FFF99007E1842 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				97B61676195FFF99007E1842 /* Contact.xcdatamodeld */,
+				97B61678195FFF99007E1842 /* Core Data Models */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
 		};
-		97B9F81D195FE88A00B9BF6A /* Core Data Models */ = {
+		97B61678195FFF99007E1842 /* Core Data Models */ = {
 			isa = PBXGroup;
 			children = (
-				97B9F82A195FE8A400B9BF6A /* Card.h */,
-				97B9F82B195FE8A400B9BF6A /* Card.m */,
-				97B9F827195FE8A400B9BF6A /* Email.h */,
-				97B9F828195FE8A400B9BF6A /* Email.m */,
-				97B9F824195FE8A400B9BF6A /* Address.h */,
-				97B9F825195FE8A400B9BF6A /* Address.m */,
-				97B9F821195FE8A400B9BF6A /* PhoneNumber.h */,
-				97B9F822195FE8A400B9BF6A /* PhoneNumber.m */,
-				97B9F830195FF43600B9BF6A /* Contact.h */,
-				97B9F831195FF43600B9BF6A /* Contact.m */,
+				97B61679195FFF99007E1842 /* Address.h */,
+				97B6167A195FFF99007E1842 /* Address.m */,
+				97B6167B195FFF99007E1842 /* Card.h */,
+				97B6167C195FFF99007E1842 /* Card.m */,
+				97B6167D195FFF99007E1842 /* Contact.h */,
+				97B6167E195FFF99007E1842 /* Contact.m */,
+				97B6167F195FFF99007E1842 /* Email.h */,
+				97B61680195FFF99007E1842 /* Email.m */,
+				97B61681195FFF99007E1842 /* PhoneNumber.h */,
+				97B61682195FFF99007E1842 /* PhoneNumber.m */,
 			);
 			path = "Core Data Models";
 			sourceTree = "<group>";
 		};
-		97B9FC1518A377BE001BDF52 /* Network Manager */ = {
+		97B61683195FFF99007E1842 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				97B9FC1618A377D5001BDF52 /* MNNetworkManager.h */,
-				97B9FC1718A377D5001BDF52 /* MNNetworkManager.m */,
+				97B61684195FFF99007E1842 /* MNContactsManager.h */,
+				97B61685195FFF99007E1842 /* MNContactsManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		97B61690195FFF99007E1842 /* Network Manager */ = {
+			isa = PBXGroup;
+			children = (
+				97B61691195FFF99007E1842 /* MNNetworkManager.h */,
+				97B61692195FFF99007E1842 /* MNNetworkManager.m */,
 			);
 			path = "Network Manager";
 			sourceTree = "<group>";
 		};
-		97B9FC1918A3EDB9001BDF52 /* Utilities */ = {
+		97B61693195FFF99007E1842 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				97B9FC1A18A3EDFA001BDF52 /* MNConstants.h */,
-				975D143018A78EC200933968 /* MNUtilities.h */,
-				975D143118A78EC200933968 /* MNUtilities.m */,
+				97B61694195FFF99007E1842 /* Images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		97B61694195FFF99007E1842 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				97B61695195FFF99007E1842 /* Cards Table View Assets */,
+				97B61697195FFF99007E1842 /* Results List View Assets */,
+				97B61699195FFF99007E1842 /* Sort View Assets */,
+				97B6169B195FFF99007E1842 /* Tab Icons */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		97B61695195FFF99007E1842 /* Cards Table View Assets */ = {
+			isa = PBXGroup;
+			children = (
+				97B61696195FFF99007E1842 /* plus@2x.png */,
+			);
+			path = "Cards Table View Assets";
+			sourceTree = "<group>";
+		};
+		97B61697195FFF99007E1842 /* Results List View Assets */ = {
+			isa = PBXGroup;
+			children = (
+				97B61698195FFF99007E1842 /* sort_pointer@2x.png */,
+			);
+			path = "Results List View Assets";
+			sourceTree = "<group>";
+		};
+		97B61699195FFF99007E1842 /* Sort View Assets */ = {
+			isa = PBXGroup;
+			children = (
+				97B6169A195FFF99007E1842 /* sort_option_background@2x.png */,
+			);
+			path = "Sort View Assets";
+			sourceTree = "<group>";
+		};
+		97B6169B195FFF99007E1842 /* Tab Icons */ = {
+			isa = PBXGroup;
+			children = (
+				97B6169C195FFF99007E1842 /* cards@2x.png */,
+			);
+			path = "Tab Icons";
+			sourceTree = "<group>";
+		};
+		97B6169D195FFF99007E1842 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				97B6169E195FFF99007E1842 /* MNConstants.h */,
+				97B6169F195FFF99007E1842 /* MNUtilities.h */,
+				97B616A0195FFF99007E1842 /* MNUtilities.m */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		97B616A1195FFF99007E1842 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				97B616A2195FFF99007E1842 /* Line Views */,
+				97B616A5195FFF99007E1842 /* Top View Controllers */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		97B616A2195FFF99007E1842 /* Line Views */ = {
+			isa = PBXGroup;
+			children = (
+				97B616A3195FFF99007E1842 /* MNLineView.h */,
+				97B616A4195FFF99007E1842 /* MNLineView.m */,
+			);
+			path = "Line Views";
+			sourceTree = "<group>";
+		};
+		97B616A5195FFF99007E1842 /* Top View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				97B616A6195FFF99007E1842 /* MNContactPersonCell.h */,
+				97B616A7195FFF99007E1842 /* MNContactPersonCell.m */,
+				97B616A8195FFF99007E1842 /* MNMyContactCardCell.h */,
+				97B616A9195FFF99007E1842 /* MNMyContactCardCell.m */,
+			);
+			path = "Top View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9763F7AE189D0F3A00C628E4 /* Contact Card */ = {
+		97B61603195FFF18007E1842 /* Contact Card */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9763F7E4189D0F3A00C628E4 /* Build configuration list for PBXNativeTarget "Contact Card" */;
+			buildConfigurationList = 97B61642195FFF19007E1842 /* Build configuration list for PBXNativeTarget "Contact Card" */;
 			buildPhases = (
-				9763F7AB189D0F3A00C628E4 /* Sources */,
-				9763F7AC189D0F3A00C628E4 /* Frameworks */,
-				9763F7AD189D0F3A00C628E4 /* Resources */,
+				97B61600195FFF18007E1842 /* Sources */,
+				97B61601195FFF18007E1842 /* Frameworks */,
+				97B61602195FFF18007E1842 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -530,60 +569,43 @@
 			);
 			name = "Contact Card";
 			productName = "Contact Card";
-			productReference = 9763F7AF189D0F3A00C628E4 /* Contact Card.app */;
+			productReference = 97B61604195FFF18007E1842 /* Contact Card.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9763F7D2189D0F3A00C628E4 /* Contact CardTests */ = {
+		97B6162F195FFF19007E1842 /* Contact CardTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9763F7E7189D0F3A00C628E4 /* Build configuration list for PBXNativeTarget "Contact CardTests" */;
+			buildConfigurationList = 97B61645195FFF19007E1842 /* Build configuration list for PBXNativeTarget "Contact CardTests" */;
 			buildPhases = (
-				9763F7CF189D0F3A00C628E4 /* Sources */,
-				9763F7D0189D0F3A00C628E4 /* Frameworks */,
-				9763F7D1189D0F3A00C628E4 /* Resources */,
+				97B6162C195FFF19007E1842 /* Sources */,
+				97B6162D195FFF19007E1842 /* Frameworks */,
+				97B6162E195FFF19007E1842 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				9763F7D9189D0F3A00C628E4 /* PBXTargetDependency */,
+				97B61637195FFF19007E1842 /* PBXTargetDependency */,
 			);
 			name = "Contact CardTests";
 			productName = "Contact CardTests";
-			productReference = 9763F7D3189D0F3A00C628E4 /* Contact CardTests.xctest */;
+			productReference = 97B61630195FFF19007E1842 /* Contact CardTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		9763F7A7189D0F3A00C628E4 /* Project object */ = {
+		97B615FC195FFF18007E1842 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MN;
 				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = Mafians;
+				ORGANIZATIONNAME = "Ravi Vooda";
 				TargetAttributes = {
-					9763F7AE189D0F3A00C628E4 = {
-						DevelopmentTeam = ZD7BD8RQZT;
-						SystemCapabilities = {
-							com.apple.BackgroundModes = {
-								enabled = 1;
-							};
-							com.apple.GameCenter = {
-								enabled = 0;
-							};
-							com.apple.InAppPurchase = {
-								enabled = 1;
-							};
-							com.apple.iCloud = {
-								enabled = 1;
-							};
-						};
-					};
-					9763F7D2189D0F3A00C628E4 = {
-						TestTargetID = 9763F7AE189D0F3A00C628E4;
+					97B6162F195FFF19007E1842 = {
+						TestTargetID = 97B61603195FFF18007E1842;
 					};
 				};
 			};
-			buildConfigurationList = 9763F7AA189D0F3A00C628E4 /* Build configuration list for PBXProject "Contact Card" */;
+			buildConfigurationList = 97B615FF195FFF18007E1842 /* Build configuration list for PBXProject "Contact Card" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -591,123 +613,132 @@
 				en,
 				Base,
 			);
-			mainGroup = 9763F7A6189D0F3A00C628E4;
-			productRefGroup = 9763F7B0189D0F3A00C628E4 /* Products */;
+			mainGroup = 97B615FB195FFF18007E1842;
+			productRefGroup = 97B61605195FFF18007E1842 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9763F7AE189D0F3A00C628E4 /* Contact Card */,
-				9763F7D2189D0F3A00C628E4 /* Contact CardTests */,
+				97B61603195FFF18007E1842 /* Contact Card */,
+				97B6162F195FFF19007E1842 /* Contact CardTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		9763F7AD189D0F3A00C628E4 /* Resources */ = {
+		97B61602195FFF18007E1842 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9763F7C9189D0F3A00C628E4 /* Main_iPad.storyboard in Resources */,
-				9763F7CE189D0F3A00C628E4 /* Images.xcassets in Resources */,
-				97A784EA194DC73000E7B34A /* plus@2x.png in Resources */,
-				97A784E7194DC53900E7B34A /* cards@2x.png in Resources */,
-				9763F7C6189D0F3A00C628E4 /* Main_iPhone.storyboard in Resources */,
-				9763F7BD189D0F3A00C628E4 /* InfoPlist.strings in Resources */,
+				97B61620195FFF18007E1842 /* Main_iPad.storyboard in Resources */,
+				97B616C6195FFF99007E1842 /* plus@2x.png in Resources */,
+				97B6162B195FFF19007E1842 /* Images.xcassets in Resources */,
+				97B6161D195FFF18007E1842 /* Main_iPhone.storyboard in Resources */,
+				97B616C7195FFF99007E1842 /* sort_pointer@2x.png in Resources */,
+				97B61614195FFF18007E1842 /* InfoPlist.strings in Resources */,
+				97B616C9195FFF99007E1842 /* cards@2x.png in Resources */,
+				97B616C8195FFF99007E1842 /* sort_option_background@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9763F7D1189D0F3A00C628E4 /* Resources */ = {
+		97B6162E195FFF19007E1842 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9763F7DF189D0F3A00C628E4 /* InfoPlist.strings in Resources */,
+				97B6163D195FFF19007E1842 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9763F7AB189D0F3A00C628E4 /* Sources */ = {
+		97B61600195FFF18007E1842 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				975E59D118C1F83A00B97284 /* MNMyCardsTableViewController.m in Sources */,
-				975D142F18A75D3300933968 /* MEZoomAnimationController.m in Sources */,
-				975D143218A78EC200933968 /* MNUtilities.m in Sources */,
-				975E59C918C1F7E500B97284 /* MNMyContactsViewController.m in Sources */,
-				975D141318A629C600933968 /* ECSlidingInteractiveTransition.m in Sources */,
-				9722249418A2844900D64BC2 /* MNCompany.m in Sources */,
-				9763F7BF189D0F3A00C628E4 /* main.m in Sources */,
-				975E59D418C1F84D00B97284 /* MNMyCardDetailsViewController.m in Sources */,
-				975D141118A629C600933968 /* ECPercentDrivenInteractiveTransition.m in Sources */,
-				975D143618A7908F00933968 /* MNContactsManager.m in Sources */,
-				975D141518A629C600933968 /* ECSlidingViewController.m in Sources */,
-				975D141618A629C600933968 /* UIViewController+ECSlidingViewController.m in Sources */,
-				975E59CA18C1F7E500B97284 /* MNLeftSidePanelViewController.m in Sources */,
-				975D141218A629C600933968 /* ECSlidingAnimationController.m in Sources */,
-				97B9F832195FF43600B9BF6A /* Contact.m in Sources */,
-				975E59B518C1F51C00B97284 /* MNMyContactCardCell.m in Sources */,
-				97B9F826195FE8A400B9BF6A /* Address.m in Sources */,
-				9750F5A118B7734E00445D2F /* MNContactPersonCell.m in Sources */,
-				975D141418A629C600933968 /* ECSlidingSegue.m in Sources */,
-				9750F5A518B7A25100445D2F /* MNLineView.m in Sources */,
-				97B9FC1818A377D5001BDF52 /* MNNetworkManager.m in Sources */,
-				97B9F829195FE8A400B9BF6A /* Email.m in Sources */,
-				975E59CB18C1F7E500B97284 /* MNSlidingViewController.m in Sources */,
-				97B9F7C6195FDA1400B9BF6A /* Contact.xcdatamodeld in Sources */,
-				97B9F82C195FE8A400B9BF6A /* Card.m in Sources */,
-				97B9F823195FE8A400B9BF6A /* PhoneNumber.m in Sources */,
-				9718BB0E194DA61800940EED /* MNAppDelegate.m in Sources */,
+				97B616AF195FFF99007E1842 /* MNSlidingViewController.m in Sources */,
+				97B616CC195FFF99007E1842 /* MNContactPersonCell.m in Sources */,
+				97B616C5195FFF99007E1842 /* MNNetworkManager.m in Sources */,
+				97B616CD195FFF99007E1842 /* MNMyContactCardCell.m in Sources */,
+				97B616C1195FFF99007E1842 /* MNContact.m in Sources */,
+				97B616B8195FFF99007E1842 /* Contact.m in Sources */,
+				97B616C2195FFF99007E1842 /* MNContactCard.m in Sources */,
+				97B616CB195FFF99007E1842 /* MNLineView.m in Sources */,
+				97B616B2195FFF99007E1842 /* ECSlidingInteractiveTransition.m in Sources */,
+				97B616BF195FFF99007E1842 /* MNContactsManager.m in Sources */,
+				97B616BA195FFF99007E1842 /* Address.m in Sources */,
+				97B616C3195FFF99007E1842 /* MNEmail.m in Sources */,
+				97B616BC195FFF99007E1842 /* Contact.m in Sources */,
+				97B616B3195FFF99007E1842 /* ECSlidingSegue.m in Sources */,
+				97B616CA195FFF99007E1842 /* MNUtilities.m in Sources */,
+				97B616B5195FFF99007E1842 /* MEZoomAnimationController.m in Sources */,
+				97B616AD195FFF99007E1842 /* MNMyContactsViewController.m in Sources */,
+				97B616B4195FFF99007E1842 /* ECSlidingViewController.m in Sources */,
+				97B616B0195FFF99007E1842 /* ECPercentDrivenInteractiveTransition.m in Sources */,
+				97B616BD195FFF99007E1842 /* Email.m in Sources */,
+				97B616C4195FFF99007E1842 /* MNPhoneNumber.m in Sources */,
+				97B616B6195FFF99007E1842 /* UIViewController+ECSlidingViewController.m in Sources */,
+				97B616BE195FFF99007E1842 /* PhoneNumber.m in Sources */,
+				97B616B7195FFF99007E1842 /* MNCompany.m in Sources */,
+				97B616B1195FFF99007E1842 /* ECSlidingAnimationController.m in Sources */,
+				97B61616195FFF18007E1842 /* main.m in Sources */,
+				97B616AE195FFF99007E1842 /* MNLeftSidePanelViewController.m in Sources */,
+				97B616AC195FFF99007E1842 /* MNMyCardsTableViewController.m in Sources */,
+				97B616C0195FFF99007E1842 /* MNAddress.m in Sources */,
+				97B616BB195FFF99007E1842 /* Card.m in Sources */,
+				97B616B9195FFF99007E1842 /* Contact.xcdatamodeld in Sources */,
+				97B616AA195FFF99007E1842 /* MNAppDelegate.m in Sources */,
+				97B616AB195FFF99007E1842 /* MNMyCardDetailsViewController.m in Sources */,
+				97B61623195FFF18007E1842 /* Contact_Card.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9763F7CF189D0F3A00C628E4 /* Sources */ = {
+		97B6162C195FFF19007E1842 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9763F7E1189D0F3A00C628E4 /* Contact_CardTests.m in Sources */,
+				97B6163F195FFF19007E1842 /* Contact_CardTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9763F7D9189D0F3A00C628E4 /* PBXTargetDependency */ = {
+		97B61637195FFF19007E1842 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9763F7AE189D0F3A00C628E4 /* Contact Card */;
-			targetProxy = 9763F7D8189D0F3A00C628E4 /* PBXContainerItemProxy */;
+			target = 97B61603195FFF18007E1842 /* Contact Card */;
+			targetProxy = 97B61636195FFF19007E1842 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9763F7BB189D0F3A00C628E4 /* InfoPlist.strings */ = {
+		97B61612195FFF18007E1842 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9763F7BC189D0F3A00C628E4 /* en */,
+				97B61613195FFF18007E1842 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		9763F7C4189D0F3A00C628E4 /* Main_iPhone.storyboard */ = {
+		97B6161B195FFF18007E1842 /* Main_iPhone.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9763F7C5189D0F3A00C628E4 /* Base */,
+				97B6161C195FFF18007E1842 /* Base */,
 			);
 			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
-		9763F7C7189D0F3A00C628E4 /* Main_iPad.storyboard */ = {
+		97B6161E195FFF18007E1842 /* Main_iPad.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9763F7C8189D0F3A00C628E4 /* Base */,
+				97B6161F195FFF18007E1842 /* Base */,
 			);
 			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
-		9763F7DD189D0F3A00C628E4 /* InfoPlist.strings */ = {
+		97B6163B195FFF19007E1842 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9763F7DE189D0F3A00C628E4 /* en */,
+				97B6163C195FFF19007E1842 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -715,7 +746,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		9763F7E2189D0F3A00C628E4 /* Debug */ = {
+		97B61640195FFF19007E1842 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -744,17 +775,17 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		9763F7E3189D0F3A00C628E4 /* Release */ = {
+		97B61641195FFF19007E1842 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -777,55 +808,43 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		9763F7E5189D0F3A00C628E4 /* Debug */ = {
+		97B61643195FFF19007E1842 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = "Contact Card/Contact Card.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ravi Vooda (H4RPQMDVRT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ravi Vooda (H4RPQMDVRT)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Contact Card/Contact Card-Prefix.pch";
 				INFOPLIST_FILE = "Contact Card/Contact Card-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "71719F85-B1DF-408C-BDC3-3825992669F9";
-				"PROVISIONING_PROFILE[sdk=*]" = "71719F85-B1DF-408C-BDC3-3825992669F9";
-				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
-		9763F7E6189D0F3A00C628E4 /* Release */ = {
+		97B61644195FFF19007E1842 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = "Contact Card/Contact Card.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ravi Vooda (H4RPQMDVRT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ravi Vooda (H4RPQMDVRT)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Contact Card/Contact Card-Prefix.pch";
 				INFOPLIST_FILE = "Contact Card/Contact Card-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "71719F85-B1DF-408C-BDC3-3825992669F9";
-				"PROVISIONING_PROFILE[sdk=*]" = "71719F85-B1DF-408C-BDC3-3825992669F9";
-				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
-		9763F7E8189D0F3A00C628E4 /* Debug */ = {
+		97B61646195FFF19007E1842 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Contact Card.app/Contact Card";
@@ -847,7 +866,7 @@
 			};
 			name = Debug;
 		};
-		9763F7E9189D0F3A00C628E4 /* Release */ = {
+		97B61647195FFF19007E1842 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Contact Card.app/Contact Card";
@@ -868,47 +887,55 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9763F7AA189D0F3A00C628E4 /* Build configuration list for PBXProject "Contact Card" */ = {
+		97B615FF195FFF18007E1842 /* Build configuration list for PBXProject "Contact Card" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9763F7E2189D0F3A00C628E4 /* Debug */,
-				9763F7E3189D0F3A00C628E4 /* Release */,
+				97B61640195FFF19007E1842 /* Debug */,
+				97B61641195FFF19007E1842 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9763F7E4189D0F3A00C628E4 /* Build configuration list for PBXNativeTarget "Contact Card" */ = {
+		97B61642195FFF19007E1842 /* Build configuration list for PBXNativeTarget "Contact Card" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9763F7E5189D0F3A00C628E4 /* Debug */,
-				9763F7E6189D0F3A00C628E4 /* Release */,
+				97B61643195FFF19007E1842 /* Debug */,
+				97B61644195FFF19007E1842 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
-		9763F7E7189D0F3A00C628E4 /* Build configuration list for PBXNativeTarget "Contact CardTests" */ = {
+		97B61645195FFF19007E1842 /* Build configuration list for PBXNativeTarget "Contact CardTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9763F7E8189D0F3A00C628E4 /* Debug */,
-				9763F7E9189D0F3A00C628E4 /* Release */,
+				97B61646195FFF19007E1842 /* Debug */,
+				97B61647195FFF19007E1842 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		97B9F7C4195FDA1400B9BF6A /* Contact.xcdatamodeld */ = {
+		97B61621195FFF18007E1842 /* Contact_Card.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				97B9F7C5195FDA1400B9BF6A /* Contact.xcdatamodel */,
+				97B61622195FFF18007E1842 /* Contact_Card.xcdatamodel */,
 			);
-			currentVersion = 97B9F7C5195FDA1400B9BF6A /* Contact.xcdatamodel */;
+			currentVersion = 97B61622195FFF18007E1842 /* Contact_Card.xcdatamodel */;
+			path = Contact_Card.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		97B61676195FFF99007E1842 /* Contact.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				97B61677195FFF99007E1842 /* Contact.xcdatamodel */,
+			);
+			currentVersion = 97B61677195FFF99007E1842 /* Contact.xcdatamodel */;
 			path = Contact.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
 	};
-	rootObject = 9763F7A7189D0F3A00C628E4 /* Project object */;
+	rootObject = 97B615FC195FFF18007E1842 /* Project object */;
 }

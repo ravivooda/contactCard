@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9763F7AE189D0F3A00C628E4"
+               BlueprintIdentifier = "97B61603195FFF18007E1842"
                BuildableName = "Contact Card.app"
                BlueprintName = "Contact Card"
                ReferencedContainer = "container:Contact Card.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9763F7D2189D0F3A00C628E4"
+               BlueprintIdentifier = "97B6162F195FFF19007E1842"
                BuildableName = "Contact CardTests.xctest"
                BlueprintName = "Contact CardTests"
                ReferencedContainer = "container:Contact Card.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9763F7AE189D0F3A00C628E4"
+            BlueprintIdentifier = "97B61603195FFF18007E1842"
             BuildableName = "Contact Card.app"
             BlueprintName = "Contact Card"
             ReferencedContainer = "container:Contact Card.xcodeproj">
@@ -61,7 +61,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9763F7AE189D0F3A00C628E4"
+            BlueprintIdentifier = "97B61603195FFF18007E1842"
             BuildableName = "Contact Card.app"
             BlueprintName = "Contact Card"
             ReferencedContainer = "container:Contact Card.xcodeproj">
@@ -79,7 +79,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9763F7AE189D0F3A00C628E4"
+            BlueprintIdentifier = "97B61603195FFF18007E1842"
             BuildableName = "Contact Card.app"
             BlueprintName = "Contact Card"
             ReferencedContainer = "container:Contact Card.xcodeproj">

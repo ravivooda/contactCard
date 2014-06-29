@@ -13,20 +13,5 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
-
-    #import <AddressBook/AddressBook.h>
-
-    #import "MNCompany.h"
-    #import "PhoneNumber.h"
-    #import "Email.h"
-    #import "Card.h"
-    #import "Address.h"
-    #import "Contact.h"
-
-    #import "MNConstants.h"
-    #import "MNContactsManager.h"
-
-
-    MNContactsManager *contactManager;
-    NSManagedObjectContext* managedObjectContext;
+    #import <CoreData/CoreData.h>
 #endif

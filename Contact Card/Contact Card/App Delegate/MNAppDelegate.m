@@ -2,11 +2,13 @@
 //  MNAppDelegate.m
 //  Contact Card
 //
-//  Created by Ravi Vooda on 01/02/14.
-//  Copyright (c) 2014 Mafians. All rights reserved.
+//  Created by Ravi Vooda on 29/06/14.
+//  Copyright (c) 2014 Ravi Vooda. All rights reserved.
 //
 
 #import "MNAppDelegate.h"
+
+#import "MNMasterViewController.h"
 
 @implementation MNAppDelegate
 
@@ -17,14 +19,19 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    
-    contactManager = [MNContactsManager sharedInstance];
-    
-    managedObjectContext = self.managedObjectContext;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(storeDidChange:) name:NSUbiquitousKeyValueStoreDidChangeExternallyNotification object:[NSUbiquitousKeyValueStore defaultStore]];
-    BOOL sync = [[NSUbiquitousKeyValueStore defaultStore] synchronize];
-    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
+        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
+        splitViewController.delegate = (id)navigationController.topViewController;
+        
+        UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
+        MNMasterViewController *controller = (MNMasterViewController *)masterNavigationController.topViewController;
+        controller.managedObjectContext = self.managedObjectContext;
+    } else {
+        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+        MNMasterViewController *controller = (MNMasterViewController *)navigationController.topViewController;
+        controller.managedObjectContext = self.managedObjectContext;
+    }
     return YES;
 }
 							
@@ -43,7 +50,6 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    BOOL sync = [[NSUbiquitousKeyValueStore defaultStore] synchronize];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -53,11 +59,8 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
--(void) storeDidChange:(NSNotification*)notif {
-    
+    // Saves changes in the application's managed object context before the application terminates.
+    [self saveContext];
 }
 
 - (void)saveContext
@@ -66,11 +69,11 @@
     NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
     if (managedObjectContext != nil) {
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+             // Replace this implementation with code to handle the error appropriately.
+             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
-        }
+        } 
     }
 }
 
@@ -99,7 +102,7 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Contact" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Contact_Card" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -112,7 +115,7 @@
         return _persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Contact.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Contact_Card.sqlite"];
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
@@ -120,7 +123,7 @@
         /*
          Replace this implementation with code to handle the error appropriately.
          
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
          
          Typical reasons for an error here include:
          * The persistent store is not accessible;
@@ -142,7 +145,7 @@
          */
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
-    }
+    }    
     
     return _persistentStoreCoordinator;
 }
@@ -154,6 +157,5 @@
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
-
 
 @end
