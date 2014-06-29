@@ -16,14 +16,17 @@
 
     #import <AddressBook/AddressBook.h>
 
-    #import "MNContact.h"
     #import "MNCompany.h"
-    #import "MNPhoneNumber.h"
-    #import "MNEmail.h"
-    #import "MNContactCard.h"
+    #import "PhoneNumber.h"
+    #import "Email.h"
+    #import "Card.h"
+    #import "Address.h"
+    #import "Contact.h"
 
     #import "MNConstants.h"
     #import "MNContactsManager.h"
 
+
     MNContactsManager *contactManager;
+    NSManagedObjectContext* managedObjectContext;
 #endif

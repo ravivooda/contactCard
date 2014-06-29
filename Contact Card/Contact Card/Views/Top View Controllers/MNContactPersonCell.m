@@ -8,8 +8,6 @@
 
 #import "MNContactPersonCell.h"
 #import "MNLineView.h"
-#import "MNPhoneNumber.h"
-#import "MNEmail.h"
 
 @interface MNContactPersonCell ()
 
@@ -37,12 +35,12 @@
     [super awakeFromNib];
 }
 
--(void) setContact:(MNContact *)contact {
+-(void) setContact:(Contact *)contact {
     _contact = contact;
     
 //    [_cellBackgroundImage setImage:contact.backgroundImage];
     if (contact.imageOfPerson) {
-        [_contactImageView setImage:contact.imageOfPerson];
+        [_contactImageView setImage:[UIImage imageWithData:contact.imageOfPerson]];
     } else {
         [_contactImageView setImage:[UIImage imageNamed:@"noThumbnailImage"]];
     }

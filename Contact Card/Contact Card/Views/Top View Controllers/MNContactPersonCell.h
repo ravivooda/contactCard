@@ -16,6 +16,6 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *cellScrollView;
 
-@property (strong, nonatomic) MNContact *contact;
+@property (strong, nonatomic) Contact *contact;
 
 @end

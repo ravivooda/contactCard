@@ -22,7 +22,7 @@
 
 @property (strong, readonly, nonatomic) NSArray *userCards;
 
--(void) addNewContactCard:(MNContactCard*)card;
+-(void) addNewContactCard:(Card*)card;
 
 typedef void (^ContactsLoadedCompletionBlock)(void);
 

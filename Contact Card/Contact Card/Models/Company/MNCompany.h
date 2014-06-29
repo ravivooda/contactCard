@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MNAddress.h"
 
 @interface MNCompany : NSObject
 
@@ -33,11 +32,11 @@
 @property (strong, nonatomic, readonly) NSString *blog;
 @property (strong, nonatomic, readonly) NSString *news;
 
-@property (strong, nonatomic, readonly) MNAddress *address;
+//@property (strong, nonatomic, readonly) address *address;
 
 @property (strong, nonatomic, readonly) NSString *notes;
 
-- (MNCompany*) initWithRecordReference:(ABRecordRef)ref;
+//- (MNCompany*) initWithRecordReference:(ABRecordRef)ref;
 
 
 @end

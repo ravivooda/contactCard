@@ -10,6 +10,6 @@
 
 @interface MNMyContactCardCell : UITableViewCell
 
-@property (strong, nonatomic) MNContactCard *contactCard;
+@property (strong, nonatomic) Card *contactCard;
 
 @end

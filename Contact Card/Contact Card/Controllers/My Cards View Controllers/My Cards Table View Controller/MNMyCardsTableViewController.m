@@ -78,6 +78,18 @@
     return cell;
 }
 
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ABPersonViewController *personDetails = [[ABPersonViewController alloc] init];
+    personDetails.displayedPerson = [((Card*)self.cardsList[[indexPath row]]).contact convertToRecordRef];
+    personDetails.allowsActions = NO;
+    
+    UIToolbar *bottomActionsToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 100, 320, 44)];
+    
+    [personDetails.view addSubview:bottomActionsToolbar];
+    
+    [self.navigationController pushViewController:personDetails animated:YES];
+}
+
 /*
  // Override to support conditional editing of the table view.
  - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -183,6 +195,7 @@
         UIAlertView *cardNameAlertView = [[UIAlertView alloc] initWithTitle:@"Contact Card" message:@"Please provide a name for the card" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Okay",nil];
         cardNameAlertView.tag = cardNameAlertViewTag;
         cardNameAlertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+        [[cardNameAlertView textFieldAtIndex:0] setAutocapitalizationType:UITextAutocapitalizationTypeWords];
         [cardNameAlertView show];
     }
 }
@@ -195,9 +208,9 @@
                 case 1:{
                     UITextField *cardNameTextField = [alertView textFieldAtIndex:0];
                     NSLog(@"Card Name: %@",cardNameTextField.text);
-                    MNContactCard *newContactCard = [[MNContactCard alloc] init];
+                    Card *newContactCard = [[Card alloc] init];
                     newContactCard.contactCardName = [cardNameTextField.text copy];
-                    newContactCard.contact = [[MNContact alloc] initWithRecordReference:self.cardNewRecordRef];
+                    newContactCard.contact = [[Contact alloc] initWithRecordReference:self.cardNewRecordRef];
                     
                     [contactManager addNewContactCard:newContactCard];
                     self.cardsList = [contactManager userCards];

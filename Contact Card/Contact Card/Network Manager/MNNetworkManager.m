@@ -17,7 +17,7 @@
 
 @implementation MNNetworkManager
 
--(void) sendContactCard:(MNContact *)contactCard viaMedium:(sharingOptions)sharingOption withCompletionBlock:(CompletionBlock)completion withErrorBlock:(ErrorBlock)error {
+-(void) sendContactCard:(Contact *)contactCard viaMedium:(sharingOptions)sharingOption withCompletionBlock:(CompletionBlock)completion withErrorBlock:(ErrorBlock)error {
     
 }
 

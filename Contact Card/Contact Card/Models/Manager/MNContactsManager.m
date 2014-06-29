@@ -16,8 +16,6 @@
 @property (strong, nonatomic) NSArray *personContacts;
 @property (strong, nonatomic) NSArray *companyContacts;
 
-@property (strong, nonatomic) NSArray *contactsArray;
-
 @property (strong, nonatomic) NSMutableArray *privateUserCards;
 
 @property (nonatomic) dispatch_semaphore_t sema;
@@ -30,27 +28,10 @@
 static MNContactsManager *singletonInstance = nil;
 
 + (MNContactsManager*) sharedInstance {
-    NSUserDefaults *currentDefaults = [NSUserDefaults standardUserDefaults];
-    NSData *savedArray = [currentDefaults objectForKey:@"allContactsManager"];
-    MNContactsManager *contactsManager;
-    if (savedArray) {
-        contactsManager = [NSKeyedUnarchiver unarchiveObjectWithData:savedArray];
-        if (!contactsManager) {
-            contactsManager = [[MNContactsManager alloc] init];
-        }
-        return contactsManager;
+    if (!singletonInstance) {
+        singletonInstance = [[[self class] alloc] init];
     }
-    contactsManager = [[MNContactsManager alloc] init];
-    return contactsManager;
-}
-
-+(id)alloc {
-    @synchronized([self class]) {
-        NSAssert(singletonInstance == nil, @"Attempted to allocate a second instance of a MNContactsManager.");
-        singletonInstance = [super alloc];
-        return singletonInstance;
-    }
-    return nil;
+    return singletonInstance;
 }
 
 -(id) init {
@@ -73,16 +54,16 @@ static MNContactsManager *singletonInstance = nil;
             CFIndex nPeople = ABAddressBookGetPersonCount(addressBook);
             
             NSMutableArray *contactsArray = [[NSMutableArray alloc] init];
-            NSMutableArray *companyArray = [[NSMutableArray alloc] init];
+//            NSMutableArray *companyArray = [[NSMutableArray alloc] init];
             
             for( int i = 0 ; i < nPeople ; i++ ) {
                 ABRecordRef ref = CFArrayGetValueAtIndex(allPeople, i);
                 if (ABRecordCopyValue(ref, kABPersonKindProperty) == kABPersonKindPerson) {
-                    MNContact *contact = [[MNContact alloc] initWithRecordReference:ref];
+                    Contact *contact = [[Contact alloc] initWithRecordReference:ref];
                     [contactsArray addObject:contact];
                 } else if (ABRecordCopyValue(ref, kABPersonKindProperty) == kABPersonKindOrganization) {
-                    MNCompany *company = [[MNCompany alloc] initWithRecordReference:ref];
-                    [companyArray addObject:company];
+//                    MNCompany *company = [[MNCompany alloc] initWithRecordReference:ref];
+//                    [companyArray addObject:company];
                 }
             }
             
@@ -99,12 +80,35 @@ static MNContactsManager *singletonInstance = nil;
     dispatch_semaphore_wait(self.sema, DISPATCH_TIME_FOREVER);
 }
 
--(void) addNewContactCard:(MNContactCard *)card {
-    if (!self.privateUserCards) {
-        self.privateUserCards = [[NSMutableArray alloc] init];
-    }
+-(void) addNewContactCard:(Card *)card {
+//    if (!self.privateUserCards) {
+//        self.privateUserCards = [[NSMutableArray alloc] init];
+//    }
+//    
+//    [self.privateUserCards addObject:card];
+//    
+//    [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:self] forKey:@"allContactsManager"];
+    NSManagedObjectContext *context = managedObjectContext;
+    [managedObjectContext insertObject:card];
     
-    [self.privateUserCards addObject:card];
+//    FailedBankInfo *failedBankInfo = [NSEntityDescription
+//                                      insertNewObjectForEntityForName:@"FailedBankInfo"
+//                                      inManagedObjectContext:context];
+//    failedBankInfo.name = @"Test Bank";
+//    failedBankInfo.city = @"Testville";
+//    failedBankInfo.state = @"Testland";
+//    FailedBankDetails *failedBankDetails = [NSEntityDescription
+//                                            insertNewObjectForEntityForName:@"FailedBankDetails"
+//                                            inManagedObjectContext:context];
+//    failedBankDetails.closeDate = [NSDate date];
+//    failedBankDetails.updateDate = [NSDate date];
+//    failedBankDetails.zip = [NSNumber numberWithInt:12345];
+//    failedBankDetails.info = failedBankInfo;
+//    failedBankInfo.details = failedBankDetails;
+    NSError *error;
+    if (![context save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
 }
 
 -(NSArray*)userCards {
