@@ -80,7 +80,7 @@ static MNContactsManager *singletonInstance = nil;
     dispatch_semaphore_wait(self.sema, DISPATCH_TIME_FOREVER);
 }
 
--(void) addNewContactCard:(Card *)card {
+-(void) addNewContactCard:(MNContact *)card {
 //    if (!self.privateUserCards) {
 //        self.privateUserCards = [[NSMutableArray alloc] init];
 //    }
@@ -88,8 +88,8 @@ static MNContactsManager *singletonInstance = nil;
 //    [self.privateUserCards addObject:card];
 //    
 //    [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:self] forKey:@"allContactsManager"];
-    NSManagedObjectContext *context = managedObjectContext;
-    [managedObjectContext insertObject:card];
+//    NSManagedObjectContext *context = managedObjectContext;
+//    [managedObjectContext insertObject:card];
     
 //    FailedBankInfo *failedBankInfo = [NSEntityDescription
 //                                      insertNewObjectForEntityForName:@"FailedBankInfo"
@@ -105,10 +105,10 @@ static MNContactsManager *singletonInstance = nil;
 //    failedBankDetails.zip = [NSNumber numberWithInt:12345];
 //    failedBankDetails.info = failedBankInfo;
 //    failedBankInfo.details = failedBankDetails;
-    NSError *error;
-    if (![context save:&error]) {
-        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-    }
+//    NSError *error;
+//    if (![context save:&error]) {
+//        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+//    }
 }
 
 -(NSArray*)userCards {

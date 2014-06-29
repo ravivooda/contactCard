@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AddressBook/AddressBook.h>
 
 @interface MNContact : NSObject <NSSecureCoding, UIActivityItemSource, NSCopying>
-
 
 - (MNContact*) initWithContactCard:(NSDictionary*) dictionary;
 

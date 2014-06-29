@@ -14,4 +14,18 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
+
+    #import "MNConstants.h"
+    #import "MNCompany.h"
+    #import "MNAddress.h"
+    #import "MNContact.h"
+    #import "MNContactCard.h"
+    #import "MNContactsManager.h"
+    #import "MNEmail.h"
+    #import "MNLineView.h"
+    #import "MNNetworkManager.h"
+    #import "MNPhoneNumber.h"
+    #import "MNUtilities.h"
+    #import <AddressBook/AddressBook.h>
+    #import <AddressBookUI/AddressBookUI.h>
 #endif

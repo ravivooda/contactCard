@@ -20,7 +20,7 @@ typedef void (^ErrorBlock)(NSError *error);
 
 @interface MNNetworkManager : NSObject
 
--(void) sendContactCard:(Contact*)contactCard viaMedium:(sharingOptions)sharingOption withCompletionBlock:(CompletionBlock)completion withErrorBlock:(ErrorBlock)error;
+-(void) sendContactCard:(MNContact*)contactCard viaMedium:(sharingOptions)sharingOption withCompletionBlock:(CompletionBlock)completion withErrorBlock:(ErrorBlock)error;
 
 -(void) sendCompanyCard:(MNCompany*)companyCard viaMedium:(sharingOptions)sharingOption withCompletionBlock:(CompletionBlock)completion withErrorBlock:(ErrorBlock)error;
 

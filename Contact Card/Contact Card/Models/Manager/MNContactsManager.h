@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AddressBook/AddressBook.h>
 
 @interface MNContactsManager : NSObject
 
@@ -22,7 +23,7 @@
 
 @property (strong, readonly, nonatomic) NSArray *userCards;
 
--(void) addNewContactCard:(Card*)card;
+-(void) addNewContactCard:(MNContactCard*)card;
 
 typedef void (^ContactsLoadedCompletionBlock)(void);
 

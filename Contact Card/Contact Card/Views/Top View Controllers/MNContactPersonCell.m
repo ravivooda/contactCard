@@ -35,7 +35,7 @@
     [super awakeFromNib];
 }
 
--(void) setContact:(Contact *)contact {
+-(void) setContact:(MNContact *)contact {
     _contact = contact;
     
 //    [_cellBackgroundImage setImage:contact.backgroundImage];

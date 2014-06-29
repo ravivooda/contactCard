@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		972501D819602183001F7A4E /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 972501D619602183001F7A4E /* AddressBook.framework */; };
+		972501D919602183001F7A4E /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 972501D719602183001F7A4E /* AddressBookUI.framework */; };
 		97B61608195FFF18007E1842 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B61607195FFF18007E1842 /* Foundation.framework */; };
 		97B6160A195FFF18007E1842 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B61609195FFF18007E1842 /* CoreGraphics.framework */; };
 		97B6160C195FFF18007E1842 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B6160B195FFF18007E1842 /* UIKit.framework */; };
@@ -72,6 +74,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		972501D619602183001F7A4E /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		972501D719602183001F7A4E /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		97B61604195FFF18007E1842 /* Contact Card.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Contact Card.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97B61607195FFF18007E1842 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		97B61609195FFF18007E1842 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -166,6 +170,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				972501D819602183001F7A4E /* AddressBook.framework in Frameworks */,
+				972501D919602183001F7A4E /* AddressBookUI.framework in Frameworks */,
 				97B6160A195FFF18007E1842 /* CoreGraphics.framework in Frameworks */,
 				97B6160E195FFF18007E1842 /* CoreData.framework in Frameworks */,
 				97B6160C195FFF18007E1842 /* UIKit.framework in Frameworks */,
@@ -209,6 +215,8 @@
 		97B61606195FFF18007E1842 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				972501D619602183001F7A4E /* AddressBook.framework */,
+				972501D719602183001F7A4E /* AddressBookUI.framework */,
 				97B61607195FFF18007E1842 /* Foundation.framework */,
 				97B61609195FFF18007E1842 /* CoreGraphics.framework */,
 				97B6160B195FFF18007E1842 /* UIKit.framework */,
@@ -903,6 +911,7 @@
 				97B61644195FFF19007E1842 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		97B61645195FFF19007E1842 /* Build configuration list for PBXNativeTarget "Contact CardTests" */ = {
 			isa = XCConfigurationList;
@@ -911,6 +920,7 @@
 				97B61647195FFF19007E1842 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

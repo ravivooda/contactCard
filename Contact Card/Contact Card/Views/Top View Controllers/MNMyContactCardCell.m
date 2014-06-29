@@ -32,7 +32,7 @@
     // Configure the view for the selected state
 }
 
--(void) setContactCard:(Card *)contactCard
+-(void) setContactCard:(MNContactCard *)contactCard
 {
     _contactCard = contactCard;
     [self.cardNameLabel setText:contactCard.contactCardName];
