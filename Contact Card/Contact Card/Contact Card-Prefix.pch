@@ -28,4 +28,6 @@
     #import "MNUtilities.h"
     #import <AddressBook/AddressBook.h>
     #import <AddressBookUI/AddressBookUI.h>
+
+    MNContactsManager *contactManager;
 #endif

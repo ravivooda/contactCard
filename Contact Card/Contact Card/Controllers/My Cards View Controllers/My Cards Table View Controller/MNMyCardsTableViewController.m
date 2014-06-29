@@ -80,7 +80,7 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ABPersonViewController *personDetails = [[ABPersonViewController alloc] init];
-    personDetails.displayedPerson = [((Card*)self.cardsList[[indexPath row]]).contact convertToRecordRef];
+    personDetails.displayedPerson = [((MNContactCard*)self.cardsList[[indexPath row]]).contact convertToRecordRef];
     personDetails.allowsActions = NO;
     
     UIToolbar *bottomActionsToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 100, 320, 44)];
@@ -208,9 +208,9 @@
                 case 1:{
                     UITextField *cardNameTextField = [alertView textFieldAtIndex:0];
                     NSLog(@"Card Name: %@",cardNameTextField.text);
-                    Card *newContactCard = [[Card alloc] init];
+                    MNContactCard *newContactCard = [[MNContactCard alloc] init];
                     newContactCard.contactCardName = [cardNameTextField.text copy];
-                    newContactCard.contact = [[Contact alloc] initWithRecordReference:self.cardNewRecordRef];
+                    newContactCard.contact = [[MNContact alloc] initWithRecordReference:self.cardNewRecordRef];
                     
                     [contactManager addNewContactCard:newContactCard];
                     self.cardsList = [contactManager userCards];

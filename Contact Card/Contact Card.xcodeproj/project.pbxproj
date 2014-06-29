@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		972501D819602183001F7A4E /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 972501D619602183001F7A4E /* AddressBook.framework */; };
 		972501D919602183001F7A4E /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 972501D719602183001F7A4E /* AddressBookUI.framework */; };
+		972501EC1960239D001F7A4E /* MNAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 972501DC1960239D001F7A4E /* MNAddress.m */; };
+		972501ED1960239D001F7A4E /* MNContactCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 972501DF1960239D001F7A4E /* MNContactCard.m */; };
+		972501EE1960239D001F7A4E /* MNContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 972501E21960239D001F7A4E /* MNContact.m */; };
+		972501EF1960239D001F7A4E /* MNEmail.m in Sources */ = {isa = PBXBuildFile; fileRef = 972501E51960239D001F7A4E /* MNEmail.m */; };
+		972501F01960239D001F7A4E /* MNContactsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 972501E81960239D001F7A4E /* MNContactsManager.m */; };
+		972501F11960239D001F7A4E /* MNPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 972501EB1960239D001F7A4E /* MNPhoneNumber.m */; };
 		97B61608195FFF18007E1842 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B61607195FFF18007E1842 /* Foundation.framework */; };
 		97B6160A195FFF18007E1842 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B61609195FFF18007E1842 /* CoreGraphics.framework */; };
 		97B6160C195FFF18007E1842 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B6160B195FFF18007E1842 /* UIKit.framework */; };
@@ -39,19 +45,12 @@
 		97B616B5195FFF99007E1842 /* MEZoomAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6166C195FFF99007E1842 /* MEZoomAnimationController.m */; };
 		97B616B6195FFF99007E1842 /* UIViewController+ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6166E195FFF99007E1842 /* UIViewController+ECSlidingViewController.m */; };
 		97B616B7195FFF99007E1842 /* MNCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61672195FFF99007E1842 /* MNCompany.m */; };
-		97B616B8195FFF99007E1842 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61674195FFF99007E1842 /* Contact.m */; };
 		97B616B9195FFF99007E1842 /* Contact.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 97B61676195FFF99007E1842 /* Contact.xcdatamodeld */; };
 		97B616BA195FFF99007E1842 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6167A195FFF99007E1842 /* Address.m */; };
 		97B616BB195FFF99007E1842 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6167C195FFF99007E1842 /* Card.m */; };
 		97B616BC195FFF99007E1842 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6167E195FFF99007E1842 /* Contact.m */; };
 		97B616BD195FFF99007E1842 /* Email.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61680195FFF99007E1842 /* Email.m */; };
 		97B616BE195FFF99007E1842 /* PhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61682195FFF99007E1842 /* PhoneNumber.m */; };
-		97B616BF195FFF99007E1842 /* MNContactsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61685195FFF99007E1842 /* MNContactsManager.m */; };
-		97B616C0195FFF99007E1842 /* MNAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61687195FFF99007E1842 /* MNAddress.m */; };
-		97B616C1195FFF99007E1842 /* MNContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61689195FFF99007E1842 /* MNContact.m */; };
-		97B616C2195FFF99007E1842 /* MNContactCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6168B195FFF99007E1842 /* MNContactCard.m */; };
-		97B616C3195FFF99007E1842 /* MNEmail.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6168D195FFF99007E1842 /* MNEmail.m */; };
-		97B616C4195FFF99007E1842 /* MNPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6168F195FFF99007E1842 /* MNPhoneNumber.m */; };
 		97B616C5195FFF99007E1842 /* MNNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61692195FFF99007E1842 /* MNNetworkManager.m */; };
 		97B616C6195FFF99007E1842 /* plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B61696195FFF99007E1842 /* plus@2x.png */; };
 		97B616C7195FFF99007E1842 /* sort_pointer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B61698195FFF99007E1842 /* sort_pointer@2x.png */; };
@@ -76,6 +75,18 @@
 /* Begin PBXFileReference section */
 		972501D619602183001F7A4E /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		972501D719602183001F7A4E /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		972501DB1960239D001F7A4E /* MNAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNAddress.h; sourceTree = "<group>"; };
+		972501DC1960239D001F7A4E /* MNAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNAddress.m; sourceTree = "<group>"; };
+		972501DE1960239D001F7A4E /* MNContactCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNContactCard.h; sourceTree = "<group>"; };
+		972501DF1960239D001F7A4E /* MNContactCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNContactCard.m; sourceTree = "<group>"; };
+		972501E11960239D001F7A4E /* MNContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNContact.h; sourceTree = "<group>"; };
+		972501E21960239D001F7A4E /* MNContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNContact.m; sourceTree = "<group>"; };
+		972501E41960239D001F7A4E /* MNEmail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNEmail.h; sourceTree = "<group>"; };
+		972501E51960239D001F7A4E /* MNEmail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNEmail.m; sourceTree = "<group>"; };
+		972501E71960239D001F7A4E /* MNContactsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNContactsManager.h; sourceTree = "<group>"; };
+		972501E81960239D001F7A4E /* MNContactsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNContactsManager.m; sourceTree = "<group>"; };
+		972501EA1960239D001F7A4E /* MNPhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNPhoneNumber.h; sourceTree = "<group>"; };
+		972501EB1960239D001F7A4E /* MNPhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNPhoneNumber.m; sourceTree = "<group>"; };
 		97B61604195FFF18007E1842 /* Contact Card.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Contact Card.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97B61607195FFF18007E1842 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		97B61609195FFF18007E1842 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -123,8 +134,6 @@
 		97B6166E195FFF99007E1842 /* UIViewController+ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ECSlidingViewController.m"; sourceTree = "<group>"; };
 		97B61671195FFF99007E1842 /* MNCompany.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNCompany.h; sourceTree = "<group>"; };
 		97B61672195FFF99007E1842 /* MNCompany.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCompany.m; sourceTree = "<group>"; };
-		97B61673195FFF99007E1842 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
-		97B61674195FFF99007E1842 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		97B61677195FFF99007E1842 /* Contact.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Contact.xcdatamodel; sourceTree = "<group>"; };
 		97B61679195FFF99007E1842 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
 		97B6167A195FFF99007E1842 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
@@ -136,18 +145,6 @@
 		97B61680195FFF99007E1842 /* Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Email.m; sourceTree = "<group>"; };
 		97B61681195FFF99007E1842 /* PhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumber.h; sourceTree = "<group>"; };
 		97B61682195FFF99007E1842 /* PhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneNumber.m; sourceTree = "<group>"; };
-		97B61684195FFF99007E1842 /* MNContactsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNContactsManager.h; sourceTree = "<group>"; };
-		97B61685195FFF99007E1842 /* MNContactsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNContactsManager.m; sourceTree = "<group>"; };
-		97B61686195FFF99007E1842 /* MNAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNAddress.h; sourceTree = "<group>"; };
-		97B61687195FFF99007E1842 /* MNAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNAddress.m; sourceTree = "<group>"; };
-		97B61688195FFF99007E1842 /* MNContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNContact.h; sourceTree = "<group>"; };
-		97B61689195FFF99007E1842 /* MNContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNContact.m; sourceTree = "<group>"; };
-		97B6168A195FFF99007E1842 /* MNContactCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNContactCard.h; sourceTree = "<group>"; };
-		97B6168B195FFF99007E1842 /* MNContactCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNContactCard.m; sourceTree = "<group>"; };
-		97B6168C195FFF99007E1842 /* MNEmail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNEmail.h; sourceTree = "<group>"; };
-		97B6168D195FFF99007E1842 /* MNEmail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNEmail.m; sourceTree = "<group>"; };
-		97B6168E195FFF99007E1842 /* MNPhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNPhoneNumber.h; sourceTree = "<group>"; };
-		97B6168F195FFF99007E1842 /* MNPhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNPhoneNumber.m; sourceTree = "<group>"; };
 		97B61691195FFF99007E1842 /* MNNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNNetworkManager.h; sourceTree = "<group>"; };
 		97B61692195FFF99007E1842 /* MNNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNNetworkManager.m; sourceTree = "<group>"; };
 		97B61696195FFF99007E1842 /* plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus@2x.png"; sourceTree = "<group>"; };
@@ -193,6 +190,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		972501DA1960239D001F7A4E /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				972501DB1960239D001F7A4E /* MNAddress.h */,
+				972501DC1960239D001F7A4E /* MNAddress.m */,
+			);
+			path = Address;
+			sourceTree = "<group>";
+		};
+		972501DD1960239D001F7A4E /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				972501DE1960239D001F7A4E /* MNContactCard.h */,
+				972501DF1960239D001F7A4E /* MNContactCard.m */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		972501E01960239D001F7A4E /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				972501E11960239D001F7A4E /* MNContact.h */,
+				972501E21960239D001F7A4E /* MNContact.m */,
+			);
+			path = Contact;
+			sourceTree = "<group>";
+		};
+		972501E31960239D001F7A4E /* Email */ = {
+			isa = PBXGroup;
+			children = (
+				972501E41960239D001F7A4E /* MNEmail.h */,
+				972501E51960239D001F7A4E /* MNEmail.m */,
+			);
+			path = Email;
+			sourceTree = "<group>";
+		};
+		972501E61960239D001F7A4E /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				972501E71960239D001F7A4E /* MNContactsManager.h */,
+				972501E81960239D001F7A4E /* MNContactsManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		972501E91960239D001F7A4E /* Phone Number */ = {
+			isa = PBXGroup;
+			children = (
+				972501EA1960239D001F7A4E /* MNPhoneNumber.h */,
+				972501EB1960239D001F7A4E /* MNPhoneNumber.m */,
+			);
+			path = "Phone Number";
+			sourceTree = "<group>";
+		};
 		97B615FB195FFF18007E1842 = {
 			isa = PBXGroup;
 			children = (
@@ -398,21 +449,14 @@
 		97B6166F195FFF99007E1842 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				972501DA1960239D001F7A4E /* Address */,
+				972501DD1960239D001F7A4E /* Card */,
+				972501E01960239D001F7A4E /* Contact */,
+				972501E31960239D001F7A4E /* Email */,
+				972501E61960239D001F7A4E /* Manager */,
+				972501E91960239D001F7A4E /* Phone Number */,
 				97B61670195FFF99007E1842 /* Company */,
-				97B61673195FFF99007E1842 /* Contact.h */,
-				97B61674195FFF99007E1842 /* Contact.m */,
 				97B61675195FFF99007E1842 /* Core Data */,
-				97B61683195FFF99007E1842 /* Manager */,
-				97B61686195FFF99007E1842 /* MNAddress.h */,
-				97B61687195FFF99007E1842 /* MNAddress.m */,
-				97B61688195FFF99007E1842 /* MNContact.h */,
-				97B61689195FFF99007E1842 /* MNContact.m */,
-				97B6168A195FFF99007E1842 /* MNContactCard.h */,
-				97B6168B195FFF99007E1842 /* MNContactCard.m */,
-				97B6168C195FFF99007E1842 /* MNEmail.h */,
-				97B6168D195FFF99007E1842 /* MNEmail.m */,
-				97B6168E195FFF99007E1842 /* MNPhoneNumber.h */,
-				97B6168F195FFF99007E1842 /* MNPhoneNumber.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -450,15 +494,6 @@
 				97B61682195FFF99007E1842 /* PhoneNumber.m */,
 			);
 			path = "Core Data Models";
-			sourceTree = "<group>";
-		};
-		97B61683195FFF99007E1842 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				97B61684195FFF99007E1842 /* MNContactsManager.h */,
-				97B61685195FFF99007E1842 /* MNContactsManager.m */,
-			);
-			path = Manager;
 			sourceTree = "<group>";
 		};
 		97B61690195FFF99007E1842 /* Network Manager */ = {
@@ -665,16 +700,14 @@
 			files = (
 				97B616AF195FFF99007E1842 /* MNSlidingViewController.m in Sources */,
 				97B616CC195FFF99007E1842 /* MNContactPersonCell.m in Sources */,
+				972501EE1960239D001F7A4E /* MNContact.m in Sources */,
 				97B616C5195FFF99007E1842 /* MNNetworkManager.m in Sources */,
+				972501ED1960239D001F7A4E /* MNContactCard.m in Sources */,
 				97B616CD195FFF99007E1842 /* MNMyContactCardCell.m in Sources */,
-				97B616C1195FFF99007E1842 /* MNContact.m in Sources */,
-				97B616B8195FFF99007E1842 /* Contact.m in Sources */,
-				97B616C2195FFF99007E1842 /* MNContactCard.m in Sources */,
 				97B616CB195FFF99007E1842 /* MNLineView.m in Sources */,
+				972501EF1960239D001F7A4E /* MNEmail.m in Sources */,
 				97B616B2195FFF99007E1842 /* ECSlidingInteractiveTransition.m in Sources */,
-				97B616BF195FFF99007E1842 /* MNContactsManager.m in Sources */,
 				97B616BA195FFF99007E1842 /* Address.m in Sources */,
-				97B616C3195FFF99007E1842 /* MNEmail.m in Sources */,
 				97B616BC195FFF99007E1842 /* Contact.m in Sources */,
 				97B616B3195FFF99007E1842 /* ECSlidingSegue.m in Sources */,
 				97B616CA195FFF99007E1842 /* MNUtilities.m in Sources */,
@@ -683,19 +716,20 @@
 				97B616B4195FFF99007E1842 /* ECSlidingViewController.m in Sources */,
 				97B616B0195FFF99007E1842 /* ECPercentDrivenInteractiveTransition.m in Sources */,
 				97B616BD195FFF99007E1842 /* Email.m in Sources */,
-				97B616C4195FFF99007E1842 /* MNPhoneNumber.m in Sources */,
 				97B616B6195FFF99007E1842 /* UIViewController+ECSlidingViewController.m in Sources */,
 				97B616BE195FFF99007E1842 /* PhoneNumber.m in Sources */,
 				97B616B7195FFF99007E1842 /* MNCompany.m in Sources */,
 				97B616B1195FFF99007E1842 /* ECSlidingAnimationController.m in Sources */,
 				97B61616195FFF18007E1842 /* main.m in Sources */,
+				972501F01960239D001F7A4E /* MNContactsManager.m in Sources */,
 				97B616AE195FFF99007E1842 /* MNLeftSidePanelViewController.m in Sources */,
 				97B616AC195FFF99007E1842 /* MNMyCardsTableViewController.m in Sources */,
-				97B616C0195FFF99007E1842 /* MNAddress.m in Sources */,
 				97B616BB195FFF99007E1842 /* Card.m in Sources */,
 				97B616B9195FFF99007E1842 /* Contact.xcdatamodeld in Sources */,
 				97B616AA195FFF99007E1842 /* MNAppDelegate.m in Sources */,
 				97B616AB195FFF99007E1842 /* MNMyCardDetailsViewController.m in Sources */,
+				972501EC1960239D001F7A4E /* MNAddress.m in Sources */,
+				972501F11960239D001F7A4E /* MNPhoneNumber.m in Sources */,
 				97B61623195FFF18007E1842 /* Contact_Card.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

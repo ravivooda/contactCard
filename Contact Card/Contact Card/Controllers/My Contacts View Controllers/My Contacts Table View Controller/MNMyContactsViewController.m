@@ -17,7 +17,7 @@
 @end
 
 @implementation MNMyContactsViewController {
-    Contact *selectedContact;
+    MNContact *selectedContact;
 }
 
 - (void)viewDidLoad

@@ -17,6 +17,15 @@
 
 @implementation MNEmail
 
+- (MNEmail*) initWithLabelName:(NSString *)labelName andEmail:(NSString *)email {
+    self = [super init];
+    if (self) {
+        _labelName = [labelName copy];
+        _email = [email copy];
+    }
+    return self;
+}
+
 #pragma mark - Coding Protocol implementations
 -(void) encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:_labelName forKey:@"labelName"];
