@@ -97,6 +97,9 @@ static MNContactsManager *singletonInstance = nil;
 }
 
 -(void) addNewContactCard:(MNContactCard *)card {
+    
+    // Just wanna check something
+    
     NSManagedObjectContext *context = sharedContext;
     Contact *contactToSave = [NSEntityDescription insertNewObjectForEntityForName:@"Contact" inManagedObjectContext:context];
     MNContact *contact = card.contact;
