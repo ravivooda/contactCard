@@ -15,6 +15,11 @@
 		972501EF1960239D001F7A4E /* MNEmail.m in Sources */ = {isa = PBXBuildFile; fileRef = 972501E51960239D001F7A4E /* MNEmail.m */; };
 		972501F01960239D001F7A4E /* MNContactsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 972501E81960239D001F7A4E /* MNContactsManager.m */; };
 		972501F11960239D001F7A4E /* MNPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 972501EB1960239D001F7A4E /* MNPhoneNumber.m */; };
+		974F216D19602D6F009C5553 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 974F216C19602D6F009C5553 /* Card.m */; };
+		974F217019602D70009C5553 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 974F216F19602D70009C5553 /* Contact.m */; };
+		974F217319602D70009C5553 /* Email.m in Sources */ = {isa = PBXBuildFile; fileRef = 974F217219602D70009C5553 /* Email.m */; };
+		974F217619602D70009C5553 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 974F217519602D70009C5553 /* Address.m */; };
+		974F217919602D70009C5553 /* PhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 974F217819602D70009C5553 /* PhoneNumber.m */; };
 		97B61608195FFF18007E1842 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B61607195FFF18007E1842 /* Foundation.framework */; };
 		97B6160A195FFF18007E1842 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B61609195FFF18007E1842 /* CoreGraphics.framework */; };
 		97B6160C195FFF18007E1842 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B6160B195FFF18007E1842 /* UIKit.framework */; };
@@ -45,12 +50,6 @@
 		97B616B5195FFF99007E1842 /* MEZoomAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6166C195FFF99007E1842 /* MEZoomAnimationController.m */; };
 		97B616B6195FFF99007E1842 /* UIViewController+ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6166E195FFF99007E1842 /* UIViewController+ECSlidingViewController.m */; };
 		97B616B7195FFF99007E1842 /* MNCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61672195FFF99007E1842 /* MNCompany.m */; };
-		97B616B9195FFF99007E1842 /* Contact.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 97B61676195FFF99007E1842 /* Contact.xcdatamodeld */; };
-		97B616BA195FFF99007E1842 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6167A195FFF99007E1842 /* Address.m */; };
-		97B616BB195FFF99007E1842 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6167C195FFF99007E1842 /* Card.m */; };
-		97B616BC195FFF99007E1842 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6167E195FFF99007E1842 /* Contact.m */; };
-		97B616BD195FFF99007E1842 /* Email.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61680195FFF99007E1842 /* Email.m */; };
-		97B616BE195FFF99007E1842 /* PhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61682195FFF99007E1842 /* PhoneNumber.m */; };
 		97B616C5195FFF99007E1842 /* MNNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B61692195FFF99007E1842 /* MNNetworkManager.m */; };
 		97B616C6195FFF99007E1842 /* plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B61696195FFF99007E1842 /* plus@2x.png */; };
 		97B616C7195FFF99007E1842 /* sort_pointer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B61698195FFF99007E1842 /* sort_pointer@2x.png */; };
@@ -87,6 +86,16 @@
 		972501E81960239D001F7A4E /* MNContactsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNContactsManager.m; sourceTree = "<group>"; };
 		972501EA1960239D001F7A4E /* MNPhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNPhoneNumber.h; sourceTree = "<group>"; };
 		972501EB1960239D001F7A4E /* MNPhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNPhoneNumber.m; sourceTree = "<group>"; };
+		974F216B19602D6F009C5553 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		974F216C19602D6F009C5553 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
+		974F216E19602D70009C5553 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		974F216F19602D70009C5553 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
+		974F217119602D70009C5553 /* Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Email.h; sourceTree = "<group>"; };
+		974F217219602D70009C5553 /* Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Email.m; sourceTree = "<group>"; };
+		974F217419602D70009C5553 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
+		974F217519602D70009C5553 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
+		974F217719602D70009C5553 /* PhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumber.h; sourceTree = "<group>"; };
+		974F217819602D70009C5553 /* PhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneNumber.m; sourceTree = "<group>"; };
 		97B61604195FFF18007E1842 /* Contact Card.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Contact Card.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97B61607195FFF18007E1842 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		97B61609195FFF18007E1842 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -134,17 +143,6 @@
 		97B6166E195FFF99007E1842 /* UIViewController+ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ECSlidingViewController.m"; sourceTree = "<group>"; };
 		97B61671195FFF99007E1842 /* MNCompany.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNCompany.h; sourceTree = "<group>"; };
 		97B61672195FFF99007E1842 /* MNCompany.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCompany.m; sourceTree = "<group>"; };
-		97B61677195FFF99007E1842 /* Contact.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Contact.xcdatamodel; sourceTree = "<group>"; };
-		97B61679195FFF99007E1842 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
-		97B6167A195FFF99007E1842 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
-		97B6167B195FFF99007E1842 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
-		97B6167C195FFF99007E1842 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
-		97B6167D195FFF99007E1842 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
-		97B6167E195FFF99007E1842 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
-		97B6167F195FFF99007E1842 /* Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Email.h; sourceTree = "<group>"; };
-		97B61680195FFF99007E1842 /* Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Email.m; sourceTree = "<group>"; };
-		97B61681195FFF99007E1842 /* PhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumber.h; sourceTree = "<group>"; };
-		97B61682195FFF99007E1842 /* PhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneNumber.m; sourceTree = "<group>"; };
 		97B61691195FFF99007E1842 /* MNNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNNetworkManager.h; sourceTree = "<group>"; };
 		97B61692195FFF99007E1842 /* MNNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNNetworkManager.m; sourceTree = "<group>"; };
 		97B61696195FFF99007E1842 /* plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus@2x.png"; sourceTree = "<group>"; };
@@ -242,6 +240,23 @@
 				972501EB1960239D001F7A4E /* MNPhoneNumber.m */,
 			);
 			path = "Phone Number";
+			sourceTree = "<group>";
+		};
+		974F216A19602D5B009C5553 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				974F217719602D70009C5553 /* PhoneNumber.h */,
+				974F217819602D70009C5553 /* PhoneNumber.m */,
+				974F217419602D70009C5553 /* Address.h */,
+				974F217519602D70009C5553 /* Address.m */,
+				974F217119602D70009C5553 /* Email.h */,
+				974F217219602D70009C5553 /* Email.m */,
+				974F216E19602D70009C5553 /* Contact.h */,
+				974F216F19602D70009C5553 /* Contact.m */,
+				974F216B19602D6F009C5553 /* Card.h */,
+				974F216C19602D6F009C5553 /* Card.m */,
+			);
+			path = "Core Data";
 			sourceTree = "<group>";
 		};
 		97B615FB195FFF18007E1842 = {
@@ -449,6 +464,7 @@
 		97B6166F195FFF99007E1842 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				974F216A19602D5B009C5553 /* Core Data */,
 				972501DA1960239D001F7A4E /* Address */,
 				972501DD1960239D001F7A4E /* Card */,
 				972501E01960239D001F7A4E /* Contact */,
@@ -456,7 +472,6 @@
 				972501E61960239D001F7A4E /* Manager */,
 				972501E91960239D001F7A4E /* Phone Number */,
 				97B61670195FFF99007E1842 /* Company */,
-				97B61675195FFF99007E1842 /* Core Data */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -468,32 +483,6 @@
 				97B61672195FFF99007E1842 /* MNCompany.m */,
 			);
 			path = Company;
-			sourceTree = "<group>";
-		};
-		97B61675195FFF99007E1842 /* Core Data */ = {
-			isa = PBXGroup;
-			children = (
-				97B61676195FFF99007E1842 /* Contact.xcdatamodeld */,
-				97B61678195FFF99007E1842 /* Core Data Models */,
-			);
-			path = "Core Data";
-			sourceTree = "<group>";
-		};
-		97B61678195FFF99007E1842 /* Core Data Models */ = {
-			isa = PBXGroup;
-			children = (
-				97B61679195FFF99007E1842 /* Address.h */,
-				97B6167A195FFF99007E1842 /* Address.m */,
-				97B6167B195FFF99007E1842 /* Card.h */,
-				97B6167C195FFF99007E1842 /* Card.m */,
-				97B6167D195FFF99007E1842 /* Contact.h */,
-				97B6167E195FFF99007E1842 /* Contact.m */,
-				97B6167F195FFF99007E1842 /* Email.h */,
-				97B61680195FFF99007E1842 /* Email.m */,
-				97B61681195FFF99007E1842 /* PhoneNumber.h */,
-				97B61682195FFF99007E1842 /* PhoneNumber.m */,
-			);
-			path = "Core Data Models";
 			sourceTree = "<group>";
 		};
 		97B61690195FFF99007E1842 /* Network Manager */ = {
@@ -704,28 +693,27 @@
 				97B616C5195FFF99007E1842 /* MNNetworkManager.m in Sources */,
 				972501ED1960239D001F7A4E /* MNContactCard.m in Sources */,
 				97B616CD195FFF99007E1842 /* MNMyContactCardCell.m in Sources */,
+				974F217319602D70009C5553 /* Email.m in Sources */,
 				97B616CB195FFF99007E1842 /* MNLineView.m in Sources */,
+				974F217619602D70009C5553 /* Address.m in Sources */,
 				972501EF1960239D001F7A4E /* MNEmail.m in Sources */,
 				97B616B2195FFF99007E1842 /* ECSlidingInteractiveTransition.m in Sources */,
-				97B616BA195FFF99007E1842 /* Address.m in Sources */,
-				97B616BC195FFF99007E1842 /* Contact.m in Sources */,
+				974F217919602D70009C5553 /* PhoneNumber.m in Sources */,
 				97B616B3195FFF99007E1842 /* ECSlidingSegue.m in Sources */,
 				97B616CA195FFF99007E1842 /* MNUtilities.m in Sources */,
 				97B616B5195FFF99007E1842 /* MEZoomAnimationController.m in Sources */,
 				97B616AD195FFF99007E1842 /* MNMyContactsViewController.m in Sources */,
+				974F217019602D70009C5553 /* Contact.m in Sources */,
 				97B616B4195FFF99007E1842 /* ECSlidingViewController.m in Sources */,
 				97B616B0195FFF99007E1842 /* ECPercentDrivenInteractiveTransition.m in Sources */,
-				97B616BD195FFF99007E1842 /* Email.m in Sources */,
 				97B616B6195FFF99007E1842 /* UIViewController+ECSlidingViewController.m in Sources */,
-				97B616BE195FFF99007E1842 /* PhoneNumber.m in Sources */,
 				97B616B7195FFF99007E1842 /* MNCompany.m in Sources */,
 				97B616B1195FFF99007E1842 /* ECSlidingAnimationController.m in Sources */,
 				97B61616195FFF18007E1842 /* main.m in Sources */,
+				974F216D19602D6F009C5553 /* Card.m in Sources */,
 				972501F01960239D001F7A4E /* MNContactsManager.m in Sources */,
 				97B616AE195FFF99007E1842 /* MNLeftSidePanelViewController.m in Sources */,
 				97B616AC195FFF99007E1842 /* MNMyCardsTableViewController.m in Sources */,
-				97B616BB195FFF99007E1842 /* Card.m in Sources */,
-				97B616B9195FFF99007E1842 /* Contact.xcdatamodeld in Sources */,
 				97B616AA195FFF99007E1842 /* MNAppDelegate.m in Sources */,
 				97B616AB195FFF99007E1842 /* MNMyCardDetailsViewController.m in Sources */,
 				972501EC1960239D001F7A4E /* MNAddress.m in Sources */,
@@ -966,16 +954,6 @@
 			);
 			currentVersion = 97B61622195FFF18007E1842 /* Contact_Card.xcdatamodel */;
 			path = Contact_Card.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		97B61676195FFF99007E1842 /* Contact.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				97B61677195FFF99007E1842 /* Contact.xcdatamodel */,
-			);
-			currentVersion = 97B61677195FFF99007E1842 /* Contact.xcdatamodel */;
-			path = Contact.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

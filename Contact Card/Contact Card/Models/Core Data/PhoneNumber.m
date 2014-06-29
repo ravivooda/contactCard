@@ -3,7 +3,7 @@
 //  Contact Card
 //
 //  Created by Ravi Vooda on 29/06/14.
-//  Copyright (c) 2014 Mafians. All rights reserved.
+//  Copyright (c) 2014 Ravi Vooda. All rights reserved.
 //
 
 #import "PhoneNumber.h"

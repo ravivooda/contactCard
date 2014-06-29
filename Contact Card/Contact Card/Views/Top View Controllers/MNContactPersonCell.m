@@ -40,7 +40,7 @@
     
 //    [_cellBackgroundImage setImage:contact.backgroundImage];
     if (contact.imageOfPerson) {
-        [_contactImageView setImage:[UIImage imageWithData:contact.imageOfPerson]];
+        [_contactImageView setImage:contact.imageOfPerson];
     } else {
         [_contactImageView setImage:[UIImage imageNamed:@"noThumbnailImage"]];
     }

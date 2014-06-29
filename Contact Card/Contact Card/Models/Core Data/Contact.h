@@ -3,7 +3,7 @@
 //  Contact Card
 //
 //  Created by Ravi Vooda on 29/06/14.
-//  Copyright (c) 2014 Mafians. All rights reserved.
+//  Copyright (c) 2014 Ravi Vooda. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -13,39 +13,28 @@
 
 @interface Contact : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * contactID;
-@property (nonatomic, retain) NSString * notes;
-@property (nonatomic, retain) NSString * website;
-@property (nonatomic, retain) NSString * twitterUserName;
-@property (nonatomic, retain) NSString * linkedInUserName;
-@property (nonatomic, retain) NSString * facebookUserName;
-@property (nonatomic, retain) NSString * departmentName;
 @property (nonatomic, retain) NSString * companyName;
-@property (nonatomic, retain) NSString * jobTitle;
-@property (nonatomic, retain) NSString * secondaryTitle;
-@property (nonatomic, retain) NSString * firstTitle;
-@property (nonatomic, retain) NSString * nickName;
-@property (nonatomic, retain) NSString * suffixName;
-@property (nonatomic, retain) NSString * lastName;
-@property (nonatomic, retain) NSString * middleName;
+@property (nonatomic, retain) NSNumber * contactID;
+@property (nonatomic, retain) NSString * departmentName;
+@property (nonatomic, retain) NSString * facebookUserName;
 @property (nonatomic, retain) NSString * firstName;
-@property (nonatomic, retain) NSString * prefixName;
+@property (nonatomic, retain) NSString * firstTitle;
 @property (nonatomic, retain) NSData * imageOfPerson;
+@property (nonatomic, retain) NSString * jobTitle;
+@property (nonatomic, retain) NSString * lastName;
+@property (nonatomic, retain) NSString * linkedInUserName;
+@property (nonatomic, retain) NSString * middleName;
+@property (nonatomic, retain) NSString * nickName;
+@property (nonatomic, retain) NSString * notes;
+@property (nonatomic, retain) NSString * prefixName;
+@property (nonatomic, retain) NSString * secondaryTitle;
+@property (nonatomic, retain) NSString * suffixName;
+@property (nonatomic, retain) NSString * twitterUserName;
+@property (nonatomic, retain) NSString * website;
 @property (nonatomic, retain) Address *address;
+@property (nonatomic, retain) Card *card;
 @property (nonatomic, retain) NSSet *emails;
 @property (nonatomic, retain) NSSet *phoneNumbers;
-@property (nonatomic, retain) Card *card;
-
-- (Contact*) initWithContactCard:(NSDictionary*) dictionary;
-
-- (Contact*) initWithRecordReference:(ABRecordRef)ref;
-
-- (ABRecordRef) convertToRecordRef;
-
-+ (NSArray*) getContactCardsFromReference:(ABRecordRef)ref;
-
--(NSDictionary*) dictionaryOfContactCard;
-
 @end
 
 @interface Contact (CoreDataGeneratedAccessors)

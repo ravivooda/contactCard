@@ -1,9 +1,9 @@
 //
-//  PhoneNumber.h
+//  Email.h
 //  Contact Card
 //
 //  Created by Ravi Vooda on 29/06/14.
-//  Copyright (c) 2014 Mafians. All rights reserved.
+//  Copyright (c) 2014 Ravi Vooda. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,10 +11,10 @@
 
 @class Contact;
 
-@interface PhoneNumber : NSManagedObject
+@interface Email : NSManagedObject
 
+@property (nonatomic, retain) NSString * email;
 @property (nonatomic, retain) NSString * labelName;
-@property (nonatomic, retain) NSString * phoneNumber;
 @property (nonatomic, retain) Contact *contactInfo;
 
 @end
