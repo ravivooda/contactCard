@@ -7,11 +7,11 @@
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="street" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zipCode" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="contactInfo" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Contact" inverseName="address" inverseEntity="Contact" syncable="YES"/>
+        <relationship name="contactInfo" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Contact" inverseName="address" inverseEntity="Contact" syncable="YES"/>
     </entity>
     <entity name="Card" representedClassName="Card" syncable="YES">
         <attribute name="contactCardName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="contact" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Contact" inverseName="card" inverseEntity="Contact" syncable="YES"/>
+        <relationship name="contact" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Contact" inverseName="card" inverseEntity="Contact" syncable="YES"/>
     </entity>
     <entity name="Contact" representedClassName="Contact" syncable="YES">
         <attribute name="companyName" optional="YES" attributeType="String" syncable="YES"/>
@@ -32,20 +32,20 @@
         <attribute name="suffixName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="twitterUserName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="address" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Address" inverseName="contactInfo" inverseEntity="Address" syncable="YES"/>
-        <relationship name="card" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Card" inverseName="contact" inverseEntity="Card" syncable="YES"/>
-        <relationship name="emails" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Email" inverseName="contactInfo" inverseEntity="Email" syncable="YES"/>
-        <relationship name="phoneNumbers" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="PhoneNumber" inverseName="contactInfo" inverseEntity="PhoneNumber" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Address" inverseName="contactInfo" inverseEntity="Address" syncable="YES"/>
+        <relationship name="card" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Card" inverseName="contact" inverseEntity="Card" syncable="YES"/>
+        <relationship name="emails" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Email" inverseName="contactInfo" inverseEntity="Email" syncable="YES"/>
+        <relationship name="phoneNumbers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PhoneNumber" inverseName="contactInfo" inverseEntity="PhoneNumber" syncable="YES"/>
     </entity>
     <entity name="Email" representedClassName="Email" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="labelName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="contactInfo" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Contact" inverseName="emails" inverseEntity="Contact" syncable="YES"/>
+        <relationship name="contactInfo" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Contact" inverseName="emails" inverseEntity="Contact" syncable="YES"/>
     </entity>
     <entity name="PhoneNumber" representedClassName="PhoneNumber" syncable="YES">
         <attribute name="labelName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="contactInfo" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Contact" inverseName="phoneNumbers" inverseEntity="Contact" syncable="YES"/>
+        <relationship name="contactInfo" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Contact" inverseName="phoneNumbers" inverseEntity="Contact" syncable="YES"/>
     </entity>
     <elements>
         <element name="Address" positionX="-63" positionY="-18" width="128" height="148"/>

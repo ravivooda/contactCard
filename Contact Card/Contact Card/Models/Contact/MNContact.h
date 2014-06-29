@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MNCompany.h"
 #import "MNAddress.h"
+#import "Contact.h"
 
 @interface MNContact : NSObject <NSSecureCoding, UIActivityItemSource, NSCopying>
 
@@ -62,6 +63,8 @@
 - (MNContact*) initWithRecordReference:(ABRecordRef)ref;
 
 - (ABRecordRef) convertToRecordRef;
+
+-(id) initWithContact:(Contact*)contact;
 
 + (NSArray*) getContactCardsFromReference:(ABRecordRef)ref;
 

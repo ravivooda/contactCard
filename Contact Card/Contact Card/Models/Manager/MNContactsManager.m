@@ -8,6 +8,11 @@
 
 #import "MNContactsManager.h"
 #import <AddressBook/AddressBook.h>
+#import "PhoneNumber.h"
+#import "Address.h"
+#import "Email.h"
+#import "Contact.h"
+#import "Card.h"
 
 @interface MNContactsManager ()
 
@@ -30,18 +35,10 @@
 static MNContactsManager *singletonInstance = nil;
 
 + (MNContactsManager*) sharedInstance {
-    NSUserDefaults *currentDefaults = [NSUserDefaults standardUserDefaults];
-    NSData *savedArray = [currentDefaults objectForKey:@"allContactsManager"];
-    MNContactsManager *contactsManager;
-    if (savedArray) {
-        contactsManager = [NSKeyedUnarchiver unarchiveObjectWithData:savedArray];
-        if (!contactsManager) {
-            contactsManager = [[MNContactsManager alloc] init];
-        }
-        return contactsManager;
+    if (!singletonInstance) {
+        singletonInstance = [[[self class] alloc] init];
     }
-    contactsManager = [[MNContactsManager alloc] init];
-    return contactsManager;
+    return singletonInstance;
 }
 
 +(id)alloc {
@@ -100,19 +97,82 @@ static MNContactsManager *singletonInstance = nil;
 }
 
 -(void) addNewContactCard:(MNContactCard *)card {
-    if (!self.privateUserCards) {
-        self.privateUserCards = [[NSMutableArray alloc] init];
+    NSManagedObjectContext *context = sharedContext;
+    Contact *contactToSave = [NSEntityDescription insertNewObjectForEntityForName:@"Contact" inManagedObjectContext:context];
+    MNContact *contact = card.contact;
+    contactToSave.contactID = [NSNumber numberWithInt:contact.contactID];
+    contactToSave.companyName = contact.companyName;
+    contactToSave.departmentName = contact.departmentName;
+    contactToSave.facebookUserName = contact.facebookUserName;
+    contactToSave.firstName = contact.firstName;
+    contactToSave.firstTitle = contact.firstTitle;
+    contactToSave.imageOfPerson = UIImagePNGRepresentation(contact.imageOfPerson);
+    contactToSave.jobTitle = contact.jobTitle;
+    contactToSave.lastName = contact.lastName;
+    contactToSave.linkedInUserName = contact.linkedInUserName;
+    contactToSave.middleName = contact.middleName;
+    contactToSave.nickName = contact.nickName;
+    contactToSave.notes = contact.notesOfContact;
+    contactToSave.prefixName = contact.prefixName;
+    contactToSave.secondaryTitle = contact.secondaryTitle;
+    contactToSave.suffixName = contact.suffixName;
+    contactToSave.twitterUserName = contact.twitterUserName;
+    contactToSave.website = contact.website;
+    
+    Address *addressToSave = [NSEntityDescription insertNewObjectForEntityForName:@"Address" inManagedObjectContext:context];
+    MNAddress *address = card.contact.address;
+    addressToSave.city = address.city;
+    addressToSave.country = address.country;
+    addressToSave.countryCode = address.countryCode;
+    addressToSave.state = address.state;
+    addressToSave.street = address.street;
+    addressToSave.zipCode = address.zipCode;
+    addressToSave.contactInfo = contactToSave;
+    contactToSave.address = addressToSave;
+    
+    for (MNEmail *email in contact.emails) {
+        Email *emailToSave = [NSEntityDescription insertNewObjectForEntityForName:@"Email" inManagedObjectContext:context];
+        emailToSave.email = email.email;
+        emailToSave.labelName = email.labelName;
+        emailToSave.contactInfo = contactToSave;
+        [contactToSave addEmailsObject:emailToSave];
     }
     
-    [self.privateUserCards addObject:card];
+    for (MNPhoneNumber *phoneNumber in contact.phoneNumbers) {
+        PhoneNumber *phoneNumberToSave = [NSEntityDescription insertNewObjectForEntityForName:@"PhoneNumber" inManagedObjectContext:context];
+        phoneNumberToSave.phoneNumber = phoneNumber.phoneNumber;
+        phoneNumberToSave.labelName = phoneNumber.labelName;
+        phoneNumberToSave.contactInfo = contactToSave;
+        [contactToSave addPhoneNumbersObject:phoneNumberToSave];
+    }
+    
+    Card *cardToSave = [NSEntityDescription insertNewObjectForEntityForName:@"Card" inManagedObjectContext:context];
+    cardToSave.contact = contactToSave;
+    cardToSave.contactCardName = card.contactCardName;
+    NSError *error;
+    if (![context save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
 }
 
 -(NSArray*)userCards {
-    if (!self.privateUserCards) {
-        return nil;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSManagedObjectContext *context = sharedContext;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Card" inManagedObjectContext:sharedContext];
+    [fetchRequest setEntity:entity];
+    NSError *error;
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    
+    _privateUserCards = [[NSMutableArray alloc] init];
+    
+    for (Card *info in fetchedObjects) {
+        MNContactCard *cardToPush = [[MNContactCard alloc] init];
+        cardToPush.contactCardName = info.contactCardName;
+        cardToPush.contact = [[MNContact alloc] initWithContact:info.contact];
+        [_privateUserCards addObject:cardToPush];
     }
-    NSArray *retArray = [[NSArray alloc] initWithArray:self.privateUserCards copyItems:YES];
-    return retArray;
+    
+    return _privateUserCards;
 }
 
 @end

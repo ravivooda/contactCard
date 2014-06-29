@@ -18,6 +18,7 @@
 {
     // Override point for customization after application launch.
     contactManager = [MNContactsManager sharedInstance];
+    sharedContext = [self managedObjectContext];
     return YES;
 }
 

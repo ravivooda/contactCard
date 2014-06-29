@@ -10,9 +10,6 @@
 
 @interface MNEmail ()
 
-@property (strong, nonatomic) NSString *labelName;
-@property (strong, nonatomic) NSString *email;
-
 @end
 
 @implementation MNEmail

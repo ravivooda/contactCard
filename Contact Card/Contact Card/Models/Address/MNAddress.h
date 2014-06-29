@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Address.h"
 
-@interface MNAddress : NSObject <NSSecureCoding, NSCopying>
+@interface MNAddress : NSObject <NSCopying>
 
 @property (readonly, strong, nonatomic) NSString *street;
 @property (readonly, strong, nonatomic) NSString *city;
@@ -19,5 +20,7 @@
 @property (readonly, strong, nonatomic) NSString *countryCode;
 
 -(MNAddress*) initWithAddressDictionary:(NSDictionary*)dictionary;
+
+-(id) initWithAddress:(Address*)address;
 
 @end

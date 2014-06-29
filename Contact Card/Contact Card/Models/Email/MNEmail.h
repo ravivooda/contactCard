@@ -10,8 +10,8 @@
 
 @interface MNEmail : NSObject
 
-@property (strong, readonly, nonatomic) NSString *labelName;
-@property (strong, readonly, nonatomic) NSString *email;
+@property (strong, nonatomic) NSString *labelName;
+@property (strong, nonatomic) NSString *email;
 
 -(MNEmail*) initWithLabelName:(NSString*)labelName andEmail:(NSString*)email;
 

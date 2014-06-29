@@ -30,4 +30,5 @@
     #import <AddressBookUI/AddressBookUI.h>
 
     MNContactsManager *contactManager;
+    NSManagedObjectContext *sharedContext;
 #endif

@@ -22,6 +22,19 @@
 
 @implementation MNAddress
 
+-(id) initWithAddress:(Address*)address {
+    self = [super init];
+    if (self) {
+        self.city = address.city;
+        self.country = address.country;
+        self.countryCode = address.countryCode;
+        self.state = address.state;
+        self.street = address.street;
+        self.zipCode = address.zipCode;
+    }
+    return self;
+}
+
 - (MNAddress*) initWithAddressDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (self) {

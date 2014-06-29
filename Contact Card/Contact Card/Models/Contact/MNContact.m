@@ -10,6 +10,8 @@
 #import "MNPhoneNumber.h"
 #import "MNEmail.h"
 #import <malloc/malloc.h>
+#import "Email.h"
+#import "PhoneNumber.h"
 
 #define kProfileArchiveKey @"contactArchiveKey"
 NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile";
@@ -86,6 +88,48 @@ NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile"
 
 -(UIImage*) activityViewController:(UIActivityViewController *)activityViewController thumbnailImageForActivityType:(NSString *)activityType suggestedSize:(CGSize)size {
     return nil;
+}
+
+-(id) initWithContact:(Contact *)contact {
+    self = [super init];
+    if (self) {
+        self.companyName = contact.companyName;
+        self.contactID = [contact.contactID intValue];
+        self.departmentName = contact.departmentName;
+        self.facebookUserName = contact.facebookUserName;
+        self.firstName = contact.firstName;
+        self.firstTitle = contact.firstTitle;
+        self.imageOfPerson = [UIImage imageWithData:contact.imageOfPerson];
+        self.jobTitle = contact.jobTitle;
+        self.lastName = contact.lastName;
+        self.linkedInUserName = contact.linkedInUserName;
+        self.middleName = contact.middleName;
+        self.nickName = contact.nickName;
+        self.notesOfContact = contact.notes;
+        self.prefixName = contact.prefixName;
+        self.secondaryTitle = contact.secondaryTitle;
+        self.suffixName = contact.suffixName;
+        self.twitterUserName = contact.twitterUserName;
+        self.website = contact.website;
+        self.address = [[MNAddress alloc] initWithAddress:contact.address];
+        
+        NSMutableArray *emailsArray = [[NSMutableArray alloc] init];
+        for (Email *email in contact.emails) {
+            MNEmail *emailToPush = [[MNEmail alloc] init];
+            emailToPush.email = email.email;
+            emailToPush.labelName = email.labelName;
+            [emailsArray addObject:emailToPush];
+        }
+        self.emails = [[NSArray alloc] initWithArray:emailsArray];
+        
+        NSMutableArray *phoneNumbersArray = [[NSMutableArray alloc] init];
+        for (PhoneNumber *phoneNumber in contact.phoneNumbers) {
+            MNPhoneNumber *phoneNumberToPush = [[MNPhoneNumber alloc] initWithLabelName:phoneNumber.labelName andPhoneNumber:phoneNumber.phoneNumber];
+            [phoneNumbersArray addObject:phoneNumberToPush];
+        }
+        self.phoneNumbers = [[NSArray alloc] initWithArray:phoneNumbersArray];
+    }
+    return self;
 }
 
 - (NSData*) securelyArchiveRootObject:(id) object {
