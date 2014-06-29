@@ -11,14 +11,13 @@
 #import "MNAddress.h"
 #import "Contact.h"
 
-@interface MNContact : NSObject <NSSecureCoding, UIActivityItemSource, NSCopying>
+@interface MNContact : NSObject <UIActivityItemSource, NSCopying>
 
 // Identifier of the card
 @property (nonatomic, readonly) int contactID;
 
 // Images
 @property (strong, nonatomic, readonly) UIImage *imageOfPerson;
-@property (strong, nonatomic, readonly) UIImage *backgroundImage;
 
 // Identification i.e. Name
 @property (strong, nonatomic, readonly) NSString *prefixName;
@@ -43,7 +42,6 @@
 // Email
 @property (strong, nonatomic, readonly) NSArray *emails;
 
-#warning Some Social Networking links Need to add more or remove
 // Social Networking links
 @property (strong, nonatomic, readonly) NSString *facebookUserName;
 @property (strong, nonatomic, readonly) NSString *linkedInUserName;

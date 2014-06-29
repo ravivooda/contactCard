@@ -18,14 +18,11 @@ NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile"
 
 @interface MNContact ()
 
-@property (nonatomic) ABRecordRef recordRef;
-
 // Identifier of the card
 @property (nonatomic) int contactID;
 
 // Images
 @property (strong, nonatomic) UIImage *imageOfPerson;
-@property (strong, nonatomic) UIImage *backgroundImage;
 
 // Identification i.e. Name
 @property (strong, nonatomic) NSString *prefixName;
@@ -50,7 +47,6 @@ NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile"
 // Email
 @property (strong, nonatomic) NSArray *emails;
 
-#warning Some Social Networking links Need to add more or remove
 // Social Networking links
 @property (strong, nonatomic) NSString *facebookUserName;
 @property (strong, nonatomic) NSString *linkedInUserName;
@@ -83,7 +79,7 @@ NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile"
 }
 
 -(NSString*) activityViewController:(UIActivityViewController *)activityViewController subjectForActivityType:(NSString *)activityType {
-    return @"Transer contact";
+    return @"Transfer contact";
 }
 
 -(UIImage*) activityViewController:(UIActivityViewController *)activityViewController thumbnailImageForActivityType:(NSString *)activityType suggestedSize:(CGSize)size {
@@ -145,23 +141,6 @@ NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile"
     return data;
 }
 
-#pragma mark - Secure Coding Protocol implementations
--(void) encodeWithCoder:(NSCoder *)aCoder {
-    
-}
-
--(id) initWithCoder:(NSCoder *)aDecoder {
-    self = [super init];
-    if (self) {
-        
-    }
-    return self;
-}
-
-+(BOOL) supportsSecureCoding {
-    return YES;
-}
-
 #pragma mark - Copying Protocol implementations
 -(id) copyWithZone:(NSZone *)zone {
     MNContact *retObject = [[[self class] allocWithZone:zone] init];
@@ -169,7 +148,6 @@ NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile"
         retObject.contactID = _contactID;
 
         retObject.imageOfPerson = [UIImage imageWithCGImage:_imageOfPerson.CGImage];
-        retObject.backgroundImage = [UIImage imageWithCGImage:_backgroundImage.CGImage];
         
         retObject.prefixName = [_prefixName copyWithZone:zone];
         retObject.firstName = [_firstName copyWithZone:zone];
@@ -197,8 +175,6 @@ NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile"
         retObject.address = [_address copyWithZone:zone];
         
         retObject.notesOfContact = [_notesOfContact copyWithZone:zone];
-        
-        retObject.recordRef = self.recordRef;
     }
     return retObject;
 }
@@ -242,8 +218,6 @@ NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile"
 - (MNContact*) initWithRecordReference:(ABRecordRef)ref {
     self = [super init];
     if (self) {
-        
-        self.recordRef = ref;
         
         if (ABPersonHasImageData(ref)) {
             NSData *imageData = (__bridge NSData *)(ABPersonCopyImageDataWithFormat(ref, kABPersonImageFormatOriginalSize));
@@ -327,7 +301,62 @@ NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile"
 }
 
 -(ABRecordRef) convertToRecordRef {
-    return self.recordRef;
+    ABRecordRef retObject = ABPersonCreate();
+    if (retObject) {
+        ABPersonSetImageData(retObject, (__bridge CFDataRef)[NSData dataWithData:UIImagePNGRepresentation(self.imageOfPerson)], nil);
+        ABRecordSetValue(retObject, kABPersonPrefixProperty, (__bridge CFTypeRef)self.prefixName, nil);
+        ABRecordSetValue(retObject, kABPersonFirstNameProperty, (__bridge CFTypeRef)self.firstName, nil);
+        ABRecordSetValue(retObject, kABPersonMiddleNameProperty, (__bridge CFTypeRef)self.middleName, nil);
+        ABRecordSetValue(retObject, kABPersonLastNameProperty, (__bridge CFTypeRef)self.lastName, nil);
+        ABRecordSetValue(retObject, kABPersonSuffixProperty, (__bridge CFTypeRef)self.suffixName, nil);
+        ABRecordSetValue(retObject, kABPersonNicknameProperty, (__bridge CFTypeRef)self.nickName, nil);
+        ABRecordSetValue(retObject, kABPersonJobTitleProperty, (__bridge CFTypeRef)self.jobTitle, nil);
+        ABRecordSetValue(retObject, kABPersonOrganizationProperty, (__bridge CFTypeRef)self.companyName, nil);
+        ABRecordSetValue(retObject, kABPersonDepartmentProperty, (__bridge CFTypeRef)self.departmentName, nil);
+        
+        ABMutableMultiValueRef phoneNumbers = ABMultiValueCreateMutable(kABMultiStringPropertyType);
+        for (MNPhoneNumber *phoneNumber in self.phoneNumbers) {
+            ABMultiValueAddValueAndLabel(phoneNumbers, (__bridge CFTypeRef)phoneNumber.phoneNumber, (__bridge CFTypeRef)phoneNumber.labelName, NULL);
+        }
+        
+        ABRecordSetValue(retObject, kABPersonPhoneProperty, phoneNumbers, nil);
+        
+        ABMutableMultiValueRef emails = ABMultiValueCreateMutable(kABMultiStringPropertyType);
+        for (MNEmail *email in self.emails) {
+            ABMultiValueAddValueAndLabel(emails, (__bridge CFTypeRef)email.email, (__bridge CFTypeRef)email.labelName, NULL);
+        }
+        ABRecordSetValue(retObject, kABPersonEmailProperty, emails, nil);
+
+#warning Need to figure this out. For social links.
+////        ABMutableMultiValueRef facebook;
+////        ABMutableMultiValueRef linkedIn;
+////        ABMutableMultiValueRef twitter;
+//        ABMutableMultiValueRef socialLinks;
+//        
+//        if (self.facebookUserName && ![self.facebookUserName isEqualToString:@""]) {
+//            ABMutableMultiValueRef facebook = ABMultiValueCreateMutable(kABMultiDictionaryPropertyType);
+//            ABMultiValueAddValueAndLabel(facebook, (__bridge CFTypeRef)self.facebookUserName, kABPersonSocialProfileUsernameKey, NULL);
+//        }
+//        
+//        if (self.linkedInUserName && ![self.linkedInUserName isEqualToString:@""]) {
+//            ABMutableMultiValueRef linkedIn = ABMultiValueCreateMutable(kABMultiDictionaryPropertyType);
+//            ABMultiValueAddValueAndLabel(linkedIn, (__bridge CFTypeRef)self.linkedInUserName, kABPersonSocialProfileUsernameKey, NULL);
+//        }
+//        
+//        if (self.twitterUserName && ![self.twitterUserName isEqualToString:@""]) {
+//            ABMutableMultiValueRef twitter = ABMultiValueCreateMutable(kABMultiDictionaryPropertyType);
+//            ABMultiValueAddValueAndLabel(twitter, (__bridge CFTypeRef)self.twitterUserName, kABPersonSocialProfileUsernameKey, NULL);
+//        }
+        
+        ABMutableMultiValueRef website = ABMultiValueCreateMutable(kABMultiStringPropertyType);
+        if (self.website) {
+            ABMultiValueAddValueAndLabel(website, (__bridge CFTypeRef)self.website, kABPersonHomePageLabel, NULL);
+        }
+        
+        ABRecordSetValue(retObject, kABPersonURLProperty, website, nil);
+#warning Need to implement for the later ones. Address and everything below.
+    }
+    return retObject;
 }
 
 +(NSArray*) getContactCardsFromReference:(ABRecordRef)ref {

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MNPhoneNumber : NSObject <NSSecureCoding, NSCopying>
+@interface MNPhoneNumber : NSObject <NSCopying>
 
 @property (strong, readonly, nonatomic) NSString *labelName;
 @property (strong, readonly, nonatomic) NSString *phoneNumber;
