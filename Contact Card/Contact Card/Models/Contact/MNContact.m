@@ -66,12 +66,14 @@ NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile"
 @implementation MNContact
 
 #pragma mark - Activity item source implementations
--(id) activityViewController:(UIActivityViewController *)activityViewController itemForActivityType:(NSString *)activityType {
-    return [self securelyArchiveRootObject:self];
+-(id) activityViewControllerPlaceholderItem:(UIActivityViewController *)activityViewController {
+    // Let the activity view controller know NSData is being sent by passing this placeholder.
+    return [NSData data];
 }
 
--(id) activityViewControllerPlaceholderItem:(UIActivityViewController *)activityViewController {
-    return [NSData data];
+- (id) activityViewController:(UIActivityViewController *)activityViewController itemForActivityType:(NSString *)activityType {
+    //Serialize this object for sending. NSCoding protocol must be implemented for the serialization to occur.
+    return [self securelyArchiveRootObject:self];
 }
 
 -(NSString*) activityViewController:(UIActivityViewController *)activityViewController dataTypeIdentifierForActivityType:(NSString *)activityType {
@@ -139,6 +141,22 @@ NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile"
     [archiver finishEncoding];
     
     return data;
+}
+
++(BOOL) supportsSecureCoding {
+    return YES;
+}
+
+-(void) encodeWithCoder:(NSCoder *)aCoder {
+    
+}
+
+-(id) initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
 }
 
 #pragma mark - Copying Protocol implementations

@@ -14,6 +14,48 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    if (url) {
+        MNContact *contact;
+        @try {
+            //Use secure encoding because files could be transfered from anywhere by anyone
+            NSData *fileData = [NSData dataWithContentsOfFile:[url path]];
+            NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:fileData];
+            
+            //Ensure that secure encoding is used
+            [unarchiver setRequiresSecureCoding:YES];
+            
+            contact = [unarchiver decodeObjectOfClass:[MNContact class] forKey:@"contactArchiveKey"];
+        }
+        @catch (NSException *exception) {
+            if ([[exception name] isEqualToString:NSInvalidArchiveOperationException]) {
+                NSLog(@"%@ failed to unarchive APLProfile: %@", NSStringFromSelector(_cmd), exception);
+            } else {
+                [exception raise];
+            }
+        }
+        @finally {
+            NSLog(@"Got finally");
+            if (contact) {
+                NSLog(@"Contact correct");
+                ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, nil);
+                ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
+                    if (granted) {
+                        CFErrorRef *error = nil;
+                        ABAddressBookAddRecord(addressBook, [contact convertToRecordRef], error);
+                        if (error) {
+                            NSLog(@"error in saving");
+                        }
+                    } else {
+                    }
+                });
+            }
+        }
+    }
+    return YES;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.

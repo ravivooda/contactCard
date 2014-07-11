@@ -11,7 +11,7 @@
 #import "MNAddress.h"
 #import "Contact.h"
 
-@interface MNContact : NSObject <UIActivityItemSource, NSCopying>
+@interface MNContact : NSObject <UIActivityItemSource, NSSecureCoding, NSCopying>
 
 // Identifier of the card
 @property (nonatomic, readonly) int contactID;

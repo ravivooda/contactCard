@@ -21,6 +21,8 @@
 
 @property (strong, nonatomic) NSArray *cardsList;
 
+@property (strong, nonatomic) MNContactCard *selectedCard;
+
 @end
 
 @implementation MNMyCardsTableViewController
@@ -80,14 +82,19 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ABPersonViewController *personDetails = [[ABPersonViewController alloc] init];
+    self.selectedCard = self.cardsList[[indexPath row]];
     personDetails.displayedPerson = [((MNContactCard*)self.cardsList[[indexPath row]]).contact convertToRecordRef];
     personDetails.allowsActions = NO;
+    personDetails.allowsEditing = NO;
     
-    UIToolbar *bottomActionsToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 100, 320, 44)];
-    
-    [personDetails.view addSubview:bottomActionsToolbar];
+    personDetails.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Share" style:UIBarButtonItemStyleDone target:self action:@selector(sendCard)];
     
     [self.navigationController pushViewController:personDetails animated:YES];
+}
+
+- (void) sendCard {
+    UIActivityViewController *actVC = [[UIActivityViewController alloc] initWithActivityItems:@[self.selectedCard.contact] applicationActivities:nil];
+    [self presentViewController:actVC animated:YES completion:nil];
 }
 
 /*
