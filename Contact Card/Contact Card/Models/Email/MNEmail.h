@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MNEmail : NSObject
+@interface MNEmail : NSObject <NSCopying, NSSecureCoding>
 
 @property (strong, nonatomic) NSString *labelName;
 @property (strong, nonatomic) NSString *email;

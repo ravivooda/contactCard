@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9702B4711974412700041E81 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9702B4701974412700041E81 /* StoreKit.framework */; };
 		972501D819602183001F7A4E /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 972501D619602183001F7A4E /* AddressBook.framework */; };
 		972501D919602183001F7A4E /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 972501D719602183001F7A4E /* AddressBookUI.framework */; };
 		972501EC1960239D001F7A4E /* MNAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 972501DC1960239D001F7A4E /* MNAddress.m */; };
@@ -72,6 +73,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9702B46F1974405200041E81 /* Contact Card.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Contact Card.entitlements"; sourceTree = "<group>"; };
+		9702B4701974412700041E81 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		972501D619602183001F7A4E /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		972501D719602183001F7A4E /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		972501DB1960239D001F7A4E /* MNAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNAddress.h; sourceTree = "<group>"; };
@@ -166,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				972501D819602183001F7A4E /* AddressBook.framework in Frameworks */,
+				9702B4711974412700041E81 /* StoreKit.framework in Frameworks */,
 				972501D919602183001F7A4E /* AddressBookUI.framework in Frameworks */,
 				97B6160A195FFF18007E1842 /* CoreGraphics.framework in Frameworks */,
 				97B6160E195FFF18007E1842 /* CoreData.framework in Frameworks */,
@@ -259,6 +263,13 @@
 			path = "Core Data";
 			sourceTree = "<group>";
 		};
+		9767160819758F35009745C9 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
 		97B615FB195FFF18007E1842 = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +292,7 @@
 		97B61606195FFF18007E1842 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9702B4701974412700041E81 /* StoreKit.framework */,
 				972501D619602183001F7A4E /* AddressBook.framework */,
 				972501D719602183001F7A4E /* AddressBookUI.framework */,
 				97B61607195FFF18007E1842 /* Foundation.framework */,
@@ -295,12 +307,14 @@
 		97B6160F195FFF18007E1842 /* Contact Card */ = {
 			isa = PBXGroup;
 			children = (
+				9702B46F1974405200041E81 /* Contact Card.entitlements */,
 				97B61648195FFF99007E1842 /* App Delegate */,
 				97B6164B195FFF99007E1842 /* Controllers */,
 				97B6165E195FFF99007E1842 /* Libraries */,
 				97B6166F195FFF99007E1842 /* Models */,
 				97B61690195FFF99007E1842 /* Network Manager */,
 				97B61693195FFF99007E1842 /* Resources */,
+				9767160819758F35009745C9 /* iPad */,
 				97B6169D195FFF99007E1842 /* Utilities */,
 				97B616A1195FFF99007E1842 /* Views */,
 				97B6161B195FFF18007E1842 /* Main_iPhone.storyboard */,
@@ -632,6 +646,17 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Ravi Vooda";
 				TargetAttributes = {
+					97B61603195FFF18007E1842 = {
+						DevelopmentTeam = ZD7BD8RQZT;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
 					97B6162F195FFF19007E1842 = {
 						TestTargetID = 97B61603195FFF18007E1842;
 					};
@@ -853,12 +878,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Contact Card/Contact Card.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Contact Card/Contact Card-Prefix.pch";
 				INFOPLIST_FILE = "Contact Card/Contact Card-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -868,12 +897,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Contact Card/Contact Card.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Contact Card/Contact Card-Prefix.pch";
 				INFOPLIST_FILE = "Contact Card/Contact Card-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

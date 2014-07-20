@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Address.h"
 
-@interface MNAddress : NSObject <NSCopying>
+@interface MNAddress : NSObject <NSCopying, NSSecureCoding>
 
 @property (readonly, strong, nonatomic) NSString *street;
 @property (readonly, strong, nonatomic) NSString *city;

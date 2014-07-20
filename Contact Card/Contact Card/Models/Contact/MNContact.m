@@ -14,7 +14,7 @@
 #import "PhoneNumber.h"
 
 #define kProfileArchiveKey @"contactArchiveKey"
-NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile";
+NSString * const kCustomFileUTI = @"com.mafian.customProfileUTI.customprofile";
 
 @interface MNContact ()
 
@@ -148,13 +148,63 @@ NSString * const kCustomFileUTI = @"com.mafian.contactProfileUTI.contactProfile"
 }
 
 -(void) encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.imageOfPerson forKey:@"imageOfContact"];
+    [aCoder encodeObject:self.prefixName forKey:@"prefixName"];
+    [aCoder encodeObject:self.firstName forKey:@"firstName"];
+    [aCoder encodeObject:self.middleName forKey:@"middleName"];
+    [aCoder encodeObject:self.lastName forKey:@"lastName"];
+    [aCoder encodeObject:self.suffixName forKey:@"suffixName"];
+    [aCoder encodeObject:self.nickName forKey:@"nickName"];
     
+    [aCoder encodeObject:self.firstTitle forKey:@"firstTitle"];
+    [aCoder encodeObject:self.secondaryTitle forKey:@"secondaryTitle"];
+    
+    [aCoder encodeObject:self.jobTitle forKey:@"jobTitle"];
+    [aCoder encodeObject:self.companyName forKey:@"companyName"];
+    [aCoder encodeObject:self.departmentName forKey:@"departmentName"];
+    
+    [aCoder encodeObject:self.phoneNumbers forKey:@"phoneNumbers"];
+    [aCoder encodeObject:self.emails forKey:@"emails"];
+    
+    [aCoder encodeObject:self.facebookUserName forKey:@"faceBookUserName"];
+    [aCoder encodeObject:self.linkedInUserName forKey:@"linkedInUserName"];
+    [aCoder encodeObject:self.twitterUserName forKey:@"twitterUserName"];
+    
+    [aCoder encodeObject:self.website forKey:@"website"];
+    [aCoder encodeObject:self.address forKey:@"address"];
+    
+    [aCoder encodeObject:self.notesOfContact forKey:@"notesOfContact"];
 }
 
 -(id) initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     if (self) {
+        self.imageOfPerson = [aDecoder decodeObjectForKey:@"imageOfContact"];
+        self.prefixName = [aDecoder decodeObjectForKey:@"prefixName"];
+        self.firstName = [aDecoder decodeObjectForKey:@"firstName"];
+        self.middleName = [aDecoder decodeObjectForKey:@"middleName"];
+        self.lastName = [aDecoder decodeObjectForKey:@"lastName"];
+        self.suffixName = [aDecoder decodeObjectForKey:@"suffixName"];
+        self.nickName = [aDecoder decodeObjectForKey:@"nickName"];
         
+        self.firstTitle = [aDecoder decodeObjectForKey:@"firstTitle"];
+        self.secondaryTitle = [aDecoder decodeObjectForKey:@"secondaryTitle"];
+        
+        self.jobTitle = [aDecoder decodeObjectForKey:@"jobTitle"];
+        self.companyName = [aDecoder decodeObjectForKey:@"companyName"];
+        self.departmentName = [aDecoder decodeObjectForKey:@"departmentName"];
+        
+        self.phoneNumbers = [aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[MNPhoneNumber class],[NSArray class],nil] forKey:@"phoneNumbers"];
+        self.emails = [aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[MNEmail class],[NSArray class],nil] forKey:@"emails"];
+        
+        self.facebookUserName = [aDecoder decodeObjectForKey:@"faceBookUserName"];
+        self.linkedInUserName = [aDecoder decodeObjectForKey:@"linkedInUserName"];
+        self.twitterUserName = [aDecoder decodeObjectForKey:@"twitterUserName"];
+        
+        self.website = [aDecoder decodeObjectForKey:@"website"];
+        self.address = [aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[MNAddress class],[NSArray class],nil] forKey:@"address"];
+        
+        self.notesOfContact = [aDecoder decodeObjectForKey:@"notesOfContact"];
     }
     return self;
 }

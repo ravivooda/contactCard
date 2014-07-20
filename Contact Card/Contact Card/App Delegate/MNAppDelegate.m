@@ -47,6 +47,7 @@
                         if (error) {
                             NSLog(@"error in saving");
                         }
+                        ABAddressBookSave(addressBook, error);
                     } else {
                     }
                 });
