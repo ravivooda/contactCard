@@ -26,6 +26,8 @@
     #import "MNNetworkManager.h"
     #import "MNPhoneNumber.h"
     #import "MNUtilities.h"
+    #import "MNLabelAndString.h"
+    #import "MNLabelAndDate.h"
     #import <AddressBook/AddressBook.h>
     #import <AddressBookUI/AddressBookUI.h>
 

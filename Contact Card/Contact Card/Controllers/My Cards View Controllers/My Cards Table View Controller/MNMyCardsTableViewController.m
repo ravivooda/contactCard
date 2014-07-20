@@ -23,6 +23,8 @@
 
 @property (strong, nonatomic) MNContactCard *selectedCard;
 
+@property (strong, nonatomic) MNContactCard *cardNewPassing;
+
 @end
 
 @implementation MNMyCardsTableViewController
@@ -179,6 +181,11 @@
 -(void) newPersonViewController:(ABNewPersonViewController *)newPersonView didCompleteWithNewPerson:(ABRecordRef)person {
     if (newPersonView == self.cardNewController) {
         
+        self.cardNewRecordRef = person;
+        
+        self.cardNewPassing = [[MNContactCard alloc] init];
+        self.cardNewPassing.contact = [[MNContact alloc] initWithRecordReference:person];
+        
         ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, nil);
         CFErrorRef err = NULL;
         bool savePressed = ABAddressBookRemoveRecord(addressBook, person, &err);
@@ -190,7 +197,6 @@
             return;
         }
         
-        self.cardNewRecordRef = person;
         //TODO: Need to complete this check.
         /* Validating the card: Checking for minimal entries. We can do this later too */
 //        NSString *alertSentence;
@@ -213,11 +219,10 @@
             switch (buttonIndex) {
                 case 1:{
                     UITextField *cardNameTextField = [alertView textFieldAtIndex:0];
-                    MNContactCard *newContactCard = [[MNContactCard alloc] init];
-                    newContactCard.contactCardName = [cardNameTextField.text copy];
-                    newContactCard.contact = [[MNContact alloc] initWithRecordReference:self.cardNewRecordRef];
+                    self.cardNewPassing.contactCardName = [cardNameTextField.text copy];
                     
-                    [contactManager addNewContactCard:newContactCard];
+                    [contactManager addNewContactCard:self.cardNewPassing];
+                    self.cardNewPassing = nil;
                     self.cardsList = [contactManager userCards];
                     [self.tableView reloadData];
                     [self dismissViewControllerAnimated:YES completion:nil];

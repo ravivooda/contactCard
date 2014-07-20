@@ -2,7 +2,7 @@
 //  Contact.m
 //  Contact Card
 //
-//  Created by Ravi Vooda on 29/06/14.
+//  Created by Ravi Vooda on 20/07/14.
 //  Copyright (c) 2014 Ravi Vooda. All rights reserved.
 //
 
@@ -33,6 +33,7 @@
 @dynamic suffixName;
 @dynamic twitterUserName;
 @dynamic website;
+@dynamic fullImage;
 @dynamic address;
 @dynamic card;
 @dynamic emails;

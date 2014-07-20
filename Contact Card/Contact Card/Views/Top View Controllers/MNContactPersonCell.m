@@ -39,8 +39,8 @@
     _contact = contact;
     
 //    [_cellBackgroundImage setImage:contact.backgroundImage];
-    if (contact.imageOfPerson) {
-        [_contactImageView setImage:contact.imageOfPerson];
+    if (contact.thumbnailImage) {
+        [_contactImageView setImage:contact.thumbnailImage];
     } else {
         [_contactImageView setImage:[UIImage imageNamed:@"noThumbnailImage"]];
     }

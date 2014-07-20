@@ -22,7 +22,8 @@ NSString * const kCustomFileUTI = @"com.mafian.customProfileUTI.customprofile";
 @property (nonatomic) int contactID;
 
 // Images
-@property (strong, nonatomic) UIImage *imageOfPerson;
+@property (strong, nonatomic) UIImage *thumbnailImage;
+@property (strong, nonatomic) UIImage *fullImage;
 
 // Identification i.e. Name
 @property (strong, nonatomic) NSString *prefixName;
@@ -61,6 +62,14 @@ NSString * const kCustomFileUTI = @"com.mafian.customProfileUTI.customprofile";
 // Notes
 @property (strong, nonatomic) NSString *notesOfContact;
 
+@property (strong, nonatomic) NSDate *birthDay;
+
+@property (strong, nonatomic) NSArray *otherDates;
+
+@property (strong, nonatomic) NSArray *otherURLs;
+
+@property (strong, nonatomic) NSArray *relatedNames;
+
 @end
 
 @implementation MNContact
@@ -97,7 +106,8 @@ NSString * const kCustomFileUTI = @"com.mafian.customProfileUTI.customprofile";
         self.facebookUserName = contact.facebookUserName;
         self.firstName = contact.firstName;
         self.firstTitle = contact.firstTitle;
-        self.imageOfPerson = [UIImage imageWithData:contact.imageOfPerson];
+        self.thumbnailImage = [UIImage imageWithData:contact.imageOfPerson];
+        self.fullImage = [UIImage imageWithData:contact.fullImage];
         self.jobTitle = contact.jobTitle;
         self.lastName = contact.lastName;
         self.linkedInUserName = contact.linkedInUserName;
@@ -110,6 +120,7 @@ NSString * const kCustomFileUTI = @"com.mafian.customProfileUTI.customprofile";
         self.twitterUserName = contact.twitterUserName;
         self.website = contact.website;
         self.address = [[MNAddress alloc] initWithAddress:contact.address];
+#warning complete the recent added fields here
         
         NSMutableArray *emailsArray = [[NSMutableArray alloc] init];
         for (Email *email in contact.emails) {
@@ -148,7 +159,8 @@ NSString * const kCustomFileUTI = @"com.mafian.customProfileUTI.customprofile";
 }
 
 -(void) encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:self.imageOfPerson forKey:@"imageOfContact"];
+    [aCoder encodeObject:UIImagePNGRepresentation(self.thumbnailImage) forKey:@"imageOfContact"];
+    [aCoder encodeObject:UIImagePNGRepresentation(self.fullImage) forKey:@"fullImage"];
     [aCoder encodeObject:self.prefixName forKey:@"prefixName"];
     [aCoder encodeObject:self.firstName forKey:@"firstName"];
     [aCoder encodeObject:self.middleName forKey:@"middleName"];
@@ -174,12 +186,24 @@ NSString * const kCustomFileUTI = @"com.mafian.customProfileUTI.customprofile";
     [aCoder encodeObject:self.address forKey:@"address"];
     
     [aCoder encodeObject:self.notesOfContact forKey:@"notesOfContact"];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+    NSString *strDate = [dateFormatter stringFromDate:self.birthDay];
+    [aCoder encodeObject:strDate forKey:@"birthDay"];
+    
+    [aCoder encodeObject:self.otherDates forKey:@"otherDates"];
+    
+    [aCoder encodeObject:self.otherURLs forKey:@"otherURLS"];
+    
+    [aCoder encodeObject:self.relatedNames forKey:@"relatedNames"];
 }
 
 -(id) initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     if (self) {
-        self.imageOfPerson = [aDecoder decodeObjectForKey:@"imageOfContact"];
+        self.thumbnailImage = [UIImage imageWithData:[aDecoder decodeObjectForKey:@"imageOfContact"]];
+        self.fullImage = [UIImage imageWithData:[aDecoder decodeObjectForKey:@"fullImage"]];
         self.prefixName = [aDecoder decodeObjectForKey:@"prefixName"];
         self.firstName = [aDecoder decodeObjectForKey:@"firstName"];
         self.middleName = [aDecoder decodeObjectForKey:@"middleName"];
@@ -205,6 +229,17 @@ NSString * const kCustomFileUTI = @"com.mafian.customProfileUTI.customprofile";
         self.address = [aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[MNAddress class],[NSArray class],nil] forKey:@"address"];
         
         self.notesOfContact = [aDecoder decodeObjectForKey:@"notesOfContact"];
+        
+        NSString *dateString = [aDecoder decodeObjectForKey:@"birthDay"];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+        self.birthDay = [dateFormatter dateFromString:dateString];
+        
+        self.otherDates = [aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[MNLabelAndDate class],[NSArray class],nil] forKey:@"otherDates"];
+        
+        self.otherURLs = [aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[MNLabelAndString class],[NSArray class],nil] forKey:@"otherURLS"];
+        
+        self.relatedNames = [aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[MNLabelAndString class],[NSArray class],nil] forKey:@"relatedNames"];
     }
     return self;
 }
@@ -215,7 +250,8 @@ NSString * const kCustomFileUTI = @"com.mafian.customProfileUTI.customprofile";
     if (retObject) {
         retObject.contactID = _contactID;
 
-        retObject.imageOfPerson = [UIImage imageWithCGImage:_imageOfPerson.CGImage];
+        retObject.thumbnailImage = [UIImage imageWithCGImage:_thumbnailImage.CGImage];
+        retObject.fullImage = [UIImage imageWithCGImage:_fullImage.CGImage];
         
         retObject.prefixName = [_prefixName copyWithZone:zone];
         retObject.firstName = [_firstName copyWithZone:zone];
@@ -243,6 +279,11 @@ NSString * const kCustomFileUTI = @"com.mafian.customProfileUTI.customprofile";
         retObject.address = [_address copyWithZone:zone];
         
         retObject.notesOfContact = [_notesOfContact copyWithZone:zone];
+        retObject.birthDay = [[NSDate alloc] initWithTimeInterval:0 sinceDate:_birthDay];
+        
+        retObject.otherDates = [[NSArray alloc] initWithArray:_otherDates copyItems:YES];
+        retObject.otherURLs = [[NSArray alloc] initWithArray:_otherURLs copyItems:YES];
+        retObject.relatedNames = [[NSArray alloc] initWithArray:_relatedNames copyItems:YES];
     }
     return retObject;
 }
@@ -252,7 +293,7 @@ NSString * const kCustomFileUTI = @"com.mafian.customProfileUTI.customprofile";
 -(MNContact*) initWithContactCard:(NSDictionary *)dictionary {
     self = [super init];
     if (self) {
-        _imageOfPerson = [dictionary objectForKey:@"image"];
+        _thumbnailImage = [dictionary objectForKey:@"image"];
         
         _suffixName = [dictionary objectForKey:kContactsuffixName];
         _firstName = [dictionary objectForKey:kContactfirstName];
@@ -270,7 +311,7 @@ NSString * const kCustomFileUTI = @"com.mafian.customProfileUTI.customprofile";
 
 -(NSDictionary*) dictionaryOfContactCard {
     NSMutableDictionary *retDictionary = [[NSMutableDictionary alloc] init];
-    [retDictionary setObject:_imageOfPerson forKey:@"image"];
+    [retDictionary setObject:_thumbnailImage forKey:@"image"];
     
     [retDictionary setObject:_suffixName forKey:kContactsuffixName];
     [retDictionary setObject:_firstName forKey:kContactfirstName];
@@ -288,8 +329,10 @@ NSString * const kCustomFileUTI = @"com.mafian.customProfileUTI.customprofile";
     if (self) {
         
         if (ABPersonHasImageData(ref)) {
-            NSData *imageData = (__bridge NSData *)(ABPersonCopyImageDataWithFormat(ref, kABPersonImageFormatOriginalSize));
-            _imageOfPerson = [UIImage imageWithData:imageData];
+            NSData *imageData = (__bridge NSData *)(ABPersonCopyImageDataWithFormat(ref, kABPersonImageFormatThumbnail));
+            _thumbnailImage = [UIImage imageWithData:imageData];
+            NSData *fullImageData = (__bridge NSData *)(ABPersonCopyImageDataWithFormat(ref, kABPersonImageFormatOriginalSize));
+            _fullImage = [UIImage imageWithData:fullImageData];
         }
         
         _prefixName = (__bridge NSString *)(ABRecordCopyValue(ref, kABPersonPrefixProperty));
@@ -371,7 +414,7 @@ NSString * const kCustomFileUTI = @"com.mafian.customProfileUTI.customprofile";
 -(ABRecordRef) convertToRecordRef {
     ABRecordRef retObject = ABPersonCreate();
     if (retObject) {
-        ABPersonSetImageData(retObject, (__bridge CFDataRef)[NSData dataWithData:UIImagePNGRepresentation(self.imageOfPerson)], nil);
+        ABPersonSetImageData(retObject, (__bridge CFDataRef)[NSData dataWithData:UIImagePNGRepresentation(self.thumbnailImage)], nil);
         ABRecordSetValue(retObject, kABPersonPrefixProperty, (__bridge CFTypeRef)self.prefixName, nil);
         ABRecordSetValue(retObject, kABPersonFirstNameProperty, (__bridge CFTypeRef)self.firstName, nil);
         ABRecordSetValue(retObject, kABPersonMiddleNameProperty, (__bridge CFTypeRef)self.middleName, nil);
@@ -423,6 +466,14 @@ NSString * const kCustomFileUTI = @"com.mafian.customProfileUTI.customprofile";
         
         ABRecordSetValue(retObject, kABPersonURLProperty, website, nil);
 #warning Need to implement for the later ones. Address and everything below.
+        
+        ABMutableMultiValueRef addressProperty = ABMultiValueCreateMutable(kABMultiDictionaryPropertyType);
+        ABMultiValueAddValueAndLabel(addressProperty, (__bridge CFTypeRef)(self.address.street), kABPersonAddressStreetKey, NULL);
+        ABMultiValueAddValueAndLabel(addressProperty, (__bridge CFTypeRef)(self.address.city), kABPersonAddressCityKey, NULL);
+        ABMultiValueAddValueAndLabel(addressProperty, (__bridge CFTypeRef)(self.address.state), kABPersonAddressStateKey, NULL);
+        ABMultiValueAddValueAndLabel(addressProperty, (__bridge CFTypeRef)(self.address.zipCode), kABPersonAddressZIPKey, NULL);
+        ABMultiValueAddValueAndLabel(addressProperty, (__bridge CFTypeRef)(self.address.country), kABPersonAddressCountryKey, NULL);
+        ABMultiValueAddValueAndLabel(addressProperty, (__bridge CFTypeRef)(self.address.countryCode), kABPersonAddressCountryCodeKey, NULL);
     }
     return retObject;
 }

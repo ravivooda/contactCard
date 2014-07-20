@@ -17,7 +17,8 @@
 @property (nonatomic, readonly) int contactID;
 
 // Images
-@property (strong, nonatomic, readonly) UIImage *imageOfPerson;
+@property (strong, nonatomic, readonly) UIImage *thumbnailImage;
+@property (strong, nonatomic, readonly) UIImage *fullImage;
 
 // Identification i.e. Name
 @property (strong, nonatomic, readonly) NSString *prefixName;
@@ -55,6 +56,18 @@
 
 // Notes
 @property (strong, nonatomic, readonly) NSString *notesOfContact;
+
+// Birthday
+@property (strong, nonatomic, readonly) NSDate *birthDay;
+
+// Other Dates
+@property (strong, nonatomic, readonly) NSArray *otherDates;
+
+// Other URLs
+@property (strong, nonatomic, readonly) NSArray *otherURLs;
+
+// Related names
+@property (strong, nonatomic, readonly) NSArray *relatedNames;
 
 - (MNContact*) initWithContactCard:(NSDictionary*) dictionary;
 

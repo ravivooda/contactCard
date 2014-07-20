@@ -2,7 +2,7 @@
 //  Contact.h
 //  Contact Card
 //
-//  Created by Ravi Vooda on 29/06/14.
+//  Created by Ravi Vooda on 20/07/14.
 //  Copyright (c) 2014 Ravi Vooda. All rights reserved.
 //
 
@@ -31,6 +31,7 @@
 @property (nonatomic, retain) NSString * suffixName;
 @property (nonatomic, retain) NSString * twitterUserName;
 @property (nonatomic, retain) NSString * website;
+@property (nonatomic, retain) NSData * fullImage;
 @property (nonatomic, retain) Address *address;
 @property (nonatomic, retain) Card *card;
 @property (nonatomic, retain) NSSet *emails;
