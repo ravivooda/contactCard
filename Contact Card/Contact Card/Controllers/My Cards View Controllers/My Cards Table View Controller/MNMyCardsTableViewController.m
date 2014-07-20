@@ -10,6 +10,8 @@
 #import <AddressBookUI/AddressBookUI.h>
 #import "MNMyContactCardCell.h"
 
+#import <StoreKit/StoreKit.h>
+
 #define cardNameAlertViewTag 1234
 
 @interface MNMyCardsTableViewController ()
@@ -151,7 +153,17 @@
 #pragma mark - Add new card
 - (IBAction)addNewCard:(UIButton *)sender {
     //TODO: Need to create the logic for purchase here. i.e If not purchased, dont allow them add. If did go to -(void)addCard
+    [[MNUpgradeHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+        NSLog(@"Buying %@...", MNUpgradeStoreProductIdentifier);
+        if (products.count != 1) {
+            NSLog(@"Products error %@",[products description]);
+            return;
+        }
+        SKProduct *product = products[1];
+        [[MNUpgradeHelper sharedInstance] buyProduct:product];
+    }];
     
+    return;
     // Finally
     [self addCard];
 }

@@ -7,6 +7,7 @@
 //
 
 #import "MNContactsManager.h"
+#import <AddressBook/ABAddressBook.h>
 #import <AddressBook/AddressBook.h>
 #import "PhoneNumber.h"
 #import "Address.h"
@@ -14,7 +15,9 @@
 #import "Contact.h"
 #import "Card.h"
 
-@interface MNContactsManager ()
+@interface MNContactsManager () {
+    ABAddressBookRef _addressBook;
+}
 
 @property (nonatomic) bool hasLoadedContactsFromDevice;
 
@@ -59,10 +62,28 @@ static MNContactsManager *singletonInstance = nil;
     return self;
 }
 
+- (ABAddressBookRef)addressBook {
+    return _addressBook;
+}
+
+- (void)setAddressBook:(ABAddressBookRef)newAddressBook {
+    if (_addressBook != newAddressBook) {
+        if (_addressBook != NULL) {
+            CFRelease(_addressBook);
+        }
+        if (newAddressBook != NULL) {
+            CFRetain(newAddressBook);
+        }
+        _addressBook = newAddressBook;
+    }
+}
+
 -(void) loadContactsFromPhone {
     self.sema = dispatch_semaphore_create(0);
     // Import all the contacts
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, nil);
+    self.addressBook = CFAutorelease(addressBook);
+    ABAddressBookRegisterExternalChangeCallback(self.addressBook, addressBookChanged, (__bridge void *)(self));
     ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
         if (granted) {
             CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
@@ -87,7 +108,7 @@ static MNContactsManager *singletonInstance = nil;
             
             self.hasLoadedContactsFromDevice = YES;
             _personContacts = [[NSArray alloc] initWithArray:contactsArray copyItems:YES];
-            //            _companyContacts = [[NSArray alloc] initWithArray:companyArray copyItems:YES];
+//            _companyContacts = [[NSArray alloc] initWithArray:companyArray copyItems:YES];
         } else {
             _personContacts = nil;
             _companyContacts= nil;
@@ -98,8 +119,11 @@ static MNContactsManager *singletonInstance = nil;
     dispatch_semaphore_wait(self.sema, DISPATCH_TIME_FOREVER);
 }
 
+void addressBookChanged(ABAddressBookRef reference, CFDictionaryRef dictionary, void *context) {
+    NSLog(@"External change notification received");
+}
+
 -(void) addNewContactCard:(MNContactCard *)card {
-    
     // Just wanna check something
     
     NSManagedObjectContext *context = sharedContext;

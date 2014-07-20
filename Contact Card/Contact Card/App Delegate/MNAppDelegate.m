@@ -60,6 +60,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [MNUpgradeHelper sharedInstance];
     contactManager = [MNContactsManager sharedInstance];
     sharedContext = [self managedObjectContext];
     return YES;

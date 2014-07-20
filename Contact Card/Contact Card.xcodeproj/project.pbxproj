@@ -21,6 +21,7 @@
 		974F217319602D70009C5553 /* Email.m in Sources */ = {isa = PBXBuildFile; fileRef = 974F217219602D70009C5553 /* Email.m */; };
 		974F217619602D70009C5553 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 974F217519602D70009C5553 /* Address.m */; };
 		974F217919602D70009C5553 /* PhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 974F217819602D70009C5553 /* PhoneNumber.m */; };
+		976AC8F7197BBF8A001FD1E0 /* MNUpgradeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 976AC8F6197BBF8A001FD1E0 /* MNUpgradeHelper.m */; };
 		97B61608195FFF18007E1842 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B61607195FFF18007E1842 /* Foundation.framework */; };
 		97B6160A195FFF18007E1842 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B61609195FFF18007E1842 /* CoreGraphics.framework */; };
 		97B6160C195FFF18007E1842 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B6160B195FFF18007E1842 /* UIKit.framework */; };
@@ -99,6 +100,8 @@
 		974F217519602D70009C5553 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
 		974F217719602D70009C5553 /* PhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumber.h; sourceTree = "<group>"; };
 		974F217819602D70009C5553 /* PhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneNumber.m; sourceTree = "<group>"; };
+		976AC8F5197BBF8A001FD1E0 /* MNUpgradeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNUpgradeHelper.h; sourceTree = "<group>"; };
+		976AC8F6197BBF8A001FD1E0 /* MNUpgradeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNUpgradeHelper.m; sourceTree = "<group>"; };
 		97B61604195FFF18007E1842 /* Contact Card.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Contact Card.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97B61607195FFF18007E1842 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		97B61609195FFF18007E1842 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -268,6 +271,15 @@
 			children = (
 			);
 			name = iPad;
+			sourceTree = "<group>";
+		};
+		976AC8F4197BBF71001FD1E0 /* Purchase Helper */ = {
+			isa = PBXGroup;
+			children = (
+				976AC8F5197BBF8A001FD1E0 /* MNUpgradeHelper.h */,
+				976AC8F6197BBF8A001FD1E0 /* MNUpgradeHelper.m */,
+			);
+			path = "Purchase Helper";
 			sourceTree = "<group>";
 		};
 		97B615FB195FFF18007E1842 = {
@@ -478,6 +490,7 @@
 		97B6166F195FFF99007E1842 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				976AC8F4197BBF71001FD1E0 /* Purchase Helper */,
 				974F216A19602D5B009C5553 /* Core Data */,
 				972501DA1960239D001F7A4E /* Address */,
 				972501DD1960239D001F7A4E /* Card */,
@@ -723,6 +736,7 @@
 				974F217619602D70009C5553 /* Address.m in Sources */,
 				972501EF1960239D001F7A4E /* MNEmail.m in Sources */,
 				97B616B2195FFF99007E1842 /* ECSlidingInteractiveTransition.m in Sources */,
+				976AC8F7197BBF8A001FD1E0 /* MNUpgradeHelper.m in Sources */,
 				974F217919602D70009C5553 /* PhoneNumber.m in Sources */,
 				97B616B3195FFF99007E1842 /* ECSlidingSegue.m in Sources */,
 				97B616CA195FFF99007E1842 /* MNUtilities.m in Sources */,

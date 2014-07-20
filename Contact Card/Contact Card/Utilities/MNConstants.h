@@ -35,3 +35,7 @@
 #define kContactofficeLocation @"contactofficeLocation"
 
 #define kContactnotesOfContact @"contactnotesOfContact"
+
+
+
+#define MNUpgradeStoreProductIdentifier @"upgradeToPremium1Dollar"

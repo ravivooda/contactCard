@@ -28,6 +28,7 @@
     #import "MNUtilities.h"
     #import <AddressBook/AddressBook.h>
     #import <AddressBookUI/AddressBookUI.h>
+    #import "MNUpgradeHelper.h"
 
     MNContactsManager *contactManager;
     NSManagedObjectContext *sharedContext;
