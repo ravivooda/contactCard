@@ -24,12 +24,23 @@
 {
     [super viewDidLoad];
     
+    NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(printer) object:nil];
+    [thread start];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.contacts = contactManager.personContacts;
+}
+
+-(void) printer {
+    while (true) {
+        sleep(1);
+        NSDate *dater = [NSDate date];
+        NSLog(@"%f", [dater timeIntervalSince1970]);
+    }
 }
 
 - (void)didReceiveMemoryWarning

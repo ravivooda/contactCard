@@ -667,6 +667,12 @@
 					97B61603195FFF18007E1842 = {
 						DevelopmentTeam = ZD7BD8RQZT;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.DataProtection = {
+								enabled = 1;
+							};
 							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
