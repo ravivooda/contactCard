@@ -9,11 +9,23 @@
 /* Begin PBXBuildFile section */
 		715E2DCCD47F7591FA395D36 /* Pods_Contact_Card.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0299EA795392F1247509628E /* Pods_Contact_Card.framework */; };
 		97064C661D83CF44008EF6B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97064C651D83CF44008EF6B3 /* AppDelegate.swift */; };
-		97064C681D83CF44008EF6B3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97064C671D83CF44008EF6B3 /* ViewController.swift */; };
 		97064C6B1D83CF44008EF6B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97064C691D83CF44008EF6B3 /* Main.storyboard */; };
 		97064C6E1D83CF44008EF6B3 /* Contact_Card.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 97064C6C1D83CF44008EF6B3 /* Contact_Card.xcdatamodeld */; };
 		97064C701D83CF44008EF6B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97064C6F1D83CF44008EF6B3 /* Assets.xcassets */; };
 		97064C731D83CF44008EF6B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97064C711D83CF44008EF6B3 /* LaunchScreen.storyboard */; };
+		97B776BB1D83D3CE00FC0A4B /* CCMyCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B776BA1D83D3CE00FC0A4B /* CCMyCardsViewController.swift */; };
+		97B776BD1D83D40D00FC0A4B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B776BC1D83D40D00FC0A4B /* UIKit.framework */; };
+		97B776BF1D83D41300FC0A4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B776BE1D83D41300FC0A4B /* Foundation.framework */; };
+		97B776C11D83D41B00FC0A4B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B776C01D83D41B00FC0A4B /* CoreData.framework */; };
+		97B776C31D83D4AE00FC0A4B /* CCMyContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B776C21D83D4AE00FC0A4B /* CCMyContactsViewController.swift */; };
+		97B776CA1D846D6800FC0A4B /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B776C91D846D6800FC0A4B /* Manager.swift */; };
+		97B776CE1D846FE700FC0A4B /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B776CD1D846FE700FC0A4B /* Command.swift */; };
+		97B776D01D84708900FC0A4B /* VersionUnsupportedCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B776CF1D84708900FC0A4B /* VersionUnsupportedCommand.swift */; };
+		97B776D91D84751C00FC0A4B /* VersionUnsupportedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B776D71D84751C00FC0A4B /* VersionUnsupportedViewController.swift */; };
+		97B776DA1D84751C00FC0A4B /* VersionUnsupportedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97B776D81D84751C00FC0A4B /* VersionUnsupportedViewController.xib */; };
+		97B776DD1D84761000FC0A4B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B776DC1D84761000FC0A4B /* StringExtensions.swift */; };
+		97B776DF1D84782D00FC0A4B /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B776DE1D84782D00FC0A4B /* DictionaryExtensions.swift */; };
+		97B776E11D84784300FC0A4B /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B776E01D84784300FC0A4B /* ArrayExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,12 +34,24 @@
 		5DAC9CB1B15D5DD66D22913B /* Pods-Contact Card.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Contact Card.release.xcconfig"; path = "Pods/Target Support Files/Pods-Contact Card/Pods-Contact Card.release.xcconfig"; sourceTree = "<group>"; };
 		97064C621D83CF44008EF6B3 /* Contact Card.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Contact Card.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97064C651D83CF44008EF6B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		97064C671D83CF44008EF6B3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		97064C6A1D83CF44008EF6B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		97064C6D1D83CF44008EF6B3 /* Contact_Card.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Contact_Card.xcdatamodel; sourceTree = "<group>"; };
 		97064C6F1D83CF44008EF6B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97064C721D83CF44008EF6B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97064C741D83CF44008EF6B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97B776BA1D83D3CE00FC0A4B /* CCMyCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMyCardsViewController.swift; sourceTree = "<group>"; };
+		97B776BC1D83D40D00FC0A4B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		97B776BE1D83D41300FC0A4B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		97B776C01D83D41B00FC0A4B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		97B776C21D83D4AE00FC0A4B /* CCMyContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMyContactsViewController.swift; sourceTree = "<group>"; };
+		97B776C91D846D6800FC0A4B /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		97B776CD1D846FE700FC0A4B /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		97B776CF1D84708900FC0A4B /* VersionUnsupportedCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionUnsupportedCommand.swift; sourceTree = "<group>"; };
+		97B776D71D84751C00FC0A4B /* VersionUnsupportedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionUnsupportedViewController.swift; sourceTree = "<group>"; };
+		97B776D81D84751C00FC0A4B /* VersionUnsupportedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VersionUnsupportedViewController.xib; sourceTree = "<group>"; };
+		97B776DC1D84761000FC0A4B /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		97B776DE1D84782D00FC0A4B /* DictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtensions.swift; sourceTree = "<group>"; };
+		97B776E01D84784300FC0A4B /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +59,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97B776C11D83D41B00FC0A4B /* CoreData.framework in Frameworks */,
+				97B776BF1D83D41300FC0A4B /* Foundation.framework in Frameworks */,
+				97B776BD1D83D40D00FC0A4B /* UIKit.framework in Frameworks */,
 				715E2DCCD47F7591FA395D36 /* Pods_Contact_Card.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,8 +99,12 @@
 		97064C641D83CF44008EF6B3 /* Contact Card */ = {
 			isa = PBXGroup;
 			children = (
+				97B776C41D846C8C00FC0A4B /* Commands */,
+				97B776C51D846C8C00FC0A4B /* Extensions */,
+				97B776C61D846C8C00FC0A4B /* Models */,
+				97B776C71D846C8C00FC0A4B /* Views */,
+				97B776B71D83D38A00FC0A4B /* View Controllers */,
 				97064C651D83CF44008EF6B3 /* AppDelegate.swift */,
-				97064C671D83CF44008EF6B3 /* ViewController.swift */,
 				97064C691D83CF44008EF6B3 /* Main.storyboard */,
 				97064C6F1D83CF44008EF6B3 /* Assets.xcassets */,
 				97064C711D83CF44008EF6B3 /* LaunchScreen.storyboard */,
@@ -83,9 +114,121 @@
 			path = "Contact Card";
 			sourceTree = "<group>";
 		};
+		97B776B71D83D38A00FC0A4B /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				97B776D11D8471E600FC0A4B /* Other */,
+				97B776B81D83D38A00FC0A4B /* My Cards */,
+				97B776B91D83D38A00FC0A4B /* My Contacts */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		97B776B81D83D38A00FC0A4B /* My Cards */ = {
+			isa = PBXGroup;
+			children = (
+				97B776BA1D83D3CE00FC0A4B /* CCMyCardsViewController.swift */,
+			);
+			path = "My Cards";
+			sourceTree = "<group>";
+		};
+		97B776B91D83D38A00FC0A4B /* My Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				97B776C21D83D4AE00FC0A4B /* CCMyContactsViewController.swift */,
+			);
+			path = "My Contacts";
+			sourceTree = "<group>";
+		};
+		97B776C41D846C8C00FC0A4B /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				97B776CB1D846FAF00FC0A4B /* Auth */,
+				97B776CC1D846FAF00FC0A4B /* Version */,
+				97B776CD1D846FE700FC0A4B /* Command.swift */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		97B776C51D846C8C00FC0A4B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				97B776DB1D84756700FC0A4B /* Foundation */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		97B776C61D846C8C00FC0A4B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				97B776C81D846D4500FC0A4B /* Manager */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		97B776C71D846C8C00FC0A4B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		97B776C81D846D4500FC0A4B /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				97B776C91D846D6800FC0A4B /* Manager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		97B776CB1D846FAF00FC0A4B /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		97B776CC1D846FAF00FC0A4B /* Version */ = {
+			isa = PBXGroup;
+			children = (
+				97B776CF1D84708900FC0A4B /* VersionUnsupportedCommand.swift */,
+			);
+			path = Version;
+			sourceTree = "<group>";
+		};
+		97B776D11D8471E600FC0A4B /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				97B776D61D84751C00FC0A4B /* Version */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		97B776D61D84751C00FC0A4B /* Version */ = {
+			isa = PBXGroup;
+			children = (
+				97B776D71D84751C00FC0A4B /* VersionUnsupportedViewController.swift */,
+				97B776D81D84751C00FC0A4B /* VersionUnsupportedViewController.xib */,
+			);
+			path = Version;
+			sourceTree = "<group>";
+		};
+		97B776DB1D84756700FC0A4B /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				97B776DC1D84761000FC0A4B /* StringExtensions.swift */,
+				97B776DE1D84782D00FC0A4B /* DictionaryExtensions.swift */,
+				97B776E01D84784300FC0A4B /* ArrayExtensions.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
 		A1B705ADEE12BA13282079A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				97B776C01D83D41B00FC0A4B /* CoreData.framework */,
+				97B776BE1D83D41300FC0A4B /* Foundation.framework */,
+				97B776BC1D83D40D00FC0A4B /* UIKit.framework */,
 				0299EA795392F1247509628E /* Pods_Contact_Card.framework */,
 			);
 			name = Frameworks;
@@ -155,6 +298,7 @@
 				97064C731D83CF44008EF6B3 /* LaunchScreen.storyboard in Resources */,
 				97064C701D83CF44008EF6B3 /* Assets.xcassets in Resources */,
 				97064C6B1D83CF44008EF6B3 /* Main.storyboard in Resources */,
+				97B776DA1D84751C00FC0A4B /* VersionUnsupportedViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,9 +357,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97064C681D83CF44008EF6B3 /* ViewController.swift in Sources */,
 				97064C6E1D83CF44008EF6B3 /* Contact_Card.xcdatamodeld in Sources */,
+				97B776BB1D83D3CE00FC0A4B /* CCMyCardsViewController.swift in Sources */,
+				97B776C31D83D4AE00FC0A4B /* CCMyContactsViewController.swift in Sources */,
+				97B776DD1D84761000FC0A4B /* StringExtensions.swift in Sources */,
+				97B776D01D84708900FC0A4B /* VersionUnsupportedCommand.swift in Sources */,
+				97B776E11D84784300FC0A4B /* ArrayExtensions.swift in Sources */,
+				97B776DF1D84782D00FC0A4B /* DictionaryExtensions.swift in Sources */,
 				97064C661D83CF44008EF6B3 /* AppDelegate.swift in Sources */,
+				97B776CA1D846D6800FC0A4B /* Manager.swift in Sources */,
+				97B776CE1D846FE700FC0A4B /* Command.swift in Sources */,
+				97B776D91D84751C00FC0A4B /* VersionUnsupportedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
