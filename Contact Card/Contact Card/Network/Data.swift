@@ -12,21 +12,19 @@ import Alamofire
 class Data: NSObject {
     
     typealias Success = ([String: AnyObject]) -> Void
-    typealias Fail = ([String: AnyObject], Response<AnyObject, NSError>) -> Void
+    typealias Fail = ([String: AnyObject], DataResponse<Any>) -> Void
     
-    static func api(_ method:String, url:String, parameters:[String: AnyObject]?, viewController:UIViewController?, success:Success, fail:Fail) -> Void {
-        if isEmpty(method) || isEmpty(url) {
-            print("Invalid API call: method:\(method)\nurl:\(url)\nparameters:\(parameters)\nviewController:\(viewController)")
-            let response = Response<AnyObject, NSError>(
-                request: nil,
-                response: nil,
-                data: nil,
-                result: Result.Failure(NSError(domain: NSURLErrorDomain, code: NSURLErrorBadURL, userInfo: ["method": getStringValue(method, defaultValue: "Empty METHOD"), "url": getStringValue(url, defaultValue: "Empty URL"), "parameters":])),
-                timeline: Timeline()
-            )
-            fail([:], response)
-            return
+    static func api(_ method:HTTPMethod, url:String, parameters:[String: AnyObject]?, viewController:UIViewController?, success:Success) -> Void {
+        viewController?.showLoading()
+        request(url, method: method, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
+            print("Response: \(response)")
+            switch response.result {
+            case .success(let value):
+                viewController?.hideLoading(nil)
+                print("Value: \(value)")
+            case .failure(let error):
+                viewController?.hideLoading(error.localizedDescription)
+            }
         }
     }
-    
 }

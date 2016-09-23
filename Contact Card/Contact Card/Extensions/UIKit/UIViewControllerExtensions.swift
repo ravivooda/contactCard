@@ -17,7 +17,12 @@ extension UIViewController {
     
     func hideLoading(_ error:String?) -> Void {
         if self.presentedViewController != nil && self.presentedViewController!.view.tag == 123098 {
-            self.dismiss(animated: false, completion: nil)
+            self.dismiss(animated: false, completion: { 
+                if !isEmpty(error) {
+                    let alertController = UIAlertController(title: "", message: error, preferredStyle: .alert)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            })
         }
     }
 }
