@@ -10,7 +10,7 @@ import UIKit
 
 class CCMyContactsViewController: UIViewController {
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         VersionUnsupportedCommand(viewController: self, appStoreURL: "").execute()
     }

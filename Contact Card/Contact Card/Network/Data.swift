@@ -14,7 +14,7 @@ class Data: NSObject {
     typealias Success = ([String: AnyObject]) -> Void
     typealias Fail = ([String: AnyObject], Response<AnyObject, NSError>) -> Void
     
-    static func api(method:String, url:String, parameters:[String: AnyObject]?, viewController:UIViewController?, success:Success, fail:Fail) -> Void {
+    static func api(_ method:String, url:String, parameters:[String: AnyObject]?, viewController:UIViewController?, success:Success, fail:Fail) -> Void {
         if isEmpty(method) || isEmpty(url) {
             print("Invalid API call: method:\(method)\nurl:\(url)\nparameters:\(parameters)\nviewController:\(viewController)")
             let response = Response<AnyObject, NSError>(

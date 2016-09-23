@@ -8,11 +8,11 @@
 
 import Foundation
 
-func isEmpty(object:String?) -> Bool {
+func isEmpty(_ object:String?) -> Bool {
     return object == nil || object!.trim().characters.count == 0
 }
 
-func getStringValue(object:AnyObject?, defaultValue:String = "") -> String {
+func getStringValue(_ object:AnyObject?, defaultValue:String = "") -> String {
     if object == nil || (object as? String) == nil {
         return defaultValue
     }
@@ -21,6 +21,6 @@ func getStringValue(object:AnyObject?, defaultValue:String = "") -> String {
 
 extension String {
     func trim() -> String {
-        return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        return self.trimmingCharacters(in: CharacterSet.whitespaces)
     }
 }

@@ -17,7 +17,7 @@ class Command: NSObject {
         super.init()
     }
 
-    private override init() {
+    fileprivate override init() {
         self.presentingViewController = UIViewController()
     }
     

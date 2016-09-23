@@ -12,12 +12,12 @@ extension UIViewController {
     func showLoading() -> Void {
         let loadingController = LoadingViewController(nibName: "LoadingViewController", bundle: nil)
         loadingController.view.tag = 123098
-        self.presentViewController(loadingController, animated: false, completion: nil)
+        self.present(loadingController, animated: false, completion: nil)
     }
     
-    func hideLoading(error:String?) -> Void {
+    func hideLoading(_ error:String?) -> Void {
         if self.presentedViewController != nil && self.presentedViewController!.view.tag == 123098 {
-            self.dismissViewControllerAnimated(false, completion: nil)
+            self.dismiss(animated: false, completion: nil)
         }
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension Data {
-    static func login(username:String, password:String, callingViewController:UIViewController) {
+    static func login(_ username:String, password:String, callingViewController:UIViewController) {
         
     }
 }

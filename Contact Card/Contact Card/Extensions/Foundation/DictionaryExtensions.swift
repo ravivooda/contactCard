@@ -8,6 +8,6 @@
 
 import Foundation
 
-func isEmpty(object:[String: AnyObject]?) -> Bool {
+func isEmpty(_ object:[String: AnyObject]?) -> Bool {
     return object == nil || object!.count == 0
 }

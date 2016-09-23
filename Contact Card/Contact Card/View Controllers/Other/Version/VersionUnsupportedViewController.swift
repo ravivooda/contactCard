@@ -19,11 +19,11 @@ class VersionUnsupportedViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func openAppStoreClicked(sender: AnyObject) {
+    @IBAction func openAppStoreClicked(_ sender: AnyObject) {
         if !isEmpty(appStoreURL) {
-            if let url = NSURL(string: appStoreURL) {
-                if UIApplication.sharedApplication().canOpenURL(url) {
-                    UIApplication.sharedApplication().openURL(url)
+            if let url = URL(string: appStoreURL) {
+                if UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.openURL(url)
                 }
             }
         }

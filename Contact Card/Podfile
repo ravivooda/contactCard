@@ -6,6 +6,6 @@ target 'Contact Card' do
   use_frameworks!
 
   # Pods for Contact Card
-  pod 'Alamofire'
+  pod 'Alamofire', '~> 4.0'
 
 end

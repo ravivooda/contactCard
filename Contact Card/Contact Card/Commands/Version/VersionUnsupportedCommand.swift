@@ -13,7 +13,7 @@ class VersionUnsupportedCommand: Command {
     let appStoreURL:String
     
     
-    private override init(viewController: UIViewController) {
+    fileprivate override init(viewController: UIViewController) {
         appStoreURL = ""
         super.init(viewController: viewController)
     }
@@ -26,6 +26,6 @@ class VersionUnsupportedCommand: Command {
     override func execute() {
         let controller = VersionUnsupportedViewController(nibName: "VersionUnsupportedViewController", bundle: nil)
         controller.appStoreURL = self.appStoreURL
-        presentingViewController.presentViewController(controller, animated: true, completion: nil)
+        presentingViewController.present(controller, animated: true, completion: nil)
     }
 }

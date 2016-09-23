@@ -10,7 +10,7 @@ import UIKit
 
 class Manager: NSObject {
     
-    private override init() {
+    fileprivate override init() {
         super.init()
     }
     
