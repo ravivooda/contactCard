@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Ravi Vooda on 11/12/16 6:12 AM
+  ~ Copyright (c) 2016. All rights reserved.
+  ~
+  ~ Last modified 11/12/16 6:02 AM
+  -->
+
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+</resources>
