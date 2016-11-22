@@ -20,4 +20,11 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="title_activity_tabbed">TabbedActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="card_full_name_string">Full Name</string>
+    <string name="card_phone_numbers_string">Phone Number(s)</string>
+    <string name="card_emails_string">Email(s)</string>
+    <string name="card_name_string">Card Name</string>
 </resources>

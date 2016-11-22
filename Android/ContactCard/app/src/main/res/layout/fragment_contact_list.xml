@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Ravi Vooda on 11/12/16 10:19 AM
+  ~ Copyright (c) 2016. All rights reserved.
+  ~
+  ~ Last modified 11/12/16 10:19 AM
+  -->
+
+<android.support.v7.widget.RecyclerView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list"
+    android:name="utils.com.contactcard.fragment.contact.contactFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    app:layoutManager="LinearLayoutManager"
+    tools:context="utils.com.contactcard.fragment.contact.CCContactFragment"
+    tools:listitem="@layout/fragment_contact"/>

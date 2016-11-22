@@ -1,0 +1,16 @@
+<!--
+  ~ Created by Ravi Vooda on 11/12/16 6:32 AM
+  ~ Copyright (c) 2016. All rights reserved.
+  ~
+  ~ Last modified 11/12/16 6:32 AM
+  -->
+
+<resources>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+</resources>
