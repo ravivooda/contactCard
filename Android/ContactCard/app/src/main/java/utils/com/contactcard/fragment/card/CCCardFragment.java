@@ -65,7 +65,7 @@ public class CCCardFragment extends Fragment {
             });
 
             // Now delete the card
-            getActivity().getContentResolver().delete(uri, null, null);
+            //getActivity().getContentResolver().delete(uri, null, null);
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
             new AlertDialog.Builder(getActivity())

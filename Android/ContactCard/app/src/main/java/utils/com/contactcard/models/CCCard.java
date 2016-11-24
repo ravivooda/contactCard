@@ -26,9 +26,10 @@ import static android.provider.ContactsContract.CommonDataKinds.StructuredName.G
 import static android.provider.ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME;
 import static android.provider.ContactsContract.CommonDataKinds.StructuredName.PREFIX;
 import static android.provider.ContactsContract.CommonDataKinds.StructuredName.SUFFIX;
-import static android.provider.ContactsContract.Contacts.HAS_PHONE_NUMBER;
+import static android.provider.ContactsContract.Contacts.DISPLAY_NAME;
 import static android.provider.ContactsContract.Contacts._ID;
-import static android.provider.ContactsContract.Contacts.Data.*;
+import static android.provider.ContactsContract.Data.MIMETYPE;
+import static android.provider.ContactsContract.PhoneLookup.HAS_PHONE_NUMBER;
 import static utils.com.contactcard.utils.StringUtils.getStringValue;
 
 /**
@@ -105,6 +106,15 @@ public class CCCard {
             this.country = data.getString(data.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.COUNTRY));
             this.ISOCountryCode = data.getString(data.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.COUNTRY));
         }
+
+        @Override
+        public String toString() {
+            return spaceAppendedString(street) +
+                    spaceAppendedString(city) +
+                    spaceAppendedString(state) +
+                    spaceAppendedString(postalCode) +
+                    spaceAppendedString(country);
+        }
     }
 
     public static class SocialNetworkingProfile {
@@ -126,8 +136,8 @@ public class CCCard {
     public ArrayList<LabelledValues<SocialNetworkingProfile>> socialProfiles = new ArrayList<>();
     public ArrayList<LabelledValues<Date>> otherDates = new ArrayList<>();
 
-    private String spaceAppendedString(String string) {
-        return string.trim().length() > 0 ? string + " " : "";
+    private static String spaceAppendedString(String string) {
+        return string != null && string.trim().length() > 0 ? string + " " : "";
     }
 
     public String getFullName(){
@@ -144,54 +154,71 @@ public class CCCard {
     }
 
     public CCCard(Context context, Uri contactUri, ContactType contactType) throws IllegalArgumentException{
-
-        String[] PROJECTION =
-                new String[]{
-                        _ID,
-                };
         Cursor data = context.getContentResolver().query(contactUri, null, null, null, null);
         if (data == null || data.getCount() == 0) {
             throw new IllegalArgumentException("Couldn't find contact with Uri: " + contactUri);
         }
-        Log.d("CCCard", "CCCard: Data: " + data.getExtras().toString());
+
+        data.moveToFirst();
 
         this.id = data.getString(data.getColumnIndex(_ID));
         this.contactType = contactType;
 
-        data.moveToFirst();
+        Log.d("CCCard", "ID: " + this.id);
 
         // Name Details
-        this.prefix = getStringValue(data.getString(data.getColumnIndex(PREFIX)));
-        this.firstName = getStringValue(data.getString(data.getColumnIndex(GIVEN_NAME)));
-        this.middleName = getStringValue(data.getString(data.getColumnIndex(MIDDLE_NAME)));
-        this.lastName = getStringValue(data.getString(data.getColumnIndex(FAMILY_NAME)));
-        this.suffix = getStringValue(data.getString(data.getColumnIndex(SUFFIX)));
+        String whereName = ContactsContract.Data.MIMETYPE + " = ? AND " + ContactsContract.CommonDataKinds.StructuredName.CONTACT_ID + " = ?";
+        String[] whereNameParams = new String[] { ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE, id };
+        Cursor nameCursor = context.getContentResolver().query(ContactsContract.Data.CONTENT_URI, null, whereName, whereNameParams, null);
+        if (nameCursor != null) {
+            nameCursor.moveToFirst();
+
+            this.prefix = getStringValue(nameCursor.getString(nameCursor.getColumnIndex(PREFIX)));
+            this.firstName = getStringValue(nameCursor.getString(nameCursor.getColumnIndex(GIVEN_NAME)));
+            this.middleName = getStringValue(nameCursor.getString(nameCursor.getColumnIndex(MIDDLE_NAME)));
+            this.lastName = getStringValue(nameCursor.getString(nameCursor.getColumnIndex(FAMILY_NAME)));
+            this.suffix = getStringValue(nameCursor.getString(nameCursor.getColumnIndex(SUFFIX)));
+
+            nameCursor.close();
+        }
+
+        Log.d("CCCard", "Name: " + this.getFullName());
 
         // Organization Details
-        this.organizationName = getStringValue(data.getString(data.getColumnIndex(COMPANY)));
-        this.departmentName = getStringValue(data.getString(data.getColumnIndex(DEPARTMENT)));
-        this.jobTitle = getStringValue(data.getString(data.getColumnIndex(JOB_DESCRIPTION)));
+        String organizationWhere = ContactsContract.Data.MIMETYPE + " = ? AND " + ContactsContract.CommonDataKinds.Organization.CONTACT_ID + " = ?";
+        String[] organizationWhereParams = new String[] { ContactsContract.CommonDataKinds.Organization.CONTENT_ITEM_TYPE, id };
+        Cursor organizationCursor = context.getContentResolver().query(ContactsContract.Data.CONTENT_URI, null, organizationWhere, organizationWhereParams, null);
+        if (organizationCursor != null) {
+            organizationCursor.moveToFirst();
+
+            this.organizationName = getStringValue(organizationCursor.getString(organizationCursor.getColumnIndex(COMPANY)));
+            this.departmentName = getStringValue(organizationCursor.getString(organizationCursor.getColumnIndex(DEPARTMENT)));
+            this.jobTitle = getStringValue(organizationCursor.getString(organizationCursor.getColumnIndex(JOB_DESCRIPTION)));
+            organizationCursor.close();
+        }
+
+        Log.d("CCCard", "Organization: " + this.organizationName);
 
         // TODO: Load Notes
         // TODO: Load Image Data
 
         // Phone Number Details
-        if (Integer.parseInt(data.getString(data.getColumnIndex( HAS_PHONE_NUMBER ))) > 0) {
-            Cursor phoneCursor = context.getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, PROJECTION, ContactsContract.CommonDataKinds.Phone.CONTENT_URI + " = ?", new String[] { this.id }, null);
-            if (phoneCursor != null) {
-                while (phoneCursor.moveToNext()){
-                    int type = phoneCursor.getInt(phoneCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.TYPE));
-                    String phoneNumberKey = String.valueOf(ContactsContract.CommonDataKinds.Phone.getTypeLabel(context.getResources(), type, "Undefined"));
-                    String phoneNumberValue = phoneCursor.getString(phoneCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+        Cursor phoneCursor = context.getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?", new String[] { id }, null);
+        if (phoneCursor != null) {
+            while (phoneCursor.moveToNext()){
+                int type = phoneCursor.getInt(phoneCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.TYPE));
+                String phoneNumberKey = String.valueOf(ContactsContract.CommonDataKinds.Phone.getTypeLabel(context.getResources(), type, "Undefined"));
+                String phoneNumberValue = phoneCursor.getString(phoneCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
 
-                    phoneNumbers.add(new LabelledValues<>(phoneNumberKey, phoneNumberValue));
-                }
-                phoneCursor.close();
+                phoneNumbers.add(new LabelledValues<>(phoneNumberKey, phoneNumberValue));
             }
+            phoneCursor.close();
         }
 
+        Log.d("CCCard", "Phone Numbers: " + this.phoneNumbers);
+
         // Email Details
-        Cursor emailCur = context.getContentResolver().query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, PROJECTION, ContactsContract.CommonDataKinds.Email.CONTACT_ID + " = ?", new String[]{id}, null);
+        Cursor emailCur = context.getContentResolver().query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, null, ContactsContract.CommonDataKinds.Email.CONTACT_ID + " = ?", new String[]{ id }, null);
         if (emailCur != null) {
             while (emailCur.moveToNext()){
                 int type = emailCur.getInt(emailCur.getColumnIndex(ContactsContract.CommonDataKinds.Email.TYPE));
@@ -203,13 +230,15 @@ public class CCCard {
             emailCur.close();
         }
 
+        Log.d("CCCard", "Emails: " + this.emails);
+
         // Postal Addresses
         String addressWhere = ContactsContract.Data.CONTACT_ID + " = ? AND " + MIMETYPE + " = ?";
         String[] addressWhereParams = new String[]{id, ContactsContract.CommonDataKinds.StructuredPostal.CONTENT_ITEM_TYPE};
-        Cursor addressCur = context.getContentResolver().query(ContactsContract.CommonDataKinds.StructuredPostal.CONTENT_URI, PROJECTION, addressWhere, addressWhereParams, null);
+        Cursor addressCur = context.getContentResolver().query(ContactsContract.CommonDataKinds.StructuredPostal.CONTENT_URI, null, addressWhere, addressWhereParams, null);
         if (addressCur != null) {
             while (addressCur.moveToNext()){
-                int type = data.getInt(data.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.TYPE));
+                int type = addressCur.getInt(addressCur.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.TYPE));
                 String addressType = String.valueOf(ContactsContract.CommonDataKinds.StructuredPostal.getTypeLabel(context.getResources(), type, "Undefined"));
                 PostalAddress postalAddress = new PostalAddress(addressCur);
 
@@ -218,8 +247,12 @@ public class CCCard {
             addressCur.close();
         }
 
+        Log.d("CCCard", "Address: " + this.postalAddresses);
+
         // URL Addresses
-        Cursor websiteCur = context.getContentResolver().query(ContactsContract.Data.CONTENT_URI, PROJECTION, ContactsContract.CommonDataKinds.Website.CONTACT_ID + " = ?", new String[] { id }, null);
+        String websiteWhere = ContactsContract.Data.CONTACT_ID + " = ? AND " + MIMETYPE + " = ?";
+        String[] websiteWhereParams = new String[]{id, ContactsContract.CommonDataKinds.Website.CONTENT_ITEM_TYPE};
+        Cursor websiteCur = context.getContentResolver().query(ContactsContract.Data.CONTENT_URI, null, websiteWhere, websiteWhereParams, null);
         if (websiteCur != null) {
             while (websiteCur.moveToNext()){
                 int type = websiteCur.getInt(websiteCur.getColumnIndex(ContactsContract.CommonDataKinds.Website.TYPE));
@@ -231,10 +264,12 @@ public class CCCard {
             websiteCur.close();
         }
 
+        Log.d("CCCard", "Websites: " + this.urlAddresses);
+
         // TODO: Complete Social Profiles
 
         // Events Details
-        Cursor eventsCur = context.getContentResolver().query(ContactsContract.Data.CONTENT_URI, PROJECTION, ContactsContract.CommonDataKinds.Event.CONTACT_ID + " = ?", new String[] { id }, null);
+        Cursor eventsCur = context.getContentResolver().query(ContactsContract.Data.CONTENT_URI, null, ContactsContract.CommonDataKinds.Event.CONTACT_ID + " = ?", new String[] { id }, null);
         if (eventsCur != null) {
             while (eventsCur.moveToNext()) {
                 int type = eventsCur.getInt(eventsCur.getColumnIndex(ContactsContract.CommonDataKinds.Event.TYPE));
@@ -242,6 +277,8 @@ public class CCCard {
             }
             eventsCur.close();
         }
+
+        Log.d("CCCard", "Events: " + this.otherDates);
 
         data.close();
     }

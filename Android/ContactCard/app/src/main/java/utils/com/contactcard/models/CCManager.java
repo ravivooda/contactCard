@@ -28,7 +28,6 @@ public class CCManager {
         Data.addCard(item, new Data.RequestCallbackListener() {
             @Override
             public void onRequestComplete() {
-                ITEMS.add(item);
                 listener.onRequestComplete();
             }
 
