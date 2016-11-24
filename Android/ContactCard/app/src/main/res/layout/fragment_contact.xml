@@ -14,7 +14,10 @@
     <RelativeLayout
         android:id="@+id/contact_left_container"
         android:layout_width="@dimen/contact_image_side"
-        android:layout_height="@dimen/contact_image_side">
+        android:layout_height="@dimen/contact_image_side"
+        android:layout_centerInParent="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
     </RelativeLayout>
     
@@ -25,12 +28,14 @@
         android:layout_toLeftOf="@+id/contact_right_container"
         android:layout_toStartOf="@+id/contact_right_container"
         android:layout_width="match_parent"
+        android:layout_centerInParent="true"
         android:layout_height="wrap_content"/>
 
     <RelativeLayout
         android:id="@+id/contact_right_container"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
         android:layout_width="@dimen/contact_right_container_width"
         android:layout_height="@dimen/contact_image_side">
         <Button

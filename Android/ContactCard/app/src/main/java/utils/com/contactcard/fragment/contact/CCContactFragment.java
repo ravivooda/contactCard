@@ -128,8 +128,10 @@ public class CCContactFragment extends Fragment implements LoaderManager.LoaderC
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        progressDialog.dismiss();
-        progressDialog = null;
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
 
         myContactRecyclerViewAdapter.clear();
 
@@ -149,8 +151,10 @@ public class CCContactFragment extends Fragment implements LoaderManager.LoaderC
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-        progressDialog.dismiss();
-        progressDialog = null;
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
 
         new AlertDialog.Builder(getActivity())
                 .setTitle("Error occurred in fetching contacts")

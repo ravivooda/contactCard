@@ -172,14 +172,13 @@ public class CCCard {
         String[] whereNameParams = new String[] { ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE, id };
         Cursor nameCursor = context.getContentResolver().query(ContactsContract.Data.CONTENT_URI, null, whereName, whereNameParams, null);
         if (nameCursor != null) {
-            nameCursor.moveToFirst();
-
-            this.prefix = getStringValue(nameCursor.getString(nameCursor.getColumnIndex(PREFIX)));
-            this.firstName = getStringValue(nameCursor.getString(nameCursor.getColumnIndex(GIVEN_NAME)));
-            this.middleName = getStringValue(nameCursor.getString(nameCursor.getColumnIndex(MIDDLE_NAME)));
-            this.lastName = getStringValue(nameCursor.getString(nameCursor.getColumnIndex(FAMILY_NAME)));
-            this.suffix = getStringValue(nameCursor.getString(nameCursor.getColumnIndex(SUFFIX)));
-
+            if (nameCursor.moveToFirst()) {
+                this.prefix = getStringValue(nameCursor.getString(nameCursor.getColumnIndex(PREFIX)));
+                this.firstName = getStringValue(nameCursor.getString(nameCursor.getColumnIndex(GIVEN_NAME)));
+                this.middleName = getStringValue(nameCursor.getString(nameCursor.getColumnIndex(MIDDLE_NAME)));
+                this.lastName = getStringValue(nameCursor.getString(nameCursor.getColumnIndex(FAMILY_NAME)));
+                this.suffix = getStringValue(nameCursor.getString(nameCursor.getColumnIndex(SUFFIX)));
+            }
             nameCursor.close();
         }
 
@@ -190,11 +189,11 @@ public class CCCard {
         String[] organizationWhereParams = new String[] { ContactsContract.CommonDataKinds.Organization.CONTENT_ITEM_TYPE, id };
         Cursor organizationCursor = context.getContentResolver().query(ContactsContract.Data.CONTENT_URI, null, organizationWhere, organizationWhereParams, null);
         if (organizationCursor != null) {
-            organizationCursor.moveToFirst();
-
-            this.organizationName = getStringValue(organizationCursor.getString(organizationCursor.getColumnIndex(COMPANY)));
-            this.departmentName = getStringValue(organizationCursor.getString(organizationCursor.getColumnIndex(DEPARTMENT)));
-            this.jobTitle = getStringValue(organizationCursor.getString(organizationCursor.getColumnIndex(JOB_DESCRIPTION)));
+            if (organizationCursor.moveToFirst()) {
+                this.organizationName = getStringValue(organizationCursor.getString(organizationCursor.getColumnIndex(COMPANY)));
+                this.departmentName = getStringValue(organizationCursor.getString(organizationCursor.getColumnIndex(DEPARTMENT)));
+                this.jobTitle = getStringValue(organizationCursor.getString(organizationCursor.getColumnIndex(JOB_DESCRIPTION)));
+            }
             organizationCursor.close();
         }
 

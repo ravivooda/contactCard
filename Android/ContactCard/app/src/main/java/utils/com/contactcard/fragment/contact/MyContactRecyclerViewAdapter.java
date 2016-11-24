@@ -74,7 +74,7 @@ public class MyContactRecyclerViewAdapter extends RecyclerView.Adapter<MyContact
         final TextView mContactNameTextView;
         public CCContact mCard;
 
-        public ViewHolder(View view) {
+        ViewHolder(View view) {
             super(view);
             mView = view;
             mContactLeftContainer = (RelativeLayout) view.findViewById(R.id.contact_left_container);

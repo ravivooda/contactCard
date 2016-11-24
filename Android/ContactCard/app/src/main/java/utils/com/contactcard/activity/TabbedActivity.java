@@ -78,14 +78,14 @@ public class TabbedActivity extends AppCompatActivity implements Listeners.OnLis
             @Override
             public void onClick(View view) {
                 // Creates a new Intent to insert a contact
-                /*Intent intent = new Intent(ContactsContract.Intents.Insert.ACTION, ContactsContract.Contacts.CONTENT_URI);
+                Intent intent = new Intent(ContactsContract.Intents.Insert.ACTION, ContactsContract.Contacts.CONTENT_URI);
                 // Sets the MIME type to match the Contacts Provider
                 intent.setType(ContactsContract.RawContacts.CONTENT_TYPE);
                 intent.putExtra("finishActivityOnSaveCompleted", true);
 
-                startActivityForResult(intent, contactAddAction);*/
+                startActivityForResult(intent, contactAddAction);
 
-                startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), contactAddAction);
+                //startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), contactAddAction);
             }
         });
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
