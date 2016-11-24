@@ -14,4 +14,6 @@
     <dimen name="text_margin">16dp</dimen>
 
     <dimen name="card_image_side">30dp</dimen>
+    <dimen name="contact_image_side">50dp</dimen>
+    <dimen name="contact_right_container_width">100dp</dimen>
 </resources>

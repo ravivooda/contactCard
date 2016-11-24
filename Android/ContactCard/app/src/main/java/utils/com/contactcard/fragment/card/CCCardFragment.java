@@ -27,7 +27,7 @@ import utils.com.contactcard.models.CCManager;
 import utils.com.contactcard.utils.Data;
 import utils.com.contactcard.utils.Listeners;
 
-import static utils.com.contactcard.models.CCManager.ITEMS;
+import static utils.com.contactcard.models.CCManager.CC_CARDS;
 
 public class CCCardFragment extends Fragment {
 
@@ -101,7 +101,7 @@ public class CCCardFragment extends Fragment {
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            adapter = new MyCardRecyclerViewAdapter(ITEMS, mListener);
+            adapter = new MyCardRecyclerViewAdapter(CC_CARDS, mListener);
             recyclerView.setAdapter(adapter);
         }
         return view;

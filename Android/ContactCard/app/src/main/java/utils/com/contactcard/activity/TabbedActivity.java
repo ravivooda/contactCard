@@ -30,6 +30,7 @@ import utils.com.contactcard.R;
 import utils.com.contactcard.fragment.card.CCCardFragment;
 import utils.com.contactcard.fragment.contact.CCContactFragment;
 import utils.com.contactcard.models.CCCard;
+import utils.com.contactcard.models.CCContact;
 import utils.com.contactcard.utils.Listeners;
 
 import static android.Manifest.permission.READ_CONTACTS;
@@ -139,6 +140,11 @@ public class TabbedActivity extends AppCompatActivity implements Listeners.OnLis
 
     @Override
     public void onListFragmentInteraction(CCCard item) {
+
+    }
+
+    @Override
+    public void onListFragmentInteraction(CCContact item) {
 
     }
 

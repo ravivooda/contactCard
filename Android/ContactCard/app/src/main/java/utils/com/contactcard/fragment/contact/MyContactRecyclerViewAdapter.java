@@ -4,11 +4,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
 
 import utils.com.contactcard.R;
+import utils.com.contactcard.models.CCContact;
 import utils.com.contactcard.utils.Listeners.OnListFragmentInteractionListener;
 import utils.com.contactcard.models.CCCard;
 
@@ -19,10 +21,10 @@ import utils.com.contactcard.models.CCCard;
  */
 public class MyContactRecyclerViewAdapter extends RecyclerView.Adapter<MyContactRecyclerViewAdapter.ViewHolder> {
 
-    private final List<CCCard> mValues;
+    private final List<CCContact> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyContactRecyclerViewAdapter(List<CCCard> items, OnListFragmentInteractionListener listener) {
+    public MyContactRecyclerViewAdapter(List<CCContact> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -36,9 +38,9 @@ public class MyContactRecyclerViewAdapter extends RecyclerView.Adapter<MyContact
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).getId());
-        holder.mContentView.setText(mValues.get(position).getFullName());
+        holder.mCard = mValues.get(position);
+
+        holder.mContactNameTextView.setText(holder.mCard.contactName);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +48,7 @@ public class MyContactRecyclerViewAdapter extends RecyclerView.Adapter<MyContact
                 if (null != mListener) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
+                    mListener.onListFragmentInteraction(holder.mCard);
                 }
             }
         });
@@ -57,22 +59,32 @@ public class MyContactRecyclerViewAdapter extends RecyclerView.Adapter<MyContact
         return mValues.size();
     }
 
+    public void clear() {
+        mValues.clear();
+    }
+
+    public void add(CCContact ccContact) {
+        mValues.add(ccContact);
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
-        public CCCard mItem;
+        final RelativeLayout mContactLeftContainer;
+        final RelativeLayout mContactRightContainer;
+        final TextView mContactNameTextView;
+        public CCContact mCard;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.id);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            mContactLeftContainer = (RelativeLayout) view.findViewById(R.id.contact_left_container);
+            mContactRightContainer = (RelativeLayout) view.findViewById(R.id.contact_right_container);
+            mContactNameTextView = (TextView) view.findViewById(R.id.contact_name_text_view);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + mCard.toString() + "'";
         }
     }
 }

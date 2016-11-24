@@ -8,6 +8,7 @@
 package utils.com.contactcard.utils;
 
 import utils.com.contactcard.models.CCCard;
+import utils.com.contactcard.models.CCContact;
 
 /**
  * Created by rvooda on 11/18/16.
@@ -28,5 +29,6 @@ public class Listeners {
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(CCCard item);
+        void onListFragmentInteraction(CCContact item);
     }
 }

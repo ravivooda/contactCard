@@ -7,19 +7,33 @@
 
 package utils.com.contactcard.fragment.contact;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
 import utils.com.contactcard.R;
+import utils.com.contactcard.activity.TabbedActivity;
+import utils.com.contactcard.models.CCContact;
 import utils.com.contactcard.utils.Listeners;
-import utils.com.contactcard.models.CCManager;
+
+import static android.provider.BaseColumns._ID;
+import static android.provider.ContactsContract.Contacts.CONTENT_URI;
+import static android.provider.ContactsContract.Data.DISPLAY_NAME;
+import static android.provider.ContactsContract.Data.LOOKUP_KEY;
 
 /**
  * A fragment representing a list of Items.
@@ -27,13 +41,12 @@ import utils.com.contactcard.models.CCManager;
  * Activities containing this fragment MUST implement the {@link Listeners.OnListFragmentInteractionListener}
  * interface.
  */
-public class CCContactFragment extends Fragment {
-
-    // TODO: Customize parameter argument names
-    private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
-    private int mColumnCount = 1;
+public class CCContactFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
     private Listeners.OnListFragmentInteractionListener mListener;
+
+    private MyContactRecyclerViewAdapter myContactRecyclerViewAdapter;
+
+    private ProgressDialog progressDialog;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -48,18 +61,8 @@ public class CCContactFragment extends Fragment {
     public static CCContactFragment newInstance(int columnCount) {
         CCContactFragment fragment = new CCContactFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
         return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
-        }
     }
 
     @Override
@@ -71,14 +74,17 @@ public class CCContactFragment extends Fragment {
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            recyclerView.setAdapter(new MyContactRecyclerViewAdapter(CCManager.ITEMS, mListener));
+            recyclerView.setLayoutManager(new LinearLayoutManager(context));
+            myContactRecyclerViewAdapter = new MyContactRecyclerViewAdapter(new ArrayList<CCContact>(), mListener);
+            recyclerView.setAdapter(myContactRecyclerViewAdapter);
         }
+
+        reloadContacts();
         return view;
+    }
+
+    public void reloadContacts(){
+        getLoaderManager().initLoader(TabbedActivity.contactAddAction, null, this);
     }
 
 
@@ -99,4 +105,55 @@ public class CCContactFragment extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        String[] projection = {
+                _ID,
+                LOOKUP_KEY,
+                DISPLAY_NAME
+        };
+        Log.d("CCContactFragment", "onCreateLoader: Creating Loader");
+
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
+
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setTitle("Loading Contacts");
+        progressDialog.show();
+
+        return new CursorLoader(getActivity(), CONTENT_URI, projection, null, null, null);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        progressDialog.dismiss();
+        progressDialog = null;
+
+        myContactRecyclerViewAdapter.clear();
+
+        if (data != null) {
+            while (data.moveToNext()) {
+                String localLookUpKey = data.getString(data.getColumnIndex(LOOKUP_KEY));
+                String contactName = data.getString(data.getColumnIndex(DISPLAY_NAME));
+
+                CCContact ccContact = new CCContact(localLookUpKey, contactName);
+                Log.d("CCContactFragment", "New Contact: " + ccContact);
+
+                myContactRecyclerViewAdapter.add(ccContact);
+            }
+        }
+        myContactRecyclerViewAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        progressDialog.dismiss();
+        progressDialog = null;
+
+        new AlertDialog.Builder(getActivity())
+                .setTitle("Error occurred in fetching contacts")
+                .show();
+    }
 }

@@ -22,7 +22,7 @@ public class CCManager {
     /**
      * An array of my cards.
      */
-    public static final ArrayList<CCCard> ITEMS = new ArrayList<>();
+    public static final ArrayList<CCCard> CC_CARDS = new ArrayList<>();
 
     public static void addItem(final CCCard item, final Data.RequestCallbackListener listener) {
         Data.addCard(item, new Data.RequestCallbackListener() {
