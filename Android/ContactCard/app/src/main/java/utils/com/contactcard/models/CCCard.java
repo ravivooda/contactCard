@@ -7,12 +7,15 @@
 
 package utils.com.contactcard.models;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.util.Log;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -26,10 +29,8 @@ import static android.provider.ContactsContract.CommonDataKinds.StructuredName.G
 import static android.provider.ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME;
 import static android.provider.ContactsContract.CommonDataKinds.StructuredName.PREFIX;
 import static android.provider.ContactsContract.CommonDataKinds.StructuredName.SUFFIX;
-import static android.provider.ContactsContract.Contacts.DISPLAY_NAME;
 import static android.provider.ContactsContract.Contacts._ID;
 import static android.provider.ContactsContract.Data.MIMETYPE;
-import static android.provider.ContactsContract.PhoneLookup.HAS_PHONE_NUMBER;
 import static utils.com.contactcard.utils.StringUtils.getStringValue;
 
 /**
@@ -269,11 +270,27 @@ public class CCCard {
         // TODO: Complete Social Profiles
 
         // Events Details
-        Cursor eventsCur = context.getContentResolver().query(ContactsContract.Data.CONTENT_URI, null, ContactsContract.CommonDataKinds.Event.CONTACT_ID + " = ?", new String[] { id }, null);
+        String eventsWhere = ContactsContract.Data.CONTACT_ID + " = ? AND " + MIMETYPE + " = ?";
+        String[] eventsWhereParams = new String[]{id, ContactsContract.CommonDataKinds.Event.CONTENT_ITEM_TYPE};
+        Cursor eventsCur = context.getContentResolver().query(ContactsContract.Data.CONTENT_URI, null, eventsWhere, eventsWhereParams, null);
         if (eventsCur != null) {
             while (eventsCur.moveToNext()) {
                 int type = eventsCur.getInt(eventsCur.getColumnIndex(ContactsContract.CommonDataKinds.Event.TYPE));
-                String eventKey = String.valueOf(ContactsContract.CommonDataKinds.Event.getTypeLabel(context.getResources(), type, "Undefined"));
+                String eventKey = "";
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                    eventKey = String.valueOf(ContactsContract.CommonDataKinds.Event.getTypeLabel(context.getResources(), type, "Undefined"));
+                } else {
+                    // eventKey = eventsCur.getString(eventsCur.getColumnIndex(ContactsContract.CommonDataKinds.Event.LABEL));
+                    eventKey = type == ContactsContract.CommonDataKinds.Event.TYPE_BIRTHDAY ? "Birthday" : "Other";
+                }
+                String eventValue = eventsCur.getString(eventsCur.getColumnIndex(ContactsContract.CommonDataKinds.Event.START_DATE));
+                @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                try {
+                    Date date = simpleDateFormat.parse(eventValue);
+                    otherDates.add(new LabelledValues<>(eventKey, date));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
             eventsCur.close();
         }
