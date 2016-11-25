@@ -8,6 +8,7 @@
 package utils.com.contactcard.models;
 
 import android.annotation.SuppressLint;
+import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
@@ -199,8 +200,17 @@ public class CCCard {
 
         Log.d("CCCard", "Organization: " + this.organizationName);
 
-        // TODO: Load Notes
-        // TODO: Load Image Data
+        // Image Data
+        String photoWhere = ContactsContract.Data.MIMETYPE + " = ? AND " + ContactsContract.CommonDataKinds.Organization.CONTACT_ID + " = ?";
+        String[] photoWhereParams = new String[] { ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE, id };
+        Cursor imageCursor = context.getContentResolver().query(ContactsContract.Data.CONTENT_URI, null, photoWhere, photoWhereParams, null);
+        if (imageCursor != null) {
+            if (imageCursor.moveToFirst()) {
+                Uri person = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, Long.parseLong(id));
+                Uri.withAppendedPath(person, ContactsContract.Contacts.Photo.CONTENT_DIRECTORY);
+            }
+            imageCursor.close();
+        }
 
         // Phone Number Details
         Cursor phoneCursor = context.getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?", new String[] { id }, null);
