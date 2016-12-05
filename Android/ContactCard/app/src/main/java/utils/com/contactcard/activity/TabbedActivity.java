@@ -35,6 +35,7 @@ import utils.com.contactcard.utils.Listeners;
 
 import static android.Manifest.permission.READ_CONTACTS;
 import static android.Manifest.permission.WRITE_CONTACTS;
+import static android.content.Intent.ACTION_VIEW;
 
 public class TabbedActivity extends AppCompatActivity implements Listeners.OnListFragmentInteractionListener {
 
@@ -145,7 +146,9 @@ public class TabbedActivity extends AppCompatActivity implements Listeners.OnLis
 
     @Override
     public void onListFragmentInteraction(CCContact item) {
-
+        Intent intent = new Intent(ACTION_VIEW);
+        intent.setData(ContactsContract.Contacts.getLookupUri(Long.parseLong(item.getLocalContactID()), item.localContactUri));
+        startActivity(intent);
     }
 
     /**

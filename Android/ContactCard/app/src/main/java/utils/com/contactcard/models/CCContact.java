@@ -17,8 +17,10 @@ public class CCContact {
     public final String contactName;
 
     private String remoteCardID = "";
+    private final String localContactID;
 
-    public CCContact(String localContactUri, String contactName) {
+    public CCContact(String contactID, String localContactUri, String contactName) {
+        this.localContactID = contactID;
         this.localContactUri = localContactUri;
         this.contactName = contactName;
     }
@@ -31,5 +33,9 @@ public class CCContact {
     @Override
     public String toString() {
         return "Name: " + contactName + ", With ID: " + localContactUri + "\n";
+    }
+
+    public String getLocalContactID() {
+        return localContactID;
     }
 }

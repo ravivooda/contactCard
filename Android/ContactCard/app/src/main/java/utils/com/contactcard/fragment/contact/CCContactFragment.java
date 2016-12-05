@@ -139,8 +139,9 @@ public class CCContactFragment extends Fragment implements LoaderManager.LoaderC
             while (data.moveToNext()) {
                 String localLookUpKey = data.getString(data.getColumnIndex(LOOKUP_KEY));
                 String contactName = data.getString(data.getColumnIndex(DISPLAY_NAME));
+                String contactID = data.getString(data.getColumnIndex(_ID));
 
-                CCContact ccContact = new CCContact(localLookUpKey, contactName);
+                CCContact ccContact = new CCContact(contactID, localLookUpKey, contactName);
                 Log.d("CCContactFragment", "New Contact: " + ccContact);
 
                 myContactRecyclerViewAdapter.add(ccContact);
