@@ -28,4 +28,5 @@
     <string name="card_emails_string">Email(s)</string>
     <string name="card_name_string">Card Name</string>
     <string name="action_request_title">Request</string>
+    <string name="action_update_title">Update</string>
 </resources>

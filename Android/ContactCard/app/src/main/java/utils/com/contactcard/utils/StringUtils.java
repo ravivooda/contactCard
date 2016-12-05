@@ -39,4 +39,8 @@ public class StringUtils {
     public static String getWebsiteType(int i) {
         return "Home";
     }
+
+    public static boolean isEmpty(String string) {
+        return string == null || string.trim().length() == 0;
+    }
 }

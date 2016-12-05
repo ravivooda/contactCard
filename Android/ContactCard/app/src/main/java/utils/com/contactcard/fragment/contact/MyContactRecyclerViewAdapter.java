@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -13,6 +14,7 @@ import utils.com.contactcard.R;
 import utils.com.contactcard.models.CCContact;
 import utils.com.contactcard.utils.Listeners.OnListFragmentInteractionListener;
 import utils.com.contactcard.models.CCCard;
+import utils.com.contactcard.utils.StringUtils;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link CCCard} and makes a call to the
@@ -41,6 +43,14 @@ public class MyContactRecyclerViewAdapter extends RecyclerView.Adapter<MyContact
         holder.mCard = mValues.get(position);
 
         holder.mContactNameTextView.setText(holder.mCard.contactName);
+
+        if (StringUtils.isEmpty(holder.mCard.getRemoteCardID())) {
+            holder.mContactRequestButton.setVisibility(View.VISIBLE);
+            holder.mContactUpdateButton.setVisibility(View.GONE);
+        } else {
+            holder.mContactUpdateButton.setVisibility(View.VISIBLE);
+            holder.mContactRequestButton.setVisibility(View.GONE);
+        }
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +82,10 @@ public class MyContactRecyclerViewAdapter extends RecyclerView.Adapter<MyContact
         final RelativeLayout mContactLeftContainer;
         final RelativeLayout mContactRightContainer;
         final TextView mContactNameTextView;
+
+        // Buttons
+        final Button mContactRequestButton;
+        final Button mContactUpdateButton;
         public CCContact mCard;
 
         ViewHolder(View view) {
@@ -80,6 +94,8 @@ public class MyContactRecyclerViewAdapter extends RecyclerView.Adapter<MyContact
             mContactLeftContainer = (RelativeLayout) view.findViewById(R.id.contact_left_container);
             mContactRightContainer = (RelativeLayout) view.findViewById(R.id.contact_right_container);
             mContactNameTextView = (TextView) view.findViewById(R.id.contact_name_text_view);
+            mContactRequestButton = (Button) view.findViewById(R.id.contact_request_button);
+            mContactUpdateButton = (Button) view.findViewById(R.id.contact_update_button);
         }
 
         @Override

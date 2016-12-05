@@ -39,7 +39,13 @@
         android:layout_width="@dimen/contact_right_container_width"
         android:layout_height="@dimen/contact_image_side">
         <Button
+            android:id="@+id/contact_request_button"
             android:text="@string/action_request_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <Button
+            android:id="@+id/contact_update_button"
+            android:text="@string/action_update_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </RelativeLayout>

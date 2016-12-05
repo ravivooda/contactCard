@@ -110,7 +110,7 @@ public class CCContactFragment extends Fragment implements LoaderManager.LoaderC
         String[] projection = {
                 _ID,
                 LOOKUP_KEY,
-                DISPLAY_NAME
+                DISPLAY_NAME,
         };
         Log.d("CCContactFragment", "onCreateLoader: Creating Loader");
 
@@ -137,11 +137,8 @@ public class CCContactFragment extends Fragment implements LoaderManager.LoaderC
 
         if (data != null) {
             while (data.moveToNext()) {
-                String localLookUpKey = data.getString(data.getColumnIndex(LOOKUP_KEY));
-                String contactName = data.getString(data.getColumnIndex(DISPLAY_NAME));
-                String contactID = data.getString(data.getColumnIndex(_ID));
+                CCContact ccContact = new CCContact(getContext(), data);
 
-                CCContact ccContact = new CCContact(contactID, localLookUpKey, contactName);
                 Log.d("CCContactFragment", "New Contact: " + ccContact);
 
                 myContactRecyclerViewAdapter.add(ccContact);
