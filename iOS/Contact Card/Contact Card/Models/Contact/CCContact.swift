@@ -11,10 +11,19 @@ import Contacts
 
 class CCContact {
 	
-	var contact:CNContact
+	let contact:CNContact
+	
+	let remoteID:String
 	
 	init(contact:CNContact) {
 		self.contact = contact
+		var remoteID = ""
+		for note in contact.note.components(separatedBy: "\n") {
+			if note.contains("Card ID:") {
+				remoteID = note.substring(from: note.index(note.startIndex, offsetBy: 9))
+			}
+		}
+		self.remoteID = remoteID
 	}
 
 	func displayName() -> String {

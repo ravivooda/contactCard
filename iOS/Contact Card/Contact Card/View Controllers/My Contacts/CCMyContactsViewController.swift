@@ -37,7 +37,7 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
 		var contacts:[CCContact] = []
 		let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
 		                   CNContactImageDataKey,
-		                   CNContactPhoneNumbersKey] as [Any]
+		                   CNContactNoteKey] as [Any]
 		let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
 		do {
 			try store.enumerateContacts(with: fetchRequest, usingBlock: { (contact, stop) -> Void in

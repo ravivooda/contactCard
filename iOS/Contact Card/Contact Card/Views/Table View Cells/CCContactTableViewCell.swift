@@ -12,12 +12,20 @@ class CCContactTableViewCell: UITableViewCell {
 	@IBOutlet weak var nameLabel: UILabel!
 	@IBOutlet weak var leftContainer: UIView!
 
+	@IBOutlet weak var rightButton: UIButton!
     private var contact:CCContact?
 	
 	func setContact(contact:CCContact) {
 		self.contact = contact
 		
 		self.nameLabel.text = contact.displayName();
+		self.rightButton.setTitle(isEmpty(contact.remoteID) ? "Ready" : "Update", for: .normal)
+	}
+
+	@IBAction func rightButtonClicked(_ sender: Any) {
+		if isEmpty(contact?.remoteID) {
+			
+		}
 	}
 	
 	func getContact() -> CCContact? {

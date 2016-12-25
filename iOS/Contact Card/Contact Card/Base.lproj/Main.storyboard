@@ -94,25 +94,49 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wyx-ih-gcl">
-                                                    <rect key="frame" x="107" y="0.0" width="268" height="99"/>
+                                                    <rect key="frame" x="107" y="0.0" width="169" height="99"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IwF-7U-G3i">
+                                                    <rect key="frame" x="276" y="0.0" width="99" height="99"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3y-fj-2EL">
+                                                            <rect key="frame" x="0.0" y="0.0" width="99" height="99"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <connections>
+                                                                <action selector="rightButtonClicked:" destination="rEj-5I-YAq" eventType="touchUpInside" id="GT4-N3-TIh"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="j3y-fj-2EL" firstAttribute="top" secondItem="IwF-7U-G3i" secondAttribute="top" id="3Dg-ZL-kHe"/>
+                                                        <constraint firstAttribute="width" secondItem="IwF-7U-G3i" secondAttribute="height" multiplier="1:1" id="BCR-vs-9UZ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="j3y-fj-2EL" secondAttribute="trailing" id="cf9-9t-Lcc"/>
+                                                        <constraint firstAttribute="bottom" secondItem="j3y-fj-2EL" secondAttribute="bottom" id="cun-TH-8rp"/>
+                                                        <constraint firstItem="j3y-fj-2EL" firstAttribute="leading" secondItem="IwF-7U-G3i" secondAttribute="leading" id="hoT-xM-med"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Wyx-ih-gcl" firstAttribute="leading" secondItem="RQq-fs-iHl" secondAttribute="trailing" constant="8" id="1SH-59-khi"/>
-                                                <constraint firstAttribute="trailing" secondItem="Wyx-ih-gcl" secondAttribute="trailing" id="CuS-uU-V2y"/>
+                                                <constraint firstItem="IwF-7U-G3i" firstAttribute="top" secondItem="QSQ-Hb-yVh" secondAttribute="top" id="I0d-i2-k8d"/>
+                                                <constraint firstAttribute="bottom" secondItem="IwF-7U-G3i" secondAttribute="bottom" id="Qk0-1Y-ftd"/>
                                                 <constraint firstAttribute="bottom" secondItem="RQq-fs-iHl" secondAttribute="bottom" id="SIR-z2-lqu"/>
                                                 <constraint firstItem="RQq-fs-iHl" firstAttribute="leading" secondItem="QSQ-Hb-yVh" secondAttribute="leading" id="VKR-Np-ygF"/>
                                                 <constraint firstItem="Wyx-ih-gcl" firstAttribute="top" secondItem="QSQ-Hb-yVh" secondAttribute="top" id="ZqP-0h-epD"/>
+                                                <constraint firstAttribute="trailing" secondItem="IwF-7U-G3i" secondAttribute="trailing" id="a45-ha-tzk"/>
                                                 <constraint firstItem="RQq-fs-iHl" firstAttribute="top" secondItem="QSQ-Hb-yVh" secondAttribute="top" id="gtR-dR-QBw"/>
+                                                <constraint firstItem="IwF-7U-G3i" firstAttribute="leading" secondItem="Wyx-ih-gcl" secondAttribute="trailing" id="lxr-Ex-Dvb"/>
                                                 <constraint firstAttribute="bottom" secondItem="Wyx-ih-gcl" secondAttribute="bottom" id="sgY-d0-cK5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="leftContainer" destination="RQq-fs-iHl" id="IIT-9k-D1S"/>
                                             <outlet property="nameLabel" destination="Wyx-ih-gcl" id="TCf-0q-Zqj"/>
+                                            <outlet property="rightButton" destination="j3y-fj-2EL" id="5pa-u0-eun"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
