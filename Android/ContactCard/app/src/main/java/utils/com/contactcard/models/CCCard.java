@@ -100,11 +100,13 @@ public class CCCard {
         public String ISOCountryCode = "";
 
         public PostalAddress(Cursor data){
-            this.postalCode = data.getString(data.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.POBOX));
             this.street = data.getString(data.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.STREET));
             this.city = data.getString(data.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.CITY));
             this.state = data.getString(data.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.REGION));
             this.postalCode = data.getString(data.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.POSTCODE));
+            if (!StringUtils.isEmpty(this.postalCode)) {
+                this.postalCode = data.getString(data.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.POBOX));
+            }
             this.country = data.getString(data.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.COUNTRY));
             this.ISOCountryCode = data.getString(data.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.COUNTRY));
         }

@@ -51,7 +51,7 @@ public class CCCardFragment extends Fragment {
         try {
             final CCCard card = new CCCard(getActivity(), uri, CCCard.ContactType.Person);
 
-            CCManager.addItem(card, new Data.RequestCallbackListener() {
+            CCManager.addCard(card, new Data.RequestCallbackListener() {
                 @Override
                 public void onRequestComplete() {
                     Log.d("CCCardFragment", "Added Card: " + card.getFullName());
