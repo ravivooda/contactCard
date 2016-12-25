@@ -31,6 +31,8 @@
 		97B776EA1D8480B900FC0A4B /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B776E91D8480B900FC0A4B /* UIViewControllerExtensions.swift */; };
 		97B776EE1D84812900FC0A4B /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B776EC1D84812900FC0A4B /* LoadingViewController.swift */; };
 		97B776EF1D84812900FC0A4B /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97B776ED1D84812900FC0A4B /* LoadingViewController.xib */; };
+		BC54A93A1E0F6ECF0062CE8B /* CCContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC54A9391E0F6ECF0062CE8B /* CCContactTableViewCell.swift */; };
+		BC54A93E1E0F6EFC0062CE8B /* CCContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC54A93D1E0F6EFC0062CE8B /* CCContact.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,8 @@
 		97B776E91D8480B900FC0A4B /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		97B776EC1D84812900FC0A4B /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		97B776ED1D84812900FC0A4B /* LoadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
+		BC54A9391E0F6ECF0062CE8B /* CCContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCContactTableViewCell.swift; sourceTree = "<group>"; };
+		BC54A93D1E0F6EFC0062CE8B /* CCContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCContact.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +178,8 @@
 		97B776C61D846C8C00FC0A4B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BC54A93B1E0F6EE80062CE8B /* Card */,
+				BC54A93C1E0F6EE80062CE8B /* Contact */,
 				97B776C81D846D4500FC0A4B /* Manager */,
 			);
 			path = Models;
@@ -182,6 +188,7 @@
 		97B776C71D846C8C00FC0A4B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BC54A9381E0F6E8D0062CE8B /* Table View Cells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -279,6 +286,29 @@
 				0299EA795392F1247509628E /* Pods_Contact_Card.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BC54A9381E0F6E8D0062CE8B /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				BC54A9391E0F6ECF0062CE8B /* CCContactTableViewCell.swift */,
+			);
+			path = "Table View Cells";
+			sourceTree = "<group>";
+		};
+		BC54A93B1E0F6EE80062CE8B /* Card */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		BC54A93C1E0F6EE80062CE8B /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				BC54A93D1E0F6EFC0062CE8B /* CCContact.swift */,
+			);
+			path = Contact;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -406,6 +436,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC54A93E1E0F6EFC0062CE8B /* CCContact.swift in Sources */,
 				97B776E71D847C6900FC0A4B /* Auth.swift in Sources */,
 				97064C6E1D83CF44008EF6B3 /* Contact_Card.xcdatamodeld in Sources */,
 				97B776EE1D84812900FC0A4B /* LoadingViewController.swift in Sources */,
@@ -418,6 +449,7 @@
 				97B776DF1D84782D00FC0A4B /* DictionaryExtensions.swift in Sources */,
 				97B776E51D847B3900FC0A4B /* Data.swift in Sources */,
 				97064C661D83CF44008EF6B3 /* AppDelegate.swift in Sources */,
+				BC54A93A1E0F6ECF0062CE8B /* CCContactTableViewCell.swift in Sources */,
 				97B776CA1D846D6800FC0A4B /* Manager.swift in Sources */,
 				97B776CE1D846FE700FC0A4B /* Command.swift in Sources */,
 				97B776D91D84751C00FC0A4B /* VersionUnsupportedViewController.swift in Sources */,
