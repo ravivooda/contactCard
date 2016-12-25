@@ -8,6 +8,7 @@
 
 import UIKit
 import Contacts
+import ContactsUI
 
 class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 	
@@ -35,8 +36,9 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
 	
 	func retrieveContactsWithStore(store: CNContactStore) {
 		var contacts:[CCContact] = []
-		let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
+		let keysToFetch = [CNContactViewController.descriptorForRequiredKeys(),
 		                   CNContactImageDataKey,
+		                   CNContactIdentifierKey,
 		                   CNContactNoteKey] as [Any]
 		let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
 		do {
@@ -64,4 +66,12 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
 	}
 	
 	//MARK: - UITableViewDelegate -
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let viewController = CNContactViewController(for: contacts[indexPath.row].contact)
+		self.navigationController?.pushViewController(viewController, animated: true)
+	}
+	
+	func dismissContactViewController(sender:Any?) -> Void {
+		
+	}
 }
