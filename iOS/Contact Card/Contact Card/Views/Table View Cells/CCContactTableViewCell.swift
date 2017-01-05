@@ -19,7 +19,7 @@ class CCContactTableViewCell: UITableViewCell {
 		self.contact = contact
 		
 		self.nameLabel.text = contact.displayName();
-		self.rightButton.setTitle(isEmpty(contact.remoteID) ? "Ready" : "Update", for: .normal)
+		self.rightButton.setTitle(isEmpty(contact.remoteID) ? "Request" : "Update", for: .normal)
 	}
 
 	@IBAction func rightButtonClicked(_ sender: Any) {

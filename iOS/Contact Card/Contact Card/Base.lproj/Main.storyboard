@@ -179,7 +179,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myCardCellIdentifier" rowHeight="100" id="OeG-mp-a4m">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cardTableViewCellIdentifier" rowHeight="100" id="OeG-mp-a4m">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OeG-mp-a4m" id="AZF-6O-u3i">
@@ -290,6 +290,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ypX-KR-E8X" id="IyS-Oc-pFY"/>
+                                    <outlet property="delegate" destination="ypX-KR-E8X" id="oY3-h6-50w"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -300,7 +304,16 @@
                             <constraint firstItem="RT3-fT-M0b" firstAttribute="leading" secondItem="F9l-Fn-S8x" secondAttribute="leading" id="jVp-j9-F19"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="pks-7k-OwR"/>
+                    <navigationItem key="navigationItem" id="pks-7k-OwR">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="bFy-pz-mzr">
+                            <connections>
+                                <action selector="addNewCard:" destination="ypX-KR-E8X" id="VkK-pq-K4u"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="RT3-fT-M0b" id="LcM-RY-6wG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pKq-Fd-kxa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
