@@ -7,7 +7,12 @@
 //
 
 import UIKit
+import Contacts
 
-class CCCard: NSObject {
-
+class CCCard {
+    let contact:CNContact
+    
+    init(contact:CNContact) {
+        self.contact = contact
+    }
 }

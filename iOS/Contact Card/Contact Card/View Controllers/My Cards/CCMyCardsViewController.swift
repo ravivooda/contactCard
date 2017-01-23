@@ -23,15 +23,20 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     //MARK: - UITableViewDataSource -
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return Manager.defaultManager().cards.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cardTableViewCellIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cardTableViewCellIdentifier", for: indexPath) as! CCCardTableViewCell
+        cell.updateViewWithCard(card: Manager.defaultManager().cards[indexPath.row])
         return cell
     }
     
     //MARK: - UITableViewDelegate -
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let viewController = CNContactViewController(for: Manager.defaultManager().cards[indexPath.row].contact)
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
     
     //MARK: - CNContactViewControllerDelegate -
     func contactViewController(_ viewController: CNContactViewController, didCompleteWith contact: CNContact?) {
@@ -46,8 +51,25 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
                     try CNContactStore().execute(deleteRequest)
                 } catch let error as NSError {
                     print(error)
+                    return
                 }
+                
+                let card = CCCard(contact: _contact)
+                Manager.defaultManager().addNewCard(card: card, success: { (data) in
+                    print("Added card successfully: \(card)")
+                    self.reloadTableView()
+                }, fail: { (data, response) in
+                    print("Failed to add card: \(card)")
+                })
             }
         }
+    }
+    
+    func reloadTableView() {
+        self.tableView.reloadData()
+    }
+    
+    func refreshData() {
+        
     }
 }

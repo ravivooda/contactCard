@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class Manager: NSObject {
     
@@ -14,10 +15,19 @@ class Manager: NSObject {
         super.init()
     }
     
-    func defaultManager() -> Manager {
+    static func defaultManager() -> Manager {
         struct Static {
             static let instance: Manager = Manager()
         }
         return Static.instance
     }
+    
+    func addNewCard(card:CCCard, success:Data.Success, fail:Data.Fail) -> Void {
+        cards.append(card)
+        success([:])
+    }
+    
+    //MARK: - My Cards -
+    var cards:[CCCard] = []
+    
 }
