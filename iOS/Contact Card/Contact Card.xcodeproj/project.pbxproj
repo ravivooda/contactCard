@@ -13,6 +13,7 @@
 		97064C6E1D83CF44008EF6B3 /* Contact_Card.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 97064C6C1D83CF44008EF6B3 /* Contact_Card.xcdatamodeld */; };
 		97064C701D83CF44008EF6B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97064C6F1D83CF44008EF6B3 /* Assets.xcassets */; };
 		97064C731D83CF44008EF6B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97064C711D83CF44008EF6B3 /* LaunchScreen.storyboard */; };
+		97A2A2DD1E36C2F100D69F6A /* CCCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2DC1E36C2F100D69F6A /* CCCard.swift */; };
 		97B776BB1D83D3CE00FC0A4B /* CCMyCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B776BA1D83D3CE00FC0A4B /* CCMyCardsViewController.swift */; };
 		97B776BD1D83D40D00FC0A4B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B776BC1D83D40D00FC0A4B /* UIKit.framework */; };
 		97B776BF1D83D41300FC0A4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B776BE1D83D41300FC0A4B /* Foundation.framework */; };
@@ -46,6 +47,7 @@
 		97064C6F1D83CF44008EF6B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97064C721D83CF44008EF6B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97064C741D83CF44008EF6B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97A2A2DC1E36C2F100D69F6A /* CCCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCard.swift; sourceTree = "<group>"; };
 		97B776BA1D83D3CE00FC0A4B /* CCMyCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMyCardsViewController.swift; sourceTree = "<group>"; };
 		97B776BC1D83D40D00FC0A4B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		97B776BE1D83D41300FC0A4B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -299,6 +301,7 @@
 		BC54A93B1E0F6EE80062CE8B /* Card */ = {
 			isa = PBXGroup;
 			children = (
+				97A2A2DC1E36C2F100D69F6A /* CCCard.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				97B776EA1D8480B900FC0A4B /* UIViewControllerExtensions.swift in Sources */,
 				97B776E11D84784300FC0A4B /* ArrayExtensions.swift in Sources */,
 				97B776DF1D84782D00FC0A4B /* DictionaryExtensions.swift in Sources */,
+				97A2A2DD1E36C2F100D69F6A /* CCCard.swift in Sources */,
 				97B776E51D847B3900FC0A4B /* Data.swift in Sources */,
 				97064C661D83CF44008EF6B3 /* AppDelegate.swift in Sources */,
 				BC54A93A1E0F6ECF0062CE8B /* CCContactTableViewCell.swift in Sources */,
