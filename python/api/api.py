@@ -81,24 +81,15 @@ def signup():
     user,error = logic.signup(email,password)
     if error:
         return {'success': False, 'error': error}
-    session['user_id'] = user_info['user_id']
+    session['user_id'] = user['user_id']
     return {'success': True, 'my_info':user}
 
 @public()
-@with_args(['password'], [['user_name', 'email']])
+@with_args(['password', 'email'])
 def login():
-    user_name = None
-    email = None
+    email = request.args.get('email')
     password = request.args.get('password')
-    if request.args.get('user_name'):
-        user_name = request.args.get('user_name')
-        if not request.args.get('email'):
-            email = user_name
-    if request.args.get('email'):
-        email = request.args.get('email')
-        if not user_name:
-            user_name = email
-    user_info, error = logic.login(user_name,email,password)
+    user_info, error = logic.login(email,password)
     if error:
         return {'success': False, 'error': error}
     session['user_id'] = user_info['user_id']

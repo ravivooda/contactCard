@@ -3,7 +3,7 @@
 
 import MySQLdb as mdb
 import sys
-import settings
+from settings import settings
 
 def getDB(test=False):
     try:

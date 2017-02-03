@@ -29,8 +29,7 @@ def signup(email,password):
 
     #Okay great! Register now
     password = py_helpers.hash_password(password)
-    print "password: " + password
-    query = "INSERT INTO users (email,password) VALUES('%s','%s')" % (user_name,display_name,email,password)
+    query = "INSERT INTO users (t_create,t_update,email,password) VALUES(null,null,'%s','%s')" % (email,password)
     new_id = db.write(query)
     if not new_id:
         return None, [env_constants.MYSQL_WRITING_ERROR,]
@@ -42,11 +41,9 @@ def signup(email,password):
 def login(email,password):
     query = "SELECT * FROM users WHERE email = '%s' LIMIT 1" % (email)
     user_info = db.read_one(query)
-    print user_info
     if not user_info:
         return None, ["No such user exists. Get an account now!"]
     if not py_helpers.check_password(password, user_info['password']):
-        print password
         return None, ["Sorry, password doesn't match. I want to allow you! Trust me. Maybe try FORGOT PASSWORD?"]
     del user_info['password']
     return user_info, None
@@ -89,8 +86,6 @@ def send_message(user_id,thread_id,message_text,message_pic):
     query = query + "thread_id,user_id) VALUES(" + val_string + "'%s','%s')"
     vals.append(thread_id)
     vals.append(user_id)
-    print query 
-    print vals
     query = query % tuple(vals)
     new_message_id = db.write(query)
     if not new_message_id:
