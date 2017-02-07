@@ -7,19 +7,6 @@ def get_user(user_id):
     query = "SELECT * FROM users WHERE user_id = %s LIMIT 1" % user_id
     return db.read_one(query)
 
-def get_thread(thread_id, messages = False):
-    query = "SELECT * FROM message_threads WHERE thread_id = %s LIMIT 1" % thread_id
-    result = db.read_one(query)
-    if messages:
-        query = "SELECT * FROM messages WHERE thread_id = %s ORDER BY t_create DESC" % thread_id
-        result['messages'] = db.read(query)
-    return result
-
-def get_later_messages(thread_id,last_message_id,user_id):
-    query = "SELECT * FROM messages WHERE thread_id = %s AND message_id > %s" % (thread_id, last_message_id)
-    messages = db.read(query)
-    return messages, None
-
 def signup(email,password):
     # Check for existing user
     query = "SELECT * FROM users WHERE email = '%s' LIMIT 1" % (email, )
@@ -29,8 +16,8 @@ def signup(email,password):
 
     #Okay great! Register now
     password = py_helpers.hash_password(password)
-    query = "INSERT INTO users (t_create,t_update,email,password) VALUES(null,null,'%s','%s')" % (email,password)
-    new_id = db.write(query)
+    query = "INSERT INTO users (t_create,t_update,email,password) VALUES(null,null,%s,%s)"
+    new_id = db.write(query,(email,password))
     if not new_id:
         return None, [env_constants.MYSQL_WRITING_ERROR,]
 
@@ -48,52 +35,14 @@ def login(email,password):
     del user_info['password']
     return user_info, None
 
-def create_thread(user_id):
-    #First check if user is valid
-    user = get_user(user_id)
-    if not user:
-        return None, ["No such user exists",]
-    #query = "SELECT * FROM message_threads WHERE user_id = %s ORDER BY thread_id DESC LIMIT 1" % user_id
-    query = "INSERT INTO message_threads (user_id,thread_name) VALUES ('%s','%s')" % (user_id,user['display_name'])
-    new_thread_id = db.write(query)
-    if not new_thread_id:
+def create_card(data, user_id):
+    # Validity of creating card
+    query = "INSERT INTO cards (t_create,t_update,value,user_id) VALUES(null,null,%s,%s)"
+    card_id = db.write(query,(data, user_id))
+    if not card_id:
         return None, [env_constants.MYSQL_WRITING_ERROR,]
-    #query = "SELECT * FROM message_threads WHERE thread_id = %s LIMIT 1" % new_thread_id
-    #new_thread = db.read_one(query)
-    new_thread = get_thread(new_thread_id)
-    return new_thread, None
 
-def send_message(user_id,thread_id,message_text,message_pic):
-    user = get_user(user_id)
-    if not user:
-        return None, ["No such user exists",]
-    thread = get_thread(thread_id)
-    if not thread:
-        return None, ["No such thread exists",]
-    if not str(thread['user_id']) == user_id:
-        return None, ["Sorry, you don't own this thread",]
-    query = "INSERT INTO messages ("
-    vals = []
-    val_string = ""
-    if message_text:
-        query = query + "message_text,"
-        vals.append(message_text)
-        val_string = val_string + "'%s',"
-    if message_pic:
-        query = query + "message_pic,"
-        vals.append(message_pic)
-        val_string = val_string + "'%s',"
-    query = query + "thread_id,user_id) VALUES(" + val_string + "'%s','%s')"
-    vals.append(thread_id)
-    vals.append(user_id)
-    query = query % tuple(vals)
-    new_message_id = db.write(query)
-    if not new_message_id:
-        return None, [env_constants.MYSQL_WRITING_ERROR,]
-    query = "SELECT * FROM messages WHERE message_id = %s LIMIT 1" % new_message_id
-    new_message = db.read_one(query)
-    return new_message, None
-    
+    return card_id, None
 
 if __name__ == "__main__":
     pass

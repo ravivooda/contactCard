@@ -93,7 +93,7 @@ def login():
     if error:
         return {'success': False, 'error': error}
     session['user_id'] = user_info['user_id']
-    return {'success':True, 'my_info':user_info}
+    return {'success':True, 'my_info': user_info}
 
 ####################################################################################################
 #                                                                                                  #
@@ -106,51 +106,20 @@ def get_user():
     user = logic.get_user(user_id)
     if not user:
         return {'success':False,'error':'No such user exists'}
-    return {'success':True, 'user':user}
+    return {'success':True, 'user': user}
 
-@loggedin
-@with_args(['user_id'])
-def create_thread():
-    user_id = request.args.get('user_id')
-    new_thread, error = logic.create_thread(user_id)
-    if error:
-        return {'success': False, 'error': error}
-    return {'success': True, 'thread':new_thread}
-
-@loggedin
-def send_message():
-    if not request.args.get('user_id') or not request.args.get('thread_id') or (not request.args.get('message_text') and not request.args.get('message_pic')):
-        return {'success': False, 'error': env_constants.INVALID_REQUEST_ERROR}
-    user_id = request.args.get('user_id')
-    thread_id = request.args.get('thread_id')
-    message_text = request.args.get('message_text')
-    message_pic = request.args.get('message_pic')
-    new_message, error = logic.send_message(user_id,thread_id,message_text,message_pic)
-    if error:
-        return {'success': False, 'error':error}
-    return {'success': True, 'message':new_message}
-
-@loggedin
-def get_thread():
-    thread_id = request.args.get('thread_id')
-    if not thread_id or thread_id < 0:
-        return {'success': False, 'error': env_constants.INVALID_REQUEST_ERROR}
-    thread = logic.get_thread(thread_id,messages=True)
-    return {'success': True, 'thread': thread}
-
-@loggedin
-def get_later_messages():
-    thread_id = request.args.get('thread_id')
-    last_message_id = request.args.get('last_message_id')
-    user_id = session.get('user_id')
-    if not thread_id or not last_message_id or thread_id < 0 or last_message_id < 0:
-        return {'success': False, 'error': env_constants.INVALID_REQUEST_ERROR}
-    messages, error = logic.get_later_messages(thread_id=thread_id, last_message_id=last_message_id, user_id=user_id)
-    if error:
-        return {'success': False, 'error': error}
-    return {'success': True, 'messages': messages}
 
 @loggedin
 def logout():
     session.clear()
     return {'success':True}
+
+@loggedin
+@with_args(['data'])
+def create_card():
+    data = request.args.get('data')
+    user_id = session['user_id']
+    card_id, error = logic.create_card(data, user_id)
+    if error:
+        return {'success': False, 'error': error}
+    return {'success': True, 'card_id': card_id}

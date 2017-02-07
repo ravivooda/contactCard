@@ -15,11 +15,11 @@ def getDB(test=False):
         print "Error occurred in fetching the database, Error: \n%s" % (e)
         return None
 
-def execute(query):
+def execute(query,values):
     try:
         con = getDB()
         cur = con.cursor()
-        cur.execute(query)
+        cur.execute(query,values)
     except mdb.Error, e:
         print "Error occurred in executing query:\n\t %s\n\tErrors:\n\t%s" % (query, e)
         sys.exit(1)
@@ -46,12 +46,12 @@ def read_one(query):
         return result[0]
     return None
 
-def write(query):
+def write(query,values):
     try:
         con = getDB()
         cur = con.cursor()
         #query = query + " SELECT LAST_INSERT_ID()"
-        cur.execute(query)
+        cur.execute(query,values)
         con.commit()
         return cur.lastrowid
     except mdb.Error, e:
