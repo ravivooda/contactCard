@@ -34,6 +34,8 @@
 		97B776EF1D84812900FC0A4B /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97B776ED1D84812900FC0A4B /* LoadingViewController.xib */; };
 		BC54A93A1E0F6ECF0062CE8B /* CCContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC54A9391E0F6ECF0062CE8B /* CCContactTableViewCell.swift */; };
 		BC54A93E1E0F6EFC0062CE8B /* CCContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC54A93D1E0F6EFC0062CE8B /* CCContact.swift */; };
+		BCEEE53B1E4C0B7500D2651A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEEE5391E4C0B7500D2651A /* LoginViewController.swift */; };
+		BCEEE53C1E4C0B7500D2651A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCEEE53A1E4C0B7500D2651A /* LoginViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		97B776ED1D84812900FC0A4B /* LoadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
 		BC54A9391E0F6ECF0062CE8B /* CCContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCContactTableViewCell.swift; sourceTree = "<group>"; };
 		BC54A93D1E0F6EFC0062CE8B /* CCContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCContact.swift; sourceTree = "<group>"; };
+		BCEEE5391E4C0B7500D2651A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BCEEE53A1E4C0B7500D2651A /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +139,7 @@
 		97B776B71D83D38A00FC0A4B /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BCEEE5381E4C0B5800D2651A /* Auth */,
 				97B776D11D8471E600FC0A4B /* Other */,
 				97B776B81D83D38A00FC0A4B /* My Cards */,
 				97B776B91D83D38A00FC0A4B /* My Contacts */,
@@ -314,6 +319,15 @@
 			path = Contact;
 			sourceTree = "<group>";
 		};
+		BCEEE5381E4C0B5800D2651A /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				BCEEE5391E4C0B7500D2651A /* LoginViewController.swift */,
+				BCEEE53A1E4C0B7500D2651A /* LoginViewController.xib */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -378,6 +392,7 @@
 			files = (
 				97064C731D83CF44008EF6B3 /* LaunchScreen.storyboard in Resources */,
 				97064C701D83CF44008EF6B3 /* Assets.xcassets in Resources */,
+				BCEEE53C1E4C0B7500D2651A /* LoginViewController.xib in Resources */,
 				97064C6B1D83CF44008EF6B3 /* Main.storyboard in Resources */,
 				97B776EF1D84812900FC0A4B /* LoadingViewController.xib in Resources */,
 				97B776DA1D84751C00FC0A4B /* VersionUnsupportedViewController.xib in Resources */,
@@ -443,6 +458,7 @@
 				97B776E71D847C6900FC0A4B /* Auth.swift in Sources */,
 				97064C6E1D83CF44008EF6B3 /* Contact_Card.xcdatamodeld in Sources */,
 				97B776EE1D84812900FC0A4B /* LoadingViewController.swift in Sources */,
+				BCEEE53B1E4C0B7500D2651A /* LoginViewController.swift in Sources */,
 				97B776BB1D83D3CE00FC0A4B /* CCMyCardsViewController.swift in Sources */,
 				97B776C31D83D4AE00FC0A4B /* CCMyContactsViewController.swift in Sources */,
 				97B776DD1D84761000FC0A4B /* StringExtensions.swift in Sources */,
