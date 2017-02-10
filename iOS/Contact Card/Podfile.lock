@@ -1,12 +1,17 @@
 PODS:
   - Alamofire (4.0.0)
+  - Material (2.4.8):
+    - Material/Core (= 2.4.8)
+  - Material/Core (2.4.8)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
+  - Material (~> 2.0)
 
 SPEC CHECKSUMS:
   Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
+  Material: b5d946bf46c51bc83b726602cb04b7793b8256fe
 
-PODFILE CHECKSUM: 17ca1dd397bdcfe0b10690df18a1305039814ee7
+PODFILE CHECKSUM: f3a025972e9232be3fb9e14dccac0a36aa70d4dd
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.0.0

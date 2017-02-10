@@ -13,6 +13,7 @@
 		97064C6E1D83CF44008EF6B3 /* Contact_Card.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 97064C6C1D83CF44008EF6B3 /* Contact_Card.xcdatamodeld */; };
 		97064C701D83CF44008EF6B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97064C6F1D83CF44008EF6B3 /* Assets.xcassets */; };
 		97064C731D83CF44008EF6B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97064C711D83CF44008EF6B3 /* LaunchScreen.storyboard */; };
+		971CF81C1E4C2FA9008F2C21 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971CF81B1E4C2FA9008F2C21 /* UIViewExtensions.swift */; };
 		97A2A2DD1E36C2F100D69F6A /* CCCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2DC1E36C2F100D69F6A /* CCCard.swift */; };
 		97A2A2DF1E36C63900D69F6A /* CCCardJSONExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2DE1E36C63900D69F6A /* CCCardJSONExtension.swift */; };
 		97A2A2E11E36CE0800D69F6A /* CCCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */; };
@@ -51,6 +52,7 @@
 		97064C6F1D83CF44008EF6B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97064C721D83CF44008EF6B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97064C741D83CF44008EF6B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		971CF81B1E4C2FA9008F2C21 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		97A2A2DC1E36C2F100D69F6A /* CCCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCard.swift; sourceTree = "<group>"; };
 		97A2A2DE1E36C63900D69F6A /* CCCardJSONExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardJSONExtension.swift; sourceTree = "<group>"; };
 		97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardTableViewCell.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				97B776E91D8480B900FC0A4B /* UIViewControllerExtensions.swift */,
+				971CF81B1E4C2FA9008F2C21 /* UIViewExtensions.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -341,12 +344,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97064C771D83CF44008EF6B3 /* Build configuration list for PBXNativeTarget "Contact Card" */;
 			buildPhases = (
+				A7FCFDD8ECEB4197A4642D22 /* 📦 Check Pods Manifest.lock */,
 				70937A34424EA1A49DA77C2D /* [CP] Check Pods Manifest.lock */,
 				97064C5E1D83CF44008EF6B3 /* Sources */,
 				97064C5F1D83CF44008EF6B3 /* Frameworks */,
 				97064C601D83CF44008EF6B3 /* Resources */,
 				4A21EA1755EC209EFF40FB29 /* [CP] Embed Pods Frameworks */,
 				9C19CB8FB4BBBB6E20EB76A1 /* [CP] Copy Pods Resources */,
+				365236E935CADC2545352B66 /* 📦 Embed Pods Frameworks */,
+				DF3EBD7BD5A864C3736EB861 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -408,6 +414,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		365236E935CADC2545352B66 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Contact Card/Pods-Contact Card-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4A21EA1755EC209EFF40FB29 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -453,6 +474,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Contact Card/Pods-Contact Card-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A7FCFDD8ECEB4197A4642D22 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DF3EBD7BD5A864C3736EB861 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Contact Card/Pods-Contact Card-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -460,6 +511,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				971CF81C1E4C2FA9008F2C21 /* UIViewExtensions.swift in Sources */,
 				BC54A93E1E0F6EFC0062CE8B /* CCContact.swift in Sources */,
 				97A2A2DF1E36C63900D69F6A /* CCCardJSONExtension.swift in Sources */,
 				97B776E71D847C6900FC0A4B /* Auth.swift in Sources */,
