@@ -81,7 +81,7 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
                 }
                 
                 let card = CCCard(contact: _contact)
-                Manager.defaultManager().addNewCard(card: card, success: { (data) in
+                Manager.defaultManager().addNewCard(card: card, callingViewController: self, success: { (data) in
                     print("Added card successfully: \(card)")
                     self.reloadTableView()
                 }, fail: { (data, response) in

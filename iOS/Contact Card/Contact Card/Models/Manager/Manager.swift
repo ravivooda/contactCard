@@ -22,9 +22,13 @@ class Manager: NSObject {
         return Static.instance
     }
     
-    func addNewCard(card:CCCard, success:Data.Success, fail:Data.Fail) -> Void {
-        cards.append(card)
-        success([:])
+    func addNewCard(card:CCCard, callingViewController:UIViewController, success:@escaping Data.Success, fail:@escaping Data.Fail) -> Void {
+        Data.addCard(data: [:], callingViewController: callingViewController, success: { (response) in
+            self.cards.append(card)
+            success(response)
+        }) { (response, httpResponse) in
+            fail(response, httpResponse)
+        }
     }
     
     //MARK: - My Cards -

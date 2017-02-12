@@ -23,7 +23,7 @@ class Data: NSObject {
             switch response.result {
             case .success(let value):
                 viewController?.hideLoading(nil)
-                if let jsonResponse = value as? [String: Any]{
+                if let jsonResponse = value as? [String: Any], getBoolValue(jsonResponse["success"], defaultValue: false) {
                     success?(jsonResponse)
                 } else {
                     fail?([:], response)

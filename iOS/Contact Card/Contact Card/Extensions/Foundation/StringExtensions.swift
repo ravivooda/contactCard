@@ -26,6 +26,14 @@ func getIntValue(_ object:Any?, defaultValue:Int) -> Int {
     return Int(object as! NSNumber)
 }
 
+func getBoolValue(_ object: Any?, defaultValue:Bool) -> Bool {
+    if object == nil || (object as? Bool) == nil {
+        return defaultValue
+    }
+    
+    return object as! Bool
+}
+
 extension String {
     func trim() -> String {
         return self.trimmingCharacters(in: CharacterSet.whitespaces)

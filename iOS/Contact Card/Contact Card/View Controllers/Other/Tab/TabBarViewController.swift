@@ -18,6 +18,6 @@ class TabBarViewController: UITabBarController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        LoginCommand(viewController: self, returnCommand: nil).execute()
+        // LoginCommand(viewController: self, returnCommand: nil).execute()
     }
 }
