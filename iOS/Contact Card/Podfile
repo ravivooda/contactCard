@@ -7,6 +7,8 @@ target 'Contact Card' do
 
   # Pods for Contact Card
   pod 'Alamofire', '~> 4.0'
-  pod 'Material', '~> 2.0'
+  pod 'Material'
+  pod 'IQKeyboardManagerSwift'
+  pod 'SSKeychain'
 
 end
