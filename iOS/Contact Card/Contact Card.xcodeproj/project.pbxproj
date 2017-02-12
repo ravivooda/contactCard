@@ -14,6 +14,8 @@
 		97064C701D83CF44008EF6B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97064C6F1D83CF44008EF6B3 /* Assets.xcassets */; };
 		97064C731D83CF44008EF6B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97064C711D83CF44008EF6B3 /* LaunchScreen.storyboard */; };
 		971CF81C1E4C2FA9008F2C21 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971CF81B1E4C2FA9008F2C21 /* UIViewExtensions.swift */; };
+		971CF81E1E4E8834008F2C21 /* LoginCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971CF81D1E4E8834008F2C21 /* LoginCommand.swift */; };
+		971CF8211E4E94B7008F2C21 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971CF8201E4E94B7008F2C21 /* TabBarViewController.swift */; };
 		97A2A2DD1E36C2F100D69F6A /* CCCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2DC1E36C2F100D69F6A /* CCCard.swift */; };
 		97A2A2DF1E36C63900D69F6A /* CCCardJSONExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2DE1E36C63900D69F6A /* CCCardJSONExtension.swift */; };
 		97A2A2E11E36CE0800D69F6A /* CCCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */; };
@@ -53,6 +55,8 @@
 		97064C721D83CF44008EF6B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97064C741D83CF44008EF6B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		971CF81B1E4C2FA9008F2C21 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		971CF81D1E4E8834008F2C21 /* LoginCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginCommand.swift; path = "Contact Card/Extensions/UIKit/LoginCommand.swift"; sourceTree = SOURCE_ROOT; };
+		971CF8201E4E94B7008F2C21 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		97A2A2DC1E36C2F100D69F6A /* CCCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCard.swift; sourceTree = "<group>"; };
 		97A2A2DE1E36C63900D69F6A /* CCCardJSONExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardJSONExtension.swift; sourceTree = "<group>"; };
 		97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardTableViewCell.swift; sourceTree = "<group>"; };
@@ -142,6 +146,14 @@
 			path = "Contact Card";
 			sourceTree = "<group>";
 		};
+		971CF81F1E4E947F008F2C21 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				971CF8201E4E94B7008F2C21 /* TabBarViewController.swift */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
 		97B776B71D83D38A00FC0A4B /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +229,7 @@
 		97B776CB1D846FAF00FC0A4B /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				971CF81D1E4E8834008F2C21 /* LoginCommand.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -232,6 +245,7 @@
 		97B776D11D8471E600FC0A4B /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				971CF81F1E4E947F008F2C21 /* Tab */,
 				97B776EB1D84811900FC0A4B /* Loading */,
 				97B776D61D84751C00FC0A4B /* Version */,
 			);
@@ -518,6 +532,7 @@
 				97A2A2E11E36CE0800D69F6A /* CCCardTableViewCell.swift in Sources */,
 				97064C6E1D83CF44008EF6B3 /* Contact_Card.xcdatamodeld in Sources */,
 				97B776EE1D84812900FC0A4B /* LoadingViewController.swift in Sources */,
+				971CF81E1E4E8834008F2C21 /* LoginCommand.swift in Sources */,
 				BCEEE53B1E4C0B7500D2651A /* LoginViewController.swift in Sources */,
 				97B776BB1D83D3CE00FC0A4B /* CCMyCardsViewController.swift in Sources */,
 				97B776C31D83D4AE00FC0A4B /* CCMyContactsViewController.swift in Sources */,
@@ -526,6 +541,7 @@
 				97B776EA1D8480B900FC0A4B /* UIViewControllerExtensions.swift in Sources */,
 				97B776E11D84784300FC0A4B /* ArrayExtensions.swift in Sources */,
 				97B776DF1D84782D00FC0A4B /* DictionaryExtensions.swift in Sources */,
+				971CF8211E4E94B7008F2C21 /* TabBarViewController.swift in Sources */,
 				97A2A2DD1E36C2F100D69F6A /* CCCard.swift in Sources */,
 				97B776E51D847B3900FC0A4B /* Data.swift in Sources */,
 				97064C661D83CF44008EF6B3 /* AppDelegate.swift in Sources */,

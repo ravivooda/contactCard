@@ -10,7 +10,7 @@ import UIKit
 import Material
 
 extension UIView {
-    func addTextFields(with marginHorizontal:CGFloat, marginVertical:CGFloat, placeholders:[String]) -> [TextField] {
+    func addTextFields(marginHorizontal:CGFloat, marginVertical:CGFloat, placeholders:[String]) -> [TextField] {
         var lastTextField:UIView? = self
         var textFields:[TextField] = []
         for placeHolder in placeholders {

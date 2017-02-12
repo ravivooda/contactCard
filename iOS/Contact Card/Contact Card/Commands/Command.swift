@@ -22,6 +22,6 @@ class Command: NSObject {
     }
     
     func execute() {
-        
+        preconditionFailure("This method must be overridden")
     }
 }
