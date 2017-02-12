@@ -23,9 +23,14 @@ class Data: NSObject {
             switch response.result {
             case .success(let value):
                 viewController?.hideLoading(nil)
-				print(value)
+                if let jsonResponse = value as? [String: Any]{
+                    success?(jsonResponse)
+                } else {
+                    fail?([:], response)
+                }
             case .failure(let error):
                 viewController?.hideLoading(error.localizedDescription)
+                fail?([:], response)
             }
         }
     }

@@ -11,7 +11,15 @@ import UIKit
 class LoginCommand: Command {
     
     class User {
+        let id:Int
+        let email:String
+        let password:String
         
+        init(id:Int, email:String, password:String) {
+            self.id = id
+            self.email = email
+            self.password = password
+        }
     }
     
     let returnCommand:Command?
@@ -23,8 +31,6 @@ class LoginCommand: Command {
     }
     
     override func execute() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.loginCommand = self
         loginViewController.loginCommand = self
         self.presentingViewController.present(loginViewController, animated: true, completion: nil)
     }
@@ -32,8 +38,6 @@ class LoginCommand: Command {
     func loginCompleted(user:User) -> Void {
         self.presentingViewController.dismiss(animated: true) { 
             self.returnCommand?.execute()
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.loginCommand = nil
         }
     }
 }
