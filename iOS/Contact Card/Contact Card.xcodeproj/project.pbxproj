@@ -13,7 +13,14 @@
 		97064C6E1D83CF44008EF6B3 /* Contact_Card.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 97064C6C1D83CF44008EF6B3 /* Contact_Card.xcdatamodeld */; };
 		97064C701D83CF44008EF6B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97064C6F1D83CF44008EF6B3 /* Assets.xcassets */; };
 		97064C731D83CF44008EF6B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97064C711D83CF44008EF6B3 /* LaunchScreen.storyboard */; };
+		971CF81C1E4C2FA9008F2C21 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971CF81B1E4C2FA9008F2C21 /* UIViewExtensions.swift */; };
+		971CF81E1E4E8834008F2C21 /* LoginCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971CF81D1E4E8834008F2C21 /* LoginCommand.swift */; };
+		971CF8211E4E94B7008F2C21 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971CF8201E4E94B7008F2C21 /* TabBarViewController.swift */; };
+		971CF8241E50C6D1008F2C21 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 971CF8231E50C6D1008F2C21 /* StoreKit.framework */; };
+		975AC8EC1E50CF7200AB4DBD /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975AC8EB1E50CF7200AB4DBD /* Card.swift */; };
 		97A2A2DD1E36C2F100D69F6A /* CCCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2DC1E36C2F100D69F6A /* CCCard.swift */; };
+		97A2A2DF1E36C63900D69F6A /* CCCardJSONExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2DE1E36C63900D69F6A /* CCCardJSONExtension.swift */; };
+		97A2A2E11E36CE0800D69F6A /* CCCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */; };
 		97B776BB1D83D3CE00FC0A4B /* CCMyCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B776BA1D83D3CE00FC0A4B /* CCMyCardsViewController.swift */; };
 		97B776BD1D83D40D00FC0A4B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B776BC1D83D40D00FC0A4B /* UIKit.framework */; };
 		97B776BF1D83D41300FC0A4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B776BE1D83D41300FC0A4B /* Foundation.framework */; };
@@ -34,6 +41,8 @@
 		97B776EF1D84812900FC0A4B /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97B776ED1D84812900FC0A4B /* LoadingViewController.xib */; };
 		BC54A93A1E0F6ECF0062CE8B /* CCContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC54A9391E0F6ECF0062CE8B /* CCContactTableViewCell.swift */; };
 		BC54A93E1E0F6EFC0062CE8B /* CCContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC54A93D1E0F6EFC0062CE8B /* CCContact.swift */; };
+		BCEEE53B1E4C0B7500D2651A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEEE5391E4C0B7500D2651A /* LoginViewController.swift */; };
+		BCEEE53C1E4C0B7500D2651A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCEEE53A1E4C0B7500D2651A /* LoginViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,7 +56,15 @@
 		97064C6F1D83CF44008EF6B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97064C721D83CF44008EF6B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97064C741D83CF44008EF6B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		971CF81B1E4C2FA9008F2C21 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		971CF81D1E4E8834008F2C21 /* LoginCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginCommand.swift; path = "Contact Card/Extensions/UIKit/LoginCommand.swift"; sourceTree = SOURCE_ROOT; };
+		971CF8201E4E94B7008F2C21 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		971CF8221E50C688008F2C21 /* Contact Card.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Contact Card.entitlements"; sourceTree = "<group>"; };
+		971CF8231E50C6D1008F2C21 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		975AC8EB1E50CF7200AB4DBD /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		97A2A2DC1E36C2F100D69F6A /* CCCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCard.swift; sourceTree = "<group>"; };
+		97A2A2DE1E36C63900D69F6A /* CCCardJSONExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardJSONExtension.swift; sourceTree = "<group>"; };
+		97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardTableViewCell.swift; sourceTree = "<group>"; };
 		97B776BA1D83D3CE00FC0A4B /* CCMyCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMyCardsViewController.swift; sourceTree = "<group>"; };
 		97B776BC1D83D40D00FC0A4B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		97B776BE1D83D41300FC0A4B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -68,6 +85,8 @@
 		97B776ED1D84812900FC0A4B /* LoadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
 		BC54A9391E0F6ECF0062CE8B /* CCContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCContactTableViewCell.swift; sourceTree = "<group>"; };
 		BC54A93D1E0F6EFC0062CE8B /* CCContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCContact.swift; sourceTree = "<group>"; };
+		BCEEE5391E4C0B7500D2651A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BCEEE53A1E4C0B7500D2651A /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +96,7 @@
 			files = (
 				97B776C11D83D41B00FC0A4B /* CoreData.framework in Frameworks */,
 				97B776BF1D83D41300FC0A4B /* Foundation.framework in Frameworks */,
+				971CF8241E50C6D1008F2C21 /* StoreKit.framework in Frameworks */,
 				97B776BD1D83D40D00FC0A4B /* UIKit.framework in Frameworks */,
 				715E2DCCD47F7591FA395D36 /* Pods_Contact_Card.framework in Frameworks */,
 			);
@@ -115,6 +135,7 @@
 		97064C641D83CF44008EF6B3 /* Contact Card */ = {
 			isa = PBXGroup;
 			children = (
+				971CF8221E50C688008F2C21 /* Contact Card.entitlements */,
 				97B776E21D847B2700FC0A4B /* Resources */,
 				97B776E31D847B2700FC0A4B /* Network */,
 				97B776C41D846C8C00FC0A4B /* Commands */,
@@ -132,9 +153,18 @@
 			path = "Contact Card";
 			sourceTree = "<group>";
 		};
+		971CF81F1E4E947F008F2C21 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				971CF8201E4E94B7008F2C21 /* TabBarViewController.swift */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
 		97B776B71D83D38A00FC0A4B /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BCEEE5381E4C0B5800D2651A /* Auth */,
 				97B776D11D8471E600FC0A4B /* Other */,
 				97B776B81D83D38A00FC0A4B /* My Cards */,
 				97B776B91D83D38A00FC0A4B /* My Contacts */,
@@ -206,6 +236,7 @@
 		97B776CB1D846FAF00FC0A4B /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				971CF81D1E4E8834008F2C21 /* LoginCommand.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -221,6 +252,7 @@
 		97B776D11D8471E600FC0A4B /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				971CF81F1E4E947F008F2C21 /* Tab */,
 				97B776EB1D84811900FC0A4B /* Loading */,
 				97B776D61D84751C00FC0A4B /* Version */,
 			);
@@ -258,6 +290,7 @@
 			children = (
 				97B776E41D847B3900FC0A4B /* Data.swift */,
 				97B776E61D847C6900FC0A4B /* Auth.swift */,
+				975AC8EB1E50CF7200AB4DBD /* Card.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -266,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				97B776E91D8480B900FC0A4B /* UIViewControllerExtensions.swift */,
+				971CF81B1E4C2FA9008F2C21 /* UIViewExtensions.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -282,6 +316,7 @@
 		A1B705ADEE12BA13282079A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				971CF8231E50C6D1008F2C21 /* StoreKit.framework */,
 				97B776C01D83D41B00FC0A4B /* CoreData.framework */,
 				97B776BE1D83D41300FC0A4B /* Foundation.framework */,
 				97B776BC1D83D40D00FC0A4B /* UIKit.framework */,
@@ -294,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				BC54A9391E0F6ECF0062CE8B /* CCContactTableViewCell.swift */,
+				97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */,
 			);
 			path = "Table View Cells";
 			sourceTree = "<group>";
@@ -302,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				97A2A2DC1E36C2F100D69F6A /* CCCard.swift */,
+				97A2A2DE1E36C63900D69F6A /* CCCardJSONExtension.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -314,6 +351,15 @@
 			path = Contact;
 			sourceTree = "<group>";
 		};
+		BCEEE5381E4C0B5800D2651A /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				BCEEE5391E4C0B7500D2651A /* LoginViewController.swift */,
+				BCEEE53A1E4C0B7500D2651A /* LoginViewController.xib */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -321,12 +367,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97064C771D83CF44008EF6B3 /* Build configuration list for PBXNativeTarget "Contact Card" */;
 			buildPhases = (
-				70937A34424EA1A49DA77C2D /* 📦 Check Pods Manifest.lock */,
+				A7FCFDD8ECEB4197A4642D22 /* 📦 Check Pods Manifest.lock */,
+				70937A34424EA1A49DA77C2D /* [CP] Check Pods Manifest.lock */,
 				97064C5E1D83CF44008EF6B3 /* Sources */,
 				97064C5F1D83CF44008EF6B3 /* Frameworks */,
 				97064C601D83CF44008EF6B3 /* Resources */,
-				4A21EA1755EC209EFF40FB29 /* 📦 Embed Pods Frameworks */,
-				9C19CB8FB4BBBB6E20EB76A1 /* 📦 Copy Pods Resources */,
+				4A21EA1755EC209EFF40FB29 /* [CP] Embed Pods Frameworks */,
+				9C19CB8FB4BBBB6E20EB76A1 /* [CP] Copy Pods Resources */,
+				365236E935CADC2545352B66 /* 📦 Embed Pods Frameworks */,
+				DF3EBD7BD5A864C3736EB861 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -349,7 +398,22 @@
 				TargetAttributes = {
 					97064C611D83CF44008EF6B3 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = ZD7BD8RQZT;
 						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.ApplePay = {
+								enabled = 0;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -378,6 +442,7 @@
 			files = (
 				97064C731D83CF44008EF6B3 /* LaunchScreen.storyboard in Resources */,
 				97064C701D83CF44008EF6B3 /* Assets.xcassets in Resources */,
+				BCEEE53C1E4C0B7500D2651A /* LoginViewController.xib in Resources */,
 				97064C6B1D83CF44008EF6B3 /* Main.storyboard in Resources */,
 				97B776EF1D84812900FC0A4B /* LoadingViewController.xib in Resources */,
 				97B776DA1D84751C00FC0A4B /* VersionUnsupportedViewController.xib in Resources */,
@@ -387,7 +452,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4A21EA1755EC209EFF40FB29 /* 📦 Embed Pods Frameworks */ = {
+		365236E935CADC2545352B66 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -402,7 +467,52 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Contact Card/Pods-Contact Card-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		70937A34424EA1A49DA77C2D /* 📦 Check Pods Manifest.lock */ = {
+		4A21EA1755EC209EFF40FB29 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Contact Card/Pods-Contact Card-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		70937A34424EA1A49DA77C2D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9C19CB8FB4BBBB6E20EB76A1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Contact Card/Pods-Contact Card-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A7FCFDD8ECEB4197A4642D22 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -417,7 +527,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		9C19CB8FB4BBBB6E20EB76A1 /* 📦 Copy Pods Resources */ = {
+		DF3EBD7BD5A864C3736EB861 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -439,10 +549,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				971CF81C1E4C2FA9008F2C21 /* UIViewExtensions.swift in Sources */,
 				BC54A93E1E0F6EFC0062CE8B /* CCContact.swift in Sources */,
+				975AC8EC1E50CF7200AB4DBD /* Card.swift in Sources */,
+				97A2A2DF1E36C63900D69F6A /* CCCardJSONExtension.swift in Sources */,
 				97B776E71D847C6900FC0A4B /* Auth.swift in Sources */,
+				97A2A2E11E36CE0800D69F6A /* CCCardTableViewCell.swift in Sources */,
 				97064C6E1D83CF44008EF6B3 /* Contact_Card.xcdatamodeld in Sources */,
 				97B776EE1D84812900FC0A4B /* LoadingViewController.swift in Sources */,
+				971CF81E1E4E8834008F2C21 /* LoginCommand.swift in Sources */,
+				BCEEE53B1E4C0B7500D2651A /* LoginViewController.swift in Sources */,
 				97B776BB1D83D3CE00FC0A4B /* CCMyCardsViewController.swift in Sources */,
 				97B776C31D83D4AE00FC0A4B /* CCMyContactsViewController.swift in Sources */,
 				97B776DD1D84761000FC0A4B /* StringExtensions.swift in Sources */,
@@ -450,6 +566,7 @@
 				97B776EA1D8480B900FC0A4B /* UIViewControllerExtensions.swift in Sources */,
 				97B776E11D84784300FC0A4B /* ArrayExtensions.swift in Sources */,
 				97B776DF1D84782D00FC0A4B /* DictionaryExtensions.swift in Sources */,
+				971CF8211E4E94B7008F2C21 /* TabBarViewController.swift in Sources */,
 				97A2A2DD1E36C2F100D69F6A /* CCCard.swift in Sources */,
 				97B776E51D847B3900FC0A4B /* Data.swift in Sources */,
 				97064C661D83CF44008EF6B3 /* AppDelegate.swift in Sources */,
@@ -576,6 +693,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Contact Card/Contact Card.entitlements";
+				DEVELOPMENT_TEAM = ZD7BD8RQZT;
 				INFOPLIST_FILE = "Contact Card/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Utils.Contact-Card";
@@ -590,6 +709,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Contact Card/Contact Card.entitlements";
+				DEVELOPMENT_TEAM = ZD7BD8RQZT;
 				INFOPLIST_FILE = "Contact Card/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Utils.Contact-Card";

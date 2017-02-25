@@ -10,20 +10,27 @@ import UIKit
 import Alamofire
 
 class Data: NSObject {
+	
+	static let serverURL = "http://97.107.142.174:8080/api/"
     
-    typealias Success = ([String: AnyObject]) -> Void
-    typealias Fail = ([String: AnyObject], DataResponse<Any>) -> Void
+    typealias Success = ([String: Any]) -> Void
+    typealias Fail = ([String: Any], DataResponse<Any>) -> Void
     
-    static func api(_ method:HTTPMethod, url:String, parameters:[String: AnyObject]?, viewController:UIViewController?, success:Success) -> Void {
+	static func api(_ method:HTTPMethod, api:String, parameters:[String: Any]?, viewController:UIViewController?, success:Success?, fail:Fail?) -> Void {
         viewController?.showLoading()
-        request(url, method: method, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
+		request(serverURL + api, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
             print("Response: \(response)")
             switch response.result {
             case .success(let value):
                 viewController?.hideLoading(nil)
-                print("Value: \(value)")
+                if let jsonResponse = value as? [String: Any], getBoolValue(jsonResponse["success"], defaultValue: false) {
+                    success?(jsonResponse)
+                } else {
+                    fail?([:], response)
+                }
             case .failure(let error):
                 viewController?.hideLoading(error.localizedDescription)
+                fail?([:], response)
             }
         }
     }

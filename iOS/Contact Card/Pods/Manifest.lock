@@ -1,12 +1,23 @@
 PODS:
   - Alamofire (4.0.0)
+  - IQKeyboardManagerSwift (4.0.8)
+  - Material (2.4.8):
+    - Material/Core (= 2.4.8)
+  - Material/Core (2.4.8)
+  - SSKeychain (1.4.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
+  - IQKeyboardManagerSwift
+  - Material
+  - SSKeychain
 
 SPEC CHECKSUMS:
   Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
+  IQKeyboardManagerSwift: c04bc9f68473823f825eb44d958fce98d921bead
+  Material: b5d946bf46c51bc83b726602cb04b7793b8256fe
+  SSKeychain: 55cc80f66f5c73da827e3077f02e43528897db41
 
-PODFILE CHECKSUM: 6cf380270e66303f5a232f2550b18d84202fdd53
+PODFILE CHECKSUM: 69a68a1ffa12a24bf7ce864032e8b4f1f9843061
 
 COCOAPODS: 1.0.0
