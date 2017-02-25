@@ -115,9 +115,8 @@ def logout():
     return {'success':True}
 
 @loggedin
-@with_args(['data'])
 def create_card():
-    data = request.args.get('data')
+    data = request.json['data']
     user_id = session['user_id']
     card_id, error = logic.create_card(data, user_id)
     if error:

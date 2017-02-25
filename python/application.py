@@ -35,8 +35,19 @@ if not app.secret_key:
 def index():
     return app.send_static_file('index.html')
 
-@app.route('/api/<api_func>')
+@app.route('/api/card', methods=['GET', 'POST', 'PUT', 'DELETE'])
+def call_api():
+    try:
+        print("API Called: Card with method - " + request.method)
+        if request.method == 'PUT':
+            return jsonify(api.create_card())
+    except Exception,e:
+        print(e)
+    return jsonify({'success': False, 'error': 'An internal error occured'})
+
+@app.route('/api/<api_func>', methods=['GET', 'POST', 'PUT'])
 def api_call(api_func):
+    print("APIs Called: " + api_func)
     if not api_func:
         response = {'success':False, 'error':'No such api call exists'}
         return jsonify(**response)
@@ -49,12 +60,13 @@ def api_call(api_func):
             response = func()
         if not response:
             response = {'success':True, 'no_return': True}
-        if isinstance(response,dict):
+        
+        if type(response) == type(dict()):
             return jsonify(**response)
         else:
             return response
     except Exception,e:
-        return traceback.print_exc()
+        return traceback.print_exc()        
 
 @app.errorhandler(404)
 def page_not_found(error):

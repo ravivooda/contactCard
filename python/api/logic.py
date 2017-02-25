@@ -37,6 +37,12 @@ def login(email,password):
 
 def create_card(data, user_id):
     # Validity of creating card
+    if not user_id:
+        return None, [env_constants.NOT_LOGGED_IN_ERROR,]
+
+    if not data:
+        return None, [env_constants.INVALID_REQUEST_ERROR,]
+
     query = "INSERT INTO cards (t_create,t_update,value,user_id) VALUES(null,null,%s,%s)"
     card_id = db.write(query,(data, user_id))
     if not card_id:
