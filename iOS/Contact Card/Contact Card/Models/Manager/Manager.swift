@@ -23,7 +23,7 @@ class Manager: NSObject {
     }
     
     func addNewCard(card:CCCard, callingViewController:UIViewController, success:@escaping Data.Success, fail:@escaping Data.Fail) -> Void {
-        Data.addCard(data: [:], callingViewController: callingViewController, success: { (response) in
+        Data.addCard(data: card.toData(nil, thumbImageURL: nil), callingViewController: callingViewController, success: { (response) in
             self.cards.append(card)
             success(response)
         }) { (response, httpResponse) in

@@ -10,10 +10,6 @@ import Foundation
 import Contacts
 
 extension CCCard {
-    func getJSONPayload() -> String {
-        return ""
-    }
-    
     convenience init(payload:[String : AnyObject]) {
         let contact = CNContact()
         self.init(contact: contact)
