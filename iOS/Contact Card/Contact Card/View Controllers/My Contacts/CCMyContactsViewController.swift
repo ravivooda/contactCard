@@ -17,7 +17,9 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        reloadContacts()
+        if let _ = LoginCommand.user {
+            reloadContacts()
+        }
     }
     
     func reloadContacts() {
