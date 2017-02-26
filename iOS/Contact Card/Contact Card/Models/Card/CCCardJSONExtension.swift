@@ -10,7 +10,7 @@ import Foundation
 import Contacts
 
 extension CCCard {
-    convenience init(payload:[String : AnyObject]) {
+    convenience init(id:Int, payload:[String : Any]) {
         let contact = CNMutableContact()
         if let nameDict = payload["name"] as? [String: Any] {
             contact.namePrefix = getStringValue(nameDict["prefix"])
@@ -33,14 +33,55 @@ extension CCCard {
         
         //TODO: Fix image and thumbnail
         
-        if let phoneNumbersDict = payload["phone_numbers"] as? [String: Any] {
-            contact.phoneNumbers = CCCard.getPhoneNumbers(payload: phoneNumbersDict)
+        if let phoneNumbersDict = payload["phone_numbers"] as? [[String: [String:String]]] {
+            var phoneNumbersArray:[CNLabeledValue<CNPhoneNumber>] = []
+            for phoneNumberDict in phoneNumbersDict {
+                if let phoneNumber = CCCard.getPhoneNumber(payload: phoneNumberDict) {
+                    phoneNumbersArray.append(phoneNumber)
+                }
+            }
+            contact.phoneNumbers = phoneNumbersArray
         }
         
-        if let emailsDict = payload["emails"] as? [String: Any] {
-            contact.emailAddresses = CCCard.getEmails(payload: emailsDict)
+        if let emailsDict = payload["emails"] as? [[String: [String:String]]] {
+            var emailsArray:[CNLabeledValue<NSString>] = []
+            for emailDict in emailsDict {
+                if let email = CCCard.getEmail(payload: emailDict) {
+                    emailsArray.append(email)
+                }
+            }
+            contact.emailAddresses = emailsArray
         }
         
+        if let postalsDict = payload["postal_addresses"] as? [[String: [String:String]]] {
+            var postalsArray:[CNLabeledValue<CNPostalAddress>] = []
+            for postalDict in postalsDict {
+                if let postal = CCCard.getPostalAddress(payload: postalDict) {
+                    postalsArray.append(postal)
+                }
+            }
+            contact.postalAddresses = postalsArray
+        }
+        
+        if let urlsDict = payload["urls"] as? [[String: [String:String]]] {
+            var urlsArray:[CNLabeledValue<NSString>] = []
+            for urlDict in urlsDict {
+                if let url = CCCard.getURLAddress(payload: urlDict) {
+                    urlsArray.append(url)
+                }
+            }
+            contact.urlAddresses = urlsArray
+        }
+        
+        if let socialsDict = payload["social_profiles"] as? [[String: [String:String]]] {
+            var socialsArray:[CNLabeledValue<CNSocialProfile>] = []
+            for socialDict in socialsDict {
+                if let social = CCCard.getSocialProfiles(payload: socialDict) {
+                    socialsArray.append(social)
+                }
+            }
+            contact.socialProfiles = socialsArray
+        }
         
         if let datesDict = payload["dates"] as? [String: Any] {
             let formatter = DateFormatter()
@@ -65,75 +106,60 @@ extension CCCard {
             }
         }
         
-        self.init(contact: contact)
+        self.init(id: id, contact: contact)
     }
     
-    private static func getPhoneNumbers(payload:[String:Any]) -> [CNLabeledValue<CNPhoneNumber>] {
-        var retArray:[CNLabeledValue<CNPhoneNumber>] = []
+    private static func getPhoneNumber(payload:[String : [String:String]]) -> CNLabeledValue<CNPhoneNumber>? {
         for (key, value) in payload {
-            if let phoneDict = value as? [String: String] {
-                if let phoneNumber = phoneDict["number"] {
-                    retArray.append(CNLabeledValue(label: key, value: CNPhoneNumber(stringValue: phoneNumber)))
-                }
+            if let phoneNumber = value["number"] {
+                return CNLabeledValue(label: key, value: CNPhoneNumber(stringValue: phoneNumber))
             }
         }
-        return retArray
+        return nil
     }
     
-    private static func getEmails(payload:[String:Any]) -> [CNLabeledValue<NSString>] {
-        var retArray:[CNLabeledValue<NSString>] = []
+    private static func getEmail(payload:[String : [String:String]]) -> CNLabeledValue<NSString>? {
         for (key,value) in payload {
-            if let emailDict = value as? [String: String] {
-                if let email = emailDict["email"] {
-                    retArray.append(CNLabeledValue(label: key, value: email as NSString))
-                }
+            if let email = value["email"] {
+                return CNLabeledValue(label: key, value: email as NSString)
             }
         }
-        return retArray
+        return nil
     }
     
-    private static func getPostalAddresses(payload:[String:Any]) -> [CNLabeledValue<CNPostalAddress>] {
-        var retArray:[CNLabeledValue<CNPostalAddress>] = []
+    private static func getPostalAddress(payload:[String:[String:String]]) -> CNLabeledValue<CNPostalAddress>? {
         for (key, value) in payload {
-            if let postalDict = value as? [String: String] {
-                let postal = CNMutablePostalAddress()
-                postal.street = getStringValue(postalDict["street"])
-                postal.city = getStringValue(postalDict["city"])
-                postal.state = getStringValue(postalDict["state"])
-                postal.postalCode = getStringValue(postalDict["postal_code"])
-                postal.country = getStringValue(postalDict["country"])
-                postal.isoCountryCode = getStringValue(postalDict["iso_country_code"])
-                
-                retArray.append(CNLabeledValue(label: key, value: postal))
-            }
+            let postal = CNMutablePostalAddress()
+            postal.street = getStringValue(value["street"])
+            postal.city = getStringValue(value["city"])
+            postal.state = getStringValue(value["state"])
+            postal.postalCode = getStringValue(value["postal_code"])
+            postal.country = getStringValue(value["country"])
+            postal.isoCountryCode = getStringValue(value["iso_country_code"])
+            
+            return CNLabeledValue(label: key, value: postal)
         }
-        return retArray
+        return nil
     }
     
-    private static func getURLAddresses(payload:[String:Any]) -> [CNLabeledValue<NSString>] {
-        var retArray:[CNLabeledValue<NSString>] = []
+    private static func getURLAddress(payload:[String:[String:String]]) -> CNLabeledValue<NSString>? {
         for (key, value) in payload {
-            if let urlDict = value as? [String : String] {
-                if let url = urlDict["url"] {
-                    retArray.append(CNLabeledValue(label: key, value: url as NSString))
-                }
+            if let url = value["url"] {
+                return CNLabeledValue(label: key, value: url as NSString)
             }
         }
-        return retArray
+        return nil
     }
     
-    private static func getSocialProfiles(payload:[String:Any]) -> [CNLabeledValue<CNSocialProfile>] {
-        var retArray:[CNLabeledValue<CNSocialProfile>] = []
+    private static func getSocialProfiles(payload:[String:[String:String]]) -> CNLabeledValue<CNSocialProfile>? {
         for (key, value) in payload {
-            if let socialDict = value as? [String : String] {
-                let url = getStringValue(socialDict["url"])
-                let username = getStringValue(socialDict["username"])
-                let userIdentifier = getStringValue(socialDict["user_identifier"])
-                let service = getStringValue(socialDict["service"])
-                retArray.append(CNLabeledValue(label: key, value: CNSocialProfile(urlString: url, username: username, userIdentifier: userIdentifier, service: service)))
-            }
+            let url = getStringValue(value["url"])
+            let username = getStringValue(value["username"])
+            let userIdentifier = getStringValue(value["user_identifier"])
+            let service = getStringValue(value["service"])
+            return CNLabeledValue(label: key, value: CNSocialProfile(urlString: url, username: username, userIdentifier: userIdentifier, service: service))
         }
-        return retArray
+        return nil
     }
     
     static let calendarMap = [

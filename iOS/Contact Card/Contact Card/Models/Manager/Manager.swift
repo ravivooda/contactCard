@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Contacts
 
 class Manager: NSObject {
     
@@ -22,9 +23,10 @@ class Manager: NSObject {
         return Static.instance
     }
     
-    func addNewCard(card:CCCard, callingViewController:UIViewController, success:@escaping Data.Success, fail:@escaping Data.Fail) -> Void {
-        Data.addCard(data: card.toData(nil, thumbImageURL: nil), callingViewController: callingViewController, success: { (response) in
-            self.cards.append(card)
+    func addNewCard(card:CNContact, callingViewController:UIViewController, success:@escaping Data.Success, fail:@escaping Data.Fail) -> Void {
+        Data.addCard(data: CCCard.toData(card, imageURL: nil, thumbImageURL: nil), callingViewController: callingViewController, success: { (response) in
+            let id = getIntValue(response["contact_id"])
+            self.cards.append(CCCard(id: id, contact: card))
             success(response)
         }) { (response, httpResponse) in
             fail(response, httpResponse)
@@ -37,8 +39,15 @@ class Manager: NSObject {
                 if let cardsDict = _cardsDict as? [[String: Any]] {
                     self.cards = []
                     for cardDict in cardsDict {
-                        let card = CCCard(payload: cardDict as [String : AnyObject])
-                        self.cards.append(card)
+                        let id = getIntValue(cardDict["contact_id"])
+                        
+                        if id > 0, let value = cardDict["value"] as? String {
+                            if let actualDict = convertToDictionary(text: value) {
+                                print(actualDict)
+                                let card = CCCard(id: id, payload: actualDict)
+                                self.cards.append(card)
+                            }
+                        }
                     }
                     success(data)
                     return

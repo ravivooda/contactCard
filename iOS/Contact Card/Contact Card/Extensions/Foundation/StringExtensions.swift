@@ -19,7 +19,7 @@ func getStringValue(_ object:Any?, defaultValue:String = "") -> String {
     return object as! String
 }
 
-func getIntValue(_ object:Any?, defaultValue:Int) -> Int {
+func getIntValue(_ object:Any?, defaultValue:Int = 0) -> Int {
     if object == nil || (object as? NSNumber) == nil {
         return defaultValue
     }

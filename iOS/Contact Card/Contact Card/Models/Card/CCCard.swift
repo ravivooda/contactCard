@@ -11,76 +11,79 @@ import Contacts
 
 class CCCard {
     static let dateFormat = "yyyy/MM/dd hh:mm Z"
+
+    let id:Int
     
     let contact:CNContact
     
-    init(contact:CNContact) {
+    init(id:Int, contact:CNContact) {
+        self.id = id
         self.contact = contact
     }
     
-    func toData(_ imageURL:String?, thumbImageURL:String?) -> [String: Any] {
+    static func toData(_ contact:CNContact, imageURL:String?, thumbImageURL:String?) -> [String: Any] {
         var dictionary:[String:Any] = [:];
         
         dictionary["name"] = [
-            "prefix": getStringValue(self.contact.namePrefix),
-            "given" : getStringValue(self.contact.givenName),
-            "middle" : getStringValue(self.contact.middleName),
-            "family" : getStringValue(self.contact.familyName),
-            "suffix" : getStringValue(self.contact.nameSuffix),
-            "nickname" : getStringValue(self.contact.nickname),
+            "prefix": getStringValue(contact.namePrefix),
+            "given" : getStringValue(contact.givenName),
+            "middle" : getStringValue(contact.middleName),
+            "family" : getStringValue(contact.familyName),
+            "suffix" : getStringValue(contact.nameSuffix),
+            "nickname" : getStringValue(contact.nickname),
             
-            "phonetic_given" : getStringValue(self.contact.phoneticGivenName),
-            "phonetic_middle" : getStringValue(self.contact.phoneticMiddleName),
-            "phonetic_family" : getStringValue(self.contact.phoneticFamilyName),
-            "previous_family" : getStringValue(self.contact.previousFamilyName),
+            "phonetic_given" : getStringValue(contact.phoneticGivenName),
+            "phonetic_middle" : getStringValue(contact.phoneticMiddleName),
+            "phonetic_family" : getStringValue(contact.phoneticFamilyName),
+            "previous_family" : getStringValue(contact.previousFamilyName),
         ]
         
-        dictionary["organization"] = getStringValue(self.contact.organizationName)
-        dictionary["department"] = getStringValue(self.contact.departmentName)
-        dictionary["job_title"] = getStringValue(self.contact.jobTitle)
-        dictionary["phonetic_organization"] = getStringValue(self.contact.phoneticOrganizationName)
+        dictionary["organization"] = getStringValue(contact.organizationName)
+        dictionary["department"] = getStringValue(contact.departmentName)
+        dictionary["job_title"] = getStringValue(contact.jobTitle)
+        dictionary["phonetic_organization"] = getStringValue(contact.phoneticOrganizationName)
         
         dictionary["image"] = getStringValue(imageURL)
         dictionary["thumbnail"] = getStringValue(thumbImageURL)
         
         var phoneNumbersArray:[[String:Any]] = []
-        for phoneNumber in self.contact.phoneNumbers {
+        for phoneNumber in contact.phoneNumbers {
             phoneNumbersArray.append(toPhoneNumber(phoneNumber))
         }
         dictionary["phone_numbers"] = phoneNumbersArray
         
         var emailsArray:[[String:Any]] = []
-        for email in self.contact.emailAddresses {
+        for email in contact.emailAddresses {
             emailsArray.append(toEmail(email))
         }
         dictionary["emails"] = emailsArray
         
         var postalAddressesArray:[[String:Any]] = []
-        for postalAddress in self.contact.postalAddresses {
+        for postalAddress in contact.postalAddresses {
             postalAddressesArray.append(toPostalAddress(postalAddress))
         }
         dictionary["postal_addresses"] = postalAddressesArray
         
         var urlAddressesArray:[[String:Any]] = []
-        for urlAddress in self.contact.urlAddresses {
+        for urlAddress in contact.urlAddresses {
             urlAddressesArray.append(toURLAddress(urlAddress))
         }
         dictionary["urls"] = urlAddressesArray
         
         var socialProfilesArray:[[String:Any]] = []
-        for socialProfile in self.contact.socialProfiles {
+        for socialProfile in contact.socialProfiles {
             socialProfilesArray.append(toSocialProfile(socialProfile))
         }
         dictionary["social_profiles"] = socialProfilesArray
         
         var datesArray:[[String:Any]] = []
-        for date in self.contact.dates {
+        for date in contact.dates {
             datesArray.append(toDate(date))
         }
-        if let birthday = self.contact.birthday {
+        if let birthday = contact.birthday {
             datesArray.append(toDate("birthday", date: birthday))
         }
-        if let g_birthday = self.contact.nonGregorianBirthday {
+        if let g_birthday = contact.nonGregorianBirthday {
             datesArray.append(toDate("non_gregorian_birthday", date: g_birthday))
         }
         dictionary["dates"] = datesArray
@@ -88,21 +91,21 @@ class CCCard {
         return dictionary
     }
     
-    private func toPhoneNumber(_ reference:CNLabeledValue<CNPhoneNumber>) -> [String:Any] {
+    private static func toPhoneNumber(_ reference:CNLabeledValue<CNPhoneNumber>) -> [String:Any] {
         let dictionary = [
             "number" : getStringValue(reference.value.stringValue)
         ]
         return [getStringValue(reference.label, defaultValue: "home") : dictionary]
     }
     
-    private func toEmail(_ reference:CNLabeledValue<NSString>) -> [String:Any] {
+    private static func toEmail(_ reference:CNLabeledValue<NSString>) -> [String:Any] {
         let dictionary = [
             "email" : getStringValue(reference.value)
         ]
         return [getStringValue(reference.label, defaultValue: "home") : dictionary]
     }
     
-    private func toPostalAddress(_ reference:CNLabeledValue<CNPostalAddress>) -> [String:Any] {
+    private static func toPostalAddress(_ reference:CNLabeledValue<CNPostalAddress>) -> [String:Any] {
         let dictionary = [
             "street" : getStringValue(reference.value.street),
             "city" : getStringValue(reference.value.city),
@@ -114,14 +117,14 @@ class CCCard {
         return [getStringValue(reference.label, defaultValue: "home") : dictionary]
     }
     
-    private func toURLAddress(_ reference:CNLabeledValue<NSString>) -> [String: Any] {
+    private static func toURLAddress(_ reference:CNLabeledValue<NSString>) -> [String: Any] {
         let dictionary = [
             "url" : getStringValue(reference.value)
         ]
         return [getStringValue(reference.label, defaultValue: "website") : dictionary]
     }
     
-    private func toSocialProfile(_ reference:CNLabeledValue<CNSocialProfile>) -> [String:Any] {
+    private static func toSocialProfile(_ reference:CNLabeledValue<CNSocialProfile>) -> [String:Any] {
         let dictionary = [
             "url" : getStringValue(reference.value.urlString),
             "username" : getStringValue(reference.value.username),
@@ -131,7 +134,7 @@ class CCCard {
         return [getStringValue(reference.label, defaultValue: "default") : dictionary]
     }
     
-    private func toDate(_ reference:CNLabeledValue<NSDateComponents>) -> [String:Any] {
+    private static func toDate(_ reference:CNLabeledValue<NSDateComponents>) -> [String:Any] {
         let formatter = DateFormatter()
         formatter.dateFormat = CCCard.dateFormat
         
@@ -147,7 +150,7 @@ class CCCard {
         return [getStringValue(reference.label, defaultValue: "date") : dictionary]
     }
     
-    private func toDate(_  label:String, date:DateComponents) -> [String:Any] {
+    private static func toDate(_  label:String, date:DateComponents) -> [String:Any] {
         let formatter = DateFormatter()
         formatter.dateFormat = CCCard.dateFormat
         let dictionary = [
