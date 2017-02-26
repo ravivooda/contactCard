@@ -83,27 +83,29 @@ extension CCCard {
             contact.socialProfiles = socialsArray
         }
         
-        if let datesDict = payload["dates"] as? [String: Any] {
+        if let datesDict = payload["dates"] as? [[String: [String:String]]] {
             let formatter = DateFormatter()
             formatter.dateFormat = CCCard.dateFormat
             var datesArray:[CNLabeledValue<NSDateComponents>] = []
-            for (key, value) in datesDict {
-                if let dateDict = value as? [String : String] {
+            
+            for dateDict in datesDict {
+                if let key = dateDict.keys.first, let value = dateDict.values.first {
                     if key == "birthday" {
-                        if let dateComponent = CCCard.getDate(payload: dateDict) {
+                        if let dateComponent = CCCard.getDate(payload: value) {
                             contact.birthday = dateComponent
                         }
                     } else if key == "non_gregorian_birthday" {
-                        if let dateComponent = CCCard.getDate(payload: dateDict) {
+                        if let dateComponent = CCCard.getDate(payload: value) {
                             contact.nonGregorianBirthday = dateComponent
                         }
                     } else {
-                        if let dateComponents = CCCard.getDate(payload: dateDict) {
+                        if let dateComponents = CCCard.getDate(payload: value) {
                             datesArray.append(CNLabeledValue(label: key, value: dateComponents as NSDateComponents))
                         }
                     }
                 }
             }
+            contact.dates = datesArray
         }
         
         self.init(id: id, contact: contact)

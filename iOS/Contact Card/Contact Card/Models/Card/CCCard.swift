@@ -153,8 +153,15 @@ class CCCard {
     private static func toDate(_  label:String, date:DateComponents) -> [String:Any] {
         let formatter = DateFormatter()
         formatter.dateFormat = CCCard.dateFormat
+        
+        var calendar = date.calendar
+        if calendar != nil {
+            calendar = Calendar(identifier: .gregorian)
+        }
+        
         let dictionary = [
-            "date" : getStringValue(formatter.string(from: date.date!))
+            "date" : getStringValue(formatter.string(from: date.date!)),
+            "calendar" : getStringValue(calendar!.identifier, defaultValue: "gregorian")
         ]
         return [label : dictionary]
     }
