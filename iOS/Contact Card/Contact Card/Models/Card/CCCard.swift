@@ -134,8 +134,15 @@ class CCCard {
     private func toDate(_ reference:CNLabeledValue<NSDateComponents>) -> [String:Any] {
         let formatter = DateFormatter()
         formatter.dateFormat = CCCard.dateFormat
+        
+        var calendar = reference.value.calendar
+        if calendar != nil {
+            calendar = Calendar(identifier: .gregorian)
+        }
+        
         let dictionary = [
-            "date" : getStringValue(formatter.string(from: reference.value.date!))
+            "date" : getStringValue(formatter.string(from: reference.value.date!)),
+            "calendar" : getStringValue(calendar!.identifier, defaultValue: "gregorian")
         ]
         return [getStringValue(reference.label, defaultValue: "date") : dictionary]
     }

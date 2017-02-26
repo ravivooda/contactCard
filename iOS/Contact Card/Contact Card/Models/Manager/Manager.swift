@@ -31,6 +31,25 @@ class Manager: NSObject {
         }
     }
     
+    func refreshCards(callingViewController:UIViewController, success:@escaping Data.Success, fail:@escaping Data.Fail) -> Void {
+        Data.myCards(callingViewController: callingViewController, success: { (data:[String: Any]) in
+            if let _cardsDict = data["cards"] {
+                if let cardsDict = _cardsDict as? [[String: Any]] {
+                    self.cards = []
+                    for cardDict in cardsDict {
+                        let card = CCCard(payload: cardDict as [String : AnyObject])
+                        self.cards.append(card)
+                    }
+                    success(data)
+                    return
+                }
+            }
+        }, fail: { (data, response) in
+            fail(data, response)
+            
+        })
+    }
+    
     //MARK: - My Cards -
     var cards:[CCCard] = []
     

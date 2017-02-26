@@ -13,4 +13,8 @@ extension Data {
     static func addCard(data:[String: Any], callingViewController:UIViewController, success:Success?, fail:Fail?) -> Void {
         api(.put, api: "card", parameters: [ "data" : data.json ], viewController: callingViewController, success: success, fail: fail)
     }
+    
+    static func myCards(callingViewController:UIViewController, success:Success?, fail:Fail?) -> Void {
+        api(.get, api: "card", parameters: nil, viewController: nil, success: success, fail: fail)
+    }
 }

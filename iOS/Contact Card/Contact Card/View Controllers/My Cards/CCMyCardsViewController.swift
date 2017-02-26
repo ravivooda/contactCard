@@ -20,8 +20,14 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
         self.present(UINavigationController(rootViewController: newCardViewController), animated: true, completion: nil)
     }
     
-    //MARK: - UITableViewDataSource -
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let _ = LoginCommand.user {
+            refreshData()
+        }
+    }
     
+    //MARK: - UITableViewDataSource -
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Manager.defaultManager().cards.count
     }
@@ -96,6 +102,10 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func refreshData() {
-        
+        Manager.defaultManager().refreshCards(callingViewController: self, success: { (data) in
+            self.reloadTableView()
+        }) { (data, response) in
+            
+        }
     }
 }
