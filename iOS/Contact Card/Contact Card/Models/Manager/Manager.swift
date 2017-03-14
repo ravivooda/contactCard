@@ -43,7 +43,6 @@ class Manager: NSObject {
                         
                         if id > 0, let value = cardDict["value"] as? String {
                             if let actualDict = convertToDictionary(text: value) {
-                                print(actualDict)
                                 let card = CCCard(id: id, payload: actualDict)
                                 self.cards.append(card)
                             }
@@ -57,6 +56,10 @@ class Manager: NSObject {
             fail(data, response)
             
         })
+    }
+    
+    func editCard(card:CCCard, contact:CNContact, callingViewController:UIViewController, success:@escaping Data.Success, fail:@escaping Data.Fail) {
+        Data.editCard(data: CCCard.toData(contact, imageURL: nil, thumbImageURL: nil), callingViewController: callingViewController, success: success, fail: fail)
     }
     
     //MARK: - My Cards -

@@ -13,6 +13,8 @@ import ContactsUI
 class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CNContactViewControllerDelegate {
     @IBOutlet weak var tableView: UITableView!
     
+    var editingCard:CCCard?
+    
     @IBAction func addNewCard(_ sender: Any) {
         let newCardViewController = CNContactViewController(forNewContact: nil)
         newCardViewController.contactStore = CNContactStore()
@@ -47,12 +49,16 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        tableView.endEditing(true)
         let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
-            let editCardViewController = CNContactViewController(forNewContact: Manager.defaultManager().cards[indexPath.row].contact)
-            editCardViewController.contactStore = CNContactStore()
-            editCardViewController.delegate = self
-            self.present(UINavigationController(rootViewController: editCardViewController), animated: true, completion: nil)
+            self.editingCard = Manager.defaultManager().cards[indexPath.row]
+            if let mutableContact = self.editingCard?.contact.mutableCopy() as? CNMutableContact {
+                print("Editing Card: \(mutableContact)")
+                let editCardViewController = CNContactViewController(forNewContact: mutableContact)
+                editCardViewController.contactStore = CNContactStore()
+                editCardViewController.title = "Edit Card"
+                editCardViewController.delegate = self
+                self.present(UINavigationController(rootViewController: editCardViewController), animated: true, completion: nil)
+            }
         }
         
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPatch) in
@@ -74,6 +80,7 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     func contactViewController(_ viewController: CNContactViewController, didCompleteWith contact: CNContact?) {
         print("Completed adding card \(contact)")
         viewController.dismiss(animated: true) {
+            
             if let _contact = contact?.mutableCopy() as? CNMutableContact{
                 // Deleting the contact first
                 let deleteRequest = CNSaveRequest()
@@ -86,14 +93,32 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
                     return
                 }
                 
-                Manager.defaultManager().addNewCard(card: _contact, callingViewController: self, success: { (data) in
-                    print("Added card successfully: \(_contact)")
-                    self.reloadTableView()
-                }, fail: { (data, response) in
-                    print("Failed to add card: \(_contact)")
-                })
+                if self.editingCard != nil {
+                    self.saveContact(card: self.editingCard!, contact: contact!)
+                    self.editingCard = nil
+                } else {
+                    self.addContact(contact: contact!)
+                }
             }
         }
+    }
+    
+    func saveContact(card:CCCard, contact:CNContact) {
+        Manager.defaultManager().editCard(card: card, contact: contact, callingViewController: self, success: { (data) in
+            print("Successfully edited card: \(contact)")
+            self.refreshData()
+        }) { (data, response) in
+            print("Failed to edit card: \(contact)")
+        }
+    }
+    
+    func addContact(contact:CNContact) {
+        Manager.defaultManager().addNewCard(card: contact, callingViewController: self, success: { (data) in
+            print("Added card successfully: \(contact)")
+            self.reloadTableView()
+        }, fail: { (data, response) in
+            print("Failed to add card: \(contact)")
+        })
     }
     
     func reloadTableView() {
