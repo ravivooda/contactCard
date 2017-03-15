@@ -59,7 +59,7 @@ class Manager: NSObject {
     }
     
     func editCard(card:CCCard, contact:CNContact, callingViewController:UIViewController, success:@escaping Data.Success, fail:@escaping Data.Fail) {
-        Data.editCard(data: CCCard.toData(contact, imageURL: nil, thumbImageURL: nil), callingViewController: callingViewController, success: success, fail: fail)
+        Data.editCard(id: "\(card.id)", data: CCCard.toData(contact, imageURL: nil, thumbImageURL: nil), callingViewController: callingViewController, success: success, fail: fail)
     }
     
     //MARK: - My Cards -

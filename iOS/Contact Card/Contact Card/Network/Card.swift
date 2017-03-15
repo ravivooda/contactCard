@@ -18,7 +18,7 @@ extension Data {
         api(.get, api: "card", parameters: nil, viewController: nil, success: success, fail: fail)
     }
     
-    static func editCard(data:[String: Any], callingViewController:UIViewController, success:Success?, fail:Fail?) -> Void {
-        api(.post, api: "card", parameters: [ "data" : data.json ], viewController: callingViewController, success: success, fail: fail)
+    static func editCard(id: String, data:[String: Any], callingViewController:UIViewController, success:Success?, fail:Fail?) -> Void {
+        api(.post, api: "card", parameters: [ "data" : data.json, "card_id" : id ], viewController: callingViewController, success: success, fail: fail)
     }
 }
