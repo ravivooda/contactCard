@@ -18,8 +18,7 @@ class Data: NSObject {
     
 	static func api(_ method:HTTPMethod, api:String, parameters:[String: Any]?, viewController:UIViewController?, success:Success?, fail:Fail?) -> Void {
         viewController?.showLoading()
-		request(serverURL + api, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
-            print("Response: \(response)")
+		request(serverURL + api, method: method, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
             switch response.result {
             case .success(let value):
                 viewController?.hideLoading(nil)
