@@ -41,6 +41,11 @@ def call_api():
         print("API Called: Card with method - " + request.method)
         if request.method == 'PUT':
             return jsonify(api.create_card())
+        elif request.method == 'GET':
+            resp = api.my_cards()
+            return jsonify(resp)
+        elif request.method == 'POST':
+            return jsonify(api.edit_card())
     except Exception,e:
         print(e)
     return jsonify({'success': False, 'error': 'An internal error occured'})

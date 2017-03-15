@@ -27,11 +27,11 @@ def execute(query,values):
         if con:
             con.close()
 
-def read(query):
+def read(query,values):
     try:
         con = getDB()
         cur = con.cursor(mdb.cursors.DictCursor)
-        cur.execute(query)
+        cur.execute(query,values)
         return cur.fetchall()
     except mdb.Error, e:
         print "Error occurred in reading query:\n\t %s\n\tErrors:\n\t%s" % (query, e)
@@ -40,8 +40,8 @@ def read(query):
         if con:
             con.close()
 
-def read_one(query):
-    result = read(query)
+def read_one(query,values):
+    result = read(query,values)
     if result:
         return result[0]
     return None
