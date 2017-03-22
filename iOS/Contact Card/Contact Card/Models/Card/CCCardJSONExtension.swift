@@ -192,7 +192,7 @@ extension CCCard {
         
         if let key = (calendarMap as NSDictionary).allKeys(for: calendarType).first as? Calendar.Identifier, let date = formatter.date(from: dateString) {
             let calendar = Calendar(identifier: key)
-            return calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+            return calendar.dateComponents([.year, .month, .day], from: date)
         }
         return nil
     }
