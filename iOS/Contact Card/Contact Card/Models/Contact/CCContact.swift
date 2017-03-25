@@ -29,4 +29,19 @@ class CCContact {
 	func displayName() -> String {
 		return "\(contact.givenName)"
 	}
+    
+    func updateContact(data:[String:Any]) {
+        if let mutableContact = contact.mutableCopy() as? CNMutableContact {
+            CCCard.parseDataWithMutableContactReference(contact: mutableContact, payload: data)
+            
+            // Save the contact remotely
+            let saveRequest = CNSaveRequest()
+            saveRequest.update(mutableContact)
+            do {
+                try CNContactStore().execute(saveRequest)
+            } catch let error as NSError {
+                print("Error occurred in saving contact update \(error)")
+            }
+        }
+    }
 }

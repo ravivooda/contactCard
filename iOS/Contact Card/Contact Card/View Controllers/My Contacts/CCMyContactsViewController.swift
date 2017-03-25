@@ -19,6 +19,7 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
         super.viewDidAppear(animated)
         if let _ = LoginCommand.user {
             reloadContacts()
+            syncLocalContactsWithRemoteUpdates()
         }
     }
     
@@ -43,14 +44,9 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
                            CNContactIdentifierKey,
                            CNContactNoteKey] as [Any]
         let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
-        var contactIDs:[String] = []
         do {
             try store.enumerateContacts(with: fetchRequest, usingBlock: { (contact, stop) -> Void in
-                let contact = CCContact(contact: contact)
-                contacts.append(contact)
-                if !isEmpty(contact.remoteID) {
-                    contactIDs.append(contact.remoteID)
-                }
+                contacts.append(CCContact(contact: contact))
             })
         } catch let error as NSError {
             print(error.localizedDescription)
@@ -58,15 +54,42 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
         self.contacts = contacts
         self.tableView.reloadData()
         
+        print("Reloaded contacts on UI")
+    }
+    
+    func syncLocalContactsWithRemoteUpdates() -> Void {
         // Syncing contacts remotely
+        var contactIDs:[String] = []
+        
+        for contact in self.contacts {
+            if !isEmpty(contact.remoteID) {
+                contactIDs.append(contact.remoteID)
+            }
+        }
+        
         Data.syncContacts(contactIDs: contactIDs, callingViewController: nil, success: { (response:[String: Any]) in
-            print(response)
+            if let contacts_data = response["contacts_data"] as? [String: Any] {
+                self.updateContacts(contacts_data: contacts_data)
+            }
         }) { (response: [String : Any], httpResponse) in
             print("Got error: \(response)")
             print("Got HTTP Response \(httpResponse)")
         }
+    }
+    
+    private func updateContacts(contacts_data:[String: Any]) {
+        for contact in self.contacts {
+            print(contacts_data)
+            if let contact_data = contacts_data[contact.remoteID] as? [String: Any] {
+                if let data = contact_data["value"] as? String {
+                    if let actualDict = convertToDictionary(text: data) {
+                        contact.updateContact(data: actualDict)
+                    }
+                }
+            }
+        }
         
-        print("Reloaded contacts")
+        reloadContacts()
     }
     
     //MARK: - UITableViewDataSource -

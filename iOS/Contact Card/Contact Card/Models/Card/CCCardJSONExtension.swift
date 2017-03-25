@@ -12,6 +12,11 @@ import Contacts
 extension CCCard {
     convenience init(id:Int, payload:[String : Any]) {
         let contact = CNMutableContact()
+        CCCard.parseDataWithMutableContactReference(contact: contact, payload: payload)
+        self.init(id: id, contact: contact)
+    }
+    
+    static func parseDataWithMutableContactReference(contact:CNMutableContact, payload:[String: Any]) {
         if let nameDict = payload["name"] as? [String: Any] {
             contact.namePrefix = getStringValue(nameDict["prefix"])
             contact.givenName = getStringValue(nameDict["given"])
@@ -107,8 +112,6 @@ extension CCCard {
             }
             contact.dates = datesArray
         }
-        
-        self.init(id: id, contact: contact)
     }
     
     private static func getPhoneNumber(payload:[String : [String:String]]) -> CNLabeledValue<CNPhoneNumber>? {
