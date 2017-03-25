@@ -43,15 +43,29 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
                            CNContactIdentifierKey,
                            CNContactNoteKey] as [Any]
         let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
+        var contactIDs:[String] = []
         do {
             try store.enumerateContacts(with: fetchRequest, usingBlock: { (contact, stop) -> Void in
-                contacts.append(CCContact(contact: contact))
+                let contact = CCContact(contact: contact)
+                contacts.append(contact)
+                if !isEmpty(contact.remoteID) {
+                    contactIDs.append(contact.remoteID)
+                }
             })
         } catch let error as NSError {
             print(error.localizedDescription)
         }
         self.contacts = contacts
         self.tableView.reloadData()
+        
+        // Syncing contacts remotely
+        Data.syncContacts(contactIDs: contactIDs, callingViewController: nil, success: { (response:[String: Any]) in
+            print(response)
+        }) { (response: [String : Any], httpResponse) in
+            print("Got error: \(response)")
+            print("Got HTTP Response \(httpResponse)")
+        }
+        
         print("Reloaded contacts")
     }
     
