@@ -148,3 +148,17 @@ def edit_card():
     if error:
         return {'success': False, 'error': error}
     return {'success': True, 'card_id': card_id}
+
+@loggedin
+@with_args(['contact_ids',])
+def contact_updates():
+    contact_ids = request.values['contact_ids'].split(",")
+    user_id = session['user_id']
+    cards_info, error = logic.contact_updates(contact_ids, user_id)
+    if error:
+        return report_error(error)
+    return {'success': True, 'contacts_data': cards_info}
+    
+
+def report_error(error):
+    return {'success': False, 'error': error}

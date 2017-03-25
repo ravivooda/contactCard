@@ -50,6 +50,16 @@ def call_api():
         print(e)
     return jsonify({'success': False, 'error': 'An internal error occured'})
 
+@app.route('/api/contact', methods=['GET'])
+def contact_api():
+    try:
+        print("API Called: Contact with method - " + request.method)
+        if request.method == 'GET':
+            return jsonify(api.contact_updates())
+    except Exception,e:
+        print(e)
+    return jsonify({'success': False, 'error': 'An internal error occured'})
+
 @app.route('/api/<api_func>', methods=['GET', 'POST', 'PUT'])
 def api_call(api_func):
     print("APIs Called: " + api_func)

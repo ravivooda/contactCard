@@ -2,6 +2,7 @@
 
 import db
 from helpers import py_helpers, env_constants
+import logging
 
 def get_user(user_id):
     query = "SELECT * FROM users WHERE user_id = '%s' LIMIT 1"
@@ -82,6 +83,40 @@ def edit_card(card_id, data, user_id):
     db.write(query, (data.encode(encoding='UTF-8', errors='ignore'), card_id))
     
     return card_id, None
+
+def contact_updates(contact_ids, user_id):
+    if not user_id:
+        return None, [env_constants.NOT_LOGGED_IN_ERROR,]
+
+    if not contact_ids:
+        return None, [env_constants.INVALID_REQUEST_ERROR,]
+
+    query = "SELECT contact_id, value, user_id FROM cards WHERE contact_id IN (%s)"
+    print(contact_ids)
+    contact_info = db.read(query, tuple(contact_ids))
+
+    return_info = {}
+    
+    for info in contact_info:
+        if info['value']:
+            add_card_follower(user_id, info['contact_id'])
+            return_info[info['contact_id']] = info
+    
+    return return_info, None
+            
+
+def add_card_follower(user_id, contact_id):
+    if not user_id or not contact_id:
+        #ignore
+        return
+    query = "SELECT contact_id, user_id FROM followers WHERE contact_id = %s AND user_id = %s"
+    
+    # Checking if the table does not contain this relationship
+    if not db.read(query, (contact_id, user_id)):
+        query = "INSERT INTO followers (contact_id, user_id) VALUES (%s, %s)"
+        follower_info = db.write(query, (contact_id, user_id))
+        logging.info("Follower user %s added for card %s", user_id, contact_id)
+    return
 
 if __name__ == "__main__":
     pass
