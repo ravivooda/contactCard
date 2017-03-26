@@ -60,6 +60,16 @@ def contact_api():
         print(e)
     return jsonify({'success': False, 'error': 'An internal error occured'})
 
+@app.route('/api/device', methods=['POST'])
+def device_api():
+    try:
+        print("API Called: Device with method - " + request.method)
+        if request.method == 'POST':
+            return jsonify(api.register_device())
+    except Exception,e:
+        print(e)
+    return jsonify({'success': False, 'error': 'An internal error occured'})
+
 @app.route('/api/<api_func>', methods=['GET', 'POST', 'PUT'])
 def api_call(api_func):
     print("APIs Called: " + api_func)

@@ -46,7 +46,7 @@ class with_args(object):
 
             # Checking for the MUST have parameters
             for arg in self.must_args:
-                if not request.args.get(arg) and not request.form.get(arg):
+                if not arg in request.args and not arg in request.form:
                     missing_params.append(arg)
 
             # Checking for the ATLEAST ONE have parameters
@@ -158,6 +158,17 @@ def contact_updates():
     if error:
         return report_error(error)
     return {'success': True, 'contacts_data': cards_info}
+
+@loggedin
+@with_args(['device_id', 'device_type'])
+def register_device():
+    user_id = session['user_id']
+    device_id = request.values['device_id']
+    device_type = request.values['device_type']
+    success, error = logic.register_device(user_id,device_id,device_type)
+    if error:
+        return report_error(error)
+    return {'success': True}
     
 
 def report_error(error):

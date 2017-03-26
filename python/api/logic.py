@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import db
+import db, notification
 from helpers import py_helpers, env_constants
 import logging
 
@@ -26,7 +26,7 @@ def signup(email,password):
     user_info = db.read_one(query,(new_id,))
     return user_info, None
 
-def login(email,password):
+def login(email, password):
     query = "SELECT * FROM users WHERE email = %s LIMIT 1"
     user_info = db.read_one(query,(email,))
     if not user_info:
@@ -35,6 +35,12 @@ def login(email,password):
         return None, ["Sorry, password doesn't match. I want to allow you! Trust me. Maybe try FORGOT PASSWORD?"]
     del user_info['password']
     return user_info, None
+
+def register_device(user_id,device_id,device_type):
+    if not user_id or not device_id or not device_type:
+        return False, "Expected params cannot be empty"
+    notification.register_device(user_id, device_id, device_type)
+    return True, None
 
 def create_card(data, user_id):
     # Validity of creating card
