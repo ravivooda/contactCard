@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import IQKeyboardManagerSwift
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -43,6 +44,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
+    }
+    
+    static func registerForRemoteNotifications() -> Void {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert, .badge]) { (granted, error) in
+            if granted {
+                UIApplication.shared.registerForRemoteNotifications()
+            } else {
+                print("Error occurred in registering for notification authorization \(error)")
+            }
+        }
+    }
+    
+    private func convertDeviceTokenToString(deviceToken:Data) -> String {
+        //  Convert binary Device Token to a String (and remove the <,> and white space charaters).
+        var deviceTokenStr = deviceToken.description.replacingOccurrences(of: ">", with: "")
+        deviceTokenStr = deviceTokenStr.replacingOccurrences(of: "<", with: "")
+        deviceTokenStr = deviceTokenStr.replacingOccurrences(of: " ", with: "")
+        
+        // Our API returns token in all uppercase, regardless how it was originally sent.
+        // To make the two consistent, I am uppercasing the token string here.
+        deviceTokenStr = deviceTokenStr.uppercased()
+        return deviceTokenStr
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        if LoginCommand.user != nil {
+            Data.registerDevice(deviceToken: convertDeviceTokenToString(deviceToken: deviceToken), success: { (response) in
+                print("Successfully register device for user \(LoginCommand.user?.id)")
+            }, fail: { (response, HTTPResponse) in
+                print("Failed to register device token remotely \(HTTPResponse)")
+            })
+        }
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register for remote notifications with error \(error)")
     }
 
     // MARK: - Core Data stack

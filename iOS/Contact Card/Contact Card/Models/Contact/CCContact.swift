@@ -27,7 +27,7 @@ class CCContact {
 	}
 
 	func displayName() -> String {
-		return "\(contact.givenName)"
+		return "\(contact.givenName) \(contact.familyName)"
 	}
     
     func updateContact(data:[String:Any]) {

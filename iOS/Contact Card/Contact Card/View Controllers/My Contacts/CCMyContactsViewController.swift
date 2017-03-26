@@ -79,7 +79,6 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
     
     private func updateContacts(contacts_data:[String: Any]) {
         for contact in self.contacts {
-            print(contacts_data)
             if let contact_data = contacts_data[contact.remoteID] as? [String: Any] {
                 if let data = contact_data["value"] as? String {
                     if let actualDict = convertToDictionary(text: data) {

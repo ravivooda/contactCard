@@ -18,6 +18,7 @@ class Data: NSObject {
     
 	static func api(_ method:HTTPMethod, api:String, parameters:[String: Any]?, viewController:UIViewController?, success:Success?, fail:Fail?) -> Void {
         viewController?.showLoading()
+        print("Requesting API \(api) with method \(method) and parameters \(parameters)")
 		request(serverURL + api, method: method, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
             switch response.result {
             case .success(let value):
