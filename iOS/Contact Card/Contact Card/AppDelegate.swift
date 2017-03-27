@@ -19,6 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         IQKeyboardManager.sharedManager().enable = true
+        
+        // Registering for User Defaults
+        let addDefaults = [String:Any]()
+        UserDefaults.standard.register(defaults: addDefaults)
+        
         return true
     }
 
@@ -68,9 +73,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return deviceTokenStr
     }
     
+    static var deviceToken:String?
+    static var registerDevicePostCommand:Command?
+    
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        AppDelegate.deviceToken = convertDeviceTokenToString(deviceToken: deviceToken)
+        if let postCommand = AppDelegate.registerDevicePostCommand {
+            postCommand.execute()
+        }
         if LoginCommand.user != nil {
-            Data.registerDevice(deviceToken: convertDeviceTokenToString(deviceToken: deviceToken), success: { (response) in
+            Data.registerDevice(deviceToken: AppDelegate.deviceToken!, success: { (response) in
                 print("Successfully register device for user \(LoginCommand.user?.id)")
             }, fail: { (response, HTTPResponse) in
                 print("Failed to register device token remotely \(HTTPResponse)")
@@ -80,6 +92,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Failed to register for remote notifications with error \(error)")
+        AppDelegate.deviceToken = ""
+        if let postCommand = AppDelegate.registerDevicePostCommand {
+            postCommand.execute()
+        }
     }
 
     // MARK: - Core Data stack

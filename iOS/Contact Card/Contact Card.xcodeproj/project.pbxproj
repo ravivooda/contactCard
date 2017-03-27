@@ -41,6 +41,8 @@
 		97E650581E8710B60074F112 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E650571E8710B60074F112 /* Contact.swift */; };
 		97E6505B1E88097A0074F112 /* LoginCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E6505A1E88097A0074F112 /* LoginCommand.swift */; };
 		97E650601E880AA00074F112 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E6505F1E880AA00074F112 /* Device.swift */; };
+		97E650631E8819230074F112 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 97E650621E8819230074F112 /* Settings.bundle */; };
+		97E650651E88AD640074F112 /* LogoutCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E650641E88AD640074F112 /* LogoutCommand.swift */; };
 		BC54A93A1E0F6ECF0062CE8B /* CCContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC54A9391E0F6ECF0062CE8B /* CCContactTableViewCell.swift */; };
 		BC54A93E1E0F6EFC0062CE8B /* CCContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC54A93D1E0F6EFC0062CE8B /* CCContact.swift */; };
 		BCEEE53B1E4C0B7500D2651A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEEE5391E4C0B7500D2651A /* LoginViewController.swift */; };
@@ -87,6 +89,8 @@
 		97E650571E8710B60074F112 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		97E6505A1E88097A0074F112 /* LoginCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCommand.swift; sourceTree = "<group>"; };
 		97E6505F1E880AA00074F112 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		97E650621E8819230074F112 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		97E650641E88AD640074F112 /* LogoutCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutCommand.swift; sourceTree = "<group>"; };
 		BC54A9391E0F6ECF0062CE8B /* CCContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCContactTableViewCell.swift; sourceTree = "<group>"; };
 		BC54A93D1E0F6EFC0062CE8B /* CCContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCContact.swift; sourceTree = "<group>"; };
 		BCEEE5391E4C0B7500D2651A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +151,7 @@
 				97B776C61D846C8C00FC0A4B /* Models */,
 				97B776C71D846C8C00FC0A4B /* Views */,
 				97B776B71D83D38A00FC0A4B /* View Controllers */,
+				97E650611E88190C0074F112 /* Settings */,
 				97064C651D83CF44008EF6B3 /* AppDelegate.swift */,
 				97064C691D83CF44008EF6B3 /* Main.storyboard */,
 				97064C6F1D83CF44008EF6B3 /* Assets.xcassets */,
@@ -316,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				97E6505A1E88097A0074F112 /* LoginCommand.swift */,
+				97E650641E88AD640074F112 /* LogoutCommand.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -325,6 +331,14 @@
 			children = (
 			);
 			path = Device;
+			sourceTree = "<group>";
+		};
+		97E650611E88190C0074F112 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				97E650621E8819230074F112 /* Settings.bundle */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		A1B705ADEE12BA13282079A6 /* Frameworks */ = {
@@ -460,6 +474,7 @@
 				97064C6B1D83CF44008EF6B3 /* Main.storyboard in Resources */,
 				97B776EF1D84812900FC0A4B /* LoadingViewController.xib in Resources */,
 				97B776DA1D84751C00FC0A4B /* VersionUnsupportedViewController.xib in Resources */,
+				97E650631E8819230074F112 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,6 +589,7 @@
 				97064C6E1D83CF44008EF6B3 /* Contact_Card.xcdatamodeld in Sources */,
 				97B776EE1D84812900FC0A4B /* LoadingViewController.swift in Sources */,
 				BCEEE53B1E4C0B7500D2651A /* LoginViewController.swift in Sources */,
+				97E650651E88AD640074F112 /* LogoutCommand.swift in Sources */,
 				97B776BB1D83D3CE00FC0A4B /* CCMyCardsViewController.swift in Sources */,
 				97B776C31D83D4AE00FC0A4B /* CCMyContactsViewController.swift in Sources */,
 				97B776DD1D84761000FC0A4B /* StringExtensions.swift in Sources */,

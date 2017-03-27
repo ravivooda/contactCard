@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>StringsTable</key>
+	<string>Root</string>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>FooterText</key>
+			<string>Please launch the app to complete the logout action</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Logged In</string>
+			<key>Key</key>
+			<string>user_toggle</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>FooterText</key>
+			<string>Auto Sync your contacts upon app launch (Highly Recommended)</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Auto Sync</string>
+			<key>Key</key>
+			<string>sync_toggle</string>
+			<key>DefaultValue</key>
+			<true/>
+			<key>FooterText</key>
+			<string>Auto Sync your contacts upon app launch (Highly Recommended)</string>
+		</dict>
+	</array>
+</dict>
+</plist>

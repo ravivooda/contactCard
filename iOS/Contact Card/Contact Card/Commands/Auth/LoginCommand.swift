@@ -36,7 +36,7 @@ class LoginCommand: Command {
     
     override func execute() {
         loginViewController.loginCommand = self
-        self.presentingViewController.present(loginViewController, animated: true) { 
+        self.presentingViewController.present(loginViewController, animated: true) {
             if let accounts = SSKeychain.accounts(forService: User.service) {
                 for account in accounts {
                     if let username = account["acct"] as? String, let password = SSKeychain.password(forService: User.service, account: username) {
@@ -50,13 +50,24 @@ class LoginCommand: Command {
     }
     
     func loginCompleted(user:User) -> Void {
-        LoginCommand.user = user
-        SSKeychain.setPassword(user.password, forService: User.service, account: user.email)
-        self.presentingViewController.dismiss(animated: true) { 
-            self.returnCommand?.execute()
-        }
-        
         // Register for notifications
         AppDelegate.registerForRemoteNotifications()
+        
+        LoginCommand.user = user
+        SSKeychain.setPassword(user.password, forService: User.service, account: user.email)
+        
+        if !UserDefaults.standard.bool(forKey: "user_toggle") {
+            self.logout()
+            return;
+        }
+        
+        self.presentingViewController.dismiss(animated: true) {
+            self.returnCommand?.execute()
+        }
+    }
+    
+    
+    private func logout() -> Void {
+        LogoutCommand(viewController: loginViewController).execute()
     }
 }
