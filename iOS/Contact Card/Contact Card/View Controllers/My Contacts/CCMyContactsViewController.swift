@@ -10,7 +10,7 @@ import UIKit
 import Contacts
 import ContactsUI
 
-class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CNContactViewControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     var contacts:[CCContact] = []
@@ -107,6 +107,8 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewController = CNContactViewController(for: contacts[indexPath.row].contact)
         viewController.allowsEditing = false
+        viewController.allowsActions = false
+        viewController.delegate = self
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
