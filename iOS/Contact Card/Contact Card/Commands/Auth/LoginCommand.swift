@@ -27,23 +27,39 @@ class LoginCommand: Command {
     static var user:User?
     
     let returnCommand:Command?
-    let loginViewController = LoginViewController(nibName: "LoginViewController", bundle: nil)
+    let loginViewController:LoginViewController
     
     init(viewController:UIViewController, returnCommand:Command?) {
         self.returnCommand = returnCommand
+        if viewController is LoadingViewController {
+            loginViewController = viewController as! LoginViewController
+            loginViewController.loginTextField.text = ""
+            loginViewController.passwordTextField.text = ""
+        } else {
+            loginViewController = LoginViewController(nibName: "LoginViewController", bundle: nil)
+        }
         super.init(viewController: viewController)
     }
     
     override func execute() {
         loginViewController.loginCommand = self
-        self.presentingViewController.present(loginViewController, animated: true) {
-            if let accounts = SSKeychain.accounts(forService: User.service) {
-                for account in accounts {
-                    if let username = account["acct"] as? String, let password = SSKeychain.password(forService: User.service, account: username) {
-                        self.loginViewController.loginTextField.text = username
-                        self.loginViewController.passwordTextField.text = password
-                        self.loginViewController.loginClicked(self.loginViewController.loginButton)
-                    }
+        
+        if presentingViewController is LoginViewController {
+            self.login()
+        } else {
+            self.presentingViewController.present(loginViewController, animated: true) {
+                self.login()
+            }
+        }
+    }
+    
+    func login() -> Void {
+        if let accounts = SSKeychain.accounts(forService: User.service) {
+            for account in accounts {
+                if let username = account["acct"] as? String, let password = SSKeychain.password(forService: User.service, account: username) {
+                    self.loginViewController.loginTextField.text = username
+                    self.loginViewController.passwordTextField.text = password
+                    self.loginViewController.loginClicked(self.loginViewController.loginButton)
                 }
             }
         }

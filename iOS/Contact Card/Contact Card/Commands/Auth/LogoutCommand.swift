@@ -7,17 +7,11 @@
 //
 
 import UIKit
+import SSKeychain
 
 class LogoutCommand: Command {
     
-    let loginViewController:LoginViewController
-    
     override init(viewController:UIViewController) {
-        if viewController is LoginViewController {
-            loginViewController = viewController as! LoginViewController
-        } else {
-            loginViewController = LoginViewController(nibName: "LoginViewController", bundle: nil)
-        }
         super.init(viewController: viewController)
     }
     
@@ -27,22 +21,23 @@ class LogoutCommand: Command {
             return
         }
         AppDelegate.registerDevicePostCommand = nil
-        LoginCommand.user = nil
-        if presentingViewController is LoginViewController {
-            self.logout()
-        } else {
-            self.presentingViewController.present(loginViewController, animated: true, completion: { 
-                self.logout()
-            })
-        }
+        self.logout()
     }
     
     private func logout() -> Void {
-        loginViewController.loginTextField.text = ""
-        loginViewController.passwordTextField.text = ""
-        Data.logout(callingViewController: loginViewController, success: { (response) in
+        Data.logout(callingViewController: presentingViewController, success: { (response) in
             print("Successfully logged out user \(LoginCommand.user)")
+            
+            // Reset User Defaults
             UserDefaults.standard.set(true, forKey: "user_toggle")
+            
+            // Remove credentials from the keychain
+            if let account = LoginCommand.user?.email {
+                print("Removing user credentials \(account)")
+                SSKeychain.deletePassword(forService: LoginCommand.User.service, account: account)
+            }
+            LoginCommand.user = nil
+            LoginCommand(viewController: self.presentingViewController, returnCommand: nil).execute()
         }) { (response, httpResponse) in
             print("Failed in logging out the user with response \(httpResponse)")
         }
