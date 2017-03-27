@@ -42,6 +42,10 @@ def register_device(user_id,device_id,device_type):
     notification.register_device(user_id, device_id, device_type)
     return True, None
 
+def unregister_device(user_id,device_id,device_type):
+    notification.unregister_device(user_id,device_id,device_type)
+    return True, None
+
 def create_card(data, user_id):
     # Validity of creating card
     if not user_id:

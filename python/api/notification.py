@@ -15,6 +15,9 @@ def register_device(user_id, device_id, device_type):
     # This cannot be more than 1 user
     current_user = db.read("SELECT user_id FROM devices WHERE device_id = %s AND device_type = %s", (device_id, device_type))
 
+    if current_user and len(current_user) > 0:
+        current_user = current_user[0]
+
     if current_user and not current_user['user_id'] == user_id:
         # Delete the device id from the previous user
         db.write("DELETE from devices WHERE user_id = %s AND device_id = %s AND device_type = %s", (current_user['user_id'], device_id, device_type))
@@ -23,6 +26,9 @@ def register_device(user_id, device_id, device_type):
         return
 
     db.write("INSERT INTO devices (user_id, device_id, device_type) VALUES (%s, %s, %s)", (user_id, device_id, device_type))
+
+def unregister_device(user_id,device_id,device_type):
+    db.write("DELETE from devices WHERE user_id = %s AND device_id = %s AND device_type = %s", (user_id, device_id, device_type))
         
 
 def push_card(card_id):

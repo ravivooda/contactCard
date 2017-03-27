@@ -112,6 +112,15 @@ def get_user():
 
 @loggedin
 def logout():
+    user_id = session['user_id']
+    
+    # remove the current device id for the current user
+    device_id = request.values.get('device_id')
+    device_type = request.values.get('device_type')
+    if device_id and device_type:
+        print("Unregistering device %s for user %s" % (device_id, user_id))
+        logic.unregister_device(user_id, device_id, device_type)
+
     session.clear()
     return {'success':True}
 
