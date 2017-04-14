@@ -8,82 +8,51 @@
 
 import UIKit
 import SSKeychain
+import CloudKit
 
 class LoginCommand: Command {
     
     class User {
         static let service = "CCService"
-        let id:Int
-        let email:String
-        let password:String
+        let id:String
         
-        init(id:Int, email:String, password:String) {
+        init(id:String) {
             self.id = id
-            self.email = email
-            self.password = password
         }
     }
     
     static var user:User?
     
-    let returnCommand:Command?
     let loginViewController:LoginViewController
     
     init(viewController:UIViewController, returnCommand:Command?) {
-        self.returnCommand = returnCommand
         if viewController is LoadingViewController {
             loginViewController = viewController as! LoginViewController
-            loginViewController.loginTextField.text = ""
-            loginViewController.passwordTextField.text = ""
         } else {
             loginViewController = LoginViewController(nibName: "LoginViewController", bundle: nil)
         }
-        super.init(viewController: viewController)
+        super.init(viewController: viewController, returningCommand: returnCommand)
     }
     
     override func execute() {
-        loginViewController.loginCommand = self
-        
-        if presentingViewController is LoginViewController {
-            self.login()
-        } else {
-            self.presentingViewController.present(loginViewController, animated: true) {
-                self.login()
+        LoginCommand.user = nil
+        CKContainer.default().fetchUserRecordID { (recordID, error) in
+            if error != nil || isEmpty(recordID?.recordName) {
+                print("Login error: \(error?.localizedDescription ?? "")")
+                self.presentingViewController.present(self.loginViewController, animated: true, completion: nil)
+            } else {
+                // Register for notifications
+                AppDelegate.registerForRemoteNotifications()
+                
+                LoginCommand.user = User(id: recordID!.recordName)
+                self.finished()
             }
         }
     }
     
-    func login() -> Void {
-        if let accounts = SSKeychain.accounts(forService: User.service) {
-            for account in accounts {
-                if let username = account["acct"] as? String, let password = SSKeychain.password(forService: User.service, account: username) {
-                    self.loginViewController.loginTextField.text = username
-                    self.loginViewController.passwordTextField.text = password
-                    self.loginViewController.loginClicked(self.loginViewController.loginButton)
-                }
-            }
+    override func finished() {
+        self.presentingViewController.dismiss(animated: true) { 
+            super.finished()
         }
-    }
-    
-    func loginCompleted(user:User) -> Void {
-        // Register for notifications
-        AppDelegate.registerForRemoteNotifications()
-        
-        LoginCommand.user = user
-        SSKeychain.setPassword(user.password, forService: User.service, account: user.email)
-        
-        if !UserDefaults.standard.bool(forKey: "user_toggle") {
-            self.logout()
-            return;
-        }
-        
-        self.presentingViewController.dismiss(animated: true) {
-            self.returnCommand?.execute()
-        }
-    }
-    
-    
-    private func logout() -> Void {
-        LogoutCommand(viewController: loginViewController).execute()
     }
 }

@@ -11,17 +11,19 @@ import UIKit
 class Command: NSObject {
     
     let presentingViewController:UIViewController
+    var returningCommand:Command? = nil
     
-    init(viewController:UIViewController) {
+    init(viewController:UIViewController, returningCommand:Command?) {
         self.presentingViewController = viewController
+        self.returningCommand = returningCommand
         super.init()
-    }
-
-    fileprivate override init() {
-        self.presentingViewController = UIViewController()
     }
     
     func execute() {
         preconditionFailure("This method must be overridden")
+    }
+    
+    func finished() {
+        returningCommand?.execute()
     }
 }

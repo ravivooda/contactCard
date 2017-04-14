@@ -12,15 +12,9 @@ class VersionUnsupportedCommand: Command {
     
     let appStoreURL:String
     
-    
-    fileprivate override init(viewController: UIViewController) {
-        appStoreURL = ""
-        super.init(viewController: viewController)
-    }
-    
-    init(viewController: UIViewController, appStoreURL:String) {
+    init(viewController: UIViewController, appStoreURL:String, returningCommand: Command?) {
         self.appStoreURL = appStoreURL
-        super.init(viewController: viewController)
+        super.init(viewController: viewController, returningCommand: returningCommand)
     }
 
     override func execute() {

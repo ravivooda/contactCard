@@ -8,14 +8,24 @@
 
 import Foundation
 import UIKit
+import CloudKit
 
 extension Data {
     static func addCard(data:[String: Any], callingViewController:UIViewController, success:Success?, fail:Fail?) -> Void {
-        api(.put, api: "card", parameters: [ "data" : data.json ], viewController: callingViewController, success: success, fail: fail)
+        //api(.put, api: "card", parameters: [ "data" : data.json ], viewController: callingViewController, success: success, fail: fail)
+        let contactRecord = CKRecord(recordType: "Contact")
+        contactRecord["json"] = data.json as NSString
+        
+        let database = CKContainer.default().privateCloudDatabase
+        database.save(contactRecord) { (record, error) in
+            //print("record: \(record), error: \(error)")
+        }
+        
     }
     
-    static func myCards(callingViewController:UIViewController, success:Success?, fail:Fail?) -> Void {
-        api(.get, api: "card", parameters: nil, viewController: nil, success: success, fail: fail)
+    static func myCards(callingViewController:UIViewController, success:newSuccess?, fail:newFail?) -> Void {
+        let query = CKQuery(recordType: "Contact", predicate: NSPredicate(value: true))
+        api(query, viewController: callingViewController, success: success, fail: fail)
     }
     
     static func editCard(id: String, data:[String: Any], callingViewController:UIViewController, success:Success?, fail:Fail?) -> Void {

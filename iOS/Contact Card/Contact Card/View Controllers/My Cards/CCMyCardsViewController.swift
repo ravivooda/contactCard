@@ -25,8 +25,9 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if let _ = LoginCommand.user {
-            refreshData()
+            
         }
+        refreshData()
     }
     
     //MARK: - UITableViewDataSource -
@@ -126,10 +127,10 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func refreshData() {
-        Manager.defaultManager().refreshCards(callingViewController: self, success: { (data) in
+        Manager.defaultManager().refreshCards(callingViewController: self, success: { (records) in
             self.reloadTableView()
-        }) { (data, response) in
-            
-        }
+        }, fail: { (message, error) in
+            print("Message: \(message), error: \(error)")
+        })
     }
 }

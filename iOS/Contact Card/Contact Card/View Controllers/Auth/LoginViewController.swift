@@ -14,37 +14,12 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginInputContainer: UIView!
     @IBOutlet weak var loginButton: UIButton!
     
-    let loginTextField = getTextField("Username")
-    let passwordTextField = getTextField("Password")
-    
     var loginCommand:LoginCommand? = nil
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        loginTextField.autocapitalizationType = .none
-        passwordTextField.autocapitalizationType = .none
-        loginTextField.autocorrectionType = .no
-        passwordTextField.autocorrectionType = .no
-        
-        addSubViewWithConstraints(textField: loginTextField, belowView: nil, inView: loginInputContainer)
-        addSubViewWithConstraints(textField: passwordTextField, belowView: loginTextField, inView: loginInputContainer)
-    }
-    
     @IBAction func loginClicked(_ sender: UIButton) {
-        Data.login(loginTextField.text!, password: passwordTextField.text!, callingViewController: self, success: { (response) in
-            if let my_info = response["my_info"] as? [String: Any] {
-                self.loginCommand?.loginCompleted(user: LoginCommand.User(id: getIntValue(my_info["user_id"], defaultValue: 0), email: getStringValue(self.loginTextField.text), password: getStringValue(self.passwordTextField.text)))
-            }
-        }) { (response, httpResponse) in
-            print(response)
+        if let settingsURL = URL(string: UIApplicationOpenSettingsURLString) {
+            UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
         }
-    }
-    
-    
-    @IBAction func signupClicked(_ sender: UIButton) {
-        
     }
     
     func addSubViewWithConstraints(textField:TextField, belowView:TextField?, inView:UIView) {

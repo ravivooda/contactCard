@@ -33,29 +33,16 @@ class Manager: NSObject {
         }
     }
     
-    func refreshCards(callingViewController:UIViewController, success:@escaping Data.Success, fail:@escaping Data.Fail) -> Void {
-        Data.myCards(callingViewController: callingViewController, success: { (data:[String: Any]) in
-            if let _cardsDict = data["cards"] {
-                if let cardsDict = _cardsDict as? [[String: Any]] {
-                    self.cards = []
-                    for cardDict in cardsDict {
-                        let id = getIntValue(cardDict["contact_id"])
-                        
-                        if id > 0, let value = cardDict["value"] as? String {
-                            if let actualDict = convertToDictionary(text: value) {
-                                let card = CCCard(id: id, payload: actualDict)
-                                self.cards.append(card)
-                            }
-                        }
-                    }
-                    success(data)
-                    return
+    func refreshCards(callingViewController:UIViewController, success:@escaping Data.newSuccess, fail:@escaping Data.newFail) -> Void {
+        Data.myCards(callingViewController: callingViewController, success: { (records) in
+            self.cards = []
+            for record in records {
+                if let jsonString = record["json"] as? String, let dictionary = convertToDictionary(text: jsonString) {
+                    self.cards.append(CCCard(id: 1, payload: dictionary))
                 }
             }
-        }, fail: { (data, response) in
-            fail(data, response)
-            
-        })
+            success(records)
+        }, fail: fail)
     }
     
     func editCard(card:CCCard, contact:CNContact, callingViewController:UIViewController, success:@escaping Data.Success, fail:@escaping Data.Fail) {
