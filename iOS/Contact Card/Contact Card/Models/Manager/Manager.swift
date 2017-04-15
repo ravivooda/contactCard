@@ -25,7 +25,7 @@ class Manager: NSObject {
     
     func addNewCard(name: String, card:CNContact, callingViewController:UIViewController, success:@escaping Data.newSuccess, fail:@escaping Data.newFail) -> Void {
         Data.addCard(name: name, data: CCCard.toData(card, imageURL: nil, thumbImageURL: nil), callingViewController: callingViewController, success: { (records) in
-            self.cards.append(CCCard(id: 1, contact: card))
+            self.cards.append(CCCard(record: records[0], contact: card))
             success(records)
         }, fail: fail)
     }
@@ -35,16 +35,14 @@ class Manager: NSObject {
             self.cards = []
             for record in records {
                 print("\(record.recordID.recordName)")
-                if let jsonString = record["json"] as? String, let dictionary = convertToDictionary(text: jsonString) {
-                    self.cards.append(CCCard(id: 1, payload: dictionary))
-                }
+                self.cards.append(CCCard(record: record))
             }
             success(records)
         }, fail: fail)
     }
     
     func editCard(card:CCCard, contact:CNContact, callingViewController:UIViewController, success:@escaping Data.Success, fail:@escaping Data.Fail) {
-        Data.editCard(id: "\(card.id)", data: CCCard.toData(contact, imageURL: nil, thumbImageURL: nil), callingViewController: callingViewController, success: success, fail: fail)
+        Data.editCard(id: "\(1)", data: CCCard.toData(contact, imageURL: nil, thumbImageURL: nil), callingViewController: callingViewController, success: success, fail: fail)
     }
     
     //MARK: - My Cards -

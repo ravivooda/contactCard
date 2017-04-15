@@ -8,17 +8,18 @@
 
 import UIKit
 import Contacts
+import CloudKit
 
 class CCCard {
     static let dateFormat = "yyyy/MM/dd hh:mm Z"
-
-    let id:Int
     
     let contact:CNContact
+    let record:CKRecord
     
-    init(id:Int, contact:CNContact) {
-        self.id = id
+    
+    init(record:CKRecord, contact:CNContact) {
         self.contact = contact
+        self.record = record
     }
     
     static func toData(_ contact:CNContact, imageURL:String?, thumbImageURL:String?) -> [String: Any] {

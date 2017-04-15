@@ -8,12 +8,15 @@
 
 import Foundation
 import Contacts
+import CloudKit
 
 extension CCCard {
-    convenience init(id:Int, payload:[String : Any]) {
+    convenience init(record:CKRecord) {
         let contact = CNMutableContact()
-        CCCard.parseDataWithMutableContactReference(contact: contact, payload: payload)
-        self.init(id: id, contact: contact)
+        if let jsonString = record["json"] as? String, let dictionary = convertToDictionary(text: jsonString) {
+            CCCard.parseDataWithMutableContactReference(contact: contact, payload: dictionary)
+        }
+        self.init(record: record, contact: contact)
     }
     
     static func parseDataWithMutableContactReference(contact:CNMutableContact, payload:[String: Any]) {
