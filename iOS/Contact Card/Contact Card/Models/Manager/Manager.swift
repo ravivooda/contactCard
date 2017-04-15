@@ -23,20 +23,18 @@ class Manager: NSObject {
         return Static.instance
     }
     
-    func addNewCard(card:CNContact, callingViewController:UIViewController, success:@escaping Data.Success, fail:@escaping Data.Fail) -> Void {
-        Data.addCard(data: CCCard.toData(card, imageURL: nil, thumbImageURL: nil), callingViewController: callingViewController, success: { (response) in
-            let id = getIntValue(response["contact_id"])
-            self.cards.append(CCCard(id: id, contact: card))
-            success(response)
-        }) { (response, httpResponse) in
-            fail(response, httpResponse)
-        }
+    func addNewCard(name: String, card:CNContact, callingViewController:UIViewController, success:@escaping Data.newSuccess, fail:@escaping Data.newFail) -> Void {
+        Data.addCard(name: name, data: CCCard.toData(card, imageURL: nil, thumbImageURL: nil), callingViewController: callingViewController, success: { (records) in
+            self.cards.append(CCCard(id: 1, contact: card))
+            success(records)
+        }, fail: fail)
     }
     
     func refreshCards(callingViewController:UIViewController, success:@escaping Data.newSuccess, fail:@escaping Data.newFail) -> Void {
         Data.myCards(callingViewController: callingViewController, success: { (records) in
             self.cards = []
             for record in records {
+                print("\(record.recordID.recordName)")
                 if let jsonString = record["json"] as? String, let dictionary = convertToDictionary(text: jsonString) {
                     self.cards.append(CCCard(id: 1, payload: dictionary))
                 }

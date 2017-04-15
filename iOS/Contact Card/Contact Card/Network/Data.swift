@@ -38,20 +38,38 @@ class Data: NSObject {
         }
     }
     
-    static func api(_ query:CKQuery, viewController:UIViewController?, success:newSuccess?, fail:newFail?) -> Void {
-        api(query, database: CKContainer.default().privateCloudDatabase, viewController: viewController, success: success, fail: fail)
+    static func apiPerform(_ query:CKQuery, viewController:UIViewController?, success:newSuccess?, fail:newFail?) -> Void {
+        apiPerform(query, database: CKContainer.default().privateCloudDatabase, viewController: viewController, success: success, fail: fail)
     }
     
-    static func api(_ query:CKQuery, database:CKDatabase, viewController:UIViewController?, success:newSuccess?, fail:newFail?) -> Void {
+    static func apiPerform(_ query:CKQuery, database:CKDatabase, viewController:UIViewController?, success:newSuccess?, fail:newFail?) -> Void {
         database.perform(query, inZoneWith: nil) { (records, error) in
-            DispatchQueue.main.async {
-                if (error != nil) {
-                    fail?(error!.localizedDescription, error!)
-                } else {
-                    let data = records ?? []
-                    success?(data)
-                }
+            apiResponse(records, error: error, viewController: viewController, success: success, fail: fail)
+        }
+    }
+    
+    static private func apiResponse(_ records:[CKRecord]?, error:Error?, viewController:UIViewController?, success:newSuccess?, fail:newFail?) {
+        DispatchQueue.main.async {
+            if (error != nil) {
+                fail?(error!.localizedDescription, error!)
+            } else {
+                let data = records ?? []
+                success?(data)
             }
+        }
+    }
+    
+    static func apiSave(_ record:CKRecord, viewController:UIViewController?, success:newSuccess?, fail:newFail?) -> Void {
+        apiSave(record, database: CKContainer.default().privateCloudDatabase, viewController: viewController, success: success, fail: fail)
+    }
+    
+    static func apiSave(_ record:CKRecord, database:CKDatabase, viewController:UIViewController?, success:newSuccess?, fail:newFail?) -> Void {
+        database.save(record) { (record, error) in
+            var records = [CKRecord]()
+            if record != nil {
+                records.append(record!)
+            }
+            apiResponse(records, error: error, viewController: viewController, success: success, fail: fail)
         }
     }
 }
