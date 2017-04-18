@@ -9,8 +9,9 @@
 import UIKit
 import Contacts
 import ContactsUI
+import CloudKit
 
-class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CNContactViewControllerDelegate {
+class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CNContactViewControllerDelegate, UICloudSharingControllerDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     var editingCard:CCCard?
@@ -62,6 +63,42 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
             }
         }
         
+        let shareAction = UITableViewRowAction(style: .normal, title: "Share", handler: { (action, indexPath) in
+            let sharingCard = Manager.defaultManager().cards[indexPath.row];
+            //let share = CKShare(rootRecord: sharingCard.record)
+            //share.publicPermission = .readOnly
+            
+            let shareController = UICloudSharingController(preparationHandler: { (controller, preparationCompletionHandler) in
+                let share = CKShare(rootRecord: sharingCard.record)
+                share[CKShareTitleKey] = " My First Share" as CKRecordValue
+                share.publicPermission = .readOnly
+                
+                let modifyRecordsOperation = CKModifyRecordsOperation(
+                    recordsToSave: [sharingCard.record, share],
+                    recordIDsToDelete: nil)
+                
+                modifyRecordsOperation.timeoutIntervalForRequest = 10
+                modifyRecordsOperation.timeoutIntervalForResource = 10
+                
+                modifyRecordsOperation.modifyRecordsCompletionBlock = { records,
+                    recordIDs, error in
+                    if error != nil {
+                        print(error)
+                        print(error?.localizedDescription ?? "")
+                    }
+                    print(share.url)
+                    preparationCompletionHandler(share, Manager.contactsContainer, error)
+                }
+                Manager.contactsContainer.privateCloudDatabase.add(modifyRecordsOperation)
+            })
+            
+            shareController.delegate = self
+            shareController.availablePermissions = [.allowReadOnly]
+            self.present(shareController, animated: true, completion: { 
+                //print("share URL: \(share.url)")
+            })
+        })
+        
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPatch) in
             let confirmDeleteAction = UIAlertController(title: "Do you really want to delete this card?", message: "Everyone with this card will loose important contact updates from you", preferredStyle: .actionSheet)
             confirmDeleteAction.addAction(UIAlertAction(title: "Delete (Informing card holders)", style: .default, handler: { (action) in
@@ -74,7 +111,7 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
             self.present(confirmDeleteAction, animated: true, completion: nil)
         }
         
-        return [editAction, deleteAction]
+        return [editAction, shareAction, deleteAction]
     }
     
     //MARK: - CNContactViewControllerDelegate -
@@ -88,7 +125,7 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
                 deleteRequest.delete(_contact)
                 
                 do {
-                    try CNContactStore().execute(deleteRequest)
+                    try Manager.contactsStore.execute(deleteRequest)
                 } catch let error as NSError {
                     print(error)
                     return
@@ -102,6 +139,15 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
                 }
             }
         }
+    }
+    
+    //MARK: - UICloudSharingControllerDelegate -
+    func cloudSharingController(_ csc: UICloudSharingController, failedToSaveShareWithError error: Error) {
+        
+    }
+    
+    func itemTitle(for csc: UICloudSharingController) -> String? {
+        return "Sharing contact"
     }
     
     func saveContact(card:CCCard, contact:CNContact) {

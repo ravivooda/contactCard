@@ -16,7 +16,6 @@ class CCCard {
     let contact:CNContact
     let record:CKRecord
     
-    
     init(record:CKRecord, contact:CNContact) {
         self.contact = contact
         self.record = record

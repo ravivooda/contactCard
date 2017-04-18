@@ -11,6 +11,6 @@ import UIKit
 
 extension Data {
     static func registerDevice(deviceToken:String, success:@escaping Success, fail:@escaping Fail) -> Void {
-        api(.post, api: "device", parameters: ["device_id": deviceToken, "device_type":"ios"], viewController: nil, success: success, fail: fail)
+        //api(.post, api: "device", parameters: ["device_id": deviceToken, "device_type":"ios"], viewController: nil, success: success, fail: fail)
     }
 }

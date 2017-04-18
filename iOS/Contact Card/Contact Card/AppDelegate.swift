@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import IQKeyboardManagerSwift
 import UserNotifications
+import CloudKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -46,6 +47,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let currentViewController = self.window?.currentViewController() {
             LoginCommand(viewController: currentViewController, returnCommand: nil).execute()
         }
+    }
+    
+    func application(_ application: UIApplication, userDidAcceptCloudKitShareWith cloudKitShareMetadata: CKShareMetadata) {
+        let acceptSharesOperation = CKAcceptSharesOperation(shareMetadatas: [cloudKitShareMetadata])
+        acceptSharesOperation.perShareCompletionBlock = {
+            metadata, share, error in
+            if error != nil {
+                print(error)
+            } else {
+                print(metadata)
+            }
+        }
+        CKContainer(identifier: cloudKitShareMetadata.containerIdentifier).add(acceptSharesOperation)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

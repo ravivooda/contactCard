@@ -9,12 +9,19 @@
 import UIKit
 import Alamofire
 import Contacts
+import CloudKit
 
 class Manager: NSObject {
     
     fileprivate override init() {
         super.init()
     }
+    
+    static let contactsStore = CNContactStore()
+    
+    static let contactsContainer = CKContainer.default()
+    static let contactsZone = "ContactCards"
+    static let contactsRecordType = "Contact"
     
     static func defaultManager() -> Manager {
         struct Static {
@@ -42,10 +49,23 @@ class Manager: NSObject {
     }
     
     func editCard(card:CCCard, contact:CNContact, callingViewController:UIViewController, success:@escaping Data.Success, fail:@escaping Data.Fail) {
-        Data.editCard(id: "\(1)", data: CCCard.toData(contact, imageURL: nil, thumbImageURL: nil), callingViewController: callingViewController, success: success, fail: fail)
+        Data.editCard(card: card, callingViewController: callingViewController, success: success, fail: fail)
     }
     
     //MARK: - My Cards -
     var cards:[CCCard] = []
     
+    
+    static func getContactIdentifierForRecord(record:CKRecord) -> String? {
+        return nil
+    }
+    
+    static func saveNewContactForRecord(record:CKRecord) -> CNContact? {
+        if let value = record["value"] as? String, let payload = convertToDictionary(text: value) {
+            let contact = CNMutableContact()
+            CCCard.parseDataWithMutableContactReference(contact: contact, payload: payload)
+            
+        }
+        return nil
+    }
 }

@@ -36,7 +36,7 @@ class LoginCommand: Command {
     
     override func execute() {
         LoginCommand.user = nil
-        CKContainer.default().fetchUserRecordID { (recordID, error) in
+        Manager.contactsContainer.fetchUserRecordID { (recordID, error) in
             if error != nil || isEmpty(recordID?.recordName) {
                 print("Login error: \(error?.localizedDescription ?? "")")
                 self.presentingViewController.present(self.loginViewController, animated: true, completion: nil)

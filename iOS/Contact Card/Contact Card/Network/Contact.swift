@@ -8,10 +8,26 @@
 
 import Foundation
 import UIKit
+import CloudKit
 
 extension Data {
-    static func syncContacts(contactIDs: [String], callingViewController:UIViewController?, success:@escaping Success, fail:@escaping Fail ) -> Void {
+    static func syncContacts(contactIDs: [String], callingViewController:UIViewController?, success:newSuccess?, fail:newFail?) -> Void {
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: Manager.contactsRecordType, predicate: predicate)
         
-        api(.get, api: "contact", parameters: ["contact_ids" : contactIDs.joined(separator: ",")], viewController: callingViewController, success: success, fail: fail)
+        Manager.contactsContainer.sharedCloudDatabase.fetchAllRecordZones { (recordZones, error) in
+            if error != nil {
+                fail?(error!.localizedDescription, error!)
+                return
+            }
+
+            if recordZones == nil {
+                success?([])
+                return
+            }
+            
+            
+            apiPerform(query, inZoneWith: recordZones![0].zoneID, database: Manager.contactsContainer.sharedCloudDatabase, viewController: callingViewController, success: success, fail: fail)
+        }
     }
 }

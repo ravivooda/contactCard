@@ -38,12 +38,12 @@ class Data: NSObject {
         }
     }
     
-    static func apiPerform(_ query:CKQuery, viewController:UIViewController?, success:newSuccess?, fail:newFail?) -> Void {
-        apiPerform(query, database: CKContainer.default().privateCloudDatabase, viewController: viewController, success: success, fail: fail)
+    static func apiPerform(_ query:CKQuery, inZoneWith zoneID:CKRecordZoneID?, viewController:UIViewController?, success:newSuccess?, fail:newFail?) -> Void {
+        apiPerform(query, inZoneWith:nil, database: Manager.contactsContainer.privateCloudDatabase, viewController: viewController, success: success, fail: fail)
     }
     
-    static func apiPerform(_ query:CKQuery, database:CKDatabase, viewController:UIViewController?, success:newSuccess?, fail:newFail?) -> Void {
-        database.perform(query, inZoneWith: nil) { (records, error) in
+    static func apiPerform(_ query:CKQuery, inZoneWith zoneID:CKRecordZoneID?, database:CKDatabase, viewController:UIViewController?, success:newSuccess?, fail:newFail?) -> Void {
+        database.perform(query, inZoneWith: zoneID) { (records, error) in
             apiResponse(records, error: error, viewController: viewController, success: success, fail: fail)
         }
     }
@@ -60,7 +60,7 @@ class Data: NSObject {
     }
     
     static func apiSave(_ record:CKRecord, viewController:UIViewController?, success:newSuccess?, fail:newFail?) -> Void {
-        apiSave(record, database: CKContainer.default().privateCloudDatabase, viewController: viewController, success: success, fail: fail)
+        apiSave(record, database: Manager.contactsContainer.privateCloudDatabase, viewController: viewController, success: success, fail: fail)
     }
     
     static func apiSave(_ record:CKRecord, database:CKDatabase, viewController:UIViewController?, success:newSuccess?, fail:newFail?) -> Void {

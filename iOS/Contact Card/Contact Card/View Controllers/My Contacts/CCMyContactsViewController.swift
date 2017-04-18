@@ -9,6 +9,7 @@
 import UIKit
 import Contacts
 import ContactsUI
+import CloudKit
 
 class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CNContactViewControllerDelegate {
     
@@ -58,27 +59,15 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func syncLocalContactsWithRemoteUpdates() -> Void {
-        // Syncing contacts remotely
-        var contactIDs:[String] = []
-        
-        for contact in self.contacts {
-            if !isEmpty(contact.remoteID) {
-                contactIDs.append(contact.remoteID)
-            }
-        }
-        
-        Data.syncContacts(contactIDs: contactIDs, callingViewController: nil, success: { (response:[String: Any]) in
-            if let contacts_data = response["contacts_data"] as? [String: Any] {
-                self.updateContacts(contacts_data: contacts_data)
-            }
-        }) { (response: [String : Any], httpResponse) in
-            print("Got error: \(response)")
-            print("Got HTTP Response \(httpResponse)")
-        }
+        Data.syncContacts(contactIDs: [], callingViewController: nil, success: { (records) in
+            self.updateContacts(records: records)
+        }, fail: { (errorMessage, error) in
+            print(error)
+        })
     }
     
-    private func updateContacts(contacts_data:[String: Any]) {
-        for contact in self.contacts {
+    private func updateContacts(records:[CKRecord]) {
+        /*for contact in self.contacts {
             if let contact_data = contacts_data[contact.remoteID] as? [String: Any] {
                 if let data = contact_data["value"] as? String {
                     if let actualDict = convertToDictionary(text: data) {
@@ -86,9 +75,46 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
                     }
                 }
             }
+        }*/
+        
+        var contactsToRefMap = [String:CCContact]()
+        for contact in self.contacts {
+            if !isEmpty(contact.remoteID) {
+                contactsToRefMap[contact.remoteID] = contact
+            } else {
+                
+            }
+        }
+        
+        // Updating or creating new contacts
+        for record in records {
+            if let createdUserID = record.creatorUserRecordID, let payloadString = record["json"] as? String, let payload = convertToDictionary(text: payloadString) {
+                let recordIdentifier = "\(createdUserID.recordName).\(record.recordID.recordName)"
+                if let contact = contactsToRefMap[recordIdentifier] {
+                    // update the record
+                    contact.updateContact(data: payload)
+                } else {
+                    let newContact = CNMutableContact()
+                    CCCard.parseDataWithMutableContactReference(contact: newContact, payload: payload)
+                    newContact.note = newContact.note.appending("\n\(CCContact.referenceKey)\(recordIdentifier)")
+                    let saveRequest = CNSaveRequest()
+                    saveRequest.add(newContact, toContainerWithIdentifier: nil)
+                    do {
+                        try Manager.contactsStore.execute(saveRequest)
+                    } catch let error as NSError {
+                        print("Error occurred while saving the request \(error)")
+                    }
+                }
+            } else {
+                print("No created user????")
+            }
         }
         
         reloadContacts()
+    }
+    
+    func addNewContactFromRecord(record:CKRecord) {
+        
     }
     
     //MARK: - UITableViewDataSource -

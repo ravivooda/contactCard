@@ -10,6 +10,7 @@ import UIKit
 import Contacts
 
 class CCContact {
+    static let referenceKey = "Contact Card Reference:"
 	
 	let contact:CNContact
 	
@@ -19,8 +20,9 @@ class CCContact {
 		self.contact = contact
 		var remoteID = ""
 		for note in contact.note.components(separatedBy: "\n") {
-			if note.contains("Card ID:") {
-				remoteID = note.substring(from: note.index(note.startIndex, offsetBy: 9))
+			if note.contains(CCContact.referenceKey) {
+				remoteID = note.substring(from: note.index(note.startIndex, offsetBy: CCContact.referenceKey.characters.count))
+                break
 			}
 		}
 		self.remoteID = remoteID
