@@ -48,24 +48,10 @@ class Manager: NSObject {
         }, fail: fail)
     }
     
-    func editCard(card:CCCard, contact:CNContact, callingViewController:UIViewController, success:@escaping Data.Success, fail:@escaping Data.Fail) {
-        Data.editCard(card: card, callingViewController: callingViewController, success: success, fail: fail)
+    func editCard(card:CCCard, contact:CNContact, callingViewController:UIViewController, success:@escaping Data.newSuccess, fail:@escaping Data.newFail) {
+        Data.editCard(card: card, contact: contact, callingViewController: callingViewController, success: success, fail: fail)
     }
     
     //MARK: - My Cards -
     var cards:[CCCard] = []
-    
-    
-    static func getContactIdentifierForRecord(record:CKRecord) -> String? {
-        return nil
-    }
-    
-    static func saveNewContactForRecord(record:CKRecord) -> CNContact? {
-        if let value = record["value"] as? String, let payload = convertToDictionary(text: value) {
-            let contact = CNMutableContact()
-            CCCard.parseDataWithMutableContactReference(contact: contact, payload: payload)
-            
-        }
-        return nil
-    }
 }

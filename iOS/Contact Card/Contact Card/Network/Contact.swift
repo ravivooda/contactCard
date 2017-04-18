@@ -26,8 +26,13 @@ extension Data {
                 return
             }
             
-            
-            apiPerform(query, inZoneWith: recordZones![0].zoneID, database: Manager.contactsContainer.sharedCloudDatabase, viewController: callingViewController, success: success, fail: fail)
+            for recordZone in recordZones! {
+                if recordZone.zoneID.zoneName == Manager.contactsZone {
+                    apiPerform(query, inZoneWith: recordZone.zoneID, database: Manager.contactsContainer.sharedCloudDatabase, viewController: callingViewController, success: success, fail: fail)
+                    return
+                }
+            }
+            success?([])
         }
     }
 }

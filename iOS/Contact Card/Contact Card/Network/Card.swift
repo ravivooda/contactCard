@@ -56,7 +56,22 @@ extension Data {
         apiPerform(query, inZoneWith: contactsRecordZone.zoneID, viewController: callingViewController, success: success, fail: fail)
     }
     
-    static func editCard(card:CCCard, callingViewController:UIViewController, success:Success?, fail:Fail?) -> Void {
+    static func editCard(card:CCCard, contact:CNContact, callingViewController:UIViewController, success:newSuccess?, fail:newFail?) -> Void {
+        let record = card.record
+        record["json"] = CCCard.toData(contact, imageURL: nil, thumbImageURL: nil).json as NSString
+        
+        let modifyRecordOperation = CKModifyRecordsOperation(recordsToSave: [card.record], recordIDsToDelete: nil)
+        modifyRecordOperation.savePolicy = .ifServerRecordUnchanged
+        modifyRecordOperation.qualityOfService = .userInitiated
+        modifyRecordOperation.modifyRecordsCompletionBlock = {
+            records, recordIDs, error in
+            if error != nil {
+                fail?(error!.localizedDescription, error!)
+            } else {
+                success?(records ?? [])
+            }
+        }
+        Manager.contactsContainer.privateCloudDatabase.add(modifyRecordOperation)
         //api(.post, api: "card", parameters: [ "data" : data.json, "card_id" : id ], viewController: callingViewController, success: success, fail: fail)
     }
 }

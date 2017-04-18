@@ -151,12 +151,12 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func saveContact(card:CCCard, contact:CNContact) {
-        Manager.defaultManager().editCard(card: card, contact: contact, callingViewController: self, success: { (data) in
-            print("Successfully edited card: \(contact)")
+        Manager.defaultManager().editCard(card: card, contact: contact, callingViewController: self, success: { (records) in
+            print("Successfully updated the card")
             self.refreshData()
-        }) { (data, response) in
-            print("Failed to edit card: \(contact)")
-        }
+        }, fail: { (errorMessage, error) in
+            print(error)
+        })
     }
     
     func addContact(contact:CNContact) {
