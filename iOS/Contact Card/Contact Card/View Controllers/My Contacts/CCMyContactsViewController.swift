@@ -16,25 +16,35 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var tableView: UITableView!
     var contacts:[CCContact] = []
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(syncLocalContactsWithRemoteUpdates(_:)), name: NSNotification.Name(rawValue: LoginCommand.AuthenticationChangedNotificationKey), object: nil)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if let _ = LoginCommand.user {
-            reloadContacts()
-            syncLocalContactsWithRemoteUpdates()
+            syncLocalContactsWithRemoteUpdates(nil)
         }
     }
     
-    func reloadContacts() {
+    func reloadContactsTableView() {
         let store = CNContactStore()
-        
-        if CNContactStore.authorizationStatus(for: .contacts) == .notDetermined {
+        switch CNContactStore.authorizationStatus(for: .contacts) {
+        case .notDetermined:
             store.requestAccess(for: .contacts, completionHandler: { (authorized, error) in
-                if authorized {
-                    self.retrieveContactsWithStore(store: store)
+                DispatchQueue.main.async {
+                    self.reloadContactsTableView()
                 }
             })
-        } else if CNContactStore.authorizationStatus(for: .contacts) == .authorized {
+            break
+        case .denied, .restricted:
+            showAlertMessage(message: "Apologies. We need access to your contacts for updating your contacts. Please note, we never use your contact data for any other purpose")
+            break
+        case .authorized:
             self.retrieveContactsWithStore(store: store)
+            break
         }
     }
     
@@ -49,7 +59,7 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
             try store.enumerateContacts(with: fetchRequest, usingBlock: { (contact, stop) -> Void in
                 contacts.append(CCContact(contact: contact))
             })
-        } catch let error as NSError {
+        } catch let error {
             print(error.localizedDescription)
         }
         self.contacts = contacts
@@ -58,8 +68,8 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
         print("Reloaded contacts on UI")
     }
     
-    func syncLocalContactsWithRemoteUpdates() -> Void {
-        Data.syncContacts(contactIDs: [], callingViewController: nil, success: { (records) in
+    func syncLocalContactsWithRemoteUpdates(_ notification:NSNotification?) -> Void {
+        Data.syncContacts(callingViewController: nil, success: { (records) in
             self.updateContacts(records: records)
         }, fail: { (errorMessage, error) in
             print(error)
@@ -67,22 +77,10 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     private func updateContacts(records:[CKRecord]) {
-        /*for contact in self.contacts {
-            if let contact_data = contacts_data[contact.remoteID] as? [String: Any] {
-                if let data = contact_data["value"] as? String {
-                    if let actualDict = convertToDictionary(text: data) {
-                        contact.updateContact(data: actualDict)
-                    }
-                }
-            }
-        }*/
-        
         var contactsToRefMap = [String:CCContact]()
         for contact in self.contacts {
             if !isEmpty(contact.remoteID) {
                 contactsToRefMap[contact.remoteID] = contact
-            } else {
-                
             }
         }
         
@@ -104,16 +102,9 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
                         print("Error occurred while saving the request \(error)")
                     }
                 }
-            } else {
-                print("No created user????")
             }
         }
-        
-        reloadContacts()
-    }
-    
-    func addNewContactFromRecord(record:CKRecord) {
-        
+        reloadContactsTableView()
     }
     
     //MARK: - UITableViewDataSource -

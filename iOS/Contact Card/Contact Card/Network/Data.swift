@@ -50,19 +50,22 @@ class Data: NSObject {
     }
     
     static private func apiResponse(_ records:[CKRecord]?, error:Error?, viewController:UIViewController?, success:newSuccess?, fail:newFail?) {
-        DispatchQueue.main.async {
-            if (error != nil) {
-                fail?(error!.localizedDescription, error!)
-            } else {
-                let data = records ?? []
-                success?(data)
-            }
+        if let error = error {
+            reportError(error: error, fail: fail)
+        } else {
+            reportSuccess(success: success, records: records ?? [])
         }
     }
     
     static func reportError(error:Error, fail:newFail?) {
         DispatchQueue.main.async {
             fail?(error.localizedDescription, error)
+        }
+    }
+    
+    static func reportSuccess(success:newSuccess?, records:[CKRecord]) {
+        DispatchQueue.main.async {
+            success?(records)
         }
     }
     

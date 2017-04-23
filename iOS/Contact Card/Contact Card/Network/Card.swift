@@ -36,7 +36,7 @@ extension Data {
                 if let error = error {
                     return reportError(error: error, fail: fail)
                 }
-                success?(records ?? [])
+                reportSuccess(success: success, records: records ?? [])
             }
             Manager.contactsContainer.privateCloudDatabase.add(modifyRecordsOperation)
         }
@@ -60,7 +60,7 @@ extension Data {
             if let error = error {
                 return reportError(error: error, fail: fail)
             }
-            success?(records ?? [])
+            reportSuccess(success: success, records: records ?? [])
             for record in records ?? [] {
                 var message = "\(contact.givenName)"
                 if !isEmpty(contact.familyName) {

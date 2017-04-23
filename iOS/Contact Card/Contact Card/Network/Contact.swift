@@ -11,25 +11,22 @@ import UIKit
 import CloudKit
 
 extension Data {
-    static func syncContacts(contactIDs: [String], callingViewController:UIViewController?, success:newSuccess?, fail:newFail?) -> Void {
+    static func syncContacts(callingViewController:UIViewController?, success:newSuccess?, fail:newFail?) {
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: Manager.contactsRecordType, predicate: predicate)
         
         Manager.contactsContainer.sharedCloudDatabase.fetchAllRecordZones { (recordZones, error) in
-            if error != nil {
-                fail?(error!.localizedDescription, error!)
-                return
+            if let error = error {
+                return reportError(error: error, fail: fail)
             }
 
             if recordZones == nil {
-                success?([])
-                return
+                return reportSuccess(success: success, records: [])
             }
             
             for recordZone in recordZones! {
                 if recordZone.zoneID.zoneName == Manager.contactsZone {
-                    apiPerform(query, inZoneWith: recordZone.zoneID, database: Manager.contactsContainer.sharedCloudDatabase, viewController: callingViewController, success: success, fail: fail)
-                    return
+                    return apiPerform(query, inZoneWith: recordZone.zoneID, database: Manager.contactsContainer.sharedCloudDatabase, viewController: callingViewController, success: success, fail: fail)
                 }
             }
             success?([])

@@ -11,6 +11,7 @@ import SSKeychain
 import CloudKit
 
 class LoginCommand: Command {
+    static let AuthenticationChangedNotificationKey = "LoginCommand.AuthChanged"
     
     class User {
         static let service = "CCService"
@@ -39,7 +40,9 @@ class LoginCommand: Command {
         Manager.contactsContainer.fetchUserRecordID { (recordID, error) in
             if error != nil || isEmpty(recordID?.recordName) {
                 print("Login error: \(error?.localizedDescription ?? "")")
-                self.presentingViewController.present(self.loginViewController, animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    self.presentingViewController.present(self.loginViewController, animated: true, completion: nil)
+                }
             } else {
                 print("Logged in as user: \(recordID!.recordName)")
                 // Register for notifications
@@ -52,7 +55,10 @@ class LoginCommand: Command {
     }
     
     override func finished() {
-        self.presentingViewController.dismiss(animated: true) { 
+        self.presentingViewController.dismiss(animated: true) {
+            if let _ = LoginCommand.user {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: LoginCommand.AuthenticationChangedNotificationKey), object: nil)
+            }
             super.finished()
         }
     }
