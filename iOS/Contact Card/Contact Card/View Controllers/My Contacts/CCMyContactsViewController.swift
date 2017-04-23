@@ -29,26 +29,7 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
-    func reloadContactsTableView() {
-        let store = CNContactStore()
-        switch CNContactStore.authorizationStatus(for: .contacts) {
-        case .notDetermined:
-            store.requestAccess(for: .contacts, completionHandler: { (authorized, error) in
-                DispatchQueue.main.async {
-                    self.reloadContactsTableView()
-                }
-            })
-            break
-        case .denied, .restricted:
-            showAlertMessage(message: "Apologies. We need access to your contacts for updating your contacts. Please note, we never use your contact data for any other purpose")
-            break
-        case .authorized:
-            self.retrieveContactsWithStore(store: store)
-            break
-        }
-    }
-    
-    func retrieveContactsWithStore(store: CNContactStore) {
+    func reloadLocalContactsAndDisplay(store: CNContactStore) {
         var contacts:[CCContact] = []
         let keysToFetch = [CNContactViewController.descriptorForRequiredKeys(),
                            CNContactImageDataKey,
@@ -69,11 +50,28 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func syncLocalContactsWithRemoteUpdates(_ notification:NSNotification?) -> Void {
-        Data.syncContacts(callingViewController: nil, success: { (records) in
-            self.updateContacts(records: records)
-        }, fail: { (errorMessage, error) in
-            print(error)
-        })
+        let store = CNContactStore()
+        switch CNContactStore.authorizationStatus(for: .contacts) {
+        case .notDetermined:
+            store.requestAccess(for: .contacts, completionHandler: { (authorized, error) in
+                DispatchQueue.main.async {
+                    self.syncLocalContactsWithRemoteUpdates(notification)
+                }
+            })
+            break
+        case .denied, .restricted:
+            showAlertMessage(message: "Apologies. We need access to your contacts for updating your contacts. Please note, we never use your contact data for any other purpose")
+            break
+        case .authorized:
+            reloadLocalContactsAndDisplay(store: store)
+            Data.syncContacts(callingViewController: nil, success: { (records) in
+                self.updateContacts(records: records)
+                self.reloadLocalContactsAndDisplay(store: store)
+            }, fail: { (errorMessage, error) in
+                print(error)
+            })
+            break
+        }
     }
     
     private func updateContacts(records:[CKRecord]) {
@@ -89,7 +87,6 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
             if let createdUserID = record.creatorUserRecordID {
                 let recordIdentifier = "\(createdUserID.recordName).\(record.recordID.recordName)"
                 if let contact = contactsToRefMap[recordIdentifier] {
-                    // update the record
                     contact.updateContactWithRecord(record: record)
                 } else {
                     let newContact = CNMutableContact(withRecord: record)
@@ -104,11 +101,9 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
                 }
             }
         }
-        reloadContactsTableView()
     }
     
     //MARK: - UITableViewDataSource -
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contacts.count
     }
@@ -122,9 +117,5 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
     //MARK: - UITableViewDelegate -
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         ShowContactCommand(contact: contacts[indexPath.row].contact, viewController: self, returningCommand: nil).execute(completed: nil)
-    }
-    
-    func dismissContactViewController(sender:Any?) -> Void {
-        
     }
 }
