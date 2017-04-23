@@ -20,4 +20,9 @@ class CCCard {
         self.contact = contact
         self.record = record
     }
+    
+    convenience init(record:CKRecord) {
+        let contact = CNMutableContact(withRecord: record)
+        self.init(record: record, contact: contact)
+    }
 }
