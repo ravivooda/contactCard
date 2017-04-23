@@ -26,7 +26,11 @@ extension Data {
         Manager.contactsContainer.sharedCloudDatabase.add(fetchSubscriptionsOperation)
     }
     
-    static func sendUpdateNotification(forRecord record:CKRecord, message:String) -> Void {
+    struct RecordShareError:Error{
+        
+    }
+    
+    static func sendUpdateNotification(forRecord record:CKRecord, message:String, viewController:UIViewController?, success:newSuccess?, fail:newFail?) {
         if let s = record.share {
             // let participants = share.participants
             Manager.contactsContainer.privateCloudDatabase.fetch(withRecordID: s.recordID, completionHandler: { (shareRecord, error) in
@@ -46,6 +50,8 @@ extension Data {
                     })
                 }
             })
+        } else {
+            fail?("", RecordShareError())
         }
     }
 }

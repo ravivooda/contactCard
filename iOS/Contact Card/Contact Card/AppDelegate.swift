@@ -34,13 +34,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    func getCurrentViewController() -> UIViewController? {
+        return self.window?.currentViewController()
+    }
+    
     func application(_ application: UIApplication, userDidAcceptCloudKitShareWith cloudKitShareMetadata: CKShareMetadata) {
         let acceptSharesOperation = CKAcceptSharesOperation(shareMetadatas: [cloudKitShareMetadata])
         acceptSharesOperation.qualityOfService = .userInteractive
         acceptSharesOperation.perShareCompletionBlock = {
             metadata, share, error in
             if error != nil {
-                print(error)
+                print(error?.localizedDescription ?? "")
+                if let currentViewController = self.getCurrentViewController() {
+                    currentViewController.showAlertMessage(message: "Error occurred in accepting share (new contact). Please ensure that the device is connected to network and try opening the shared link")
+                }
             } else {
                 print(metadata)
             }
@@ -59,20 +66,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if granted {
                 UIApplication.shared.registerForRemoteNotifications()
             } else {
-                print("Error occurred in registering for notification authorization \(error)")
+                print("Error occurred in registering for notification authorization \(error?.localizedDescription ?? "")")
             }
         }
     }
     
     private func convertDeviceTokenToString(deviceToken:Data) -> String {
-        //  Convert binary Device Token to a String (and remove the <,> and white space charaters).
         var deviceTokenStr = deviceToken.description.replacingOccurrences(of: ">", with: "")
         deviceTokenStr = deviceTokenStr.replacingOccurrences(of: "<", with: "")
         deviceTokenStr = deviceTokenStr.replacingOccurrences(of: " ", with: "")
         
-        // Our API returns token in all uppercase, regardless how it was originally sent.
-        // To make the two consistent, I am uppercasing the token string here.
-        deviceTokenStr = deviceTokenStr.uppercased()
         return deviceTokenStr
     }
     
@@ -108,6 +111,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("User Info 2: \(userInfo)")
+        completionHandler(.noData)
     }
 
     // MARK: - Core Data stack

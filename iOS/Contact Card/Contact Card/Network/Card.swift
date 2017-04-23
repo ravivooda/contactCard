@@ -78,7 +78,7 @@ extension Data {
                     message += " \(card.contact.familyName)"
                 }
                 message += " has updated contact information"
-                self.sendUpdateNotification(forRecord: record, message: message)
+                self.sendUpdateNotification(forRecord: record, message: message, viewController: nil, success: nil, fail: nil)
             }
         }
         Manager.contactsContainer.privateCloudDatabase.add(modifyRecordOperation)

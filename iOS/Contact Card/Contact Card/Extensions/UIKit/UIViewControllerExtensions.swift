@@ -26,6 +26,14 @@ extension UIViewController {
             })
         }
     }
+    
+    func showAlertMessage(message m:String) -> Void {
+        let alertController = UIAlertController(title: "Contact Card", message: m, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            
+        }))
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
 
 
