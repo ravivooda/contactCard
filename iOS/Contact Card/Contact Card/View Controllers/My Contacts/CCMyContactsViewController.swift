@@ -88,20 +88,19 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
         
         // Updating or creating new contacts
         for record in records {
-            if let createdUserID = record.creatorUserRecordID, let payloadString = record["json"] as? String, let payload = convertToDictionary(text: payloadString) {
+            if let createdUserID = record.creatorUserRecordID {
                 let recordIdentifier = "\(createdUserID.recordName).\(record.recordID.recordName)"
                 if let contact = contactsToRefMap[recordIdentifier] {
                     // update the record
-                    contact.updateContact(data: payload)
+                    contact.updateContactWithRecord(record: record)
                 } else {
-                    let newContact = CNMutableContact()
-                    CCCard.parseDataWithMutableContactReference(contact: newContact, payload: payload)
+                    let newContact = CNMutableContact(withRecord: record)
                     newContact.note = newContact.note.appending("\n\(CCContact.referenceKey)\(recordIdentifier)")
                     let saveRequest = CNSaveRequest()
                     saveRequest.add(newContact, toContainerWithIdentifier: nil)
                     do {
                         try Manager.contactsStore.execute(saveRequest)
-                    } catch let error as NSError {
+                    } catch let error {
                         print("Error occurred while saving the request \(error)")
                     }
                 }

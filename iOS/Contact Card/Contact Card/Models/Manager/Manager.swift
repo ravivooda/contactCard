@@ -29,7 +29,7 @@ class Manager: NSObject {
     }
     
     func addNewCard(name: String, card:CNContact, callingViewController:UIViewController, success:@escaping Data.newSuccess, fail:@escaping Data.newFail) -> Void {
-        Data.addCard(name: name, data: CCCard.toData(card, imageURL: nil, thumbImageURL: nil), callingViewController: callingViewController, success: { (records) in
+        Data.addCard(name: name, contact: card, callingViewController: callingViewController, success: { (records) in
             self.cards.append(CCCard(record: records[0], contact: card))
             success(records)
         }, fail: fail)

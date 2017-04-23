@@ -8,6 +8,7 @@
 
 import UIKit
 import Contacts
+import CloudKit
 
 class CCContact {
     static let referenceKey = "Contact Card Reference:"
@@ -32,11 +33,11 @@ class CCContact {
 		return "\(contact.givenName) \(contact.familyName)"
 	}
     
-    func updateContact(data:[String:Any]) {
-        if let mutableContact = contact.mutableCopy() as? CNMutableContact {
-            CCCard.parseDataWithMutableContactReference(contact: mutableContact, payload: data)
+    func updateContactWithRecord(record:CKRecord) {
+        if let mutableContact = contact.mutableCopy() as? CNMutableContact, let payload = record[CNContact.CardJSONKey] as? String, let data = convertToDictionary(text: payload) {
+            mutableContact.parse(payload: data)
             
-            // Save the contact remotely
+            // Save the contact
             let saveRequest = CNSaveRequest()
             saveRequest.update(mutableContact)
             do {

@@ -60,6 +60,12 @@ class Data: NSObject {
         }
     }
     
+    static func reportError(error:Error, fail:newFail?) {
+        DispatchQueue.main.async {
+            fail?(error.localizedDescription, error)
+        }
+    }
+    
     static func apiSave(_ record:CKRecord, viewController:UIViewController?, success:newSuccess?, fail:newFail?) -> Void {
         apiSave(record, database: Manager.contactsContainer.privateCloudDatabase, viewController: viewController, success: success, fail: fail)
     }
