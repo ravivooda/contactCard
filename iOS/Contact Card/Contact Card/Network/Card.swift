@@ -59,6 +59,8 @@ extension Data {
     static func editCard(card:CCCard, contact:CNContact, callingViewController:UIViewController, success:newSuccess?, fail:newFail?) -> Void {
         let record = card.record
         record["json"] = CCCard.toData(contact, imageURL: nil, thumbImageURL: nil).json as NSString
+        record["owner_first_name"] = contact.givenName as NSString
+        record["owner_last_name"] = contact.familyName as NSString
         
         let modifyRecordOperation = CKModifyRecordsOperation(recordsToSave: [card.record], recordIDsToDelete: nil)
         modifyRecordOperation.savePolicy = .ifServerRecordUnchanged
@@ -70,8 +72,15 @@ extension Data {
             } else {
                 success?(records ?? [])
             }
+            for record in records ?? [] {
+                var message = "\(card.contact.givenName)"
+                if !isEmpty(card.contact.familyName) {
+                    message += " \(card.contact.familyName)"
+                }
+                message += " has updated contact information"
+                self.sendUpdateNotification(forRecord: record, message: message)
+            }
         }
         Manager.contactsContainer.privateCloudDatabase.add(modifyRecordOperation)
-        //api(.post, api: "card", parameters: [ "data" : data.json, "card_id" : id ], viewController: callingViewController, success: success, fail: fail)
     }
 }

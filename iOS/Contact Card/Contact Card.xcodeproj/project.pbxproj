@@ -21,6 +21,8 @@
 		97A2A2DD1E36C2F100D69F6A /* CCCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2DC1E36C2F100D69F6A /* CCCard.swift */; };
 		97A2A2DF1E36C63900D69F6A /* CCCardJSONExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2DE1E36C63900D69F6A /* CCCardJSONExtension.swift */; };
 		97A2A2E11E36CE0800D69F6A /* CCCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */; };
+		97B5B9591EA6FA9100E90967 /* ManagerContactsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B5B9581EA6FA9100E90967 /* ManagerContactsExtension.swift */; };
+		97B5B95B1EA7026200E90967 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B5B95A1EA7026200E90967 /* Notification.swift */; };
 		97B776BB1D83D3CE00FC0A4B /* CCMyCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B776BA1D83D3CE00FC0A4B /* CCMyCardsViewController.swift */; };
 		97B776BD1D83D40D00FC0A4B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B776BC1D83D40D00FC0A4B /* UIKit.framework */; };
 		97B776BF1D83D41300FC0A4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B776BE1D83D41300FC0A4B /* Foundation.framework */; };
@@ -70,6 +72,8 @@
 		97A2A2DC1E36C2F100D69F6A /* CCCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCard.swift; sourceTree = "<group>"; };
 		97A2A2DE1E36C63900D69F6A /* CCCardJSONExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardJSONExtension.swift; sourceTree = "<group>"; };
 		97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardTableViewCell.swift; sourceTree = "<group>"; };
+		97B5B9581EA6FA9100E90967 /* ManagerContactsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerContactsExtension.swift; sourceTree = "<group>"; };
+		97B5B95A1EA7026200E90967 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		97B776BA1D83D3CE00FC0A4B /* CCMyCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMyCardsViewController.swift; sourceTree = "<group>"; };
 		97B776BC1D83D40D00FC0A4B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		97B776BE1D83D41300FC0A4B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -242,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				97B776C91D846D6800FC0A4B /* Manager.swift */,
+				97B5B9581EA6FA9100E90967 /* ManagerContactsExtension.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -298,6 +303,7 @@
 				975AC8EB1E50CF7200AB4DBD /* Card.swift */,
 				97E650571E8710B60074F112 /* Contact.swift */,
 				97E6505F1E880AA00074F112 /* Device.swift */,
+				97B5B95A1EA7026200E90967 /* Notification.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -435,6 +441,9 @@
 						SystemCapabilities = {
 							com.apple.ApplePay = {
 								enabled = 0;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 1;
 							};
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -591,6 +600,7 @@
 				97E650601E880AA00074F112 /* Device.swift in Sources */,
 				975AC8EC1E50CF7200AB4DBD /* Card.swift in Sources */,
 				97A2A2DF1E36C63900D69F6A /* CCCardJSONExtension.swift in Sources */,
+				97B5B9591EA6FA9100E90967 /* ManagerContactsExtension.swift in Sources */,
 				97B776E71D847C6900FC0A4B /* Auth.swift in Sources */,
 				97A2A2E11E36CE0800D69F6A /* CCCardTableViewCell.swift in Sources */,
 				97064C6E1D83CF44008EF6B3 /* Contact_Card.xcdatamodeld in Sources */,
@@ -610,6 +620,7 @@
 				97064C661D83CF44008EF6B3 /* AppDelegate.swift in Sources */,
 				BC54A93A1E0F6ECF0062CE8B /* CCContactTableViewCell.swift in Sources */,
 				97B776CA1D846D6800FC0A4B /* Manager.swift in Sources */,
+				97B5B95B1EA7026200E90967 /* Notification.swift in Sources */,
 				97E6505B1E88097A0074F112 /* LoginCommand.swift in Sources */,
 				97B776CE1D846FE700FC0A4B /* Command.swift in Sources */,
 				97B776D91D84751C00FC0A4B /* VersionUnsupportedViewController.swift in Sources */,

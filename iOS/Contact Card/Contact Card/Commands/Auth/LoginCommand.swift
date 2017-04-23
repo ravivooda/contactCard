@@ -41,6 +41,7 @@ class LoginCommand: Command {
                 print("Login error: \(error?.localizedDescription ?? "")")
                 self.presentingViewController.present(self.loginViewController, animated: true, completion: nil)
             } else {
+                print("Logged in as user: \(recordID!.recordName)")
                 // Register for notifications
                 AppDelegate.registerForRemoteNotifications()
                 

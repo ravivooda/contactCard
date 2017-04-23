@@ -22,24 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.sharedManager().enable = true
         
         // Registering for User Defaults
-        let addDefaults = [String:Any]()
-        UserDefaults.standard.register(defaults: addDefaults)
+        UserDefaults.standard.register(defaults: [:])
         
         return true
-    }
-
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -51,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, userDidAcceptCloudKitShareWith cloudKitShareMetadata: CKShareMetadata) {
         let acceptSharesOperation = CKAcceptSharesOperation(shareMetadatas: [cloudKitShareMetadata])
+        acceptSharesOperation.qualityOfService = .userInteractive
         acceptSharesOperation.perShareCompletionBlock = {
             metadata, share, error in
             if error != nil {
@@ -98,9 +84,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let postCommand = AppDelegate.registerDevicePostCommand {
             postCommand.execute()
         }
-        if LoginCommand.user != nil {
-            Data.registerDevice(deviceToken: AppDelegate.deviceToken!, success: { (response) in
-                print("Successfully register device for user \(LoginCommand.user?.id)")
+        if let user = LoginCommand.user, let deviceToken = AppDelegate.deviceToken {
+            print("Remote Notifications are enabled with device token: \(deviceToken)")
+            Data.registerDevice(userID: user.id, deviceToken: AppDelegate.deviceToken!, success: { (response) in
+                print("Successfully register device for user \(user.id)")
             }, fail: { (response, HTTPResponse) in
                 print("Failed to register device token remotely \(HTTPResponse)")
             })
@@ -113,6 +100,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let postCommand = AppDelegate.registerDevicePostCommand {
             postCommand.execute()
         }
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        print("User Info: \(userInfo)")
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print("User Info 2: \(userInfo)")
     }
 
     // MARK: - Core Data stack

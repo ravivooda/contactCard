@@ -17,8 +17,6 @@ class Manager: NSObject {
         super.init()
     }
     
-    static let contactsStore = CNContactStore()
-    
     static let contactsContainer = CKContainer.default()
     static let contactsZone = "ContactCards"
     static let contactsRecordType = "Contact"
@@ -41,7 +39,6 @@ class Manager: NSObject {
         Data.myCards(callingViewController: callingViewController, success: { (records) in
             self.cards = []
             for record in records {
-                print("\(record.recordID.recordName)")
                 self.cards.append(CCCard(record: record))
             }
             success(records)
