@@ -36,6 +36,12 @@ def login(email, password):
     del user_info['password']
     return user_info, None
 
+def notify_update(user_ids, message):
+    if not user_ids or not message:
+        return False, "Invalid params"
+    notification.send_update(user_ids, message)
+    return True, None
+
 def register_device(user_id,device_id,device_type):
     if not user_id or not device_id or not device_type:
         return False, "Expected params cannot be empty"

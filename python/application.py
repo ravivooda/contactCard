@@ -70,6 +70,16 @@ def device_api():
         print(e)
     return jsonify({'success': False, 'error': 'An internal error occured'})
 
+@app.route('/api/notify', methods=['POST'])
+def notify_api():
+    try:
+        print("API Called: Notify with method - " + request.method)
+        if request.method == 'POST':
+            return jsonify(api.notify_update())
+    except Exception,e:
+        print(e)
+    return jsonify({'success': False, 'error': 'An internal error occured'})
+
 @app.route('/api/auth', methods=['POST', 'PUT', 'DELETE'])
 def auth_api():
     try:

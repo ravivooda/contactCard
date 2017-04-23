@@ -1,11 +1,11 @@
-from flask_pushjack import FlaskAPNS
 import logging
 import db
+from pushjack import APNSClient, APNSSandboxClient
 
-client = FlaskAPNS()
-
-def init_app(app):
-    client.init_app(app)
+ios_client = APNSSandboxClient(certificate='prodcert.pem',
+                        default_error_timeout=10,
+                        default_expiration_offset=2592000,
+                        default_batch_size=100)
 
 def register_device(user_id, device_id, device_type):
     if not user_id or not device_id or not device_type:
@@ -29,43 +29,31 @@ def register_device(user_id, device_id, device_type):
 
 def unregister_device(user_id,device_id,device_type):
     db.write("DELETE from devices WHERE user_id = %s AND device_id = %s AND device_type = %s", (user_id, device_id, device_type))
-        
 
-def push_card(card_id):
-    if not card_id:
-        logging.error("No Card ID")
-        return
-    
-    users = db.read("SELECT user_id FROM followers WHERE contact_id = %s", (card_id,))
-    if not users:
-        logging.error("No followers found for card %s" % card_id)
-        return
-
-    value = db.read_one("SELECT contact_id, value FROM cards WHERE contact_id = %s", (card_id,))
-    if not value:
-        logging.error("No value to push notification for")
-        return;
-
+def send_update(user_ids, message):
     ios_devices = []
     android_devices = []
-    for user in users:
-        devices = db.read("SELECT device_id, device_type FROM devices WHERE user_id = %s", (user['user_id'],))
+    for user_id in user_ids:
+        devices = db.read("SELECT device_id, device_type FROM devices WHERE user_id = %s",(user_id))
         for device in devices:
-            device_id = devide['device_id']
-            if not device_id:
-                continue
-            
             if device['device_type'] == "ios":
-                ios_devices.append(device_id)
+                ios_devices.append(device['device_id'])
             elif device['device_type'] == "android":
-                android_devices.append(device_id)
-    
-    push_ios_notifications(ios_devices, value)
+                android_devices.append(device['device_id'])
+    push_ios_notifications(ios_devices, message)
+    push_android_notifications(android_devices, message)
 
-def push_ios_notifications(devices, payload):
-    client.send(devices, "Alert", extra=payload)
+def push_ios_notifications(devices, message):
+    options = {
+        'badge': 1,
+        'title': 'Contact Card Update',
+    }
+    print("Sending update message - " + message + " to devices " + str(devices))
+    res = ios_client.send(devices, message, **options)
+    ios_client.close()
+    print(res.errors)
 
-def push_android_notifications(devices, payload):
+def push_android_notifications(devices, message):
     pass
 
 def push_notification(user_id, message):

@@ -168,17 +168,25 @@ def contact_updates():
         return report_error(error)
     return {'success': True, 'contacts_data': cards_info}
 
-@loggedin
-@with_args(['device_id', 'device_type'])
+#@loggedin
+@with_args(['user_id', 'device_id', 'device_type'])
 def register_device():
-    user_id = session['user_id']
+    user_id = request.values['user_id']
     device_id = request.values['device_id']
     device_type = request.values['device_type']
     success, error = logic.register_device(user_id,device_id,device_type)
     if error:
         return report_error(error)
     return {'success': True}
-    
+
+@with_args(['users', 'message'])
+def notify_update():
+    user_ids = request.values['users'].split(",")
+    message = request.values['message']
+    success, error = logic.notify_update(user_ids, message)
+    if error:
+        return report_error(error)
+    return {'success': True}
 
 def report_error(error):
     return {'success': False, 'error': error}
