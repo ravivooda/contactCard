@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         if let currentViewController = self.window?.currentViewController() {
-            LoginCommand(viewController: currentViewController, returnCommand: nil).execute()
+            LoginCommand(viewController: currentViewController, returnCommand: nil).execute(completed: nil)
         }
         application.applicationIconBadgeNumber = 0
     }
@@ -86,7 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         AppDelegate.deviceToken = convertDeviceTokenToString(deviceToken: deviceToken)
         if let postCommand = AppDelegate.registerDevicePostCommand {
-            postCommand.execute()
+            postCommand.execute(completed: nil)
         }
         if let user = LoginCommand.user, let deviceToken = AppDelegate.deviceToken {
             print("Remote Notifications are enabled with device token: \(deviceToken)")
@@ -102,7 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Failed to register for remote notifications with error \(error)")
         AppDelegate.deviceToken = ""
         if let postCommand = AppDelegate.registerDevicePostCommand {
-            postCommand.execute()
+            postCommand.execute(completed: nil)
         }
     }
     

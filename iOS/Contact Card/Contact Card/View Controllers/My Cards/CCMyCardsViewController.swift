@@ -13,22 +13,22 @@ import CloudKit
 
 class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CNContactViewControllerDelegate, UICloudSharingControllerDelegate {
     @IBOutlet weak var tableView: UITableView!
-    
-    var editingCard:CCCard?
+    private var editingCardCommand:EditContactCardCommand?
+    private var addNewCardCommand:NewContactCardCommand?
     
     @IBAction func addNewCard(_ sender: Any) {
-        let newCardViewController = CNContactViewController(forNewContact: nil)
-        newCardViewController.contactStore = CNContactStore()
-        newCardViewController.delegate = self
-        self.present(UINavigationController(rootViewController: newCardViewController), animated: true, completion: nil)
+        self.addNewCardCommand = NewContactCardCommand(viewController: self, returningCommand: nil)
+        self.addNewCardCommand!.execute {
+            self.refreshData()
+        }
+        //NotificationCenter.default.addObserver(self, selector: #selector(syncLocalContactsWithRemoteUpdates(_:)), name: NSNotification.Name(rawValue: LoginCommand.AuthenticationChangedNotificationKey), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if let _ = LoginCommand.user {
-            
+            refreshData()
         }
-        refreshData()
     }
     
     //MARK: - UITableViewDataSource -
@@ -52,15 +52,10 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
-            self.editingCard = Manager.defaultManager().cards[indexPath.row]
-            if let mutableContact = self.editingCard?.contact.mutableCopy() as? CNMutableContact {
-                print("Editing Card: \(mutableContact)")
-                let editCardViewController = CNContactViewController(forNewContact: mutableContact)
-                editCardViewController.contactStore = CNContactStore()
-                editCardViewController.title = "Edit Card"
-                editCardViewController.delegate = self
-                self.present(UINavigationController(rootViewController: editCardViewController), animated: true, completion: nil)
-            }
+            self.editingCardCommand =  EditContactCardCommand(card: Manager.defaultManager().cards[indexPath.row], viewController: self, returningCommand: nil)
+            self.editingCardCommand!.execute(completed: {
+                self.refreshData()
+            })
         }
         
         let shareAction = UITableViewRowAction(style: .normal, title: "Share", handler: { (action, indexPath) in
@@ -91,7 +86,7 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
             
             //shareController.delegate = self
             shareController.availablePermissions = [.allowReadOnly,.allowPublic]
-            self.present(shareController, animated: true, completion: { 
+            self.present(shareController, animated: true, completion: {
                 //print("share URL: \(share.url)")
             })
         })
@@ -111,32 +106,6 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
         return [editAction, shareAction, deleteAction]
     }
     
-    //MARK: - CNContactViewControllerDelegate -
-    func contactViewController(_ viewController: CNContactViewController, didCompleteWith contact: CNContact?) {
-        viewController.dismiss(animated: true) {
-            print("Completed adding card \(contact?.description ?? "")")
-            if let _contact = contact?.mutableCopy() as? CNMutableContact{
-                // Deleting the contact first
-                let deleteRequest = CNSaveRequest()
-                deleteRequest.delete(_contact)
-                
-                do {
-                    try Manager.contactsStore.execute(deleteRequest)
-                } catch let error as NSError {
-                    print(error)
-                    return
-                }
-                
-                if self.editingCard != nil {
-                    self.saveContact(card: self.editingCard!, contact: contact!)
-                    self.editingCard = nil
-                } else {
-                    self.addContact(contact: contact!)
-                }
-            }
-        }
-    }
-    
     //MARK: - UICloudSharingControllerDelegate -
     func cloudSharingController(_ csc: UICloudSharingController, failedToSaveShareWithError error: Error) {
         
@@ -144,24 +113,6 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     
     func itemTitle(for csc: UICloudSharingController) -> String? {
         return "Sharing contact"
-    }
-    
-    func saveContact(card:CCCard, contact:CNContact) {
-        Manager.defaultManager().editCard(card: card, contact: contact, callingViewController: self, success: { (records) in
-            print("Successfully updated the card")
-            self.refreshData()
-        }, fail: { (errorMessage, error) in
-            print(error)
-        })
-    }
-    
-    func addContact(contact:CNContact) {
-        Manager.defaultManager().addNewCard(name: "", card: contact, callingViewController: self, success: { (records) in
-            print("Added card successfully: \(contact)")
-            self.reloadTableView()
-        }, fail: { (errorMessage, error) in
-            print("Failed to add card: \(contact)")
-        })
     }
     
     func reloadTableView() {

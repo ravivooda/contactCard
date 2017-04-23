@@ -16,8 +16,8 @@ class ShareContactCommand: Command {
         self.record = record
         super.init(viewController: viewController, returningCommand: returningCommand)
     }
-    
-    override func execute() {
+    override func execute(completed: CommandCompleted?) {
+        super.execute(completed: completed)
         /*let shareController = UICloudSharingController(preparationHandler: { (controller, preparationCompletionHandler) in
             let share = CKShare(rootRecord: self.record)
             share[CKShareTitleKey] = " My First Share" as CKRecordValue

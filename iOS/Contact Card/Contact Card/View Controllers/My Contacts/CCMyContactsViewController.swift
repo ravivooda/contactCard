@@ -121,11 +121,7 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
     
     //MARK: - UITableViewDelegate -
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = CNContactViewController(for: contacts[indexPath.row].contact)
-        viewController.allowsEditing = false
-        viewController.allowsActions = false
-        viewController.delegate = self
-        self.navigationController?.pushViewController(viewController, animated: true)
+        ShowContactCommand(contact: contacts[indexPath.row].contact, viewController: self, returningCommand: nil).execute(completed: nil)
     }
     
     func dismissContactViewController(sender:Any?) -> Void {

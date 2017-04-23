@@ -8,10 +8,13 @@
 
 import UIKit
 
+typealias CommandCompleted = () -> Void
+
 class Command: NSObject {
     
     let presentingViewController:UIViewController
     var returningCommand:Command? = nil
+    var completed:CommandCompleted?
     
     init(viewController:UIViewController, returningCommand:Command?) {
         self.presentingViewController = viewController
@@ -19,11 +22,13 @@ class Command: NSObject {
         super.init()
     }
     
-    func execute() {
-        preconditionFailure("This method must be overridden")
+    func execute(completed:CommandCompleted?) {
+        // preconditionFailure("This method must be overridden")
+        self.completed = completed
     }
     
     func finished() {
-        returningCommand?.execute()
+        self.completed?()
+        returningCommand?.execute(completed: nil)
     }
 }

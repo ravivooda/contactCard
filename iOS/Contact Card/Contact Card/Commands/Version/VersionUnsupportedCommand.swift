@@ -17,7 +17,8 @@ class VersionUnsupportedCommand: Command {
         super.init(viewController: viewController, returningCommand: returningCommand)
     }
 
-    override func execute() {
+    override func execute(completed: CommandCompleted?) {
+        super.execute(completed: completed)
         let controller = VersionUnsupportedViewController(nibName: "VersionUnsupportedViewController", bundle: nil)
         controller.appStoreURL = self.appStoreURL
         presentingViewController.present(controller, animated: true, completion: nil)

@@ -29,9 +29,14 @@ extension UIViewController {
     
     func showAlertMessage(message m:String) -> Void {
         let alertController = UIAlertController(title: "Contact Card", message: m, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-            
-        }))
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func showRetryAlertMessage(message m:String, retryHandler:((UIAlertAction) -> Swift.Void)?) {
+        let alertController = UIAlertController(title: "Contact Card", message: m, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Retry", style: .default, handler: retryHandler))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
 }

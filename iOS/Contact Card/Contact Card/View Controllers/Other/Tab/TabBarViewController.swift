@@ -24,6 +24,6 @@ class TabBarViewController: UITabBarController {
     }
     
     func login(returnCommand:Command?) {
-        LoginCommand(viewController: self, returnCommand: returnCommand).execute()
+        LoginCommand(viewController: self, returnCommand: returnCommand).execute(completed: nil)
     }
 }

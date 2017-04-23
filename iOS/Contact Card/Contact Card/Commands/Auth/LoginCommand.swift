@@ -35,7 +35,8 @@ class LoginCommand: Command {
         super.init(viewController: viewController, returningCommand: returnCommand)
     }
     
-    override func execute() {
+    override func execute(completed: CommandCompleted?) {
+        super.execute(completed: completed)
         LoginCommand.user = nil
         Manager.contactsContainer.fetchUserRecordID { (recordID, error) in
             if error != nil || isEmpty(recordID?.recordName) {
