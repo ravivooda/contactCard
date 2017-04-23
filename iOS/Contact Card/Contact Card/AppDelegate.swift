@@ -32,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let currentViewController = self.window?.currentViewController() {
             LoginCommand(viewController: currentViewController, returnCommand: nil).execute()
         }
+        application.applicationIconBadgeNumber = 0
     }
     
     func getCurrentViewController() -> UIViewController? {

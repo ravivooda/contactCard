@@ -65,13 +65,10 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
         
         let shareAction = UITableViewRowAction(style: .normal, title: "Share", handler: { (action, indexPath) in
             let sharingCard = Manager.defaultManager().cards[indexPath.row];
-            //let share = CKShare(rootRecord: sharingCard.record)
-            //share.publicPermission = .readOnly
-            
             let shareController = UICloudSharingController(preparationHandler: { (controller, preparationCompletionHandler) in
                 let share = CKShare(rootRecord: sharingCard.record)
                 share[CKShareTitleKey] = " My First Share" as CKRecordValue
-                share.publicPermission = .readOnly
+                //share.publicPermission = .readOnly
                 
                 let modifyRecordsOperation = CKModifyRecordsOperation(
                     recordsToSave: [sharingCard.record, share],
@@ -92,8 +89,8 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
                 Manager.contactsContainer.privateCloudDatabase.add(modifyRecordsOperation)
             })
             
-            shareController.delegate = self
-            shareController.availablePermissions = [.allowReadOnly]
+            //shareController.delegate = self
+            shareController.availablePermissions = [.allowReadOnly,.allowPublic]
             self.present(shareController, animated: true, completion: { 
                 //print("share URL: \(share.url)")
             })
@@ -116,9 +113,8 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     
     //MARK: - CNContactViewControllerDelegate -
     func contactViewController(_ viewController: CNContactViewController, didCompleteWith contact: CNContact?) {
-        print("Completed adding card \(contact)")
         viewController.dismiss(animated: true) {
-            
+            print("Completed adding card \(contact?.description ?? "")")
             if let _contact = contact?.mutableCopy() as? CNMutableContact{
                 // Deleting the contact first
                 let deleteRequest = CNSaveRequest()

@@ -23,7 +23,9 @@ class VersionUnsupportedViewController: UIViewController {
         if !isEmpty(appStoreURL) {
             if let url = URL(string: appStoreURL) {
                 if UIApplication.shared.canOpenURL(url) {
-                    UIApplication.shared.openURL(url)
+                    UIApplication.shared.open(url, options: [:], completionHandler: { (opened) in
+                        // Nothing to do yet
+                    })
                 }
             }
         }
