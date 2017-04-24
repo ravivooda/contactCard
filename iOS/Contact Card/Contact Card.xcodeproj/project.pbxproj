@@ -47,6 +47,7 @@
 		97C1EB031EAD413F00DB72F1 /* ShowContactCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB021EAD413F00DB72F1 /* ShowContactCommand.swift */; };
 		97C1EB051EAD442100DB72F1 /* NewContactCardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB041EAD442100DB72F1 /* NewContactCardCommand.swift */; };
 		97C1EB071EAD4C0A00DB72F1 /* EditContactCardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB061EAD4C0A00DB72F1 /* EditContactCardCommand.swift */; };
+		97C1EB091EAD68F300DB72F1 /* DeleteContactCardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB081EAD68F300DB72F1 /* DeleteContactCardCommand.swift */; };
 		97E650581E8710B60074F112 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E650571E8710B60074F112 /* Contact.swift */; };
 		97E6505B1E88097A0074F112 /* LoginCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E6505A1E88097A0074F112 /* LoginCommand.swift */; };
 		97E650601E880AA00074F112 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E6505F1E880AA00074F112 /* Device.swift */; };
@@ -104,6 +105,7 @@
 		97C1EB021EAD413F00DB72F1 /* ShowContactCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowContactCommand.swift; sourceTree = "<group>"; };
 		97C1EB041EAD442100DB72F1 /* NewContactCardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewContactCardCommand.swift; sourceTree = "<group>"; };
 		97C1EB061EAD4C0A00DB72F1 /* EditContactCardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditContactCardCommand.swift; sourceTree = "<group>"; };
+		97C1EB081EAD68F300DB72F1 /* DeleteContactCardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteContactCardCommand.swift; sourceTree = "<group>"; };
 		97E650571E8710B60074F112 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		97E6505A1E88097A0074F112 /* LoginCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCommand.swift; sourceTree = "<group>"; };
 		97E6505F1E880AA00074F112 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 				97C1EB021EAD413F00DB72F1 /* ShowContactCommand.swift */,
 				97C1EB041EAD442100DB72F1 /* NewContactCardCommand.swift */,
 				97C1EB061EAD4C0A00DB72F1 /* EditContactCardCommand.swift */,
+				97C1EB081EAD68F300DB72F1 /* DeleteContactCardCommand.swift */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -651,6 +654,7 @@
 				97B776DD1D84761000FC0A4B /* StringExtensions.swift in Sources */,
 				97B776D01D84708900FC0A4B /* VersionUnsupportedCommand.swift in Sources */,
 				97B776EA1D8480B900FC0A4B /* UIViewControllerExtensions.swift in Sources */,
+				97C1EB091EAD68F300DB72F1 /* DeleteContactCardCommand.swift in Sources */,
 				97B776E11D84784300FC0A4B /* ArrayExtensions.swift in Sources */,
 				97B776DF1D84782D00FC0A4B /* DictionaryExtensions.swift in Sources */,
 				971CF8211E4E94B7008F2C21 /* TabBarViewController.swift in Sources */,
