@@ -20,7 +20,8 @@ extension CKRecord {
                 let tempFileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("temp_image.png")
                 try imageData.write(to: tempFileURL)
                 self[CNContact.ImageKey] = CKAsset(fileURL: tempFileURL)
-            } catch _ {
+            } catch let error {
+                print("Error occurred in setting up the image asset \(error)")
                 // Ignore image
             }
         }

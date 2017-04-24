@@ -27,11 +27,7 @@ class LoginCommand: Command {
     let loginViewController:LoginViewController
     
     init(viewController:UIViewController, returnCommand:Command?) {
-        if viewController is LoadingViewController {
-            loginViewController = viewController as! LoginViewController
-        } else {
-            loginViewController = LoginViewController(nibName: "LoginViewController", bundle: nil)
-        }
+        loginViewController = viewController as? LoginViewController ?? LoginViewController(nibName: "LoginViewController", bundle: nil)
         super.init(viewController: viewController, returningCommand: returnCommand)
     }
     
