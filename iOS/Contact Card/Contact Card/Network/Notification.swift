@@ -27,7 +27,14 @@ extension Data {
     }
     
     struct RecordShareError:Error{
+        let message:String
+        init(errorMessage:String) {
+            self.message = errorMessage
+        }
         
+        var localizedDescription: String {
+            return message
+        }
     }
     
     static func sendUpdateNotification(forRecord record:CKRecord, message:String, viewController:UIViewController?, success:newSuccess?, fail:newFail?) {
@@ -45,13 +52,15 @@ extension Data {
                                       "message": message]
                     api(.post, api: "notify", parameters: parameters, viewController: nil, success: { (response) in
                         print("Succefully sent update to users \(participantUserIDs) for record \(record)")
+                        self.reportSuccess(success: success, records: [])
                     }, fail: { (errorResponse, HTTPResponse) in
                         print("Error occurred in sending update to the users response \(errorResponse)")
+                        self.reportError(error: RecordShareError(errorMessage: ""), fail: fail)
                     })
                 }
             })
         } else {
-            fail?("", RecordShareError())
+            self.reportError(error: RecordShareError(errorMessage: "No share setup for this record"), fail: fail)
         }
     }
 }

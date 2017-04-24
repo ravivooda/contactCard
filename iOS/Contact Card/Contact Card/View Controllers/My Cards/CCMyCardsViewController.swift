@@ -15,6 +15,7 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var tableView: UITableView!
     private var editingCardCommand:EditContactCardCommand?
     private var addNewCardCommand:NewContactCardCommand?
+    private var sharingCardCommand:ShareContactCommand?
     
     @IBAction func addNewCard(_ sender: Any) {
         self.addNewCardCommand = NewContactCardCommand(viewController: self, returningCommand: nil)
@@ -59,36 +60,8 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
         }
         
         let shareAction = UITableViewRowAction(style: .normal, title: "Share", handler: { (action, indexPath) in
-            let sharingCard = Manager.defaultManager().cards[indexPath.row];
-            let shareController = UICloudSharingController(preparationHandler: { (controller, preparationCompletionHandler) in
-                let share = CKShare(rootRecord: sharingCard.record)
-                share[CKShareTitleKey] = " My First Share" as CKRecordValue
-                //share.publicPermission = .readOnly
-                
-                let modifyRecordsOperation = CKModifyRecordsOperation(
-                    recordsToSave: [sharingCard.record, share],
-                    recordIDsToDelete: nil)
-                
-                modifyRecordsOperation.timeoutIntervalForRequest = 10
-                modifyRecordsOperation.timeoutIntervalForResource = 10
-                
-                modifyRecordsOperation.modifyRecordsCompletionBlock = { records,
-                    recordIDs, error in
-                    if error != nil {
-                        print(error)
-                        print(error?.localizedDescription ?? "")
-                    }
-                    print(share.url)
-                    preparationCompletionHandler(share, Manager.contactsContainer, error)
-                }
-                Manager.contactsContainer.privateCloudDatabase.add(modifyRecordsOperation)
-            })
-            
-            //shareController.delegate = self
-            shareController.availablePermissions = [.allowReadOnly,.allowPublic]
-            self.present(shareController, animated: true, completion: {
-                //print("share URL: \(share.url)")
-            })
+            self.sharingCardCommand = ShareContactCommand(withRecord: Manager.defaultManager().cards[indexPath.row].record, database: Manager.contactsContainer.privateCloudDatabase, viewController: self, returningCommand: nil)
+            self.sharingCardCommand?.execute(completed: nil)
         })
         
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPatch) in

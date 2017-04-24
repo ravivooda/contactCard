@@ -60,7 +60,7 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
             })
             break
         case .denied, .restricted:
-            showAlertMessage(message: "Apologies. We need access to your contacts for updating your contacts. Please note, we never use your contact data for any other purpose")
+            showAlertMessage(message: "Apologies. We need access to your contacts for updating your contacts.\nPlease note, we never use your contact data for any other purpose")
             break
         case .authorized:
             reloadLocalContactsAndDisplay(store: store)

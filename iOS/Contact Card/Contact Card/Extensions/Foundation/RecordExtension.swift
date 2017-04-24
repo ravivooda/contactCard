@@ -25,4 +25,19 @@ extension CKRecord {
             }
         }
     }
+    
+    func getContactName() -> String {
+        var fullName = "\(self[CNContact.FirstNameKey] ?? "" as NSString)"
+        if let last = self[CNContact.LastNameKey] {
+            fullName.append(" \(last)")
+        }
+        return fullName
+    }
+    
+    var contactShare:CKShare {
+        let share = CKShare(rootRecord: self)
+        share[CKShareTitleKey] = "\(self.getContactName())" as CKRecordValue
+        return share
+    }
+    
 }
