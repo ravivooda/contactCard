@@ -10,6 +10,10 @@ import UIKit
 import Contacts
 import CloudKit
 
+protocol ContactUpdateDelegate {
+    func contactUpdateProgress(value:Float)
+}
+
 class CCContact {
     static let referenceKey = "Contact Card Reference:"
 	
@@ -32,6 +36,24 @@ class CCContact {
 	func displayName() -> String {
 		return "\(contact.givenName) \(contact.familyName)"
 	}
+    
+    class UpdateContactOperation: Operation {
+        let record:CKAsset
+        var view:ContactUpdateDelegate?
+        
+        init(record:CKAsset) {
+            self.record = record
+        }
+        
+        override func main() {
+            if self.isCancelled {
+                return
+            }
+            
+            //Manager.contactsContainer.sharedCloudDatabase.fetch
+        }
+    }
+    
     
     func updateContactWithRecord(record:CKRecord) {
         if let mutableContact = contact.mutableCopy() as? CNMutableContact, let payload = record[CNContact.CardJSONKey] as? String, let data = convertToDictionary(text: payload) {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class CCContactTableViewCell: UITableViewCell {
 	@IBOutlet weak var nameLabel: UILabel!
@@ -19,16 +20,26 @@ class CCContactTableViewCell: UITableViewCell {
 		self.contact = contact
 		
 		self.nameLabel.text = contact.displayName();
-		self.rightButton.setTitle(isEmpty(contact.remoteID) ? "Request" : "Update", for: .normal)
+        if isEmpty(contact.remoteID) {
+            self.rightButton.setTitle("Request", for: .normal)
+            self.rightButton.tintColor = self.tintColor
+        } else {
+            self.rightButton.setTitle("Update", for: .normal)
+            self.rightButton.tintColor = .red
+        }
 	}
+    func getContact() -> CCContact? {
+        return contact
+    }
 
 	@IBAction func rightButtonClicked(_ sender: Any) {
 		if isEmpty(contact?.remoteID) {
 			
 		}
 	}
-	
-	func getContact() -> CCContact? {
-		return contact
-	}
+    
+    func updateContact(withRecord record:CKRecord) -> Operation {
+        //return UpdateContactOperation(record: record, cell: self)
+        return Operation()
+    }
 }

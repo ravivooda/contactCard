@@ -45,10 +45,7 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     
     //MARK: - UITableViewDelegate -
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = CNContactViewController(for: Manager.defaultManager().cards[indexPath.row].contact)
-        viewController.allowsEditing = false
-        viewController.allowsActions = false
-        self.navigationController?.pushViewController(viewController, animated: true)
+        ShowContactCommand(contact: Manager.defaultManager().cards[indexPath.row].contact, viewController: self, returningCommand: nil).execute(completed: nil)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

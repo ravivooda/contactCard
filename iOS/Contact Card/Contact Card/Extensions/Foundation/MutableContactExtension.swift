@@ -8,12 +8,18 @@
 
 import Contacts
 import CloudKit
+import UIKit
 
 extension CNMutableContact {
     convenience init(withRecord record:CKRecord) {
         self.init()
         if let jsonString = record["json"] as? String, let dictionary = convertToDictionary(text: jsonString) {
             self.parse(payload: dictionary)
+        }
+        
+        // Image Data
+        if let asset = record[CNContact.ImageKey] as? CKAsset, let data = NSData(contentsOf: asset.fileURL) as Foundation.Data?, let _ = UIImage(data: data) {
+            self.imageData = data
         }
     }
     

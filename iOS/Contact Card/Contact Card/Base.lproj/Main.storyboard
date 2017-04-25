@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pTx-74-ZQf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pTx-74-ZQf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,7 +34,7 @@
             <objects>
                 <navigationController id="tmd-oe-Alw" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Contacts" id="1fn-UO-EbH"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="G0M-fQ-wnN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="G0M-fQ-wnN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -51,7 +51,7 @@
             <objects>
                 <navigationController id="bxz-dN-VFx" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Cards" id="JIw-On-BX3"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HF0-Ev-PHQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HF0-Ev-PHQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -102,9 +102,13 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IwF-7U-G3i">
                                                     <rect key="frame" x="276" y="0.0" width="99" height="99"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3y-fj-2EL">
-                                                            <rect key="frame" x="0.0" y="0.0" width="99" height="99"/>
-                                                            <state key="normal" title="Button"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3y-fj-2EL" customClass="BordererButton" customModule="Contact_Card" customModuleProvider="target">
+                                                            <rect key="frame" x="16" y="36" width="68" height="28"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="28" id="fhf-gk-P3u"/>
+                                                                <constraint firstAttribute="width" constant="68" id="hkV-u6-coE"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Ready"/>
                                                             <connections>
                                                                 <action selector="rightButtonClicked:" destination="rEj-5I-YAq" eventType="touchUpInside" id="GT4-N3-TIh"/>
                                                             </connections>
@@ -112,11 +116,9 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="j3y-fj-2EL" firstAttribute="top" secondItem="IwF-7U-G3i" secondAttribute="top" id="3Dg-ZL-kHe"/>
                                                         <constraint firstAttribute="width" secondItem="IwF-7U-G3i" secondAttribute="height" multiplier="1:1" id="BCR-vs-9UZ"/>
-                                                        <constraint firstAttribute="trailing" secondItem="j3y-fj-2EL" secondAttribute="trailing" id="cf9-9t-Lcc"/>
-                                                        <constraint firstAttribute="bottom" secondItem="j3y-fj-2EL" secondAttribute="bottom" id="cun-TH-8rp"/>
-                                                        <constraint firstItem="j3y-fj-2EL" firstAttribute="leading" secondItem="IwF-7U-G3i" secondAttribute="leading" id="hoT-xM-med"/>
+                                                        <constraint firstItem="j3y-fj-2EL" firstAttribute="centerX" secondItem="IwF-7U-G3i" secondAttribute="centerX" id="dVc-GN-oal"/>
+                                                        <constraint firstItem="j3y-fj-2EL" firstAttribute="centerY" secondItem="IwF-7U-G3i" secondAttribute="centerY" id="k4f-Se-XVi"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>

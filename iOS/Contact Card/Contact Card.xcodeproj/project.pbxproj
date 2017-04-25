@@ -48,6 +48,7 @@
 		97C1EB051EAD442100DB72F1 /* NewContactCardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB041EAD442100DB72F1 /* NewContactCardCommand.swift */; };
 		97C1EB071EAD4C0A00DB72F1 /* EditContactCardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB061EAD4C0A00DB72F1 /* EditContactCardCommand.swift */; };
 		97C1EB091EAD68F300DB72F1 /* DeleteContactCardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB081EAD68F300DB72F1 /* DeleteContactCardCommand.swift */; };
+		97C1EB0C1EAD97A900DB72F1 /* BordererButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB0B1EAD97A900DB72F1 /* BordererButton.swift */; };
 		97E650581E8710B60074F112 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E650571E8710B60074F112 /* Contact.swift */; };
 		97E6505B1E88097A0074F112 /* LoginCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E6505A1E88097A0074F112 /* LoginCommand.swift */; };
 		97E650601E880AA00074F112 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E6505F1E880AA00074F112 /* Device.swift */; };
@@ -106,6 +107,7 @@
 		97C1EB041EAD442100DB72F1 /* NewContactCardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewContactCardCommand.swift; sourceTree = "<group>"; };
 		97C1EB061EAD4C0A00DB72F1 /* EditContactCardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditContactCardCommand.swift; sourceTree = "<group>"; };
 		97C1EB081EAD68F300DB72F1 /* DeleteContactCardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteContactCardCommand.swift; sourceTree = "<group>"; };
+		97C1EB0B1EAD97A900DB72F1 /* BordererButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BordererButton.swift; sourceTree = "<group>"; };
 		97E650571E8710B60074F112 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		97E6505A1E88097A0074F112 /* LoginCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCommand.swift; sourceTree = "<group>"; };
 		97E6505F1E880AA00074F112 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 		97B776C71D846C8C00FC0A4B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				97C1EB0A1EAD979200DB72F1 /* Buttons */,
 				BC54A9381E0F6E8D0062CE8B /* Table View Cells */,
 			);
 			path = Views;
@@ -362,6 +365,14 @@
 				97C1EB081EAD68F300DB72F1 /* DeleteContactCardCommand.swift */,
 			);
 			path = Contact;
+			sourceTree = "<group>";
+		};
+		97C1EB0A1EAD979200DB72F1 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				97C1EB0B1EAD97A900DB72F1 /* BordererButton.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 		97E650591E88097A0074F112 /* Auth */ = {
@@ -667,6 +678,7 @@
 				97B5B95B1EA7026200E90967 /* Notification.swift in Sources */,
 				97E6505B1E88097A0074F112 /* LoginCommand.swift in Sources */,
 				97B776CE1D846FE700FC0A4B /* Command.swift in Sources */,
+				97C1EB0C1EAD97A900DB72F1 /* BordererButton.swift in Sources */,
 				97B776D91D84751C00FC0A4B /* VersionUnsupportedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

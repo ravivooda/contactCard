@@ -40,6 +40,7 @@ class EditContactCardCommand: Command, CNContactViewControllerDelegate {
                 } catch let error {
                     self.presentingViewController.showAlertMessage(message: "An error occurred in saving your card - \(error.localizedDescription)")
                     print(error.localizedDescription)
+                    return
                 }
                 
                 self.saveContactCard(contact: contact)
