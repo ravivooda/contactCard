@@ -34,7 +34,7 @@
             <objects>
                 <navigationController id="tmd-oe-Alw" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Contacts" id="1fn-UO-EbH"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="G0M-fQ-wnN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="G0M-fQ-wnN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -51,7 +51,7 @@
             <objects>
                 <navigationController id="bxz-dN-VFx" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Cards" id="JIw-On-BX3"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HF0-Ev-PHQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HF0-Ev-PHQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

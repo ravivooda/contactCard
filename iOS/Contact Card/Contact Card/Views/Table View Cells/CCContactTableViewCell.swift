@@ -14,26 +14,25 @@ class CCContactTableViewCell: UITableViewCell {
 	@IBOutlet weak var leftContainer: UIView!
 
 	@IBOutlet weak var rightButton: UIButton!
-    private var contact:CCContact?
-	
-	func setContact(contact:CCContact) {
-		self.contact = contact
-		
-		self.nameLabel.text = contact.displayName();
-        if isEmpty(contact.remoteID) {
-            self.rightButton.setTitle("Request", for: .normal)
-            self.rightButton.tintColor = self.tintColor
-        } else {
-            self.rightButton.setTitle("Update", for: .normal)
-            self.rightButton.tintColor = .red
+    var contact:CCContact = CCContact(contact: CNMutableContact()) {
+        didSet {
+            self.nameLabel.text = contact.displayName();
+            if isEmpty(contact.remoteID) {
+                self.rightButton.setTitle("Request", for: .normal)
+                self.rightButton.tintColor = self.tintColor
+            } else {
+                self.rightButton.setTitle("Update", for: .normal)
+                self.rightButton.tintColor = .red
+            }
         }
-	}
-    func getContact() -> CCContact? {
-        return contact
+        
+        willSet {
+            
+        }
     }
 
 	@IBAction func rightButtonClicked(_ sender: Any) {
-		if isEmpty(contact?.remoteID) {
+		if isEmpty(contact.remoteID) {
 			
 		}
 	}

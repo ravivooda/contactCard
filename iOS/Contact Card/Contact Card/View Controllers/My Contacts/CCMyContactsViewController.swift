@@ -11,7 +11,7 @@ import Contacts
 import ContactsUI
 import CloudKit
 
-class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CNContactViewControllerDelegate {
+class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CNContactViewControllerDelegate, ContactUpdateDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     var contacts:[CCContact] = []
@@ -83,22 +83,21 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
         }
         
         // Updating or creating new contacts
+        var addContactCommands = [AddContactCardCommand]()
         for record in records {
-            if let createdUserID = record.creatorUserRecordID {
-                let recordIdentifier = "\(createdUserID.recordName).\(record.recordID.recordName)"
-                if let contact = contactsToRefMap[recordIdentifier] {
-                    contact.updateContactWithRecord(record: record)
-                } else {
-                    let newContact = CNMutableContact(withRecord: record)
-                    newContact.note = newContact.note.appending("\n\(CCContact.referenceKey)\(recordIdentifier)")
-                    let saveRequest = CNSaveRequest()
-                    saveRequest.add(newContact, toContainerWithIdentifier: nil)
-                    do {
-                        try Manager.contactsStore.execute(saveRequest)
-                    } catch let error {
-                        print("Error occurred while saving the request \(error)")
-                    }
-                }
+            let recordIdentifier = record.recordIdentifier
+            if let contact = contactsToRefMap[recordIdentifier] {
+                contact.updateRecord = record
+            } else {
+                addContactCommands.append(AddContactCardCommand(record: record, viewController: self, returningCommand: nil))
+            }
+        }
+        
+        //FIXME: Fix with settings
+        if true {
+            for addContactCommand in addContactCommands {
+                addContactCommand.contactAddingDelegate = self
+                addContactCommand.execute(completed: nil)
             }
         }
     }
@@ -110,12 +109,21 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:CCContactTableViewCell = tableView.dequeueReusableCell(withIdentifier: "contactTableViewCellIdentifier", for: indexPath) as! CCContactTableViewCell
-        cell.setContact(contact: contacts[indexPath.row])
+        cell.contact = contacts[indexPath.row]
         return cell
     }
     
     //MARK: - UITableViewDelegate -
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         ShowContactCommand(contact: contacts[indexPath.row].contact, viewController: self, returningCommand: nil).execute(completed: nil)
+    }
+    
+    //MARK: - ContactUpdateDelegate -
+    func contactUpdateError(error: Error) {
+        showAlertMessage(message: error.localizedDescription)
+    }
+    
+    func contactUpdateProgress(value: Float) {
+        // Nothing to do
     }
 }

@@ -25,6 +25,7 @@ class ShowContactCommand: Command, CNContactViewControllerDelegate {
         viewController.allowsActions = false
         viewController.delegate = self
         presentingViewController.navigationController?.pushViewController(viewController, animated: true)
+        print(self.contact.thumbnailImageData)
     }
     
     //MARK: - CNContactViewControllerDelegate -

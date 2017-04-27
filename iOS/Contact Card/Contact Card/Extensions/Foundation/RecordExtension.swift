@@ -41,4 +41,15 @@ extension CKRecord {
         return share
     }
     
+    var recordIdentifier:String {
+        get {
+            if let createdUserID = self.creatorUserRecordID {
+                return "\(createdUserID.recordName).\(self.recordID.recordName)"
+            }
+            
+            return ""
+        }
+    }
+    
+    
 }
