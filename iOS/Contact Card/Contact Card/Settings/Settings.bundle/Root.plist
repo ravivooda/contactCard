@@ -4,29 +4,25 @@
 <dict>
 	<key>StringsTable</key>
 	<string>Root</string>
+	<key>Title</key>
+	<string>Contact Card</string>
 	<key>PreferenceSpecifiers</key>
 	<array>
 		<dict>
 			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-			<key>FooterText</key>
-			<string>Please launch the app to complete the logout action</string>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
+			<string>PSChildPaneSpecifier</string>
 			<key>Title</key>
-			<string>Logged In</string>
-			<key>Key</key>
-			<string>user_toggle</string>
-			<key>DefaultValue</key>
-			<true/>
+			<string>Acknowledgements</string>
+			<key>File</key>
+			<string>Acknowledgements</string>
 		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>FooterText</key>
-			<string>Auto Sync your contacts upon app launch (Highly Recommended)</string>
+			<string>Auto sync your contacts upon app launch (Highly Recommended)</string>
+			<key>Title</key>
+			<string>Updates</string>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -34,11 +30,9 @@
 			<key>Title</key>
 			<string>Auto Sync</string>
 			<key>Key</key>
-			<string>sync_toggle</string>
+			<string>auto_update_contact</string>
 			<key>DefaultValue</key>
 			<true/>
-			<key>FooterText</key>
-			<string>Auto Sync your contacts upon app launch (Highly Recommended)</string>
 		</dict>
 	</array>
 </dict>
