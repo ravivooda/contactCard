@@ -46,16 +46,15 @@ class AddContactCardCommand: Command {
                 
                 let contact = CNMutableContact(withRecord: record)
                 contact.note = contact.note.appending("\n\(CCContact.referenceKey)\(record.recordIdentifier)/\(record.recordChangeTag ?? "")")
-                /*let saveRequest = CNSaveRequest()
+                let saveRequest = CNSaveRequest()
                 saveRequest.add(contact, toContainerWithIdentifier: nil)
                 do {
                     try Manager.contactsStore.execute(saveRequest)
                     self.progress = 1
                 } catch let error {
                     print("Error occurred while saving the request \(error)")
-                    self.contactAddingDelegate?.contactUpdateError(error: UpdateContactError(message: "An error occurred while saving the contact locally. Please ensure that the app has write permissions to your contacts"))
-                }*/
-                self.progress = 1
+                    return self.reportError(error: error)
+                }
             }
         }
     }

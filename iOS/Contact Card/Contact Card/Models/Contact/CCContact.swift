@@ -10,7 +10,7 @@ import UIKit
 import Contacts
 import CloudKit
 
-class CCContact {
+class CCContact:CustomDebugStringConvertible {
     class ContactIdentifier {
         let remoteID:String
         let version:String
@@ -55,6 +55,12 @@ class CCContact {
             if let command = self.updateContactCommand {
                 NotificationCenter.contactCenter.post(name: command.record.getNotificationNameForRecord(), object: nil, userInfo: [CCContact.ContactNotificationUpdateAvailableInfoKey : true])
             }
+        }
+    }
+    
+    var debugDescription: String {
+        get {
+            return displayName()
         }
     }
 }

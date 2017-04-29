@@ -23,18 +23,18 @@ class CCContactTableViewCell: UITableViewCell {
             
             self.rightButton.isHidden = true
             self.progressView.isHidden = true
-            if let command = contact.updateContactCommand {
+            if let command = contact.updateContactCommand, contact.contactIdentifier != nil {
                 showProgress(progress: command.progress)
-            } else {
+            } else if contact.contactIdentifier == nil {
                 showInviteUser()
             }
         }
     }
     
     private func showInviteUser() {
-        self.rightContainer.isHidden = false
         self.rightButton.setTitle("Invite", for: .normal)
         self.rightButton.tintColor = self.tintColor
+        self.rightButton.isHidden = false
     }
     
     private func showProgress(progress:Float){
