@@ -31,7 +31,7 @@ class AddContactCardCommand: Command {
         self.progress = 0
         Manager.contactsContainer.sharedCloudDatabase.fetch(withRecordID: self.record.recordID) { (record, error) in
             DispatchQueue.main.async {
-                guard error != nil else {
+                guard error == nil else {
                     self.contactAddingDelegate?.contactUpdateError(error: error!)
                     self.progress = -1
                     return

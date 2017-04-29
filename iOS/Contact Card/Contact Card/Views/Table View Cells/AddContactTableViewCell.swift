@@ -17,6 +17,8 @@ class AddContactTableViewCell: UITableViewCell, ContactUpdateDelegate {
         didSet {
             addContactCardCommand.contactAddingDelegate = self
             self.progressView.showProgress(float: addContactCardCommand.progress)
+            
+            self.contactNameLabel.text = addContactCardCommand.record.getContactName()
         }
     }
 

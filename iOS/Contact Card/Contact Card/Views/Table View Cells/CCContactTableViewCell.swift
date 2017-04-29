@@ -14,20 +14,14 @@ class CCContactTableViewCell: UITableViewCell {
 	@IBOutlet weak var leftContainer: UIView!
 
 	@IBOutlet weak var rightButton: UIButton!
-    var contact:CCContact = CCContact(contact: CNMutableContact()) {
+    var contact:CCContact! {
         didSet {
             self.nameLabel.text = contact.displayName();
-            if isEmpty(contact.remoteID) {
-                self.rightButton.setTitle("Request", for: .normal)
-                self.rightButton.tintColor = self.tintColor
-            } else {
-                self.rightButton.setTitle("Update", for: .normal)
-                self.rightButton.tintColor = .red
-            }
-        }
-        
-        willSet {
             
+            self.leftContainer.isHidden = contact.updateContactOperation != nil
+            
+            self.rightButton.setTitle(isEmpty(contact.remoteID) ? "Invite" : "Update", for: .normal)
+            self.rightButton.tintColor = isEmpty(contact.remoteID) ? self.tintColor : .red
         }
     }
 

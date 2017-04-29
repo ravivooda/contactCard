@@ -52,7 +52,10 @@ class LoginCommand: Command {
     }
     
     override func finished() {
-        self.presentingViewController.dismiss(animated: true) {
+        DispatchQueue.main.async {
+            self.presentingViewController.dismiss(animated: true) {
+                
+            }
             if let _ = LoginCommand.user {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: LoginCommand.AuthenticationChangedNotificationKey), object: nil)
             }

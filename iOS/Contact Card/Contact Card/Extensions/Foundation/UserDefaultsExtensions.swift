@@ -9,10 +9,11 @@
 import Foundation
 
 extension UserDefaults {
+    private static let autoSyncIdentifier = "autoUpdateContact"
     static var isAutoSyncEnabled:Bool {
         get {
-            if let _ = UserDefaults.standard.object(forKey: "autoUpdateContact") {
-                return UserDefaults.standard.bool(forKey: "autoUpdateContact")
+            if let _ = UserDefaults.standard.object(forKey: autoSyncIdentifier) {
+                return UserDefaults.standard.bool(forKey: autoSyncIdentifier)
             }
             return true
         }
