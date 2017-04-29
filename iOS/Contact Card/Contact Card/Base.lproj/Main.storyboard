@@ -83,14 +83,14 @@
                                             <rect key="frame" x="287" y="0.0" width="80" height="80"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J7M-hd-ad0" customClass="BordererButton" customModule="Contact_Card" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="4" width="80" height="32"/>
+                                                    <rect key="frame" x="0.0" y="4" width="80" height="34"/>
                                                     <state key="normal" title="Add"/>
                                                     <connections>
                                                         <action selector="addContactClicked:" destination="elf-1n-QgD" eventType="touchUpInside" id="fAk-iH-cxP"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Yb-GC-F39" customClass="BordererButton" customModule="Contact_Card" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="44" width="80" height="32"/>
+                                                    <rect key="frame" x="0.0" y="42" width="80" height="34"/>
                                                     <color key="tintColor" red="0.69019607839999997" green="0.20392156859999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <state key="normal" title="Delete"/>
                                                     <connections>
@@ -104,7 +104,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="4Yb-GC-F39" firstAttribute="top" secondItem="J7M-hd-ad0" secondAttribute="bottom" constant="8" id="8MH-dh-spq"/>
+                                                <constraint firstItem="4Yb-GC-F39" firstAttribute="top" secondItem="J7M-hd-ad0" secondAttribute="bottom" constant="4" id="8MH-dh-spq"/>
                                                 <constraint firstItem="J7M-hd-ad0" firstAttribute="top" secondItem="euX-z0-jLS" secondAttribute="top" constant="4" id="Ien-aI-aSf"/>
                                                 <constraint firstAttribute="bottom" secondItem="4Yb-GC-F39" secondAttribute="bottom" constant="4" id="KUb-iG-nq7"/>
                                                 <constraint firstItem="J7M-hd-ad0" firstAttribute="leading" secondItem="euX-z0-jLS" secondAttribute="leading" id="NCT-f3-5s4"/>
@@ -202,12 +202,20 @@
                                                                 <action selector="rightButtonClicked:" destination="rEj-5I-YAq" eventType="touchUpInside" id="GT4-N3-TIh"/>
                                                             </connections>
                                                         </button>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="raa-1X-6WN" customClass="ContactProgressView" customModule="Contact_Card" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="99" height="99"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="IwF-7U-G3i" secondAttribute="height" multiplier="1:1" id="BCR-vs-9UZ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="raa-1X-6WN" secondAttribute="trailing" id="XhW-sK-5XR"/>
                                                         <constraint firstItem="j3y-fj-2EL" firstAttribute="centerX" secondItem="IwF-7U-G3i" secondAttribute="centerX" id="dVc-GN-oal"/>
+                                                        <constraint firstItem="raa-1X-6WN" firstAttribute="top" secondItem="IwF-7U-G3i" secondAttribute="top" id="fnf-lV-1k5"/>
                                                         <constraint firstItem="j3y-fj-2EL" firstAttribute="centerY" secondItem="IwF-7U-G3i" secondAttribute="centerY" id="k4f-Se-XVi"/>
+                                                        <constraint firstItem="raa-1X-6WN" firstAttribute="leading" secondItem="IwF-7U-G3i" secondAttribute="leading" id="sbo-7O-nFk"/>
+                                                        <constraint firstAttribute="bottom" secondItem="raa-1X-6WN" secondAttribute="bottom" id="t1Y-v3-HJP"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -227,7 +235,9 @@
                                         <connections>
                                             <outlet property="leftContainer" destination="RQq-fs-iHl" id="IIT-9k-D1S"/>
                                             <outlet property="nameLabel" destination="Wyx-ih-gcl" id="TCf-0q-Zqj"/>
+                                            <outlet property="progressView" destination="raa-1X-6WN" id="Car-Om-SYI"/>
                                             <outlet property="rightButton" destination="j3y-fj-2EL" id="5pa-u0-eun"/>
+                                            <outlet property="rightContainer" destination="IwF-7U-G3i" id="Mkv-cF-jzR"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

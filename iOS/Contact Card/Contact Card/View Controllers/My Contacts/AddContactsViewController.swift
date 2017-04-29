@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import CloudKit
 
 class AddContactsViewController: UITableViewController {
     var cards:[AddContactCardCommand] = []
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    deinit {
+        NotificationCenter.contactCenter.removeObserver(self)
     }
     
     override func viewDidLoad() {
@@ -22,6 +27,27 @@ class AddContactsViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add All", style: .done, target: self, action: #selector(addAllContacts(sender:)))
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Delete all", style: .plain, target: self, action: #selector(deleteAllContacts(sender:)))
         self.title = "New Contacts"
+        
+        for card in cards {
+            NotificationCenter.contactCenter.addObserver(self, selector: #selector(contactUpdate(notification:)), name: UpdateContactCardCommand.getNotificationNameForRecord(record: card.record), object: nil)
+        }
+    }
+    
+    func contactUpdate(notification:Notification) {
+        if let record = notification.object as? CKRecord,
+            let progress = notification.userInfo?[UpdateContactCardCommand.ContactNotificationProgressInfoKey] as? Float, progress == 1 {
+            for i in 0...cards.count {
+                if record.recordIdentifier == cards[i].record.recordIdentifier {
+                    cards.remove(at: i);
+                    tableView.deleteRows(at: [IndexPath.init(row: i, section: 0)], with: .automatic)
+                    
+                    if cards.count == 0 {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                    return
+                }
+            }
+        }
     }
     
     func addAllContacts(sender:UIBarButtonItem) -> Void {
@@ -50,5 +76,5 @@ class AddContactsViewController: UITableViewController {
     }
     
     //MARK: - UITableViewDelegate -
-
+    
 }

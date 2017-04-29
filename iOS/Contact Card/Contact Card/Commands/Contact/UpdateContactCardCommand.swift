@@ -12,96 +12,61 @@ import Contacts
 import UIKit
 
 class UpdateContactCardCommand: Command {
-    let updateRecord:CKRecord
+    static let ContactNotificationProgressInfoKey = "ContactCard.Progress"
+    static let ContactNotificationProgressErrorKey = "ContactCard.Error"
+    static let ContactNotificationUpdateAvailableInfoKey = "ContactCard.UpdateAvailable"
+    static func getNotificationNameForRecord(record:CKRecord) -> NSNotification.Name {
+        return NSNotification.Name(rawValue: "ContactCardNotification.\(record.recordID.recordName)")
+    }
+    let record:CKRecord
     let updatingContact:CCContact
-    private var observers = [ContactUpdateDelegate]()
+    var progress:Float = -1 {
+        didSet {
+            NotificationCenter.contactCenter.post(name: UpdateContactCardCommand.getNotificationNameForRecord(record: self.record), object: self.record, userInfo: [UpdateContactCardCommand.ContactNotificationProgressInfoKey:self.progress])
+        }
+    }
     
     init(contact:CCContact, record:CKRecord, viewController:UIViewController, returningCommand:Command?) {
         self.updatingContact = contact
-        self.updateRecord = record
+        self.record = record
         super.init(viewController: viewController, returningCommand: nil)
+    }
+    
+    private func reportError(error:Error) {
+        self.progress = -1
+        print("Error in updating contact: \(error)")
+        NotificationCenter.contactCenter.post(name: UpdateContactCardCommand.getNotificationNameForRecord(record: self.record), object: self.record, userInfo: [UpdateContactCardCommand.ContactNotificationProgressErrorKey:error])
     }
     
     override func execute(completed: CommandCompleted?) {
         super.execute(completed: completed)
-        
-        self.fetchAsset(shouldFetchDataIfNotAvailableReadily: true)
-    }
-    
-    private func fetchAsset(shouldFetchDataIfNotAvailableReadily:Bool) {
-        guard let asset = updateRecord[CNContact.ImageKey] as? CKAsset else {
-            self.completeUpdate(imageData: nil)
-            return
-        }
-        
-        if let data = NSData(contentsOf: asset.fileURL) as Foundation.Data?, let _ = UIImage(data: data) {
-            self.completeUpdate(imageData: data)
-            return
-        }
-        
-        if !shouldFetchDataIfNotAvailableReadily {
-            self.completeUpdate(imageData: nil)
-            return
-        }
-        
-        // Updates are always fetched from share cloud database
-        Manager.contactsContainer.sharedCloudDatabase.fetch(withRecordID: self.updateRecord.recordID, completionHandler: { (record, error) in
+        self.progress = 0
+        Manager.contactsContainer.sharedCloudDatabase.fetch(withRecordID: self.record.recordID) { (record, error) in
             DispatchQueue.main.async {
-                guard error != nil else {
-                    for observer in self.observers {
-                        observer.contactUpdateError(error: error!)
-                    }
-                    return
+                guard error == nil else {
+                    return self.reportError(error: error!)
                 }
                 
-                guard record != nil else {
-                    for observer in self.observers {
-                        observer.contactUpdateError(error: UpdateContactError(message: "Unknown error occurred while fetching the contact information. Please make sure the device is connected to internet"))
-                    }
-                    return
+                guard let record = record, let payload = record[CNContact.CardJSONKey] as? String, let jsonPayload = convertToDictionary(text: payload), let mutableContact = self.updatingContact.contact.mutableCopy() as? CNMutableContact else {
+                    return self.reportError(error: UpdateContactError(message: "An unknown error occurred while fetching the asset. Please ensure that your device has an active internet connection"))
                 }
                 
-                self.fetchAsset(shouldFetchDataIfNotAvailableReadily: false)
-            }
-        })
-    }
-    
-    private func completeUpdate(imageData:Foundation.Data?) -> Void {
-        if let mutableContact = updatingContact.contact.mutableCopy() as? CNMutableContact, let payload = updateRecord[CNContact.CardJSONKey] as? String, let data = convertToDictionary(text: payload) {
-            mutableContact.parse(payload: data)
-            mutableContact.imageData = imageData
-            
-            // Save the contact
-            let saveRequest = CNSaveRequest()
-            saveRequest.update(mutableContact)
-            do {
-                try CNContactStore().execute(saveRequest)
-            } catch let error as NSError {
-                print("Error occurred in saving contact update \(error)")
-            }
-        }
-    }
-    
-    func addObserver(_ observer:ContactUpdateDelegate) -> Void {
-        DispatchQueue.main.async {
-            for _observer in self.observers {
-                if observer === _observer {
-                    return
+                if let asset = record[CNContact.ImageKey] as? CKAsset,
+                    let imageData = NSData(contentsOf: asset.fileURL) as Foundation.Data? {
+                    mutableContact.imageData = imageData
                 }
-            }
-            self.observers.append(observer)
-        }
-    }
-    
-    func removeObserver(_ observer:ContactUpdateDelegate) -> Void {
-        DispatchQueue.main.async {
-            var _observers = [ContactUpdateDelegate]()
-            for _observer in self.observers {
-                if observer !== _observer {
-                    _observers.append(_observer)
+                mutableContact.parse(payload: jsonPayload)
+                
+                // Save the contact
+                let saveRequest = CNSaveRequest()
+                saveRequest.update(mutableContact)
+                do {
+                    try CNContactStore().execute(saveRequest)
+                } catch let error {
+                    return self.reportError(error: error)
                 }
+                self.progress = 1
             }
-            self.observers = _observers
         }
     }
 }

@@ -12,27 +12,57 @@ import CloudKit
 class CCContactTableViewCell: UITableViewCell {
 	@IBOutlet weak var nameLabel: UILabel!
 	@IBOutlet weak var leftContainer: UIView!
+    @IBOutlet weak var rightContainer: UIView!
 
 	@IBOutlet weak var rightButton: UIButton!
+    @IBOutlet weak var progressView: ContactProgressView!
     var contact:CCContact! {
         didSet {
+            NotificationCenter.contactCenter.removeObserver(self)
             self.nameLabel.text = contact.displayName();
             
-            self.leftContainer.isHidden = contact.updateContactOperation != nil
-            
-            self.rightButton.setTitle(isEmpty(contact.remoteID) ? "Invite" : "Update", for: .normal)
-            self.rightButton.tintColor = isEmpty(contact.remoteID) ? self.tintColor : .red
+            self.rightButton.isHidden = true
+            self.progressView.isHidden = true
+            if let command = contact.updateContactCommand {
+                showProgress(progress: command.progress)
+            } else {
+                showInviteUser()
+            }
+        }
+    }
+    
+    private func showInviteUser() {
+        self.rightContainer.isHidden = false
+        self.rightButton.setTitle("Invite", for: .normal)
+        self.rightButton.tintColor = self.tintColor
+    }
+    
+    private func showProgress(progress:Float){
+        if progress >= 0 {
+            self.rightButton.isHidden = true
+            self.progressView.showProgress(float: progress, animated: false)
+        } else {
+            self.rightButton.isHidden = false
+            self.rightButton.setTitle("Update", for: .normal)
+            self.rightButton.tintColor = .red
+        }
+    }
+    
+    private func contactUpdateNotificationListener(notification:Notification) {
+        if let userInfo = notification.userInfo as? [String:Any] {
+            if userInfo.bool(forKey: UpdateContactCardCommand.ContactNotificationUpdateAvailableInfoKey) {
+                showProgress(progress: -1)
+            }
         }
     }
 
 	@IBAction func rightButtonClicked(_ sender: Any) {
-		if isEmpty(contact.remoteID) {
-			
-		}
+        
 	}
-    
-    func updateContact(withRecord record:CKRecord) -> Operation {
-        //return UpdateContactOperation(record: record, cell: self)
-        return Operation()
+}
+
+extension Dictionary where Key == String {
+    func bool(forKey key:String) -> Bool {
+        return self[key] as? Bool ?? false
     }
 }

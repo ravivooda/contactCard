@@ -11,7 +11,7 @@ import Contacts
 import ContactsUI
 import CloudKit
 
-class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CNContactViewControllerDelegate, ContactUpdateDelegate {
+class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CNContactViewControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     var contacts:[CCContact] = []
@@ -19,7 +19,7 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(syncLocalContactsWithRemoteUpdates(_:)), name: NSNotification.Name(rawValue: LoginCommand.AuthenticationChangedNotificationKey), object: nil)
+        NotificationCenter.contactCenter.addObserver(self, selector: #selector(syncLocalContactsWithRemoteUpdates(_:)), name: NSNotification.Name(rawValue: LoginCommand.AuthenticationChangedNotificationKey), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -77,8 +77,8 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
     private func updateContacts(records:[CKRecord]) {
         var contactsToRefMap = [String:CCContact]()
         for contact in self.contacts {
-            if !isEmpty(contact.remoteID) {
-                contactsToRefMap[contact.remoteID] = contact
+            if let identifier = contact.contactIdentifier {
+                contactsToRefMap[identifier.remoteID] = contact
             }
         }
         
@@ -87,24 +87,26 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
         for record in records {
             let recordIdentifier = record.recordIdentifier
             if let contact = contactsToRefMap[recordIdentifier] {
-                contact.updateRecord = record
+                if record.recordChangeTag != contact.contactIdentifier!.version {
+                    contact.updateContactCommand = UpdateContactCardCommand(contact: contact, record: record, viewController: self, returningCommand: nil)
+                    if UserDefaults.isAutoSyncEnabled {
+                        contact.updateContactCommand?.execute(completed: nil)
+                    }
+                }
             } else {
-                addContactCommands.append(AddContactCardCommand(record: record, viewController: self, returningCommand: nil))
+                let addCommand = AddContactCardCommand(record: record, viewController: self, returningCommand: nil)
+                if UserDefaults.isAutoSyncEnabled {
+                    addCommand.execute(completed: nil)
+                } else {
+                    addContactCommands.append(addCommand)
+                }
             }
         }
         
-        //FIXME: Fix with settings
-        if addContactCommands.count > 0 {
-            if UserDefaults.isAutoSyncEnabled {
-                for addContactCommand in addContactCommands {
-                    addContactCommand.contactAddingDelegate = self
-                    addContactCommand.execute(completed: nil)
-                }
-            } else if let addContactsViewController = self.storyboard?.instantiateViewController(withIdentifier: "addContactsViewController") as? AddContactsViewController {
-                let navigationController = UINavigationController(rootViewController: addContactsViewController)
-                addContactsViewController.cards.append(contentsOf: addContactCommands)
-                self.present(navigationController, animated: true, completion: nil)
-            }
+        if addContactCommands.count > 0, let addContactsViewController = self.storyboard?.instantiateViewController(withIdentifier: "addContactsViewController") as? AddContactsViewController {
+            let navigationController = UINavigationController(rootViewController: addContactsViewController)
+            addContactsViewController.cards.append(contentsOf: addContactCommands)
+            self.present(navigationController, animated: true, completion: nil)
         }
     }
     
@@ -122,14 +124,5 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
     //MARK: - UITableViewDelegate -
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         ShowContactCommand(contact: contacts[indexPath.row].contact, viewController: self, returningCommand: nil).execute(completed: nil)
-    }
-    
-    //MARK: - ContactUpdateDelegate -
-    func contactUpdateError(error: Error) {
-        showAlertMessage(message: error.localizedDescription)
-    }
-    
-    func contactUpdateProgress(value: Float) {
-        // Nothing to do
     }
 }

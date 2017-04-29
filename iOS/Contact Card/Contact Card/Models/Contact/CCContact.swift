@@ -11,28 +11,47 @@ import Contacts
 import CloudKit
 
 class CCContact {
+    class ContactIdentifier {
+        let remoteID:String
+        let version:String
+        
+        init(remoteID:String, version:String) {
+            self.remoteID = remoteID
+            self.version = version
+        }
+    }
     static let referenceKey = "Contact Card Reference:"
 	
 	let contact:CNContact
-	
-	let remoteID:String
+    let contactIdentifier:ContactIdentifier?
 	
 	init(contact:CNContact) {
 		self.contact = contact
-		var remoteID = ""
+        
+        var _contactIdentifier:ContactIdentifier? = nil
+        
 		for note in contact.note.components(separatedBy: "\n") {
 			if note.contains(CCContact.referenceKey) {
-				remoteID = note.substring(from: note.index(note.startIndex, offsetBy: CCContact.referenceKey.characters.count))
+				let remoteID = note.substring(from: note.index(note.startIndex, offsetBy: CCContact.referenceKey.characters.count))
+                let recordTokens = remoteID.components(separatedBy: "/")
+                if recordTokens.count > 1 {
+                    _contactIdentifier = ContactIdentifier(remoteID: recordTokens[0], version: recordTokens[1])
+                }
                 break
 			}
 		}
-		self.remoteID = remoteID
+        self.contactIdentifier = _contactIdentifier
 	}
 
 	func displayName() -> String {
 		return "\(contact.givenName) \(contact.familyName)"
 	}
     
-    var updateRecord:CKRecord? = nil
-    var updateContactOperation:UpdateContactOperation? = nil
+    var updateContactCommand:UpdateContactCardCommand? = nil {
+        didSet {
+            if let command = self.updateContactCommand {
+                NotificationCenter.contactCenter.post(name: UpdateContactCardCommand.getNotificationNameForRecord(record: command.record), object: nil, userInfo: [UpdateContactCardCommand.ContactNotificationUpdateAvailableInfoKey : true])
+            }
+        }
+    }
 }

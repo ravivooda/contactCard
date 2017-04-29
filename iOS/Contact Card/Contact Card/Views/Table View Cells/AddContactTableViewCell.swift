@@ -8,14 +8,13 @@
 
 import UIKit
 
-class AddContactTableViewCell: UITableViewCell, ContactUpdateDelegate {
+class AddContactTableViewCell: UITableViewCell {
 
     @IBOutlet weak var contactNameLabel: UILabel!
     @IBOutlet weak var progressView: ContactProgressView!
     
     var addContactCardCommand:AddContactCardCommand! {
         didSet {
-            addContactCardCommand.contactAddingDelegate = self
             self.progressView.showProgress(float: addContactCardCommand.progress)
             
             self.contactNameLabel.text = addContactCardCommand.record.getContactName()

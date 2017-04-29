@@ -57,7 +57,7 @@ class LoginCommand: Command {
                 
             }
             if let _ = LoginCommand.user {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: LoginCommand.AuthenticationChangedNotificationKey), object: nil)
+                NotificationCenter.contactCenter.post(name: NSNotification.Name(rawValue: LoginCommand.AuthenticationChangedNotificationKey), object: nil)
             }
             super.finished()
         }

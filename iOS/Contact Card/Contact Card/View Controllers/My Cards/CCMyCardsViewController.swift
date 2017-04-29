@@ -22,7 +22,7 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
         self.addNewCardCommand!.execute {
             self.refreshData()
         }
-        //NotificationCenter.default.addObserver(self, selector: #selector(syncLocalContactsWithRemoteUpdates(_:)), name: NSNotification.Name(rawValue: LoginCommand.AuthenticationChangedNotificationKey), object: nil)
+        //NotificationCenter.contactCenter.addObserver(self, selector: #selector(syncLocalContactsWithRemoteUpdates(_:)), name: NSNotification.Name(rawValue: LoginCommand.AuthenticationChangedNotificationKey), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
