@@ -94,11 +94,15 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
         }
         
         //FIXME: Fix with settings
-        if true {
+        if UserDefaults.isAutoSyncEnabled {
             for addContactCommand in addContactCommands {
                 addContactCommand.contactAddingDelegate = self
                 addContactCommand.execute(completed: nil)
             }
+        } else if let addContactsViewController = self.storyboard?.instantiateViewController(withIdentifier: "addContactsViewController") as? AddContactsViewController {
+            let navigationController = UINavigationController(rootViewController: addContactsViewController)
+            addContactsViewController.cards.append(contentsOf: addContactCommands)
+            self.present(navigationController, animated: true, completion: nil)
         }
     }
     

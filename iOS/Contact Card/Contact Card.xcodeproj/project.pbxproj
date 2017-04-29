@@ -56,6 +56,7 @@
 		97C1EB181EB1A73F00DB72F1 /* AddContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB171EB1A73F00DB72F1 /* AddContactTableViewCell.swift */; };
 		97C1EB1B1EB1ACDB00DB72F1 /* ContactProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB1A1EB1ACDB00DB72F1 /* ContactProgressView.swift */; };
 		97C1EB1D1EB1AEE200DB72F1 /* UIViewConstraintsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB1C1EB1AEE200DB72F1 /* UIViewConstraintsExtensions.swift */; };
+		97C1EB241EB4499700DB72F1 /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB231EB4499700DB72F1 /* UserDefaultsExtensions.swift */; };
 		97E650581E8710B60074F112 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E650571E8710B60074F112 /* Contact.swift */; };
 		97E6505B1E88097A0074F112 /* LoginCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E6505A1E88097A0074F112 /* LoginCommand.swift */; };
 		97E650601E880AA00074F112 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E6505F1E880AA00074F112 /* Device.swift */; };
@@ -122,6 +123,7 @@
 		97C1EB171EB1A73F00DB72F1 /* AddContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddContactTableViewCell.swift; sourceTree = "<group>"; };
 		97C1EB1A1EB1ACDB00DB72F1 /* ContactProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactProgressView.swift; sourceTree = "<group>"; };
 		97C1EB1C1EB1AEE200DB72F1 /* UIViewConstraintsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewConstraintsExtensions.swift; sourceTree = "<group>"; };
+		97C1EB231EB4499700DB72F1 /* UserDefaultsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensions.swift; sourceTree = "<group>"; };
 		97E650571E8710B60074F112 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		97E6505A1E88097A0074F112 /* LoginCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCommand.swift; sourceTree = "<group>"; };
 		97E6505F1E880AA00074F112 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -210,7 +212,6 @@
 		97B776B71D83D38A00FC0A4B /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				97C1EB1E1EB1B16900DB72F1 /* Settings */,
 				BCEEE5381E4C0B5800D2651A /* Auth */,
 				97B776D11D8471E600FC0A4B /* Other */,
 				97B776B81D83D38A00FC0A4B /* My Cards */,
@@ -323,6 +324,7 @@
 				97C1EAFB1EACFAA100DB72F1 /* ContactExtension.swift */,
 				97C1EAFF1EAD0EDC00DB72F1 /* MutableContactExtension.swift */,
 				97C1EAFD1EAD09D300DB72F1 /* RecordExtension.swift */,
+				97C1EB231EB4499700DB72F1 /* UserDefaultsExtensions.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -401,13 +403,6 @@
 				97C1EB1A1EB1ACDB00DB72F1 /* ContactProgressView.swift */,
 			);
 			path = "Progress Views";
-			sourceTree = "<group>";
-		};
-		97C1EB1E1EB1B16900DB72F1 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Settings;
 			sourceTree = "<group>";
 		};
 		97E650591E88097A0074F112 /* Auth */ = {
@@ -721,6 +716,7 @@
 				97B5B95B1EA7026200E90967 /* Notification.swift in Sources */,
 				97E6505B1E88097A0074F112 /* LoginCommand.swift in Sources */,
 				97C1EB101EB195C200DB72F1 /* AddContactCardCommand.swift in Sources */,
+				97C1EB241EB4499700DB72F1 /* UserDefaultsExtensions.swift in Sources */,
 				97B776CE1D846FE700FC0A4B /* Command.swift in Sources */,
 				97C1EB0C1EAD97A900DB72F1 /* BordererButton.swift in Sources */,
 				97B776D91D84751C00FC0A4B /* VersionUnsupportedViewController.swift in Sources */,
