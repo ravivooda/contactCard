@@ -21,6 +21,9 @@ class CCContact {
         }
     }
     static let referenceKey = "Contact Card Reference:"
+    static let ContactNotificationProgressInfoKey = "ContactCard.Progress"
+    static let ContactNotificationProgressErrorKey = "ContactCard.Error"
+    static let ContactNotificationUpdateAvailableInfoKey = "ContactCard.UpdateAvailable"
 	
 	let contact:CNContact
     let contactIdentifier:ContactIdentifier?
@@ -50,7 +53,7 @@ class CCContact {
     var updateContactCommand:UpdateContactCardCommand? = nil {
         didSet {
             if let command = self.updateContactCommand {
-                NotificationCenter.contactCenter.post(name: UpdateContactCardCommand.getNotificationNameForRecord(record: command.record), object: nil, userInfo: [UpdateContactCardCommand.ContactNotificationUpdateAvailableInfoKey : true])
+                NotificationCenter.contactCenter.post(name: command.record.getNotificationNameForRecord(), object: nil, userInfo: [CCContact.ContactNotificationUpdateAvailableInfoKey : true])
             }
         }
     }

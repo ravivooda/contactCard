@@ -51,5 +51,7 @@ extension CKRecord {
         }
     }
     
-    
+    func getNotificationNameForRecord() -> NSNotification.Name {
+        return NSNotification.Name(rawValue: "ContactCardNotification.\(self.recordID.recordName)")
+    }
 }

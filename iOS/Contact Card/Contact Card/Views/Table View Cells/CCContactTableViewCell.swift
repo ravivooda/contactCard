@@ -50,7 +50,7 @@ class CCContactTableViewCell: UITableViewCell {
     
     private func contactUpdateNotificationListener(notification:Notification) {
         if let userInfo = notification.userInfo as? [String:Any] {
-            if userInfo.bool(forKey: UpdateContactCardCommand.ContactNotificationUpdateAvailableInfoKey) {
+            if userInfo.bool(forKey: CCContact.ContactNotificationUpdateAvailableInfoKey) {
                 showProgress(progress: -1)
             }
         }

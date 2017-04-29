@@ -29,13 +29,13 @@ class AddContactsViewController: UITableViewController {
         self.title = "New Contacts"
         
         for card in cards {
-            NotificationCenter.contactCenter.addObserver(self, selector: #selector(contactUpdate(notification:)), name: UpdateContactCardCommand.getNotificationNameForRecord(record: card.record), object: nil)
+            NotificationCenter.contactCenter.addObserver(self, selector: #selector(contactUpdate(notification:)), name: card.record.getNotificationNameForRecord(), object: nil)
         }
     }
     
     func contactUpdate(notification:Notification) {
         if let record = notification.object as? CKRecord,
-            let progress = notification.userInfo?[UpdateContactCardCommand.ContactNotificationProgressInfoKey] as? Float, progress == 1 {
+            let progress = notification.userInfo?[CCContact.ContactNotificationProgressInfoKey] as? Float, progress == 1 {
             for i in 0...cards.count {
                 if record.recordIdentifier == cards[i].record.recordIdentifier {
                     cards.remove(at: i);

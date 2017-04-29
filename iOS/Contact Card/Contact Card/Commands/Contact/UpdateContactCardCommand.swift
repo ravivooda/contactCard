@@ -12,22 +12,16 @@ import Contacts
 import UIKit
 
 class UpdateContactCardCommand: Command {
-    static let ContactNotificationProgressInfoKey = "ContactCard.Progress"
-    static let ContactNotificationProgressErrorKey = "ContactCard.Error"
-    static let ContactNotificationUpdateAvailableInfoKey = "ContactCard.UpdateAvailable"
-    static func getNotificationNameForRecord(record:CKRecord) -> NSNotification.Name {
-        return NSNotification.Name(rawValue: "ContactCardNotification.\(record.recordID.recordName)")
-    }
     let record:CKRecord
-    let updatingContact:CCContact
+    let contact:CCContact
     var progress:Float = -1 {
         didSet {
-            NotificationCenter.contactCenter.post(name: UpdateContactCardCommand.getNotificationNameForRecord(record: self.record), object: self.record, userInfo: [UpdateContactCardCommand.ContactNotificationProgressInfoKey:self.progress])
+            NotificationCenter.contactCenter.post(name: self.record.getNotificationNameForRecord(), object: self.record, userInfo: [CCContact.ContactNotificationProgressInfoKey:self.progress])
         }
     }
     
     init(contact:CCContact, record:CKRecord, viewController:UIViewController, returningCommand:Command?) {
-        self.updatingContact = contact
+        self.contact = contact
         self.record = record
         super.init(viewController: viewController, returningCommand: nil)
     }
@@ -35,7 +29,7 @@ class UpdateContactCardCommand: Command {
     private func reportError(error:Error) {
         self.progress = -1
         print("Error in updating contact: \(error)")
-        NotificationCenter.contactCenter.post(name: UpdateContactCardCommand.getNotificationNameForRecord(record: self.record), object: self.record, userInfo: [UpdateContactCardCommand.ContactNotificationProgressErrorKey:error])
+        NotificationCenter.contactCenter.post(name: self.record.getNotificationNameForRecord(), object: self.record, userInfo: [CCContact.ContactNotificationProgressErrorKey:error])
     }
     
     override func execute(completed: CommandCompleted?) {
@@ -47,7 +41,7 @@ class UpdateContactCardCommand: Command {
                     return self.reportError(error: error!)
                 }
                 
-                guard let record = record, let payload = record[CNContact.CardJSONKey] as? String, let jsonPayload = convertToDictionary(text: payload), let mutableContact = self.updatingContact.contact.mutableCopy() as? CNMutableContact else {
+                guard let record = record, let payload = record[CNContact.CardJSONKey] as? String, let jsonPayload = convertToDictionary(text: payload), let mutableContact = self.contact.contact.mutableCopy() as? CNMutableContact else {
                     return self.reportError(error: UpdateContactError(message: "An unknown error occurred while fetching the asset. Please ensure that your device has an active internet connection"))
                 }
                 

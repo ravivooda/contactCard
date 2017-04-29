@@ -16,7 +16,7 @@ class AddContactCardCommand: Command {
     
     var progress:Float = -1 {
         didSet {
-            NotificationCenter.contactCenter.post(name: UpdateContactCardCommand.getNotificationNameForRecord(record: self.record), object: self.record, userInfo: [UpdateContactCardCommand.ContactNotificationProgressInfoKey:self.progress])
+            NotificationCenter.contactCenter.post(name: self.record.getNotificationNameForRecord(), object: self.record, userInfo: [CCContact.ContactNotificationProgressInfoKey:self.progress])
         }
     }
     
@@ -28,7 +28,7 @@ class AddContactCardCommand: Command {
     private func reportError(error:Error) {
         self.progress = -1
         print("Adding card error: \(error)")
-        NotificationCenter.contactCenter.post(name: UpdateContactCardCommand.getNotificationNameForRecord(record: self.record), object: self.record, userInfo: [UpdateContactCardCommand.ContactNotificationProgressErrorKey:error])
+        NotificationCenter.contactCenter.post(name: self.record.getNotificationNameForRecord(), object: self.record, userInfo: [CCContact.ContactNotificationProgressErrorKey:error])
     }
     
     override func execute(completed: CommandCompleted?) {
