@@ -54,14 +54,21 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cardTableViewCellIdentifier", for: indexPath) as! CCCardTableViewCell
-        cell.updateViewWithCard(card: Manager.defaultManager().cards[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cardTableViewCellIdentifier", for: indexPath)
+        if let cardCell = cell as? CCCardTableViewCell {
+            cardCell.card = Manager.defaultManager().cards[indexPath.row]
+        }
         return cell
     }
     
     //MARK: - UITableViewDelegate -
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        ShowContactCommand(contact: Manager.defaultManager().cards[indexPath.row].contact, viewController: self, returningCommand: nil).execute(completed: nil)
+        //ShowContactCommand(contact: Manager.defaultManager().cards[indexPath.row].contact, viewController: self, returningCommand: nil).execute(completed: nil)
+        let viewController = CNContactViewController(for: Manager.defaultManager().cards[indexPath.row].contact)
+        viewController.allowsEditing = false
+        viewController.allowsActions = false
+        viewController.delegate = self
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

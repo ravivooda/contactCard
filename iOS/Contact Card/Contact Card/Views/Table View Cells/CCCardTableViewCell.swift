@@ -9,10 +9,14 @@
 import UIKit
 
 class CCCardTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var nameLabel: UILabel!
     
-    func updateViewWithCard(card:CCCard){
-        self.nameLabel.text = "\(card.contact.givenName)"
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var thumnailImageView: UIImageView!
+    
+    var card:CCCard! {
+        didSet {
+            self.nameLabel.text = "\(card.cardName)"
+            self.thumnailImageView.image = card.thumbnailImage
+        }
     }
 }

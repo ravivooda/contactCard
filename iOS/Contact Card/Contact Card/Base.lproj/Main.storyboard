@@ -150,7 +150,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mzN-SS-4Mi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1708" y="764.16791604197908"/>
+            <point key="canvasLocation" x="1655" y="763"/>
         </scene>
         <!--Participants Table View Controller-->
         <scene sceneID="KP9-kR-A6N">
@@ -419,6 +419,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="nameLabel" destination="Ib1-aA-n6v" id="6nV-AS-hPb"/>
+                                            <outlet property="thumnailImageView" destination="Ihv-yT-AEi" id="Y0w-Xb-S7k"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

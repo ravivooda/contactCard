@@ -56,7 +56,7 @@ class NewContactCardCommand: Command, CNContactViewControllerDelegate {
         }
     }
     
-    private func saveContactCard(contact:CNContact) {
+    private func saveContactCard(contact:CNMutableContact) {
         Manager.defaultManager().addNewCard(name: self.name, card: contact, callingViewController: self.presentingViewController, success: { (records) in
             print("Added card - \(self.name) - successfully")
             self.contact = contact
