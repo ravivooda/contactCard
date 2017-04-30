@@ -152,7 +152,7 @@
             </objects>
             <point key="canvasLocation" x="1708" y="764.16791604197908"/>
         </scene>
-        <!--My Contacts View Controller-->
+        <!--Contacts-->
         <scene sceneID="SJ5-tu-0MJ">
             <objects>
                 <viewController id="4VT-2m-QFl" customClass="CCMyContactsViewController" customModule="Contact_Card" customModuleProvider="target" sceneMemberID="viewController">
@@ -255,7 +255,7 @@
                             <constraint firstAttribute="bottom" secondItem="1Ef-tE-H4I" secondAttribute="bottom" id="gB8-qo-bRO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Bya-Ki-rG3"/>
+                    <navigationItem key="navigationItem" title="Contacts" id="Bya-Ki-rG3"/>
                     <connections>
                         <outlet property="tableView" destination="1Ef-tE-H4I" id="W20-mQ-Kpm"/>
                     </connections>
@@ -264,7 +264,7 @@
             </objects>
             <point key="canvasLocation" x="2476" y="-834.33283358320841"/>
         </scene>
-        <!--My Cards View Controller-->
+        <!--My Cards-->
         <scene sceneID="JuM-8d-vR1">
             <objects>
                 <viewController id="ypX-KR-E8X" customClass="CCMyCardsViewController" customModule="Contact_Card" customModuleProvider="target" sceneMemberID="viewController">
@@ -408,7 +408,7 @@
                             <constraint firstItem="RT3-fT-M0b" firstAttribute="leading" secondItem="F9l-Fn-S8x" secondAttribute="leading" id="jVp-j9-F19"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="pks-7k-OwR">
+                    <navigationItem key="navigationItem" title="My Cards" id="pks-7k-OwR">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="bFy-pz-mzr">
                             <connections>
                                 <action selector="addNewCard:" destination="ypX-KR-E8X" id="VkK-pq-K4u"/>

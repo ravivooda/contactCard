@@ -57,7 +57,7 @@ class CCContactTableViewCell: UITableViewCell {
     }
 
 	@IBAction func rightButtonClicked(_ sender: Any) {
-        
+        self.contact.updateContactCommand?.execute(completed: nil)
 	}
 }
 

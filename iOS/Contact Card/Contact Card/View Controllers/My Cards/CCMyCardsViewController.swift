@@ -11,11 +11,12 @@ import Contacts
 import ContactsUI
 import CloudKit
 
-class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CNContactViewControllerDelegate, UICloudSharingControllerDelegate {
+class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CNContactViewControllerDelegate {
     @IBOutlet weak var tableView: UITableView!
     private var editingCardCommand:EditContactCardCommand?
     private var addNewCardCommand:NewContactCardCommand?
     private var sharingCardCommand:ShareContactCommand?
+    private var deleteCardCommand:DeleteContactCardCommand?
     
     @IBAction func addNewCard(_ sender: Any) {
         self.addNewCardCommand = NewContactCardCommand(viewController: self, returningCommand: nil)
@@ -30,6 +31,21 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
         if let _ = LoginCommand.user {
             refreshData()
         }
+    }
+    
+    func reloadTableView() {
+        self.tableView.reloadData()
+    }
+    
+    func refreshData() {
+        Manager.defaultManager().refreshCards(callingViewController: self, success: { (records) in
+            self.reloadTableView()
+        }, fail: { (message, error) in
+            self.showRetryAlertMessage(message: message, retryHandler: { (action) in
+                self.refreshData()
+            })
+            print("Message: \(message), error: \(error)")
+        })
     }
     
     //MARK: - UITableViewDataSource -
@@ -60,40 +76,15 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
             self.sharingCardCommand = ShareContactCommand(withRecord: Manager.defaultManager().cards[indexPath.row].record, database: Manager.contactsContainer.privateCloudDatabase, viewController: self, returningCommand: nil)
             self.sharingCardCommand?.execute(completed: nil)
         })
+        shareAction.backgroundColor = .blue
         
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPatch) in
-            let confirmDeleteAction = UIAlertController(title: "Do you really want to delete this card?", message: "Everyone with this card will loose important contact updates from you", preferredStyle: .actionSheet)
-            confirmDeleteAction.addAction(UIAlertAction(title: "Delete (Informing card holders)", style: .default, handler: { (action) in
-                print("Should delete the card updating the card holders")
-            }))
-            confirmDeleteAction.addAction(UIAlertAction(title: "Delete (Without informing card holders)", style: .destructive, handler: { (action) in
-                print("Should delete the card without updating the card holders")
-            }))
-            confirmDeleteAction.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            self.present(confirmDeleteAction, animated: true, completion: nil)
+            self.deleteCardCommand = DeleteContactCardCommand(card: Manager.defaultManager().cards[indexPath.row], viewController: self, returningCommand: nil)
+            self.deleteCardCommand?.execute(completed: {
+                self.refreshData()
+            })
         }
         
         return [editAction, shareAction, deleteAction]
-    }
-    
-    //MARK: - UICloudSharingControllerDelegate -
-    func cloudSharingController(_ csc: UICloudSharingController, failedToSaveShareWithError error: Error) {
-        
-    }
-    
-    func itemTitle(for csc: UICloudSharingController) -> String? {
-        return "Sharing contact"
-    }
-    
-    func reloadTableView() {
-        self.tableView.reloadData()
-    }
-    
-    func refreshData() {
-        Manager.defaultManager().refreshCards(callingViewController: self, success: { (records) in
-            self.reloadTableView()
-        }, fail: { (message, error) in
-            print("Message: \(message), error: \(error)")
-        })
     }
 }

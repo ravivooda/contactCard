@@ -22,6 +22,28 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
         NotificationCenter.contactCenter.addObserver(self, selector: #selector(syncLocalContactsWithRemoteUpdates(_:)), name: NSNotification.Name(rawValue: LoginCommand.AuthenticationChangedNotificationKey), object: nil)
     }
     
+    private func updateBarBadge() {
+        var count = 0;
+        for contact in self.contacts {
+            count += contact.updateContactCommand != nil ? 1 : 0
+        }
+        
+        if let tabBarItem = self.tabBarController?.tabBar.items?[0], count > 0 {
+            tabBarItem.badgeValue = "\(count)"
+            tabBarItem.badgeColor = .red
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Update", style: .done, target: self, action: #selector(updateAllCallback(sender:)))
+        } else {
+            tabBarItem.badgeValue = ""
+        }
+        print("Count: \(count)")
+    }
+    
+    func updateAllCallback(sender:UIBarButtonItem) {
+        for contact in self.contacts {
+            contact.updateContactCommand?.execute(completed: nil)
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if let _ = LoginCommand.user {
@@ -67,7 +89,11 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
             Data.syncContacts(callingViewController: nil, success: { (records) in
                 self.updateContacts(records: records)
                 UserDefaults.isAutoSyncEnabled ? self.reloadLocalContactsAndDisplay(store: store) : self.tableView.reloadData()
+                self.updateBarBadge()
             }, fail: { (errorMessage, error) in
+                self.showRetryAlertMessage(message: error.localizedDescription, retryHandler: { (action) in
+                    self.syncLocalContactsWithRemoteUpdates(notification)
+                })
                 print(error)
             })
             break

@@ -32,8 +32,7 @@ class ShareContactCommand: Command, UICloudSharingControllerDelegate {
                 let modifyRecordsOperation = CKModifyRecordsOperation(recordsToSave: [share], recordIDsToDelete: nil)
                 modifyRecordsOperation.timeoutIntervalForRequest = 10
                 modifyRecordsOperation.timeoutIntervalForResource = 10
-                modifyRecordsOperation.modifyRecordsCompletionBlock = { records,
-                    recordIDs, error in
+                modifyRecordsOperation.modifyRecordsCompletionBlock = { records, recordIDs, error in
                     self.completePreparationForSharing(share: share, error: error, preparationCompletionHandler: preparationCompletionHandler)
                 }
                 Manager.contactsContainer.privateCloudDatabase.add(modifyRecordsOperation)

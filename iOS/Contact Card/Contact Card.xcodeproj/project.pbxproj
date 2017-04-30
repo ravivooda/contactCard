@@ -58,6 +58,7 @@
 		97C1EB1D1EB1AEE200DB72F1 /* UIViewConstraintsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB1C1EB1AEE200DB72F1 /* UIViewConstraintsExtensions.swift */; };
 		97C1EB241EB4499700DB72F1 /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB231EB4499700DB72F1 /* UserDefaultsExtensions.swift */; };
 		97C1EB261EB511BF00DB72F1 /* NotificationCenterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB251EB511BF00DB72F1 /* NotificationCenterExtension.swift */; };
+		97C1EB2A1EB58C4E00DB72F1 /* ParticipantsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB291EB58C4E00DB72F1 /* ParticipantsTableViewController.swift */; };
 		97E650581E8710B60074F112 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E650571E8710B60074F112 /* Contact.swift */; };
 		97E6505B1E88097A0074F112 /* LoginCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E6505A1E88097A0074F112 /* LoginCommand.swift */; };
 		97E650601E880AA00074F112 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E6505F1E880AA00074F112 /* Device.swift */; };
@@ -126,6 +127,7 @@
 		97C1EB1C1EB1AEE200DB72F1 /* UIViewConstraintsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewConstraintsExtensions.swift; sourceTree = "<group>"; };
 		97C1EB231EB4499700DB72F1 /* UserDefaultsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensions.swift; sourceTree = "<group>"; };
 		97C1EB251EB511BF00DB72F1 /* NotificationCenterExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterExtension.swift; sourceTree = "<group>"; };
+		97C1EB291EB58C4E00DB72F1 /* ParticipantsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantsTableViewController.swift; sourceTree = "<group>"; };
 		97E650571E8710B60074F112 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		97E6505A1E88097A0074F112 /* LoginCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCommand.swift; sourceTree = "<group>"; };
 		97E6505F1E880AA00074F112 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				97B776BA1D83D3CE00FC0A4B /* CCMyCardsViewController.swift */,
+				97C1EB291EB58C4E00DB72F1 /* ParticipantsTableViewController.swift */,
 			);
 			path = "My Cards";
 			sourceTree = "<group>";
@@ -686,6 +689,7 @@
 				975AC8EC1E50CF7200AB4DBD /* Card.swift in Sources */,
 				97B5B9591EA6FA9100E90967 /* ManagerContactsExtension.swift in Sources */,
 				97B776E71D847C6900FC0A4B /* Auth.swift in Sources */,
+				97C1EB2A1EB58C4E00DB72F1 /* ParticipantsTableViewController.swift in Sources */,
 				97A2A2E11E36CE0800D69F6A /* CCCardTableViewCell.swift in Sources */,
 				97C1EB071EAD4C0A00DB72F1 /* EditContactCardCommand.swift in Sources */,
 				97C1EB181EB1A73F00DB72F1 /* AddContactTableViewCell.swift in Sources */,
