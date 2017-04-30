@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import CloudKit
 
 class ParticipantsTableViewController: UITableViewController {
+    
+    var share:CKShare!
+    var command:Command?
 
     override func viewDidLoad() {
         super.viewDidLoad()

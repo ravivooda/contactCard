@@ -152,6 +152,34 @@
             </objects>
             <point key="canvasLocation" x="1708" y="764.16791604197908"/>
         </scene>
+        <!--Participants Table View Controller-->
+        <scene sceneID="KP9-kR-A6N">
+            <objects>
+                <tableViewController storyboardIdentifier="participantsTableViewController" id="ubp-Qy-aKQ" customClass="ParticipantsTableViewController" customModule="Contact_Card" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ixg-bq-sq8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bCv-At-2fZ">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bCv-At-2fZ" id="FcP-W3-9w5">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ubp-Qy-aKQ" id="VhI-ap-ml5"/>
+                            <outlet property="delegate" destination="ubp-Qy-aKQ" id="j9D-aB-pO5"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hnU-tl-9En" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2476" y="764"/>
+        </scene>
         <!--Contacts-->
         <scene sceneID="SJ5-tu-0MJ">
             <objects>
