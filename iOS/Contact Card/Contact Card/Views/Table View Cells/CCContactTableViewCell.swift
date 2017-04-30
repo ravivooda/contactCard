@@ -11,8 +11,8 @@ import CloudKit
 
 class CCContactTableViewCell: UITableViewCell {
 	@IBOutlet weak var nameLabel: UILabel!
-	@IBOutlet weak var leftContainer: UIView!
     @IBOutlet weak var rightContainer: UIView!
+    @IBOutlet weak var leftContainer: ThumbnailView!
 
 	@IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var progressView: ContactProgressView!
@@ -28,6 +28,8 @@ class CCContactTableViewCell: UITableViewCell {
             } else if contact.contactIdentifier == nil {
                 showInviteUser()
             }
+            
+            self.leftContainer.contact = self.contact.contact
         }
     }
     

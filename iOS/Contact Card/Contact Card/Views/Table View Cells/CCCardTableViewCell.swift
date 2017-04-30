@@ -11,12 +11,12 @@ import UIKit
 class CCCardTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var thumnailImageView: UIImageView!
+    @IBOutlet weak var leftContainerView: ThumbnailView!
     
     var card:CCCard! {
         didSet {
             self.nameLabel.text = "\(card.cardName)"
-            self.thumnailImageView.image = card.thumbnailImage
+            self.leftContainerView.contact = self.card.contact
         }
     }
 }

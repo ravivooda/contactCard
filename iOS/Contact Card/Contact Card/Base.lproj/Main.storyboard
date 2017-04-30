@@ -203,15 +203,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQq-fs-iHl">
-                                                    <rect key="frame" x="0.0" y="0.0" width="99" height="99"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQq-fs-iHl" customClass="ThumbnailView" customModule="Contact_Card" customModuleProvider="target">
+                                                    <rect key="frame" x="5" y="5" width="89.5" height="89.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="RQq-fs-iHl" secondAttribute="height" multiplier="1:1" id="hY2-b3-q25"/>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wyx-ih-gcl">
-                                                    <rect key="frame" x="107" y="0.0" width="169" height="99"/>
+                                                    <rect key="frame" x="102.5" y="0.0" width="173.5" height="99"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -251,17 +251,17 @@
                                                 <constraint firstItem="Wyx-ih-gcl" firstAttribute="leading" secondItem="RQq-fs-iHl" secondAttribute="trailing" constant="8" id="1SH-59-khi"/>
                                                 <constraint firstItem="IwF-7U-G3i" firstAttribute="top" secondItem="QSQ-Hb-yVh" secondAttribute="top" id="I0d-i2-k8d"/>
                                                 <constraint firstAttribute="bottom" secondItem="IwF-7U-G3i" secondAttribute="bottom" id="Qk0-1Y-ftd"/>
-                                                <constraint firstAttribute="bottom" secondItem="RQq-fs-iHl" secondAttribute="bottom" id="SIR-z2-lqu"/>
-                                                <constraint firstItem="RQq-fs-iHl" firstAttribute="leading" secondItem="QSQ-Hb-yVh" secondAttribute="leading" id="VKR-Np-ygF"/>
+                                                <constraint firstAttribute="bottom" secondItem="RQq-fs-iHl" secondAttribute="bottom" constant="5" id="SIR-z2-lqu"/>
+                                                <constraint firstItem="RQq-fs-iHl" firstAttribute="leading" secondItem="QSQ-Hb-yVh" secondAttribute="leading" constant="5" id="VKR-Np-ygF"/>
                                                 <constraint firstItem="Wyx-ih-gcl" firstAttribute="top" secondItem="QSQ-Hb-yVh" secondAttribute="top" id="ZqP-0h-epD"/>
                                                 <constraint firstAttribute="trailing" secondItem="IwF-7U-G3i" secondAttribute="trailing" id="a45-ha-tzk"/>
-                                                <constraint firstItem="RQq-fs-iHl" firstAttribute="top" secondItem="QSQ-Hb-yVh" secondAttribute="top" id="gtR-dR-QBw"/>
+                                                <constraint firstItem="RQq-fs-iHl" firstAttribute="top" secondItem="QSQ-Hb-yVh" secondAttribute="top" constant="5" id="gtR-dR-QBw"/>
                                                 <constraint firstItem="IwF-7U-G3i" firstAttribute="leading" secondItem="Wyx-ih-gcl" secondAttribute="trailing" id="lxr-Ex-Dvb"/>
                                                 <constraint firstAttribute="bottom" secondItem="Wyx-ih-gcl" secondAttribute="bottom" id="sgY-d0-cK5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="leftContainer" destination="RQq-fs-iHl" id="IIT-9k-D1S"/>
+                                            <outlet property="leftContainer" destination="RQq-fs-iHl" id="OBS-LQ-wSw"/>
                                             <outlet property="nameLabel" destination="Wyx-ih-gcl" id="TCf-0q-Zqj"/>
                                             <outlet property="progressView" destination="raa-1X-6WN" id="Car-Om-SYI"/>
                                             <outlet property="rightButton" destination="j3y-fj-2EL" id="5pa-u0-eun"/>
@@ -315,13 +315,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ihv-yT-AEi">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UQc-EF-K0y" customClass="ThumbnailView" customModule="Contact_Card" customModuleProvider="target">
                                                     <rect key="frame" x="10" y="5" width="90" height="90"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="90" id="Ass-LW-jsp"/>
-                                                        <constraint firstAttribute="height" constant="90" id="x3z-SI-zue"/>
+                                                        <constraint firstAttribute="width" constant="90" id="50m-Xd-6zW"/>
+                                                        <constraint firstAttribute="height" constant="90" id="Y6d-Nf-sh5"/>
                                                     </constraints>
-                                                </imageView>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ib1-aA-n6v">
                                                     <rect key="frame" x="108" y="8" width="259" height="36"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
@@ -403,23 +404,23 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="XMw-ha-3zW" firstAttribute="bottom" secondItem="UQc-EF-K0y" secondAttribute="bottom" id="1gw-ke-H3X"/>
+                                                <constraint firstItem="XMw-ha-3zW" firstAttribute="leading" secondItem="UQc-EF-K0y" secondAttribute="trailing" constant="8" id="4et-WY-nHp"/>
                                                 <constraint firstItem="Ib1-aA-n6v" firstAttribute="trailing" secondItem="AZF-6O-u3i" secondAttribute="trailingMargin" id="E2F-gd-Q6g"/>
-                                                <constraint firstItem="XMw-ha-3zW" firstAttribute="leading" secondItem="Ihv-yT-AEi" secondAttribute="trailing" constant="8" id="Lu9-dO-qwp"/>
+                                                <constraint firstItem="UQc-EF-K0y" firstAttribute="leading" secondItem="AZF-6O-u3i" secondAttribute="leading" constant="10" id="ESv-1h-K9X"/>
+                                                <constraint firstItem="UQc-EF-K0y" firstAttribute="centerY" secondItem="AZF-6O-u3i" secondAttribute="centerY" id="Sdw-UT-mhS"/>
                                                 <constraint firstItem="hEX-DG-V4b" firstAttribute="leading" secondItem="XMw-ha-3zW" secondAttribute="trailing" constant="5" id="Sj2-z2-o0x"/>
                                                 <constraint firstAttribute="trailing" secondItem="hEX-DG-V4b" secondAttribute="trailing" constant="8" id="SpI-aU-TYk"/>
-                                                <constraint firstItem="Ib1-aA-n6v" firstAttribute="leading" secondItem="Ihv-yT-AEi" secondAttribute="trailing" constant="8" symbolic="YES" id="UXR-Hu-f3E"/>
                                                 <constraint firstItem="Ib1-aA-n6v" firstAttribute="top" secondItem="AZF-6O-u3i" secondAttribute="topMargin" id="coX-nX-mrs"/>
+                                                <constraint firstItem="Ib1-aA-n6v" firstAttribute="leading" secondItem="UQc-EF-K0y" secondAttribute="trailing" constant="8" id="nBt-hN-nNG"/>
                                                 <constraint firstItem="hEX-DG-V4b" firstAttribute="width" secondItem="XMw-ha-3zW" secondAttribute="width" id="qsg-GG-OQN"/>
-                                                <constraint firstItem="Ihv-yT-AEi" firstAttribute="centerY" secondItem="AZF-6O-u3i" secondAttribute="centerY" id="r2p-ho-Yfo"/>
-                                                <constraint firstItem="XMw-ha-3zW" firstAttribute="bottom" secondItem="Ihv-yT-AEi" secondAttribute="bottom" id="sIl-Ll-SKx"/>
                                                 <constraint firstItem="hEX-DG-V4b" firstAttribute="height" secondItem="XMw-ha-3zW" secondAttribute="height" id="upm-kl-sgO"/>
                                                 <constraint firstItem="hEX-DG-V4b" firstAttribute="bottom" secondItem="XMw-ha-3zW" secondAttribute="bottom" id="vgW-9E-at8"/>
-                                                <constraint firstItem="Ihv-yT-AEi" firstAttribute="leading" secondItem="AZF-6O-u3i" secondAttribute="leading" constant="10" id="zs7-Vc-O9v"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="leftContainerView" destination="UQc-EF-K0y" id="gdg-uq-m5Z"/>
                                             <outlet property="nameLabel" destination="Ib1-aA-n6v" id="6nV-AS-hPb"/>
-                                            <outlet property="thumnailImageView" destination="Ihv-yT-AEi" id="Y0w-Xb-S7k"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
