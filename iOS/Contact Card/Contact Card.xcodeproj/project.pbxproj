@@ -59,6 +59,7 @@
 		97C1EB241EB4499700DB72F1 /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB231EB4499700DB72F1 /* UserDefaultsExtensions.swift */; };
 		97C1EB261EB511BF00DB72F1 /* NotificationCenterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB251EB511BF00DB72F1 /* NotificationCenterExtension.swift */; };
 		97C1EB2A1EB58C4E00DB72F1 /* ParticipantsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB291EB58C4E00DB72F1 /* ParticipantsTableViewController.swift */; };
+		97C1EB2C1EB5A3A800DB72F1 /* ReshareContactCardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB2B1EB5A3A800DB72F1 /* ReshareContactCardCommand.swift */; };
 		97E650581E8710B60074F112 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E650571E8710B60074F112 /* Contact.swift */; };
 		97E6505B1E88097A0074F112 /* LoginCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E6505A1E88097A0074F112 /* LoginCommand.swift */; };
 		97E650601E880AA00074F112 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E6505F1E880AA00074F112 /* Device.swift */; };
@@ -128,6 +129,7 @@
 		97C1EB231EB4499700DB72F1 /* UserDefaultsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensions.swift; sourceTree = "<group>"; };
 		97C1EB251EB511BF00DB72F1 /* NotificationCenterExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterExtension.swift; sourceTree = "<group>"; };
 		97C1EB291EB58C4E00DB72F1 /* ParticipantsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantsTableViewController.swift; sourceTree = "<group>"; };
+		97C1EB2B1EB5A3A800DB72F1 /* ReshareContactCardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReshareContactCardCommand.swift; sourceTree = "<group>"; };
 		97E650571E8710B60074F112 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		97E6505A1E88097A0074F112 /* LoginCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCommand.swift; sourceTree = "<group>"; };
 		97E6505F1E880AA00074F112 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				97C1EAF91EACF91500DB72F1 /* ShareContactCommand.swift */,
+				97C1EB2B1EB5A3A800DB72F1 /* ReshareContactCardCommand.swift */,
 			);
 			path = Share;
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 				97B776DD1D84761000FC0A4B /* StringExtensions.swift in Sources */,
 				97C1EB1B1EB1ACDB00DB72F1 /* ContactProgressView.swift in Sources */,
 				97B776D01D84708900FC0A4B /* VersionUnsupportedCommand.swift in Sources */,
+				97C1EB2C1EB5A3A800DB72F1 /* ReshareContactCardCommand.swift in Sources */,
 				97B776EA1D8480B900FC0A4B /* UIViewControllerExtensions.swift in Sources */,
 				97C1EB091EAD68F300DB72F1 /* DeleteContactCardCommand.swift in Sources */,
 				97B776E11D84784300FC0A4B /* ArrayExtensions.swift in Sources */,

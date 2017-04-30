@@ -27,10 +27,9 @@ class CCContact:CustomDebugStringConvertible {
 	
 	let contact:CNContact
     let contactIdentifier:ContactIdentifier?
-	
-	init(contact:CNContact) {
+    
+    init(contact:CNContact) {
 		self.contact = contact
-        
         var _contactIdentifier:ContactIdentifier? = nil
         
 		for note in contact.note.components(separatedBy: "\n") {

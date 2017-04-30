@@ -16,6 +16,10 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var tableView: UITableView!
     var contacts:[CCContact] = []
     
+    var shareCommand:ShareContactCommand? = nil
+    var reshareCommand:ReshareContactCardCommand? = nil
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -145,6 +149,18 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
         let cell:CCContactTableViewCell = tableView.dequeueReusableCell(withIdentifier: "contactTableViewCellIdentifier", for: indexPath) as! CCContactTableViewCell
         cell.contact = contacts[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        var retArray = [UITableViewRowAction]()
+        if let _ = self.contacts[indexPath.row].contactIdentifier {
+            let shareAction = UITableViewRowAction(style: .default, title: "Share", handler: { (action, indexPath) in
+                self.reshareCommand = ReshareContactCardCommand(contact: self.contacts[indexPath.row], viewController: self, returningCommand: nil)
+                self.reshareCommand?.execute(completed: nil)
+            })
+            retArray.append(shareAction)
+        }
+        return retArray
     }
     
     //MARK: - UITableViewDelegate -
