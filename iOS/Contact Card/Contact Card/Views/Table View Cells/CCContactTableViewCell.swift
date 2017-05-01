@@ -19,7 +19,8 @@ class CCContactTableViewCell: UITableViewCell {
     var contact:CCContact! {
         didSet {
             NotificationCenter.contactCenter.removeObserver(self)
-            self.nameLabel.text = contact.displayName();
+            //self.nameLabel.text = contact.displayName();
+            self.nameLabel.attributedText = contact.contact.attributedDisplayName
             
             self.rightButton.isHidden = true
             self.progressView.isHidden = true
