@@ -21,27 +21,7 @@ class CCCard {
         self.contact = contact
         self.record = record
         
-        self.generateThumbnailImage()
-    }
-    
-    private func generateThumbnailImage() {
-        // First save the contact for it to generate
-        let saveRequest = CNSaveRequest()
-        saveRequest.add(self.contact, toContainerWithIdentifier: nil)
-        do {
-            try Manager.contactsStore.execute(saveRequest)
-        } catch let error {
-            print("Error occurred while saving the request \(error)")
-        }
-        
-        // Now delete the contact
-        let deleteRequest = CNSaveRequest()
-        deleteRequest.delete(self.contact)
-        do {
-            try Manager.contactsStore.execute(deleteRequest)
-        } catch let error  {
-            print("Error occurred while deleting the request \(error)")
-        }
+        self.contact.generateThumbnailImage()
     }
     
     convenience init(record:CKRecord) {
@@ -53,4 +33,30 @@ class CCCard {
         return self.record[CNContact.CardNameKey] as? String ?? ""
     }
     
+}
+
+extension CNMutableContact {
+    fileprivate func generateThumbnailImage() {
+        if self.thumbnailImageData != nil {
+            return
+        }
+        
+        // First save the contact for it to generate
+        let saveRequest = CNSaveRequest()
+        saveRequest.add(self, toContainerWithIdentifier: nil)
+        do {
+            try Manager.contactsStore.execute(saveRequest)
+        } catch let error {
+            print("Error occurred while saving the request \(error)")
+        }
+        
+        // Now delete the contact
+        let deleteRequest = CNSaveRequest()
+        deleteRequest.delete(self)
+        do {
+            try Manager.contactsStore.execute(deleteRequest)
+        } catch let error  {
+            print("Error occurred while deleting the request \(error)")
+        }
+    }
 }

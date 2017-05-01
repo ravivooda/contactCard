@@ -61,6 +61,9 @@
 		97C1EB2A1EB58C4E00DB72F1 /* ParticipantsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB291EB58C4E00DB72F1 /* ParticipantsTableViewController.swift */; };
 		97C1EB2C1EB5A3A800DB72F1 /* ReshareContactCardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB2B1EB5A3A800DB72F1 /* ReshareContactCardCommand.swift */; };
 		97C1EB2F1EB693C700DB72F1 /* ThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB2E1EB693C700DB72F1 /* ThumbnailView.swift */; };
+		97C1EB331EB6B33000DB72F1 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97C1EB301EB6B33000DB72F1 /* Nunito-Bold.ttf */; };
+		97C1EB341EB6B33000DB72F1 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97C1EB311EB6B33000DB72F1 /* Nunito-Light.ttf */; };
+		97C1EB351EB6B33000DB72F1 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97C1EB321EB6B33000DB72F1 /* Nunito-Regular.ttf */; };
 		97E650581E8710B60074F112 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E650571E8710B60074F112 /* Contact.swift */; };
 		97E6505B1E88097A0074F112 /* LoginCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E6505A1E88097A0074F112 /* LoginCommand.swift */; };
 		97E650601E880AA00074F112 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E6505F1E880AA00074F112 /* Device.swift */; };
@@ -132,6 +135,9 @@
 		97C1EB291EB58C4E00DB72F1 /* ParticipantsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantsTableViewController.swift; sourceTree = "<group>"; };
 		97C1EB2B1EB5A3A800DB72F1 /* ReshareContactCardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReshareContactCardCommand.swift; sourceTree = "<group>"; };
 		97C1EB2E1EB693C700DB72F1 /* ThumbnailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailView.swift; sourceTree = "<group>"; };
+		97C1EB301EB6B33000DB72F1 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
+		97C1EB311EB6B33000DB72F1 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
+		97C1EB321EB6B33000DB72F1 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		97E650571E8710B60074F112 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		97E6505A1E88097A0074F112 /* LoginCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCommand.swift; sourceTree = "<group>"; };
 		97E6505F1E880AA00074F112 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -343,6 +349,9 @@
 		97B776E21D847B2700FC0A4B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				97C1EB301EB6B33000DB72F1 /* Nunito-Bold.ttf */,
+				97C1EB311EB6B33000DB72F1 /* Nunito-Light.ttf */,
+				97C1EB321EB6B33000DB72F1 /* Nunito-Regular.ttf */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -584,12 +593,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97C1EB351EB6B33000DB72F1 /* Nunito-Regular.ttf in Resources */,
 				97064C731D83CF44008EF6B3 /* LaunchScreen.storyboard in Resources */,
 				97064C701D83CF44008EF6B3 /* Assets.xcassets in Resources */,
+				97C1EB341EB6B33000DB72F1 /* Nunito-Light.ttf in Resources */,
 				BCEEE53C1E4C0B7500D2651A /* LoginViewController.xib in Resources */,
 				97064C6B1D83CF44008EF6B3 /* Main.storyboard in Resources */,
 				97B776EF1D84812900FC0A4B /* LoadingViewController.xib in Resources */,
 				97B776DA1D84751C00FC0A4B /* VersionUnsupportedViewController.xib in Resources */,
+				97C1EB331EB6B33000DB72F1 /* Nunito-Bold.ttf in Resources */,
 				97E650631E8819230074F112 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
