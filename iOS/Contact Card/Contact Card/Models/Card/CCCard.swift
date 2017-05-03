@@ -9,7 +9,6 @@
 import Foundation
 import CloudKit
 import Contacts
-import UIKit
 
 class CCCard {
     static let dateFormat = "yyyy/MM/dd hh:mm Z"

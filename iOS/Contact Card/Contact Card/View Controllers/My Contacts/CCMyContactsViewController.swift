@@ -23,7 +23,16 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        AppDelegate.myContactsViewController = self
+        
         NotificationCenter.contactCenter.addObserver(self, selector: #selector(syncLocalContactsWithRemoteUpdates(_:)), name: NSNotification.Name(rawValue: LoginCommand.AuthenticationChangedNotificationKey), object: nil)
+        NotificationCenter.contactCenter.addObserver(self, selector: #selector(syncLocalContactsWithRemoteUpdates(_:)), name: CNContact.ContactsChangedNotification, object: nil)
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(readQR(sender:)))
+    }
+    
+    func readQR(sender:UIBarButtonItem) {
+        ReadContactQRCommand(viewController: self, returningCommand: nil).execute(completed: nil)
     }
     
     private func updateBarBadge() {
@@ -75,12 +84,19 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
         print("Reloaded contacts on UI")
     }
     
+    private var isSyncing = false
     func syncLocalContactsWithRemoteUpdates(_ notification:NSNotification?) -> Void {
+        if isSyncing {
+            print("Currently syncing")
+            return
+        }
+        isSyncing = true
         let store = CNContactStore()
         switch CNContactStore.authorizationStatus(for: .contacts) {
         case .notDetermined:
             store.requestAccess(for: .contacts, completionHandler: { (authorized, error) in
                 DispatchQueue.main.async {
+                    self.isSyncing = false
                     self.syncLocalContactsWithRemoteUpdates(notification)
                 }
             })

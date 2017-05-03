@@ -64,6 +64,8 @@
 		97C1EB331EB6B33000DB72F1 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97C1EB301EB6B33000DB72F1 /* Nunito-Bold.ttf */; };
 		97C1EB341EB6B33000DB72F1 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97C1EB311EB6B33000DB72F1 /* Nunito-Light.ttf */; };
 		97C1EB351EB6B33000DB72F1 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97C1EB321EB6B33000DB72F1 /* Nunito-Regular.ttf */; };
+		97C1EB371EB6C82D00DB72F1 /* ReadContactQRCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB361EB6C82D00DB72F1 /* ReadContactQRCommand.swift */; };
+		97C1EB391EB6CCD800DB72F1 /* QRReadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB381EB6CCD800DB72F1 /* QRReadingViewController.swift */; };
 		97E650581E8710B60074F112 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E650571E8710B60074F112 /* Contact.swift */; };
 		97E6505B1E88097A0074F112 /* LoginCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E6505A1E88097A0074F112 /* LoginCommand.swift */; };
 		97E650601E880AA00074F112 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E6505F1E880AA00074F112 /* Device.swift */; };
@@ -138,6 +140,8 @@
 		97C1EB301EB6B33000DB72F1 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		97C1EB311EB6B33000DB72F1 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
 		97C1EB321EB6B33000DB72F1 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		97C1EB361EB6C82D00DB72F1 /* ReadContactQRCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadContactQRCommand.swift; sourceTree = "<group>"; };
+		97C1EB381EB6CCD800DB72F1 /* QRReadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRReadingViewController.swift; sourceTree = "<group>"; };
 		97E650571E8710B60074F112 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		97E6505A1E88097A0074F112 /* LoginCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCommand.swift; sourceTree = "<group>"; };
 		97E6505F1E880AA00074F112 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -248,6 +252,7 @@
 			children = (
 				97B776C21D83D4AE00FC0A4B /* CCMyContactsViewController.swift */,
 				97C1EB131EB1A2C500DB72F1 /* AddContactsViewController.swift */,
+				97C1EB381EB6CCD800DB72F1 /* QRReadingViewController.swift */,
 			);
 			path = "My Contacts";
 			sourceTree = "<group>";
@@ -446,6 +451,7 @@
 		97E6505C1E88098A0074F112 /* Device */ = {
 			isa = PBXGroup;
 			children = (
+				97C1EB361EB6C82D00DB72F1 /* ReadContactQRCommand.swift */,
 			);
 			path = Device;
 			sourceTree = "<group>";
@@ -714,6 +720,7 @@
 				97E650601E880AA00074F112 /* Device.swift in Sources */,
 				975AC8EC1E50CF7200AB4DBD /* Card.swift in Sources */,
 				97B5B9591EA6FA9100E90967 /* ManagerContactsExtension.swift in Sources */,
+				97C1EB391EB6CCD800DB72F1 /* QRReadingViewController.swift in Sources */,
 				97B776E71D847C6900FC0A4B /* Auth.swift in Sources */,
 				97C1EB2A1EB58C4E00DB72F1 /* ParticipantsTableViewController.swift in Sources */,
 				97A2A2E11E36CE0800D69F6A /* CCCardTableViewCell.swift in Sources */,
@@ -730,6 +737,7 @@
 				97E650651E88AD640074F112 /* LogoutCommand.swift in Sources */,
 				97C1EB121EB195E900DB72F1 /* UpdateContactCardCommand.swift in Sources */,
 				97B776BB1D83D3CE00FC0A4B /* CCMyCardsViewController.swift in Sources */,
+				97C1EB371EB6C82D00DB72F1 /* ReadContactQRCommand.swift in Sources */,
 				97B776C31D83D4AE00FC0A4B /* CCMyContactsViewController.swift in Sources */,
 				97C1EB051EAD442100DB72F1 /* NewContactCardCommand.swift in Sources */,
 				97B776DD1D84761000FC0A4B /* StringExtensions.swift in Sources */,

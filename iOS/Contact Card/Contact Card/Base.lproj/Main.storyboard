@@ -453,5 +453,39 @@
             </objects>
             <point key="canvasLocation" x="2476" y="-161"/>
         </scene>
+        <!--Reading View Controller-->
+        <scene sceneID="qLa-XG-5bW">
+            <objects>
+                <viewController storyboardIdentifier="QRReadingViewController" id="Mdy-6q-5WW" customClass="QRReadingViewController" customModule="Contact_Card" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1Wz-4V-7q9"/>
+                        <viewControllerLayoutGuide type="bottom" id="GEO-CZ-nlP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5Ow-3a-MyI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1r-gD-kMf">
+                                <rect key="frame" x="16" y="20" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelQRCodeReading:" destination="Mdy-6q-5WW" eventType="touchUpInside" id="uKQ-VU-kvA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="V1r-gD-kMf" firstAttribute="top" secondItem="1Wz-4V-7q9" secondAttribute="bottom" id="PfY-ld-QdE"/>
+                            <constraint firstItem="V1r-gD-kMf" firstAttribute="leading" secondItem="5Ow-3a-MyI" secondAttribute="leadingMargin" id="pO8-fX-Iza"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="V1r-gD-kMf" id="eEE-b2-NZf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aFS-wX-A8l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3356" y="-161"/>
+        </scene>
     </scenes>
 </document>

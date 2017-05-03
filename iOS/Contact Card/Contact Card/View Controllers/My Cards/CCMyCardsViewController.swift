@@ -26,6 +26,11 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
         //NotificationCenter.contactCenter.addObserver(self, selector: #selector(syncLocalContactsWithRemoteUpdates(_:)), name: NSNotification.Name(rawValue: LoginCommand.AuthenticationChangedNotificationKey), object: nil)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        AppDelegate.myCardsViewController = self
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if let _ = LoginCommand.user {

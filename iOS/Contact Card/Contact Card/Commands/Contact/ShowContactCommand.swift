@@ -12,20 +12,33 @@ import ContactsUI
 
 class ShowContactCommand: Command, CNContactViewControllerDelegate {
     let contact:CNContact
+    let cnController:CNContactViewController
+    
     
     init(contact:CNContact, viewController: UIViewController, returningCommand: Command?) {
         self.contact = contact
+        self.cnController = CNContactViewController(for: self.contact)
         super.init(viewController: viewController, returningCommand: returningCommand)
     }
     
     override func execute(completed: CommandCompleted?) {
         super.execute(completed: completed)
-        let viewController = CNContactViewController(for: self.contact)
-        viewController.allowsEditing = false
-        viewController.allowsActions = false
-        viewController.delegate = self
-        presentingViewController.navigationController?.pushViewController(viewController, animated: true)
-        print(self.contact.thumbnailImageData)
+        cnController.allowsEditing = false
+        cnController.allowsActions = false
+        cnController.delegate = self
+        if let navigationController = presentingViewController.navigationController {
+            navigationController.pushViewController(cnController, animated: true)
+        } else {
+            let navigationController = UINavigationController(rootViewController: cnController)
+            cnController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .plain, target: self, action: #selector(dismiss(sender:)))
+            presentingViewController.present(navigationController, animated: true, completion: nil)
+        }
+    }
+    
+    
+    func dismiss(sender:Any) -> Void {
+        print("Dismissing shown controller")
+        cnController.dismiss(animated: true, completion: nil)
     }
     
     //MARK: - CNContactViewControllerDelegate -

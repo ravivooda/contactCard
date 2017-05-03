@@ -19,6 +19,8 @@ extension CNContact {
     static let CardNameKey = "name"
     static let CardJSONKey = "json"
     
+    static let ContactsChangedNotification = Notification.Name(rawValue: "Contacts.changedNotification")
+    
     var data: [String: Any] {
         var dictionary:[String:Any] = [:];
         

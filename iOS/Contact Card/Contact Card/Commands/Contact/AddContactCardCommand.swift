@@ -13,6 +13,7 @@ import UIKit
 
 class AddContactCardCommand: Command {
     let record:CKRecord
+    var addedContact:CNContact?
     
     var progress:Float = -1 {
         didSet {
@@ -34,6 +35,7 @@ class AddContactCardCommand: Command {
     override func execute(completed: CommandCompleted?) {
         super.execute(completed: completed)
         self.progress = 0
+        print("Fetching record with ID: \(self.record.recordID) to add to the contacts")
         Manager.contactsContainer.sharedCloudDatabase.fetch(withRecordID: self.record.recordID) { (record, error) in
             DispatchQueue.main.async {
                 guard error == nil else {
@@ -55,6 +57,8 @@ class AddContactCardCommand: Command {
                     print("Error occurred while saving the request \(error)")
                     return self.reportError(error: error)
                 }
+                self.addedContact = contact
+                self.finished()
             }
         }
     }
