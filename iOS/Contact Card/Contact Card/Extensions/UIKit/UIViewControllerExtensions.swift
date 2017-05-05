@@ -27,7 +27,7 @@ extension UIViewController {
         }
     }
     
-    func showAlertMessage(message m:String) -> Void {
+    func showAlertMessage(message m:String) {
         let alertController = UIAlertController(title: "Contact Card", message: m, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alertController, animated: true, completion: nil)
@@ -38,6 +38,17 @@ extension UIViewController {
         alertController.addAction(UIAlertAction(title: "Retry", style: .default, handler: retryHandler))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func showSettingsAlertMessage(message:String) {
+        let settingsAlertController = UIAlertController(title: "Contact Card", message: message, preferredStyle: .alert)
+        settingsAlertController.addAction(UIAlertAction(title: "Settings", style: .default, handler: { (action) in
+            if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
+                UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+            }
+        }))
+        settingsAlertController.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+        self.present(settingsAlertController, animated: true, completion: nil)
     }
 }
 

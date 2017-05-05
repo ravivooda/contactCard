@@ -31,7 +31,7 @@ class ReadContactQRCommand: Command, AVCaptureMetadataOutputObjectsDelegate {
         super.execute(completed: completed)
         
         if AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) ==  AVAuthorizationStatus.denied {
-            return self.reportError(message: "This app is not authorized to use Back Camera. Please enable camera usage in your Settings app")
+            return self.presentingViewController.showSettingsAlertMessage(message: "Back camera is disabled for the app. Please enable camera usage in your settings")
         }
         
         do {
@@ -59,6 +59,7 @@ class ReadContactQRCommand: Command, AVCaptureMetadataOutputObjectsDelegate {
             }
             
         } catch let error {
+            self.reportError(message: error.localizedDescription)
             print("Error occurred while capturing the QR code \(error)")
         }
     }
