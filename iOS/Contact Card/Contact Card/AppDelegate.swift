@@ -44,50 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, userDidAcceptCloudKitShareWith cloudKitShareMetadata: CKShareMetadata) {
         print("Accepting new cloud kit share with metadata \(cloudKitShareMetadata)")
-        let acceptSharesOperation = CKAcceptSharesOperation(shareMetadatas: [cloudKitShareMetadata])
-        acceptSharesOperation.qualityOfService = .userInteractive
-        acceptSharesOperation.perShareCompletionBlock = {
-            metadata, share, error in
-            guard error == nil, let share = share else {
-                print(error?.localizedDescription ?? "")
-                if let currentViewController = self.getCurrentViewController() {
-                    DispatchQueue.main.async {
-                        currentViewController.showAlertMessage(message: "Error occurred in accepting share (new contact). Please ensure that the device is connected to network and try opening the shared link")
-                    }
-                }
-                return
-            }
-            
-            if let currentViewController = AppDelegate.myContactsViewController {
-                if UserDefaults.isAutoSyncEnabled {
-                    print("Trying to fetch root record ID: \(cloudKitShareMetadata.rootRecordID)")
-                    Manager.contactsContainer.sharedCloudDatabase.fetch(withRecordID: cloudKitShareMetadata.rootRecordID, completionHandler: { (record, error) in
-                        DispatchQueue.main.async {
-                            guard error == nil, let record = record else {
-                                print("Error occurred while fetching record \(error?.localizedDescription ?? "")")
-                                return currentViewController.showAlertMessage(message: "Accepted the share. But unable to fetch the share at the moment. No worries they will be added into your contacts automatically")
-                            }
-                            let addContactCardCommand = AddContactCardCommand(record: record, viewController: currentViewController, returningCommand: nil)
-                            addContactCardCommand.execute(completed: {
-                                if let contact = addContactCardCommand.addedContact {
-                                    ShowContactCommand(contact: contact, viewController: currentViewController, returningCommand: nil).execute(completed: nil)
-                                }
-                            })
-                        }
-                    })
-                } else {
-                    let acceptedAlertViewController = UIAlertController(title: "Accepted share", message: "Shall we add this contact to your local contacts?", preferredStyle: .alert)
-                    acceptedAlertViewController.addAction(UIAlertAction(title: "Add", style: .default, handler: { (action) in
-                        
-                    }))
-                    acceptedAlertViewController.addAction(UIAlertAction(title: "Not now", style: .destructive, handler: nil))
-                    currentViewController.present(acceptedAlertViewController, animated: true, completion: nil)
-                }
-            }
-            
-            print("Successfully accepted share \(share) with metadata \(metadata)")
-        }
-        CKContainer(identifier: cloudKitShareMetadata.containerIdentifier).add(acceptSharesOperation)
+        OpenAcceptingContactURLCommand(cloudKitShareMetadata: cloudKitShareMetadata, viewController: self.getCurrentViewController() ?? UIViewController(), returningCommand: nil).execute(completed: nil)
     }
     
     func applicationWillTerminate(_ application: UIApplication) {

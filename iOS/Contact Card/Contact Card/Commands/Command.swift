@@ -23,7 +23,6 @@ class Command: NSObject {
     }
     
     func execute(completed:CommandCompleted?) {
-        // preconditionFailure("This method must be overridden")
         self.completed = completed
     }
     

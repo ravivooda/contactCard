@@ -65,20 +65,13 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func reloadLocalContactsAndDisplay(store: CNContactStore) {
-        var contacts:[CCContact] = []
-        let keysToFetch = [CNContactViewController.descriptorForRequiredKeys(),
-                           CNContactImageDataKey,
-                           CNContactIdentifierKey,
-                           CNContactNoteKey] as [Any]
-        let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
         do {
-            try store.enumerateContacts(with: fetchRequest, usingBlock: { (contact, stop) -> Void in
-                contacts.append(CCContact(contact: contact))
-            })
+            try self.contacts = store.fetchAllContacts()
         } catch let error {
-            print(error.localizedDescription)
+            self.contacts = []
+            self.showAlertMessage(message: "An error occurred while reading your contacts - \(error.localizedDescription).\nPlease note, we never use your contact data for any other purpose")
         }
-        self.contacts = contacts
+        
         self.tableView.reloadData()
         
         print("Reloaded contacts on UI")
@@ -91,7 +84,7 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
             return
         }
         isSyncing = true
-        let store = CNContactStore()
+        let store = Manager.contactsStore
         switch CNContactStore.authorizationStatus(for: .contacts) {
         case .notDetermined:
             store.requestAccess(for: .contacts, completionHandler: { (authorized, error) in
@@ -121,6 +114,7 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     private func updateContacts(records:[CKRecord]) {
+        print("Found shared contacts : \(records.count) ")
         var contactsToRefMap = [String:CCContact]()
         for contact in self.contacts {
             if let identifier = contact.contactIdentifier {
