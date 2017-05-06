@@ -41,19 +41,22 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     private func updateBarBadge() {
-        var count = 0;
+        var updateCount = 0;
         for contact in self.contacts {
-            count += contact.updateContactCommand != nil ? 1 : 0
+            updateCount += contact.updateContactCommand != nil ? 1 : 0
         }
         
-        if let tabBarItem = self.tabBarController?.tabBar.items?[0], count > 0 {
-            tabBarItem.badgeValue = "\(count)"
+        self.navigationItem.rightBarButtonItem = updateCount > 0 ? UIBarButtonItem(title: "Update", style: .done, target: self, action: #selector(updateAllCallback(sender:))) : nil
+        let tabCount = updateCount + newContacts.count;
+        
+        if let tabBarItem = self.tabBarController?.tabBar.items?[0], tabCount > 0 {
+            tabBarItem.badgeValue = "\(tabCount)"
             tabBarItem.badgeColor = .red
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Update", style: .done, target: self, action: #selector(updateAllCallback(sender:)))
         } else {
             tabBarItem.badgeValue = ""
         }
-        print("Count: \(count)")
+        UIApplication.shared.applicationIconBadgeNumber = tabCount
+        print("Update count - \(updateCount), Tab count - \(tabCount)")
     }
     
     func updateAllCallback(sender:UIBarButtonItem) {
