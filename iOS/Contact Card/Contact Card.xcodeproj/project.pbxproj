@@ -68,6 +68,8 @@
 		97C1EB3F1EB98F2500DB72F1 /* ContactExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB3D1EB98F2500DB72F1 /* ContactExtension.swift */; };
 		97C1EB401EB98F2500DB72F1 /* MutableContactExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB3E1EB98F2500DB72F1 /* MutableContactExtension.swift */; };
 		97C1EB421EB98F4300DB72F1 /* ContactStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB411EB98F4300DB72F1 /* ContactStoreExtension.swift */; };
+		97C1EB441EBE3E0400DB72F1 /* NewContactsAvailableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB431EBE3E0400DB72F1 /* NewContactsAvailableTableViewCell.swift */; };
+		97C1EB461EBE3E3C00DB72F1 /* StackThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB451EBE3E3C00DB72F1 /* StackThumbnailView.swift */; };
 		97E650581E8710B60074F112 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E650571E8710B60074F112 /* Contact.swift */; };
 		97E6505B1E88097A0074F112 /* LoginCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E6505A1E88097A0074F112 /* LoginCommand.swift */; };
 		97E650601E880AA00074F112 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E6505F1E880AA00074F112 /* Device.swift */; };
@@ -146,6 +148,8 @@
 		97C1EB3D1EB98F2500DB72F1 /* ContactExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactExtension.swift; sourceTree = "<group>"; };
 		97C1EB3E1EB98F2500DB72F1 /* MutableContactExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutableContactExtension.swift; sourceTree = "<group>"; };
 		97C1EB411EB98F4300DB72F1 /* ContactStoreExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactStoreExtension.swift; sourceTree = "<group>"; };
+		97C1EB431EBE3E0400DB72F1 /* NewContactsAvailableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewContactsAvailableTableViewCell.swift; sourceTree = "<group>"; };
+		97C1EB451EBE3E3C00DB72F1 /* StackThumbnailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackThumbnailView.swift; sourceTree = "<group>"; };
 		97E650571E8710B60074F112 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		97E6505A1E88097A0074F112 /* LoginCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCommand.swift; sourceTree = "<group>"; };
 		97E6505F1E880AA00074F112 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -439,6 +443,7 @@
 			isa = PBXGroup;
 			children = (
 				97C1EB2E1EB693C700DB72F1 /* ThumbnailView.swift */,
+				97C1EB451EBE3E3C00DB72F1 /* StackThumbnailView.swift */,
 			);
 			path = "Contact Thumbnail";
 			sourceTree = "<group>";
@@ -497,6 +502,7 @@
 				BC54A9391E0F6ECF0062CE8B /* CCContactTableViewCell.swift */,
 				97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */,
 				97C1EB171EB1A73F00DB72F1 /* AddContactTableViewCell.swift */,
+				97C1EB431EBE3E0400DB72F1 /* NewContactsAvailableTableViewCell.swift */,
 			);
 			path = "Table View Cells";
 			sourceTree = "<group>";
@@ -729,6 +735,7 @@
 				97C1EB401EB98F2500DB72F1 /* MutableContactExtension.swift in Sources */,
 				97E650581E8710B60074F112 /* Contact.swift in Sources */,
 				97C1EAFE1EAD09D300DB72F1 /* RecordExtension.swift in Sources */,
+				97C1EB441EBE3E0400DB72F1 /* NewContactsAvailableTableViewCell.swift in Sources */,
 				97C1EAFA1EACF91500DB72F1 /* ShareContactCommand.swift in Sources */,
 				971CF81C1E4C2FA9008F2C21 /* UIViewExtensions.swift in Sources */,
 				BC54A93E1E0F6EFC0062CE8B /* CCContact.swift in Sources */,
@@ -773,6 +780,7 @@
 				97B776CA1D846D6800FC0A4B /* Manager.swift in Sources */,
 				97B5B95B1EA7026200E90967 /* Notification.swift in Sources */,
 				97C1EB421EB98F4300DB72F1 /* ContactStoreExtension.swift in Sources */,
+				97C1EB461EBE3E3C00DB72F1 /* StackThumbnailView.swift in Sources */,
 				97E6505B1E88097A0074F112 /* LoginCommand.swift in Sources */,
 				97C1EB101EB195C200DB72F1 /* AddContactCardCommand.swift in Sources */,
 				97C1EB241EB4499700DB72F1 /* UserDefaultsExtensions.swift in Sources */,

@@ -73,7 +73,7 @@ class ReadContactQRCommand: Command, AVCaptureMetadataOutputObjectsDelegate {
         print("Found object : \(metadataObjects)")
         for metadataObject in metadataObjects {
             if let metadataObject = metadataObject as? AVMetadataMachineReadableCodeObject,
-                metadataObject.stringValue.contains("/share/"),
+                metadataObject.stringValue.contains("share/"),
                 let url = URL(string: metadataObject.stringValue){
                 DispatchQueue.main.async {
                     self.qrController?.dismiss(animated: true, completion: {

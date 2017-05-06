@@ -36,6 +36,9 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
         if let _ = LoginCommand.user {
             refreshData()
         }
+        if let selectionIndexPath = self.tableView.indexPathForSelectedRow {
+            self.tableView.deselectRow(at: selectionIndexPath, animated: animated)
+        }
     }
     
     func reloadTableView() {

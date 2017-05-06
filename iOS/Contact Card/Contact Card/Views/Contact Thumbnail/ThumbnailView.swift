@@ -39,7 +39,7 @@ class ThumbnailView: UIView {
         self.addSubviewWithOccupyingConstraints(subView: imageView)
     }
 
-    var contact:CNContact! {
+    weak var contact:CNContact! {
         didSet {
             var thumbnailText = ""
             

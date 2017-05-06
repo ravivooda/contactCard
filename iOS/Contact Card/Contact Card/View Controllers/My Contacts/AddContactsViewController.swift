@@ -25,7 +25,7 @@ class AddContactsViewController: UITableViewController {
 
         // Do any additional setup after loading the view.
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add All", style: .done, target: self, action: #selector(addAllContacts(sender:)))
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Delete all", style: .plain, target: self, action: #selector(deleteAllContacts(sender:)))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .plain, target: self, action: #selector(dismissClicked(sender:)))
         self.title = "New Contacts"
         
         for card in cards {
@@ -56,10 +56,8 @@ class AddContactsViewController: UITableViewController {
         }
     }
     
-    func deleteAllContacts(sender:UIBarButtonItem) -> Void {
-        for card in cards {
-            card.deleteContact(completed: nil)
-        }
+    func dismissClicked(sender:UIBarButtonItem) -> Void {
+        self.dismiss(animated: true, completion: nil)
     }
     
     //MARK: - UITableViewDataSource -

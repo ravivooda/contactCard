@@ -15,6 +15,11 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
     
     @IBOutlet weak var tableView: UITableView!
     var contacts:[CCContact] = []
+    var newContacts:[AddContactCardCommand] = []
+    
+    var newContactCellsCount: Int {
+        return newContacts.count > 0 ? 1 : 0;
+    }
     
     var shareCommand:ShareContactCommand? = nil
     var reshareCommand:ReshareContactCardCommand? = nil
@@ -61,6 +66,9 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
         super.viewDidAppear(animated)
         if let _ = LoginCommand.user {
             syncLocalContactsWithRemoteUpdates(nil)
+        }
+        if let selectionIndexPath = self.tableView.indexPathForSelectedRow {
+            self.tableView.deselectRow(at: selectionIndexPath, animated: animated)
         }
     }
     
@@ -123,7 +131,7 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
         }
         
         // Updating or creating new contacts
-        var addContactCommands = [AddContactCardCommand]()
+        self.newContacts = []
         for record in records {
             let recordIdentifier = record.recordIdentifier
             if let contact = contactsToRefMap[recordIdentifier] {
@@ -138,34 +146,34 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
                 if UserDefaults.isAutoSyncEnabled {
                     addCommand.execute(completed: nil)
                 } else {
-                    addContactCommands.append(addCommand)
+                    self.newContacts.append(addCommand)
                 }
             }
-        }
-        
-        if addContactCommands.count > 0, let addContactsViewController = self.storyboard?.instantiateViewController(withIdentifier: "addContactsViewController") as? AddContactsViewController {
-            let navigationController = UINavigationController(rootViewController: addContactsViewController)
-            addContactsViewController.cards.append(contentsOf: addContactCommands)
-            self.present(navigationController, animated: true, completion: nil)
         }
     }
     
     //MARK: - UITableViewDataSource -
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contacts.count
+        return contacts.count + newContactCellsCount;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if newContactCellsCount > 0, indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "addContactTableViewCellIdentifier", for: indexPath) as! NewContactsAvailableTableViewCell
+            cell.newContacts = newContacts
+            return cell
+        }
         let cell:CCContactTableViewCell = tableView.dequeueReusableCell(withIdentifier: "contactTableViewCellIdentifier", for: indexPath) as! CCContactTableViewCell
-        cell.contact = contacts[indexPath.row]
+        cell.contact = contacts[indexPath.row - self.newContactCellsCount]
         return cell
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         var retArray = [UITableViewRowAction]()
-        if let _ = self.contacts[indexPath.row].contactIdentifier {
+        let index = indexPath.row - self.newContactCellsCount
+        if index > 0, let _ = self.contacts[indexPath.row - self.newContactCellsCount].contactIdentifier {
             let shareAction = UITableViewRowAction(style: .default, title: "Share", handler: { (action, indexPath) in
-                self.reshareCommand = ReshareContactCardCommand(contact: self.contacts[indexPath.row], viewController: self, returningCommand: nil)
+                self.reshareCommand = ReshareContactCardCommand(contact: self.contacts[indexPath.row - self.newContactCellsCount], viewController: self, returningCommand: nil)
                 self.reshareCommand?.execute(completed: nil)
             })
             retArray.append(shareAction)
@@ -175,6 +183,14 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
     
     //MARK: - UITableViewDelegate -
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        ShowContactCommand(contact: contacts[indexPath.row].contact, viewController: self, returningCommand: nil).execute(completed: nil)
+        if newContactCellsCount > 0, indexPath.row == 0 {
+            if let addContactsViewController = self.storyboard?.instantiateViewController(withIdentifier: "addContactsViewController") as? AddContactsViewController {
+                let navigationController = UINavigationController(rootViewController: addContactsViewController)
+                addContactsViewController.cards = self.newContacts
+                self.present(navigationController, animated: true, completion: nil)
+            }
+            return
+        }
+        ShowContactCommand(contact: contacts[indexPath.row - self.newContactCellsCount].contact, viewController: self, returningCommand: nil).execute(completed: nil)
     }
 }
