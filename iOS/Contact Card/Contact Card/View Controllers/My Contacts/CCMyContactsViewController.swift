@@ -25,7 +25,7 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
         
         AppDelegate.myContactsViewController = self
         
-        NotificationCenter.contactCenter.addObserver(self, selector: #selector(syncLocalContactsWithRemoteUpdates(_:)), name: NSNotification.Name(rawValue: LoginCommand.AuthenticationChangedNotificationKey), object: nil)
+        NotificationCenter.contactCenter.addObserver(self, selector: #selector(syncLocalContactsWithRemoteUpdates(_:)), name: LoginCommand.AuthenticationChangedNotificationKey, object: nil)
         NotificationCenter.contactCenter.addObserver(self, selector: #selector(syncLocalContactsWithRemoteUpdates(_:)), name: CNContact.ContactsChangedNotification, object: nil)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(readQR(sender:)))
@@ -95,7 +95,7 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
             })
             break
         case .denied, .restricted:
-            showAlertMessage(message: "Apologies. We need access to your contacts for updating your contacts.\nPlease note, we never use your contact data for any other purpose")
+            showSettingsAlertMessage(message: "Apologies. We need access to your contacts for maintaining your contacts.\nPlease note, we never use your contact data for any other purpose")
             break
         case .authorized:
             reloadLocalContactsAndDisplay(store: store)

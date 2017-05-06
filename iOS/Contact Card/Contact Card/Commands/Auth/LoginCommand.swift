@@ -11,7 +11,7 @@ import SSKeychain
 import CloudKit
 
 class LoginCommand: Command {
-    static let AuthenticationChangedNotificationKey = "LoginCommand.AuthChanged"
+    static let AuthenticationChangedNotificationKey = NSNotification.Name(rawValue: "LoginCommand.AuthChanged")
     
     class User {
         static let service = "CCService"
@@ -57,7 +57,7 @@ class LoginCommand: Command {
                 
             }
             if let _ = LoginCommand.user {
-                NotificationCenter.contactCenter.post(name: NSNotification.Name(rawValue: LoginCommand.AuthenticationChangedNotificationKey), object: nil)
+                NotificationCenter.contactCenter.post(name: LoginCommand.AuthenticationChangedNotificationKey, object: nil)
             }
             super.finished()
         }
