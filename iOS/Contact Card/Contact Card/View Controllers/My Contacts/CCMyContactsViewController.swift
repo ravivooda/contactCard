@@ -114,7 +114,9 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
                 self.updateContacts(records: records)
                 UserDefaults.isAutoSyncEnabled ? self.reloadLocalContactsAndDisplay(store: store) : self.tableView.reloadData()
                 self.updateBarBadge()
+                self.isSyncing = false
             }, fail: { (errorMessage, error) in
+                self.isSyncing = false
                 self.showRetryAlertMessage(message: error.localizedDescription, retryHandler: { (action) in
                     self.syncLocalContactsWithRemoteUpdates(notification)
                 })

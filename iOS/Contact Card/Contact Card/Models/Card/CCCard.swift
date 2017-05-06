@@ -17,10 +17,8 @@ class CCCard {
     let record:CKRecord
     
     init(record:CKRecord, contact:CNMutableContact) {
-        self.contact = contact
+        self.contact = contact.generateThumbnailImage()
         self.record = record
-        
-        self.contact.generateThumbnailImage()
     }
     
     convenience init(record:CKRecord) {
@@ -35,9 +33,9 @@ class CCCard {
 }
 
 extension CNMutableContact {
-    fileprivate func generateThumbnailImage() {
+    func generateThumbnailImage() -> Self {
         if self.thumbnailImageData != nil {
-            return
+            return self
         }
         
         // First save the contact for it to generate
@@ -57,5 +55,6 @@ extension CNMutableContact {
         } catch let error  {
             print("Error occurred while deleting the request \(error)")
         }
+        return self
     }
 }

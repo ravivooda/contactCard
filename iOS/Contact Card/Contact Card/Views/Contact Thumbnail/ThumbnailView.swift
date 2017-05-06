@@ -14,15 +14,20 @@ class ThumbnailView: UIView {
     private let imageView = UIImageView()
     private let gradientLayer = CAGradientLayer()
     private let nameLabel = UILabel()
+    var availableWidth:CGFloat = 90
+    var customBorderColor:UIColor?
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.layer.cornerRadius = 45
+        self.layer.cornerRadius = self.availableWidth/2
         self.layer.masksToBounds = true
         
-        //self.layer.borderWidth = 1
-        //self.layer.borderColor = UIColor.gray.cgColor
+        if let borderColor = self.customBorderColor {
+            self.layer.borderColor = borderColor.cgColor
+            self.layer.borderWidth = 1
+        }
         
         self.nameLabel.textAlignment = .center
         self.nameLabel.textColor = .white
