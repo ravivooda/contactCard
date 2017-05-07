@@ -14,6 +14,7 @@ import UIKit
 class AddContactCardCommand: Command {
     let record:CKRecord
     var addedContact:CNContact?
+    var contactReference:CNContact?
     
     var progress:Float = -1 {
         didSet {
@@ -24,6 +25,13 @@ class AddContactCardCommand: Command {
     init(record:CKRecord, viewController:UIViewController, returningCommand:Command?) {
         self.record = record
         super.init(viewController: viewController, returningCommand: returningCommand)
+    }
+    
+    func generateContactReference() -> CNContact {
+        if self.contactReference == nil {
+            self.contactReference = CNMutableContact(withRecord: self.record).generateThumbnailImage()
+        }
+        return self.contactReference!
     }
     
     private func reportError(error:Error) {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Contacts
 
 class NewContactsAvailableTableViewCell: UITableViewCell {
 
@@ -21,7 +22,7 @@ class NewContactsAvailableTableViewCell: UITableViewCell {
     var newContacts:[AddContactCardCommand]! {
         didSet {
             self.contactsNumberLabel.text = "\(self.newContacts.count) card\(self.newContacts.count != 1 ? "s" : "") available"
-            self.stackThumbnailView.newContacts = self.newContacts
+            self.stackThumbnailView.newContacts = newContacts
         }
     }
 }

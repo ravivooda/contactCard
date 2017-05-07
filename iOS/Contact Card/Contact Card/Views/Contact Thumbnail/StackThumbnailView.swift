@@ -28,25 +28,25 @@ class StackThumbnailView: UIView {
         thumbNail3.customBorderColor = thumbnailBorderColor
         thumbNail3.awakeFromNib()
         self.add(thumbnailImage: thumbNail1, atPosition: 1)
+        self.add(thumbnailImage: thumbNail2, atPosition: 2)
+        self.add(thumbnailImage: thumbNail3, atPosition: 3)
     }
     
     var newContacts:[AddContactCardCommand]! {
         didSet {
-            thumbNail1.contact = CNMutableContact(withRecord: self.newContacts[0].record).generateThumbnailImage()
+            thumbNail1.contact = self.newContacts[0].generateContactReference()
             
             if self.newContacts.count >= 2 {
-                self.thumbNail2.contact = CNMutableContact(withRecord: self.newContacts[1].record).generateThumbnailImage()
-                self.add(thumbnailImage: thumbNail2, atPosition: 2)
-            } else {
-                self.thumbNail2.removeFromSuperview()
+                self.thumbNail2.contact = self.newContacts[1].generateContactReference()
             }
             
+            self.thumbNail2.alpha = self.newContacts.count >= 2 ? 1 : 0
+            
             if self.newContacts.count >= 3 {
-                self.thumbNail3.contact = CNMutableContact(withRecord: self.newContacts[2].record).generateThumbnailImage()
-                self.add(thumbnailImage: thumbNail3, atPosition: 3)
-            } else {
-                self.thumbNail3.removeFromSuperview()
+                self.thumbNail3.contact = self.newContacts[2].generateContactReference()
             }
+            
+            self.thumbNail3.alpha = self.newContacts.count >= 3 ? 1 : 0
             
             self.updateWidthConstraint(forThumbnailCount: max(3, self.newContacts.count))
         }
