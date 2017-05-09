@@ -1,5 +1,5 @@
 //
-//  DeleteContactCardCommand.swift
+//  DeleteCardCommand.swift
 //  Contact Card
 //
 //  Created by Ravi Vooda on 4/23/17.
@@ -9,7 +9,7 @@
 import UIKit
 import CloudKit
 
-class DeleteContactCardCommand: Command {
+class DeleteCardCommand: Command {
     private let card:CCCard
     
     init(card:CCCard, viewController: UIViewController, returningCommand: Command?) {

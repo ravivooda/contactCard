@@ -16,7 +16,7 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     private var editingCardCommand:EditContactCardCommand?
     private var addNewCardCommand:NewContactCardCommand?
     private var sharingCardCommand:ShareContactCommand?
-    private var deleteCardCommand:DeleteContactCardCommand?
+    private var deleteCardCommand:DeleteCardCommand?
     
     @IBAction func addNewCard(_ sender: Any) {
         self.addNewCardCommand = NewContactCardCommand(viewController: self, returningCommand: nil)
@@ -94,7 +94,7 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
         shareAction.backgroundColor = .blue
         
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPatch) in
-            self.deleteCardCommand = DeleteContactCardCommand(card: Manager.defaultManager().cards[indexPath.row], viewController: self, returningCommand: nil)
+            self.deleteCardCommand = DeleteCardCommand(card: Manager.defaultManager().cards[indexPath.row], viewController: self, returningCommand: nil)
             self.deleteCardCommand?.execute(completed: {
                 self.refreshData()
             })

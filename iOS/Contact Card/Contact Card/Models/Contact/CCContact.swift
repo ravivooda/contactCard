@@ -12,14 +12,18 @@ import CloudKit
 
 class CCContact:CustomDebugStringConvertible {
     class ContactIdentifier {
+        let recordName:String
         let remoteID:String
         let version:String
         
         init(remoteID:String, version:String) {
             self.remoteID = remoteID
             self.version = version
+            
+            self.recordName = remoteID.components(separatedBy: ".")[0]
         }
     }
+    
     static let referenceKey = "Contact Card Reference:"
     static let ContactNotificationProgressInfoKey = "ContactCard.Progress"
     static let ContactNotificationProgressErrorKey = "ContactCard.Error"

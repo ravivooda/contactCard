@@ -45,7 +45,7 @@
 		97C1EB031EAD413F00DB72F1 /* ShowContactCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB021EAD413F00DB72F1 /* ShowContactCommand.swift */; };
 		97C1EB051EAD442100DB72F1 /* NewContactCardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB041EAD442100DB72F1 /* NewContactCardCommand.swift */; };
 		97C1EB071EAD4C0A00DB72F1 /* EditContactCardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB061EAD4C0A00DB72F1 /* EditContactCardCommand.swift */; };
-		97C1EB091EAD68F300DB72F1 /* DeleteContactCardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB081EAD68F300DB72F1 /* DeleteContactCardCommand.swift */; };
+		97C1EB091EAD68F300DB72F1 /* DeleteCardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB081EAD68F300DB72F1 /* DeleteCardCommand.swift */; };
 		97C1EB0C1EAD97A900DB72F1 /* BordererButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB0B1EAD97A900DB72F1 /* BordererButton.swift */; };
 		97C1EB0E1EB03FAE00DB72F1 /* CCContactUpdateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB0D1EB03FAE00DB72F1 /* CCContactUpdateExtension.swift */; };
 		97C1EB101EB195C200DB72F1 /* AddContactCardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB0F1EB195C200DB72F1 /* AddContactCardCommand.swift */; };
@@ -70,6 +70,7 @@
 		97C1EB421EB98F4300DB72F1 /* ContactStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB411EB98F4300DB72F1 /* ContactStoreExtension.swift */; };
 		97C1EB441EBE3E0400DB72F1 /* NewContactsAvailableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB431EBE3E0400DB72F1 /* NewContactsAvailableTableViewCell.swift */; };
 		97C1EB461EBE3E3C00DB72F1 /* StackThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB451EBE3E3C00DB72F1 /* StackThumbnailView.swift */; };
+		97C1EB481EC155B300DB72F1 /* DeleteContactCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB471EC155B300DB72F1 /* DeleteContactCommand.swift */; };
 		97E650581E8710B60074F112 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E650571E8710B60074F112 /* Contact.swift */; };
 		97E6505B1E88097A0074F112 /* LoginCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E6505A1E88097A0074F112 /* LoginCommand.swift */; };
 		97E650601E880AA00074F112 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E6505F1E880AA00074F112 /* Device.swift */; };
@@ -125,7 +126,7 @@
 		97C1EB021EAD413F00DB72F1 /* ShowContactCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowContactCommand.swift; sourceTree = "<group>"; };
 		97C1EB041EAD442100DB72F1 /* NewContactCardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewContactCardCommand.swift; sourceTree = "<group>"; };
 		97C1EB061EAD4C0A00DB72F1 /* EditContactCardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditContactCardCommand.swift; sourceTree = "<group>"; };
-		97C1EB081EAD68F300DB72F1 /* DeleteContactCardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteContactCardCommand.swift; sourceTree = "<group>"; };
+		97C1EB081EAD68F300DB72F1 /* DeleteCardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteCardCommand.swift; sourceTree = "<group>"; };
 		97C1EB0B1EAD97A900DB72F1 /* BordererButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BordererButton.swift; sourceTree = "<group>"; };
 		97C1EB0D1EB03FAE00DB72F1 /* CCContactUpdateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCContactUpdateExtension.swift; sourceTree = "<group>"; };
 		97C1EB0F1EB195C200DB72F1 /* AddContactCardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddContactCardCommand.swift; sourceTree = "<group>"; };
@@ -150,6 +151,7 @@
 		97C1EB411EB98F4300DB72F1 /* ContactStoreExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactStoreExtension.swift; sourceTree = "<group>"; };
 		97C1EB431EBE3E0400DB72F1 /* NewContactsAvailableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewContactsAvailableTableViewCell.swift; sourceTree = "<group>"; };
 		97C1EB451EBE3E3C00DB72F1 /* StackThumbnailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackThumbnailView.swift; sourceTree = "<group>"; };
+		97C1EB471EC155B300DB72F1 /* DeleteContactCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteContactCommand.swift; sourceTree = "<group>"; };
 		97E650571E8710B60074F112 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		97E6505A1E88097A0074F112 /* LoginCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCommand.swift; sourceTree = "<group>"; };
 		97E6505F1E880AA00074F112 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -415,10 +417,11 @@
 				97C1EB021EAD413F00DB72F1 /* ShowContactCommand.swift */,
 				97C1EB041EAD442100DB72F1 /* NewContactCardCommand.swift */,
 				97C1EB061EAD4C0A00DB72F1 /* EditContactCardCommand.swift */,
-				97C1EB081EAD68F300DB72F1 /* DeleteContactCardCommand.swift */,
+				97C1EB081EAD68F300DB72F1 /* DeleteCardCommand.swift */,
 				97C1EB0F1EB195C200DB72F1 /* AddContactCardCommand.swift */,
 				97C1EB111EB195E900DB72F1 /* UpdateContactCardCommand.swift */,
 				97C1EB3A1EB98B2000DB72F1 /* OpenAcceptingContactURLCommand.swift */,
+				97C1EB471EC155B300DB72F1 /* DeleteContactCommand.swift */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -759,6 +762,7 @@
 				97E650651E88AD640074F112 /* LogoutCommand.swift in Sources */,
 				97C1EB121EB195E900DB72F1 /* UpdateContactCardCommand.swift in Sources */,
 				97B776BB1D83D3CE00FC0A4B /* CCMyCardsViewController.swift in Sources */,
+				97C1EB481EC155B300DB72F1 /* DeleteContactCommand.swift in Sources */,
 				97C1EB371EB6C82D00DB72F1 /* ReadContactQRCommand.swift in Sources */,
 				97B776C31D83D4AE00FC0A4B /* CCMyContactsViewController.swift in Sources */,
 				97C1EB051EAD442100DB72F1 /* NewContactCardCommand.swift in Sources */,
@@ -767,7 +771,7 @@
 				97B776D01D84708900FC0A4B /* VersionUnsupportedCommand.swift in Sources */,
 				97C1EB2C1EB5A3A800DB72F1 /* ReshareContactCardCommand.swift in Sources */,
 				97B776EA1D8480B900FC0A4B /* UIViewControllerExtensions.swift in Sources */,
-				97C1EB091EAD68F300DB72F1 /* DeleteContactCardCommand.swift in Sources */,
+				97C1EB091EAD68F300DB72F1 /* DeleteCardCommand.swift in Sources */,
 				97B776E11D84784300FC0A4B /* ArrayExtensions.swift in Sources */,
 				97B776DF1D84782D00FC0A4B /* DictionaryExtensions.swift in Sources */,
 				971CF8211E4E94B7008F2C21 /* TabBarViewController.swift in Sources */,

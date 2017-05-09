@@ -22,4 +22,7 @@ extension CNContactStore {
         })
         return contacts
     }
+    
+    static let ContactsChangedNotification = Notification.Name(rawValue: "Contacts.changedNotification")
+    
 }

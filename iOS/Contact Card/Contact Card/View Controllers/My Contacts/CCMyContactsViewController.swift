@@ -23,7 +23,7 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
     
     var shareCommand:ShareContactCommand? = nil
     var reshareCommand:ReshareContactCardCommand? = nil
-    
+    var deleteCommand:DeleteContactCommand? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
         AppDelegate.myContactsViewController = self
         
         NotificationCenter.contactCenter.addObserver(self, selector: #selector(syncLocalContactsWithRemoteUpdates(_:)), name: LoginCommand.AuthenticationChangedNotificationKey, object: nil)
-        NotificationCenter.contactCenter.addObserver(self, selector: #selector(syncLocalContactsWithRemoteUpdates(_:)), name: CNContact.ContactsChangedNotification, object: nil)
+        NotificationCenter.contactCenter.addObserver(self, selector: #selector(syncLocalContactsWithRemoteUpdates(_:)), name: CNContactStore.ContactsChangedNotification, object: nil)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(readQR(sender:)))
     }
@@ -176,12 +176,20 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         var retArray = [UITableViewRowAction]()
         let index = indexPath.row - self.newContactCellsCount
-        if index > 0, let _ = self.contacts[indexPath.row - self.newContactCellsCount].contactIdentifier {
-            let shareAction = UITableViewRowAction(style: .default, title: "Share", handler: { (action, indexPath) in
-                self.reshareCommand = ReshareContactCardCommand(contact: self.contacts[indexPath.row - self.newContactCellsCount], viewController: self, returningCommand: nil)
-                self.reshareCommand?.execute(completed: nil)
+        if index >= 0 {
+            let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete", handler: { (action, indexPath) in
+                let contact = self.contacts[indexPath.row - self.newContactCellsCount]
+                self.deleteCommand = DeleteContactCommand(contact: contact, viewController: self, returningCommand: nil)
+                self.deleteCommand?.execute(completed: nil)
             })
-            retArray.append(shareAction)
+            if let _ = self.contacts[indexPath.row - self.newContactCellsCount].contactIdentifier {
+                let shareAction = UITableViewRowAction(style: .normal, title: "Share", handler: { (action, indexPath) in
+                    self.reshareCommand = ReshareContactCardCommand(contact: self.contacts[indexPath.row - self.newContactCellsCount], viewController: self, returningCommand: nil)
+                    self.reshareCommand?.execute(completed: nil)
+                })
+                retArray.append(shareAction)
+            }
+            retArray.append(deleteAction)
         }
         return retArray
     }
