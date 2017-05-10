@@ -26,10 +26,12 @@ class UpdateContactCardCommand: Command {
         super.init(viewController: viewController, returningCommand: nil)
     }
     
-    private func reportError(error:Error) {
-        self.progress = -1
-        print("Error in updating contact: \(error)")
-        NotificationCenter.contactCenter.post(name: self.record.getNotificationNameForRecord(), object: self.record, userInfo: [CCContact.ContactNotificationProgressErrorKey:error])
+    override func reportError(message: String) {
+        DispatchQueue.main.async {
+            self.progress = -1
+            print("Error in updating contact: \(message)")
+            NotificationCenter.contactCenter.post(name: self.record.getNotificationNameForRecord(), object: self.record, userInfo: [CCContact.ContactNotificationProgressErrorKey:message])
+        }
     }
     
     override func execute(completed: CommandCompleted?) {
@@ -37,12 +39,12 @@ class UpdateContactCardCommand: Command {
         self.progress = 0
         Manager.contactsContainer.sharedCloudDatabase.fetch(withRecordID: self.record.recordID) { (record, error) in
             DispatchQueue.main.async {
-                guard error == nil else {
-                    return self.reportError(error: error!)
-                }
-                
-                guard let record = record, let payload = record[CNContact.CardJSONKey] as? String, let jsonPayload = convertToDictionary(text: payload), let mutableContact = self.contact.contact.mutableCopy() as? CNMutableContact else {
-                    return self.reportError(error: UpdateContactError(message: "An unknown error occurred while fetching the asset. Please ensure that your device has an active internet connection"))
+                guard error == nil,
+                    let record = record,
+                    let payload = record[CNContact.CardJSONKey] as? String,
+                    let jsonPayload = convertToDictionary(text: payload),
+                    let mutableContact = self.contact.contact.mutableCopy() as? CNMutableContact else {
+                    return self.reportError(message: error?.localizedDescription ?? "An unknown error occurred while fetching the asset. Please ensure that your device has an active internet connection")
                 }
                 
                 if let asset = record[CNContact.ImageKey] as? CKAsset,
@@ -57,7 +59,7 @@ class UpdateContactCardCommand: Command {
                 do {
                     try CNContactStore().execute(saveRequest)
                 } catch let error {
-                    return self.reportError(error: error)
+                    return self.reportError(message: error.localizedDescription)
                 }
                 self.progress = 1
             }

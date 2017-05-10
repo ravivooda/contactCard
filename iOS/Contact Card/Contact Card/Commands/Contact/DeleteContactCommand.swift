@@ -19,12 +19,6 @@ class DeleteContactCommand: Command {
         super.init(viewController: viewController, returningCommand: returningCommand)
     }
     
-    private func reportError(message:String) {
-        self.presentingViewController.showRetryAlertMessage(message: message) { (action) in
-            self.execute(completed: self.completed)
-        }
-    }
-    
     override func execute(completed: CommandCompleted?) {
         super.execute(completed: completed)
         let deleteAlertController = UIAlertController(title: "Delete contact \(contact.displayName())", message: "Are you sure you want to delete?", preferredStyle: .actionSheet)

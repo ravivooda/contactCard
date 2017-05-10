@@ -17,10 +17,6 @@ class ReshareContactCardCommand: Command {
         super.init(viewController: viewController, returningCommand: returningCommand)
     }
     
-    private func reportError(message:String) {
-        self.presentingViewController.showAlertMessage(message: message)
-    }
-    
     override func execute(completed: CommandCompleted?) {
         super.execute(completed: completed)
         if let identifier = self.contact.contactIdentifier?.remoteID {

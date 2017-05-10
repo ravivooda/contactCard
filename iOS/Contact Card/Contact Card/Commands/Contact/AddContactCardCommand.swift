@@ -34,10 +34,12 @@ class AddContactCardCommand: Command {
         return self.contactReference!
     }
     
-    private func reportError(error:Error) {
-        self.progress = -1
-        print("Adding card error: \(error)")
-        NotificationCenter.contactCenter.post(name: self.record.getNotificationNameForRecord(), object: self.record, userInfo: [CCContact.ContactNotificationProgressErrorKey:error])
+    override func reportError(message: String) {
+        DispatchQueue.main.async {
+            self.progress = -1
+            print("Adding card error: \(message)")
+            NotificationCenter.contactCenter.post(name: self.record.getNotificationNameForRecord(), object: self.record, userInfo: [CCContact.ContactNotificationProgressErrorKey:message])
+        }
     }
     
     override func execute(completed: CommandCompleted?) {
@@ -46,12 +48,8 @@ class AddContactCardCommand: Command {
         print("Fetching record with ID: \(self.record.recordID) to add to the contacts")
         Manager.contactsContainer.sharedCloudDatabase.fetch(withRecordID: self.record.recordID) { (record, error) in
             DispatchQueue.main.async {
-                guard error == nil else {
-                    return self.reportError(error: error!)
-                }
-                
-                guard let record = record else {
-                    return self.reportError(error: UpdateContactError(message: "An error occurred while fetching the contact information. Please makes sure your device has active internet connection"))
+                guard error == nil, let record = record else {
+                    return self.reportError(message: error?.localizedDescription ?? "An error occurred while fetching the contact information. Please makes sure your device has active internet connection")
                 }
                 
                 let contact = CNMutableContact(withRecord: record)
@@ -63,7 +61,7 @@ class AddContactCardCommand: Command {
                     self.progress = 1
                 } catch let error {
                     print("Error occurred while saving the request \(error)")
-                    return self.reportError(error: error)
+                    return self.reportError(message: error.localizedDescription)
                 }
                 self.addedContact = contact
                 self.finished()

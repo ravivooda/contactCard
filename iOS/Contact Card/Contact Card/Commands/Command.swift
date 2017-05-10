@@ -26,6 +26,20 @@ class Command: NSObject {
         self.completed = completed
     }
     
+    internal func reportRetryError(message:String) {
+        DispatchQueue.main.async {
+            self.presentingViewController.showRetryAlertMessage(message: message) { (action) in
+                self.execute(completed: self.completed)
+            }
+        }
+    }
+    
+    internal func reportError(message:String) {
+        DispatchQueue.main.async {
+            self.presentingViewController.showAlertMessage(message: message)
+        }
+    }
+    
     func finished() {
         self.completed?()
         returningCommand?.execute(completed: nil)

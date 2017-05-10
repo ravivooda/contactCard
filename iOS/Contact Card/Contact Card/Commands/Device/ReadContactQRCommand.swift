@@ -23,10 +23,6 @@ class ReadContactQRCommand: Command, AVCaptureMetadataOutputObjectsDelegate {
         super.init(viewController: viewController, returningCommand: returningCommand)
     }
     
-    private func reportError(message:String) {
-        self.presentingViewController.showAlertMessage(message: message)
-    }
-    
     override func execute(completed: CommandCompleted?) {
         super.execute(completed: completed)
         

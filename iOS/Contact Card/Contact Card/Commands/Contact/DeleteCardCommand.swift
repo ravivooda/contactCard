@@ -17,12 +17,6 @@ class DeleteCardCommand: Command {
         super.init(viewController: viewController, returningCommand: returningCommand)
     }
     
-    private func reportError(message:String) {
-        self.presentingViewController.showRetryAlertMessage(message: message) { (action) in
-            self.execute(completed: self.completed)
-        }
-    }
-    
     override func execute(completed: CommandCompleted?) {
         super.execute(completed: completed)
         let confirmDeleteAction = UIAlertController(title: "Delete card \(card.record.getContactName())", message: "Are you sure you want to delete this card? You can edit your card followers instead", preferredStyle: .actionSheet)
@@ -32,7 +26,7 @@ class DeleteCardCommand: Command {
                     Manager.contactsContainer.privateCloudDatabase.fetch(withRecordID: shareRecord.recordID, completionHandler: { (record, error) in
                         DispatchQueue.main.async {
                             guard error == nil, let share = record as? CKShare else {
-                                return self.reportError(message: error?.localizedDescription ?? "An error occurred while fetching share details")
+                                return self.reportRetryError(message: error?.localizedDescription ?? "An error occurred while fetching share details")
                             }
                             
                             if let participantsController = self.presentingViewController.storyboard?.instantiateViewController(withIdentifier: "participantsTableViewController") as? ParticipantsTableViewController {
@@ -40,7 +34,7 @@ class DeleteCardCommand: Command {
                                 participantsController.command = self
                                 self.presentingViewController.present(UINavigationController(rootViewController: participantsController), animated: true, completion: nil)
                             } else {
-                                return self.reportError(message: "An error occurred while setting up your participants controller")
+                                return self.reportRetryError(message: "An error occurred while setting up your participants controller")
                             }
                         }
                     })
@@ -51,7 +45,7 @@ class DeleteCardCommand: Command {
             DispatchQueue.main.async {
                 Manager.contactsContainer.privateCloudDatabase.delete(withRecordID: self.card.record.recordID, completionHandler: { (record, error) in
                     guard error == nil else {
-                        return self.reportError(message: error?.localizedDescription ?? "An error occurred in deleting your card from remote server")
+                        return self.reportRetryError(message: error?.localizedDescription ?? "An error occurred in deleting your card from remote server")
                     }
                     print("Successfully deleted card \(self.card.record.getContactName())")
                     self.finished()
