@@ -12,6 +12,7 @@ import Contacts
 
 class DeleteContactCommand: Command {
     let contact:CCContact
+    private let errorFetchingMessage = "Apologies. An error occurred while deleting the contact share. Please make sure the device is connected to internet"
     
     init(contact:CCContact, viewController: UIViewController, returningCommand: Command?) {
         self.contact = contact
@@ -32,17 +33,47 @@ class DeleteContactCommand: Command {
                 return self.deleteLocalContactCopy()
             }
             
-            Manager.contactsContainer.sharedCloudDatabase.delete(withRecordID: CKRecordID(recordName: identifier.recordName), completionHandler: { (record, error) in
-                DispatchQueue.main.async {
-                    guard error == nil, let _ = record else {
-                        return self.reportError(message: error?.localizedDescription ?? "Apologies. An error occurred while deleting the contact share. Please make sure the device is connected to internet")
-                    }
-
-                    self.deleteLocalContactCopy()
+            Manager.contactsContainer.sharedCloudDatabase.fetchAllRecordZones(completionHandler: { (recordZones, error) in
+                guard error == nil, let recordZones = recordZones else {
+                    return self.reportError(message: error?.localizedDescription ?? self.errorFetchingMessage)
                 }
+                
+                for zone in recordZones {
+                    if zone.zoneID.zoneName == Manager.contactsZone {
+                        let recordID = CKRecordID(recordName: identifier.recordName, zoneID: zone.zoneID)
+                        return self.deleteRemoteContactCopy(recordID: recordID)
+                    }
+                }
+                
+                // This should not happen
+                return self.reportError(message: self.errorFetchingMessage)
             })
         }))
         self.presentingViewController.present(deleteAlertController, animated: true, completion: nil)
+    }
+    
+    private func deleteRemoteContactCopy(recordID:CKRecordID) {
+        Manager.contactsContainer.sharedCloudDatabase.fetch(withRecordID: recordID) { (record, error) in
+            guard error == nil, let record = record, let share = record.share else {
+                return self.reportError(message: error?.localizedDescription ?? self.errorFetchingMessage)
+            }
+            
+            Manager.contactsContainer.sharedCloudDatabase.fetch(withRecordID: share.recordID, completionHandler: { (record, error) in
+                guard error == nil, let shareRecord = record else {
+                    return self.reportError(message: error?.localizedDescription ?? self.errorFetchingMessage)
+                }
+                
+                Manager.contactsContainer.sharedCloudDatabase.delete(withRecordID: shareRecord.recordID, completionHandler: { (record, error) in
+                    DispatchQueue.main.async {
+                        guard error == nil, let _ = record else {
+                            return self.reportError(message: error?.localizedDescription ?? self.errorFetchingMessage)
+                        }
+                        
+                        self.deleteLocalContactCopy()
+                    }
+                })
+            })
+        }
     }
     
     private func deleteLocalContactCopy() {
@@ -51,10 +82,17 @@ class DeleteContactCommand: Command {
             deleteRequest.delete(mutableCopy)
             do {
                 try Manager.contactsStore.execute(deleteRequest)
-                NotificationCenter.contactCenter.post(name: CNContactStore.ContactsChangedNotification, object: nil)
+                self.finished()
             } catch let error {
                 self.reportError(message: error.localizedDescription)
             }
+        }
+    }
+    
+    override func finished() {
+        DispatchQueue.main.async {
+            NotificationCenter.contactCenter.post(name: CNContactStore.ContactsChangedNotification, object: nil)
+            super.finished()
         }
     }
 }

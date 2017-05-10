@@ -148,11 +148,7 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
                 }
             } else {
                 let addCommand = AddContactCardCommand(record: record, viewController: self, returningCommand: nil)
-                if UserDefaults.isAutoSyncEnabled {
-                    addCommand.execute(completed: nil)
-                } else {
-                    self.newContacts.append(addCommand)
-                }
+                UserDefaults.isAutoSyncEnabled ? addCommand.execute(completed: nil) : self.newContacts.append(addCommand)
             }
         }
     }

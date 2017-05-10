@@ -20,7 +20,7 @@ class CCContact:CustomDebugStringConvertible {
             self.remoteID = remoteID
             self.version = version
             
-            self.recordName = remoteID.components(separatedBy: ".")[0]
+            self.recordName = remoteID.components(separatedBy: ".")[1]
         }
     }
     
