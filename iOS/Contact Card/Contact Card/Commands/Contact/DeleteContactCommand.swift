@@ -58,20 +58,14 @@ class DeleteContactCommand: Command {
                 return self.reportError(message: error?.localizedDescription ?? self.errorFetchingMessage)
             }
             
-            Manager.contactsContainer.sharedCloudDatabase.fetch(withRecordID: share.recordID, completionHandler: { (record, error) in
-                guard error == nil, let shareRecord = record else {
-                    return self.reportError(message: error?.localizedDescription ?? self.errorFetchingMessage)
-                }
-                
-                Manager.contactsContainer.sharedCloudDatabase.delete(withRecordID: shareRecord.recordID, completionHandler: { (record, error) in
-                    DispatchQueue.main.async {
-                        guard error == nil, let _ = record else {
-                            return self.reportError(message: error?.localizedDescription ?? self.errorFetchingMessage)
-                        }
-                        
-                        self.deleteLocalContactCopy()
+            Manager.contactsContainer.sharedCloudDatabase.delete(withRecordID: share.recordID, completionHandler: { (record, error) in
+                DispatchQueue.main.async {
+                    guard error == nil, let _ = record else {
+                        return self.reportError(message: error?.localizedDescription ?? self.errorFetchingMessage)
                     }
-                })
+                    
+                    self.deleteLocalContactCopy()
+                }
             })
         }
     }
