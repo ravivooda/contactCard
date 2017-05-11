@@ -41,9 +41,11 @@ class ReshareContactCardCommand: Command {
                 return self.reportError(message: error?.localizedDescription ?? "An error occurred in fetching share details for contact \(self.contact.displayName())")
             }
             
-            let name = "Sharing contact \(self.contact.displayName())"
-            let activityViewController = UIActivityViewController(activityItems: [name, url], applicationActivities: nil)
-            self.presentingViewController.present(activityViewController, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                let name = "Sharing contact \(self.contact.displayName())"
+                let activityViewController = UIActivityViewController(activityItems: [name, url], applicationActivities: nil)
+                self.presentingViewController.present(activityViewController, animated: true, completion: nil)
+            }
         }
     }
 }

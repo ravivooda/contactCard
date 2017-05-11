@@ -10,11 +10,11 @@ import UIKit
 import CloudKit
 
 class CCContactTableViewCell: UITableViewCell {
-	@IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var rightContainer: UIView!
     @IBOutlet weak var leftContainer: ThumbnailView!
-
-	@IBOutlet weak var rightButton: UIButton!
+    
+    @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var progressView: ContactProgressView!
     var contact:CCContact! {
         didSet {
@@ -58,10 +58,16 @@ class CCContactTableViewCell: UITableViewCell {
             }
         }
     }
-
-	@IBAction func rightButtonClicked(_ sender: Any) {
-        self.contact.updateContactCommand?.execute(completed: nil)
-	}
+    
+    private var inviteUserCommand:InviteUserCommand?
+    @IBAction func rightButtonClicked(_ sender: Any) {
+        if let _ = self.contact.contactIdentifier {
+            self.contact.updateContactCommand?.execute(completed: nil)
+        } else {
+            self.inviteUserCommand = InviteUserCommand(contact: self.contact.contact, viewController: AppDelegate.myContactsViewController!, returningCommand: nil)
+            self.inviteUserCommand?.execute(completed: nil)
+        }
+    }
 }
 
 extension Dictionary where Key == String {

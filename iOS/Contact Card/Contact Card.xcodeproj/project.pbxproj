@@ -20,6 +20,7 @@
 		975AC8EC1E50CF7200AB4DBD /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975AC8EB1E50CF7200AB4DBD /* Card.swift */; };
 		97A2A2DD1E36C2F100D69F6A /* CCCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2DC1E36C2F100D69F6A /* CCCard.swift */; };
 		97A2A2E11E36CE0800D69F6A /* CCCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */; };
+		97B5490B1EC3ED6900668570 /* InviteUserCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B5490A1EC3ED6900668570 /* InviteUserCommand.swift */; };
 		97B5B9591EA6FA9100E90967 /* ManagerContactsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B5B9581EA6FA9100E90967 /* ManagerContactsExtension.swift */; };
 		97B5B95B1EA7026200E90967 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B5B95A1EA7026200E90967 /* Notification.swift */; };
 		97B776BB1D83D3CE00FC0A4B /* CCMyCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B776BA1D83D3CE00FC0A4B /* CCMyCardsViewController.swift */; };
@@ -101,6 +102,7 @@
 		975AC8EB1E50CF7200AB4DBD /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		97A2A2DC1E36C2F100D69F6A /* CCCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCard.swift; sourceTree = "<group>"; };
 		97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardTableViewCell.swift; sourceTree = "<group>"; };
+		97B5490A1EC3ED6900668570 /* InviteUserCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteUserCommand.swift; sourceTree = "<group>"; };
 		97B5B9581EA6FA9100E90967 /* ManagerContactsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerContactsExtension.swift; sourceTree = "<group>"; };
 		97B5B95A1EA7026200E90967 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		97B776BA1D83D3CE00FC0A4B /* CCMyCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMyCardsViewController.swift; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 			children = (
 				97C1EAF91EACF91500DB72F1 /* ShareContactCommand.swift */,
 				97C1EB2B1EB5A3A800DB72F1 /* ReshareContactCardCommand.swift */,
+				97B5490A1EC3ED6900668570 /* InviteUserCommand.swift */,
 			);
 			path = Share;
 			sourceTree = "<group>";
@@ -768,6 +771,7 @@
 				97C1EB051EAD442100DB72F1 /* NewContactCardCommand.swift in Sources */,
 				97B776DD1D84761000FC0A4B /* StringExtensions.swift in Sources */,
 				97C1EB1B1EB1ACDB00DB72F1 /* ContactProgressView.swift in Sources */,
+				97B5490B1EC3ED6900668570 /* InviteUserCommand.swift in Sources */,
 				97B776D01D84708900FC0A4B /* VersionUnsupportedCommand.swift in Sources */,
 				97C1EB2C1EB5A3A800DB72F1 /* ReshareContactCardCommand.swift in Sources */,
 				97B776EA1D8480B900FC0A4B /* UIViewControllerExtensions.swift in Sources */,
