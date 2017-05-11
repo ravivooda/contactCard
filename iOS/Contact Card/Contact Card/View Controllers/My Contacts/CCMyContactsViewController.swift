@@ -109,7 +109,9 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
             showSettingsAlertMessage(message: "Apologies. We need access to your contacts for maintaining your contacts.\nPlease note, we never use your contact data for any other purpose")
             break
         case .authorized:
-            reloadLocalContactsAndDisplay(store: store)
+            if self.contacts.count == 0 {
+                reloadLocalContactsAndDisplay(store: store)
+            }
             Data.syncContacts(callingViewController: nil, success: { (records) in
                 self.updateContacts(records: records)
                 UserDefaults.isAutoSyncEnabled ? self.reloadLocalContactsAndDisplay(store: store) : self.tableView.reloadData()

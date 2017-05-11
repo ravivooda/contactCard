@@ -43,6 +43,8 @@ class DeleteContactCommand: Command {
                 return self.reportError(message: self.errorFetchingMessage)
             })
         }))
+        
+        deleteAlertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.presentingViewController.present(deleteAlertController, animated: true, completion: nil)
     }
     
