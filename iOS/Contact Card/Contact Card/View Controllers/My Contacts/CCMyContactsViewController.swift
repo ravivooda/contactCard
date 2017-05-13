@@ -113,6 +113,7 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
                 reloadLocalContactsAndDisplay(store: store)
             }
             Data.syncContacts(callingViewController: nil, success: { (records) in
+                self.reloadLocalContactsAndDisplay(store: store)
                 self.updateContacts(records: records)
                 UserDefaults.isAutoSyncEnabled ? self.reloadLocalContactsAndDisplay(store: store) : self.tableView.reloadData()
                 self.updateBarBadge()
