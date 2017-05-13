@@ -13,7 +13,6 @@ import CloudKit
 
 class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CNContactViewControllerDelegate {
     @IBOutlet weak var tableView: UITableView!
-    private var editingCardCommand:EditContactCardCommand?
     private var addNewCardCommand:NewContactCardCommand?
     private var sharingCardCommand:ShareContactCommand?
     private var deleteCardCommand:DeleteCardCommand?
@@ -71,17 +70,11 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     
     //MARK: - UITableViewDelegate -
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        ShowContactCommand(contact: Manager.defaultManager().cards[indexPath.row].contact, viewController: self, returningCommand: nil).execute(completed: nil)
+        ShowCardCommand(card: Manager.defaultManager().cards[indexPath.row], viewController: self, returningCommand: nil).execute(completed: nil)
+        //ShowContactCommand(contact: Manager.defaultManager().cards[indexPath.row].contact, viewController: self, returningCommand: nil).execute(completed: nil)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
-            self.editingCardCommand =  EditContactCardCommand(card: Manager.defaultManager().cards[indexPath.row], viewController: self, returningCommand: nil)
-            self.editingCardCommand!.execute(completed: {
-                self.refreshData()
-            })
-        }
-        
         let shareAction = UITableViewRowAction(style: .normal, title: "Share", handler: { (action, indexPath) in
             self.sharingCardCommand = ShareContactCommand(withRecord: Manager.defaultManager().cards[indexPath.row].record, database: Manager.contactsContainer.privateCloudDatabase, viewController: self, returningCommand: nil)
             self.sharingCardCommand?.execute(completed: nil)
@@ -95,6 +88,6 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
             })
         }
         
-        return [editAction, shareAction, deleteAction]
+        return [shareAction, deleteAction]
     }
 }
