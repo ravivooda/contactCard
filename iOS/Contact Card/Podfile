@@ -10,5 +10,6 @@ target 'Contact Card' do
   pod 'Material'
   pod 'IQKeyboardManagerSwift'
   pod 'SSKeychain'
+  pod 'QRCode'
 
 end

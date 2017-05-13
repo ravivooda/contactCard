@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>QRCode.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SSKeychain.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,12 +57,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>28C5D12DC4D25952FB8ECEC94B954D75</key>
+		<key>4A3AED5BAF9E9AF799FE28CFB72FE3F7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4A3AED5BAF9E9AF799FE28CFB72FE3F7</key>
+		<key>63BD8D6199EEE53A95CD9DBC17263BDB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,12 +72,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EE23AC8CFA049B54594921CED4E38996</key>
+		<key>B45F077CE92776BE7228C2DB49124272</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FF3874BD0AFDA4EA1FF7F2B20C7B13DD</key>
+		<key>C9B0AA84F1810B173B80634BDAF4F32B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EE23AC8CFA049B54594921CED4E38996</key>
 		<dict>
 			<key>primary</key>
 			<true/>

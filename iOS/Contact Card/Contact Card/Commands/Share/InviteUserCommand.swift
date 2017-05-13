@@ -72,7 +72,7 @@ class InviteUserCommand: Command, MFMessageComposeViewControllerDelegate, MFMail
             
             self.presentingViewController.present(inviteAlertController, animated: true, completion: nil);
         } else {
-            let activityViewController = UIActivityViewController(activityItems: [sharingText, contactCardAppShareURL], applicationActivities: nil)
+            let activityViewController = UIActivityViewController(activityItems: [sharingText, contactCardAppShareURL], applicationActivities: [QRCodeActivity()])
             self.presentingViewController.present(activityViewController, animated: true, completion: nil)
         }
     }

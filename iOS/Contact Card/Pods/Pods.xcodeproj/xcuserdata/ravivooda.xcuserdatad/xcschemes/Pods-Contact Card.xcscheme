@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0830"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FF3874BD0AFDA4EA1FF7F2B20C7B13DD"
+               BlueprintIdentifier = "B45F077CE92776BE7228C2DB49124272"
                BuildableName = "Pods_Contact_Card.framework"
                BlueprintName = "Pods-Contact Card"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FF3874BD0AFDA4EA1FF7F2B20C7B13DD"
+            BlueprintIdentifier = "B45F077CE92776BE7228C2DB49124272"
             BuildableName = "Pods_Contact_Card.framework"
             BlueprintName = "Pods-Contact Card"
             ReferencedContainer = "container:Pods.xcodeproj">

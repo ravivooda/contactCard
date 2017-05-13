@@ -21,6 +21,8 @@
 		97A2A2DD1E36C2F100D69F6A /* CCCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2DC1E36C2F100D69F6A /* CCCard.swift */; };
 		97A2A2E11E36CE0800D69F6A /* CCCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */; };
 		97B5490B1EC3ED6900668570 /* InviteUserCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B5490A1EC3ED6900668570 /* InviteUserCommand.swift */; };
+		97B549101EC40B3B00668570 /* QRCodeActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B5490F1EC40B3B00668570 /* QRCodeActivity.swift */; };
+		97B549121EC40F7300668570 /* qr_code@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B549111EC40F7300668570 /* qr_code@3x.png */; };
 		97B5B9591EA6FA9100E90967 /* ManagerContactsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B5B9581EA6FA9100E90967 /* ManagerContactsExtension.swift */; };
 		97B5B95B1EA7026200E90967 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B5B95A1EA7026200E90967 /* Notification.swift */; };
 		97B776BB1D83D3CE00FC0A4B /* CCMyCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B776BA1D83D3CE00FC0A4B /* CCMyCardsViewController.swift */; };
@@ -103,6 +105,8 @@
 		97A2A2DC1E36C2F100D69F6A /* CCCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCard.swift; sourceTree = "<group>"; };
 		97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardTableViewCell.swift; sourceTree = "<group>"; };
 		97B5490A1EC3ED6900668570 /* InviteUserCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteUserCommand.swift; sourceTree = "<group>"; };
+		97B5490F1EC40B3B00668570 /* QRCodeActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeActivity.swift; sourceTree = "<group>"; };
+		97B549111EC40F7300668570 /* qr_code@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_code@3x.png"; sourceTree = "<group>"; };
 		97B5B9581EA6FA9100E90967 /* ManagerContactsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerContactsExtension.swift; sourceTree = "<group>"; };
 		97B5B95A1EA7026200E90967 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		97B776BA1D83D3CE00FC0A4B /* CCMyCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMyCardsViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 				97B776C41D846C8C00FC0A4B /* Commands */,
 				97B776C51D846C8C00FC0A4B /* Extensions */,
 				97B776C61D846C8C00FC0A4B /* Models */,
+				97B5490E1EC40B0800668570 /* Activity */,
 				97B776C71D846C8C00FC0A4B /* Views */,
 				97B776B71D83D38A00FC0A4B /* View Controllers */,
 				97E650611E88190C0074F112 /* Settings */,
@@ -237,6 +242,14 @@
 				971CF8201E4E94B7008F2C21 /* TabBarViewController.swift */,
 			);
 			path = Tab;
+			sourceTree = "<group>";
+		};
+		97B5490E1EC40B0800668570 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				97B5490F1EC40B3B00668570 /* QRCodeActivity.swift */,
+			);
+			path = Activity;
 			sourceTree = "<group>";
 		};
 		97B776B71D83D38A00FC0A4B /* View Controllers */ = {
@@ -365,6 +378,7 @@
 		97B776E21D847B2700FC0A4B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				97B549111EC40F7300668570 /* qr_code@3x.png */,
 				97C1EB301EB6B33000DB72F1 /* Nunito-Bold.ttf */,
 				97C1EB311EB6B33000DB72F1 /* Nunito-Light.ttf */,
 				97C1EB321EB6B33000DB72F1 /* Nunito-Regular.ttf */,
@@ -632,6 +646,7 @@
 				BCEEE53C1E4C0B7500D2651A /* LoginViewController.xib in Resources */,
 				97064C6B1D83CF44008EF6B3 /* Main.storyboard in Resources */,
 				97B776EF1D84812900FC0A4B /* LoadingViewController.xib in Resources */,
+				97B549121EC40F7300668570 /* qr_code@3x.png in Resources */,
 				97B776DA1D84751C00FC0A4B /* VersionUnsupportedViewController.xib in Resources */,
 				97C1EB331EB6B33000DB72F1 /* Nunito-Bold.ttf in Resources */,
 				97E650631E8819230074F112 /* Settings.bundle in Resources */,
@@ -770,6 +785,7 @@
 				97B776C31D83D4AE00FC0A4B /* CCMyContactsViewController.swift in Sources */,
 				97C1EB051EAD442100DB72F1 /* NewContactCardCommand.swift in Sources */,
 				97B776DD1D84761000FC0A4B /* StringExtensions.swift in Sources */,
+				97B549101EC40B3B00668570 /* QRCodeActivity.swift in Sources */,
 				97C1EB1B1EB1ACDB00DB72F1 /* ContactProgressView.swift in Sources */,
 				97B5490B1EC3ED6900668570 /* InviteUserCommand.swift in Sources */,
 				97B776D01D84708900FC0A4B /* VersionUnsupportedCommand.swift in Sources */,
