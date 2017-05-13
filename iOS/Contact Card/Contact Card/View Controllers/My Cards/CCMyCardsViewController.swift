@@ -14,7 +14,7 @@ import CloudKit
 class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CNContactViewControllerDelegate {
     @IBOutlet weak var tableView: UITableView!
     private var addNewCardCommand:NewContactCardCommand?
-    private var sharingCardCommand:ShareContactCommand?
+    private var sharingCardCommand:ShareCardCommand?
     private var deleteCardCommand:DeleteCardCommand?
     
     @IBAction func addNewCard(_ sender: Any) {
@@ -76,7 +76,7 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let shareAction = UITableViewRowAction(style: .normal, title: "Share", handler: { (action, indexPath) in
-            self.sharingCardCommand = ShareContactCommand(withCard: Manager.defaultManager().cards[indexPath.row], database: Manager.contactsContainer.privateCloudDatabase, viewController: self, returningCommand: nil)
+            self.sharingCardCommand = ShareCardCommand(withCard: Manager.defaultManager().cards[indexPath.row], database: Manager.contactsContainer.privateCloudDatabase, viewController: self, returningCommand: nil)
             self.sharingCardCommand?.execute(completed: nil)
         })
         shareAction.backgroundColor = .blue

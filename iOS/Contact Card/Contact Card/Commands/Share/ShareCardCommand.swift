@@ -1,5 +1,5 @@
 //
-//  ShareContactCommand.swift
+//  ShareCardCommand.swift
 //  Contact Card
 //
 //  Created by Ravi Vooda on 4/23/17.
@@ -9,11 +9,11 @@
 import UIKit
 import CloudKit
 
-class ShareContactCommand: Command, UICloudSharingControllerDelegate {
+class ShareCardCommand: Command, UICloudSharingControllerDelegate {
     let card:CCCard
     let database:CKDatabase
     
-    init(withCard card:CCCard, database:CKDatabase, viewController: UIViewController, returningCommand: Command?) {
+    init(withCard card:CCCard, database:CKDatabase, viewController:UIViewController, returningCommand: Command?) {
         self.database = database
         self.card = card
         super.init(viewController: viewController, returningCommand: returningCommand)

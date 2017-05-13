@@ -21,7 +21,7 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
         return newContacts.count > 0 ? 1 : 0;
     }
     
-    var shareCommand:ShareContactCommand? = nil
+    var shareCommand:ShareCardCommand? = nil
     var reshareCommand:ReshareContactCardCommand? = nil
     var deleteCommand:DeleteContactCommand? = nil
     

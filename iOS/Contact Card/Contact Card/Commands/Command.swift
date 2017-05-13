@@ -15,7 +15,7 @@ class Command: NSObject {
     let presentingViewController:UIViewController
     var returningCommand:Command? = nil
     var completed:CommandCompleted?
-    var presentedViewController:UIViewController?
+    weak var presentedViewController:UIViewController?
     
     init(viewController:UIViewController, returningCommand:Command?) {
         self.presentingViewController = viewController

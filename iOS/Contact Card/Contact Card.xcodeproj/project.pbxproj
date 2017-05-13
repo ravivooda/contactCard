@@ -45,7 +45,7 @@
 		97B776EA1D8480B900FC0A4B /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B776E91D8480B900FC0A4B /* UIViewControllerExtensions.swift */; };
 		97B776EE1D84812900FC0A4B /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B776EC1D84812900FC0A4B /* LoadingViewController.swift */; };
 		97B776EF1D84812900FC0A4B /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97B776ED1D84812900FC0A4B /* LoadingViewController.xib */; };
-		97C1EAFA1EACF91500DB72F1 /* ShareContactCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EAF91EACF91500DB72F1 /* ShareContactCommand.swift */; };
+		97C1EAFA1EACF91500DB72F1 /* ShareCardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EAF91EACF91500DB72F1 /* ShareCardCommand.swift */; };
 		97C1EAFE1EAD09D300DB72F1 /* RecordExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EAFD1EAD09D300DB72F1 /* RecordExtension.swift */; };
 		97C1EB031EAD413F00DB72F1 /* ShowContactCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB021EAD413F00DB72F1 /* ShowContactCommand.swift */; };
 		97C1EB051EAD442100DB72F1 /* NewContactCardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB041EAD442100DB72F1 /* NewContactCardCommand.swift */; };
@@ -130,7 +130,7 @@
 		97B776E91D8480B900FC0A4B /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		97B776EC1D84812900FC0A4B /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		97B776ED1D84812900FC0A4B /* LoadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
-		97C1EAF91EACF91500DB72F1 /* ShareContactCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareContactCommand.swift; sourceTree = "<group>"; };
+		97C1EAF91EACF91500DB72F1 /* ShareCardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareCardCommand.swift; sourceTree = "<group>"; };
 		97C1EAFD1EAD09D300DB72F1 /* RecordExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordExtension.swift; sourceTree = "<group>"; };
 		97C1EB021EAD413F00DB72F1 /* ShowContactCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowContactCommand.swift; sourceTree = "<group>"; };
 		97C1EB041EAD442100DB72F1 /* NewContactCardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewContactCardCommand.swift; sourceTree = "<group>"; };
@@ -424,7 +424,7 @@
 		97C1EAF81EACF8CA00DB72F1 /* Share */ = {
 			isa = PBXGroup;
 			children = (
-				97C1EAF91EACF91500DB72F1 /* ShareContactCommand.swift */,
+				97C1EAF91EACF91500DB72F1 /* ShareCardCommand.swift */,
 				97C1EB2B1EB5A3A800DB72F1 /* ReshareContactCardCommand.swift */,
 				97B5490A1EC3ED6900668570 /* InviteUserCommand.swift */,
 			);
@@ -760,7 +760,7 @@
 				97E650581E8710B60074F112 /* Contact.swift in Sources */,
 				97C1EAFE1EAD09D300DB72F1 /* RecordExtension.swift in Sources */,
 				97C1EB441EBE3E0400DB72F1 /* NewContactsAvailableTableViewCell.swift in Sources */,
-				97C1EAFA1EACF91500DB72F1 /* ShareContactCommand.swift in Sources */,
+				97C1EAFA1EACF91500DB72F1 /* ShareCardCommand.swift in Sources */,
 				971CF81C1E4C2FA9008F2C21 /* UIViewExtensions.swift in Sources */,
 				97B5491A1EC6976500668570 /* CCContactViewController.swift in Sources */,
 				BC54A93E1E0F6EFC0062CE8B /* CCContact.swift in Sources */,
