@@ -10,25 +10,25 @@ import UIKit
 import CloudKit
 
 class ShareContactCommand: Command, UICloudSharingControllerDelegate {
-    let record:CKRecord
+    let card:CCCard
     let database:CKDatabase
     
-    init(withRecord record:CKRecord, database:CKDatabase, viewController: UIViewController, returningCommand: Command?) {
+    init(withCard card:CCCard, database:CKDatabase, viewController: UIViewController, returningCommand: Command?) {
         self.database = database
-        self.record = record
+        self.card = card
         super.init(viewController: viewController, returningCommand: returningCommand)
     }
     
     override func execute(completed: CommandCompleted?) {
         super.execute(completed: completed)
         let shareController = UICloudSharingController(preparationHandler: { (controller, preparationCompletionHandler) in
-            if let shareRef = self.record.share {
+            if let shareRef = self.card.record.share {
                 self.database.fetch(withRecordID: shareRef.recordID, completionHandler: { (shareRecord, error) in
                     self.completePreparationForSharing(share: shareRecord as? CKShare, error: error, preparationCompletionHandler: preparationCompletionHandler)
                 })
             } else {
                 // This will probably be never executed
-                let share = self.record.contactShare
+                let share = self.card.record.contactShare
                 let modifyRecordsOperation = CKModifyRecordsOperation(recordsToSave: [share], recordIDsToDelete: nil)
                 modifyRecordsOperation.timeoutIntervalForRequest = 10
                 modifyRecordsOperation.timeoutIntervalForResource = 10
@@ -62,6 +62,10 @@ class ShareContactCommand: Command, UICloudSharingControllerDelegate {
     }
     
     func itemTitle(for csc: UICloudSharingController) -> String? {
-        return "Sharing \(record[CNContact.CardNameKey] as? String ?? record.getContactName())"
+        return "Sharing \(card.record[CNContact.CardNameKey] as? String ?? card.record.getContactName())"
+    }
+    
+    func itemThumbnailData(for csc: UICloudSharingController) -> Foundation.Data? {
+        return card.contact.thumbnailImageData
     }
 }

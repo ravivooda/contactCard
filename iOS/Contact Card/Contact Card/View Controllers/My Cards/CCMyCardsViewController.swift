@@ -76,7 +76,7 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let shareAction = UITableViewRowAction(style: .normal, title: "Share", handler: { (action, indexPath) in
-            self.sharingCardCommand = ShareContactCommand(withRecord: Manager.defaultManager().cards[indexPath.row].record, database: Manager.contactsContainer.privateCloudDatabase, viewController: self, returningCommand: nil)
+            self.sharingCardCommand = ShareContactCommand(withCard: Manager.defaultManager().cards[indexPath.row], database: Manager.contactsContainer.privateCloudDatabase, viewController: self, returningCommand: nil)
             self.sharingCardCommand?.execute(completed: nil)
         })
         shareAction.backgroundColor = .blue
