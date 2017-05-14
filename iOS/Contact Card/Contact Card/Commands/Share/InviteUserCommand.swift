@@ -64,7 +64,7 @@ class InviteUserCommand: Command, MFMessageComposeViewControllerDelegate, MFMail
         
         if waysToInvite.count > 0 {
             waysToInvite.append(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            let inviteAlertController = UIAlertController(title: "Invite \(contact.givenName)", message: "How would you like to invite them?", preferredStyle: .actionSheet)
+            let inviteAlertController = UIAlertController(title: "Invite \(contact.attributedDisplayName.string)", message: "How would you like to invite them?", preferredStyle: .actionSheet)
             
             for way in waysToInvite {
                 inviteAlertController.addAction(way)

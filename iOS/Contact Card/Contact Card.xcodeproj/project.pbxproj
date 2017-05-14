@@ -25,6 +25,7 @@
 		97B549121EC40F7300668570 /* qr_code@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B549111EC40F7300668570 /* qr_code@3x.png */; };
 		97B549181EC6958C00668570 /* ShowCardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B549171EC6958B00668570 /* ShowCardCommand.swift */; };
 		97B5491A1EC6976500668570 /* CCContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B549191EC6976500668570 /* CCContactViewController.swift */; };
+		97B5491F1EC7EF5100668570 /* QRShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B5491E1EC7EF5100668570 /* QRShareViewController.swift */; };
 		97B5B9591EA6FA9100E90967 /* ManagerContactsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B5B9581EA6FA9100E90967 /* ManagerContactsExtension.swift */; };
 		97B5B95B1EA7026200E90967 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B5B95A1EA7026200E90967 /* Notification.swift */; };
 		97B776BB1D83D3CE00FC0A4B /* CCMyCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B776BA1D83D3CE00FC0A4B /* CCMyCardsViewController.swift */; };
@@ -110,6 +111,7 @@
 		97B549111EC40F7300668570 /* qr_code@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_code@3x.png"; sourceTree = "<group>"; };
 		97B549171EC6958B00668570 /* ShowCardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowCardCommand.swift; sourceTree = "<group>"; };
 		97B549191EC6976500668570 /* CCContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCContactViewController.swift; sourceTree = "<group>"; };
+		97B5491E1EC7EF5100668570 /* QRShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRShareViewController.swift; sourceTree = "<group>"; };
 		97B5B9581EA6FA9100E90967 /* ManagerContactsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerContactsExtension.swift; sourceTree = "<group>"; };
 		97B5B95A1EA7026200E90967 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		97B776BA1D83D3CE00FC0A4B /* CCMyCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMyCardsViewController.swift; sourceTree = "<group>"; };
@@ -254,9 +256,18 @@
 			path = Activity;
 			sourceTree = "<group>";
 		};
+		97B5491D1EC7EDE200668570 /* QR */ = {
+			isa = PBXGroup;
+			children = (
+				97B5491E1EC7EF5100668570 /* QRShareViewController.swift */,
+			);
+			path = QR;
+			sourceTree = "<group>";
+		};
 		97B776B71D83D38A00FC0A4B /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				97B5491D1EC7EDE200668570 /* QR */,
 				BCEEE5381E4C0B5800D2651A /* Auth */,
 				97B776D11D8471E600FC0A4B /* Other */,
 				97B776B81D83D38A00FC0A4B /* My Cards */,
@@ -785,6 +796,7 @@
 				97C1EB121EB195E900DB72F1 /* UpdateContactCardCommand.swift in Sources */,
 				97B776BB1D83D3CE00FC0A4B /* CCMyCardsViewController.swift in Sources */,
 				97C1EB481EC155B300DB72F1 /* DeleteContactCommand.swift in Sources */,
+				97B5491F1EC7EF5100668570 /* QRShareViewController.swift in Sources */,
 				97C1EB371EB6C82D00DB72F1 /* ReadContactQRCommand.swift in Sources */,
 				97B776C31D83D4AE00FC0A4B /* CCMyContactsViewController.swift in Sources */,
 				97C1EB051EAD442100DB72F1 /* NewContactCardCommand.swift in Sources */,

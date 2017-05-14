@@ -482,5 +482,55 @@
             </objects>
             <point key="canvasLocation" x="3356" y="-161"/>
         </scene>
+        <!--Share View Controller-->
+        <scene sceneID="Jlb-I6-TGR">
+            <objects>
+                <viewController storyboardIdentifier="qrShareViewControllerID" id="a08-4a-3W9" customClass="QRShareViewController" customModule="Contact_Card" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GdB-V2-myr"/>
+                        <viewControllerLayoutGuide type="bottom" id="QA7-ix-4n8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="f4k-Oz-2sJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jv8-ni-6Aj">
+                                <rect key="frame" x="16" y="20" width="54" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="mgL-K3-Kff"/>
+                                    <constraint firstAttribute="width" constant="54" id="rrV-lj-y2A"/>
+                                </constraints>
+                                <state key="normal" title="Dismiss">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissQRCode:" destination="a08-4a-3W9" eventType="touchUpInside" id="SwP-dO-g7p"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LHy-2o-pxl">
+                                <rect key="frame" x="16" y="161.5" width="343" height="343"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="LHy-2o-pxl" secondAttribute="height" multiplier="1:1" id="opl-mr-feO"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LHy-2o-pxl" firstAttribute="leading" secondItem="f4k-Oz-2sJ" secondAttribute="leadingMargin" id="DaL-aS-fey"/>
+                            <constraint firstItem="Jv8-ni-6Aj" firstAttribute="leading" secondItem="f4k-Oz-2sJ" secondAttribute="leadingMargin" id="a6Q-ab-yYK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LHy-2o-pxl" secondAttribute="trailing" id="eVs-qJ-oVu"/>
+                            <constraint firstItem="LHy-2o-pxl" firstAttribute="centerX" secondItem="f4k-Oz-2sJ" secondAttribute="centerX" id="fRd-l9-1oC"/>
+                            <constraint firstItem="LHy-2o-pxl" firstAttribute="centerY" secondItem="f4k-Oz-2sJ" secondAttribute="centerY" id="lA7-q7-hR8"/>
+                            <constraint firstItem="Jv8-ni-6Aj" firstAttribute="top" secondItem="GdB-V2-myr" secondAttribute="bottom" id="uRm-G9-6hu"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="LHy-2o-pxl" id="b42-Ni-f7w"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kHK-qi-3Qv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4188" y="-161"/>
+        </scene>
     </scenes>
 </document>

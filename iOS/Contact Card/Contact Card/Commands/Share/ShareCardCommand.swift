@@ -21,6 +21,19 @@ class ShareCardCommand: Command, UICloudSharingControllerDelegate {
     
     override func execute(completed: CommandCompleted?) {
         super.execute(completed: completed)
+        
+        let shareAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        shareAlertController.addAction(UIAlertAction(title: "QR Code", style: .default, handler: { (action) in
+            self.showQRCode()
+        }))
+        shareAlertController.addAction(UIAlertAction(title: "Other", style: .default, handler: { (action) in
+            self.showShareController()
+        }))
+        shareAlertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.presentingViewController.present(shareAlertController, animated: true, completion: nil)
+    }
+    
+    private func showShareController() {
         let shareController = UICloudSharingController(preparationHandler: { (controller, preparationCompletionHandler) in
             if let shareRef = self.card.record.share {
                 self.database.fetch(withRecordID: shareRef.recordID, completionHandler: { (shareRecord, error) in
@@ -42,6 +55,17 @@ class ShareCardCommand: Command, UICloudSharingControllerDelegate {
         shareController.delegate = self
         shareController.availablePermissions = [.allowReadOnly,.allowPublic]
         self.presentingViewController.present(shareController, animated: true, completion: nil)
+    }
+    
+    private func showQRCode(){
+        if let qrController = self.presentingViewController.storyboard?.instantiateViewController(withIdentifier: "qrShareViewControllerID") as? QRShareViewController {
+            qrController.record = self.card.record
+            qrController.database = self.database
+            self.presentedViewController = qrController
+            self.presentingViewController.present(qrController, animated: true, completion: nil)
+        } else {
+            print("It should never get here")
+        }
     }
     
     private func completePreparationForSharing(share:CKShare?, error:Error?, preparationCompletionHandler:(CKShare?, CKContainer?, Error?) -> Swift.Void) {
