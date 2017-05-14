@@ -53,7 +53,6 @@ class AddContactCardCommand: Command {
                 }
                 
                 let contact = CNMutableContact(withRecord: record)
-                contact.note = contact.note.appending("\n\(CCContact.referenceKey)\(record.recordIdentifier)/\(record.recordChangeTag ?? "")")
                 let saveRequest = CNSaveRequest()
                 saveRequest.add(contact, toContainerWithIdentifier: nil)
                 do {

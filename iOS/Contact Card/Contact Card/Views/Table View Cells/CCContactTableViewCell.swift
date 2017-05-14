@@ -24,6 +24,7 @@ class CCContactTableViewCell: UITableViewCell {
             
             self.rightButton.isHidden = true
             self.progressView.isHidden = true
+            print("Contact \(self.contact) - update command: \(contact.updateContactCommand)")
             if let command = contact.updateContactCommand, contact.contactIdentifier != nil {
                 showProgress(progress: command.progress)
             } else if contact.contactIdentifier == nil {

@@ -32,8 +32,20 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
         
         NotificationCenter.contactCenter.addObserver(self, selector: #selector(syncLocalContactsWithRemoteUpdates(_:)), name: LoginCommand.AuthenticationChangedNotificationKey, object: nil)
         NotificationCenter.contactCenter.addObserver(self, selector: #selector(syncLocalContactsWithRemoteUpdates(_:)), name: CNContactStore.ContactsChangedNotification, object: nil)
+        NotificationCenter.contactCenter.addObserver(self, selector: #selector(contactUpdateChangedNotification(notification:)), name: CNContactStore.ContactsChangedNotification, object: nil)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(readQR(sender:)))
+    }
+    
+    func contactUpdateChangedNotification(notification:Notification) {
+        self.updateBarBadge()
+        for contact in self.contacts {
+            if let updateCommand = contact.updateContactCommand, updateCommand.progress != 1 {
+                return
+            }
+        }
+        
+        self.syncLocalContactsWithRemoteUpdates(nil)
     }
     
     func readQR(sender:UIBarButtonItem) {
@@ -43,7 +55,9 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
     private func updateBarBadge() {
         var updateCount = 0;
         for contact in self.contacts {
-            updateCount += contact.updateContactCommand != nil ? 1 : 0
+            if let updateCommand = contact.updateContactCommand, updateCommand.progress != 1 {
+                updateCount += 1
+            }
         }
         
         self.navigationItem.rightBarButtonItem = updateCount > 0 ? UIBarButtonItem(title: "Update", style: .done, target: self, action: #selector(updateAllCallback(sender:))) : nil
@@ -115,7 +129,8 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
             Data.syncContacts(callingViewController: nil, success: { (records) in
                 self.reloadLocalContactsAndDisplay(store: store)
                 self.updateContacts(records: records)
-                UserDefaults.isAutoSyncEnabled ? self.reloadLocalContactsAndDisplay(store: store) : self.tableView.reloadData()
+                //UserDefaults.isAutoSyncEnabled ? self.reloadLocalContactsAndDisplay(store: store) : self.tableView.reloadData()
+                self.tableView.reloadData()
                 self.updateBarBadge()
                 self.isSyncing = false
             }, fail: { (errorMessage, error) in

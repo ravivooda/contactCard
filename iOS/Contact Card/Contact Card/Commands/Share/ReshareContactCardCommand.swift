@@ -43,7 +43,7 @@ class ReshareContactCardCommand: Command {
             
             DispatchQueue.main.async {
                 let name = "Sharing contact \(self.contact.displayName())"
-                let activityViewController = UIActivityViewController(activityItems: [name, url], applicationActivities: nil)
+                let activityViewController = UIActivityViewController(activityItems: [name, url], applicationActivities: [QRCodeActivity(storyBoard: self.presentingViewController.storyboard!)])
                 self.presentingViewController.present(activityViewController, animated: true, completion: nil)
             }
         }

@@ -8,10 +8,13 @@
 
 import UIKit
 import CloudKit
+import QRCode
 
 class ShareCardCommand: Command, UICloudSharingControllerDelegate {
     let card:CCCard
     let database:CKDatabase
+    
+    var activity:UIActivity?
     
     init(withCard card:CCCard, database:CKDatabase, viewController:UIViewController, returningCommand: Command?) {
         self.database = database
@@ -33,23 +36,25 @@ class ShareCardCommand: Command, UICloudSharingControllerDelegate {
         self.presentingViewController.present(shareAlertController, animated: true, completion: nil)
     }
     
+    override func reportError(message: String) {
+        super.reportError(message: message)
+        self.activity?.activityDidFinish(false)
+    }
+    
+    override func reportRetryError(message: String) {
+        super.reportRetryError(message: message)
+        self.activity?.activityDidFinish(false)
+    }
+    
     private func showShareController() {
         let shareController = UICloudSharingController(preparationHandler: { (controller, preparationCompletionHandler) in
-            if let shareRef = self.card.record.share {
-                self.database.fetch(withRecordID: shareRef.recordID, completionHandler: { (shareRecord, error) in
-                    self.completePreparationForSharing(share: shareRecord as? CKShare, error: error, preparationCompletionHandler: preparationCompletionHandler)
-                })
-            } else {
-                // This will probably be never executed
-                let share = self.card.record.contactShare
-                let modifyRecordsOperation = CKModifyRecordsOperation(recordsToSave: [share], recordIDsToDelete: nil)
-                modifyRecordsOperation.timeoutIntervalForRequest = 10
-                modifyRecordsOperation.timeoutIntervalForResource = 10
-                modifyRecordsOperation.modifyRecordsCompletionBlock = { records, recordIDs, error in
-                    self.completePreparationForSharing(share: share, error: error, preparationCompletionHandler: preparationCompletionHandler)
-                }
-                Manager.contactsContainer.privateCloudDatabase.add(modifyRecordsOperation)
+            guard let shareRef = self.card.record.share else {
+                return self.reportError(message: "An unexpected error occurred while setting up the share.")
             }
+            
+            self.database.fetch(withRecordID: shareRef.recordID, completionHandler: { (shareRecord, error) in
+                self.completePreparationForSharing(share: shareRecord as? CKShare, error: error, preparationCompletionHandler: preparationCompletionHandler)
+            })
         })
         
         shareController.delegate = self
@@ -58,13 +63,26 @@ class ShareCardCommand: Command, UICloudSharingControllerDelegate {
     }
     
     private func showQRCode(){
-        if let qrController = self.presentingViewController.storyboard?.instantiateViewController(withIdentifier: "qrShareViewControllerID") as? QRShareViewController {
-            qrController.record = self.card.record
-            qrController.database = self.database
-            self.presentedViewController = qrController
-            self.presentingViewController.present(qrController, animated: true, completion: nil)
-        } else {
-            print("It should never get here")
+        guard let shareRef = self.card.record.share else {
+            return self.presentingViewController.showAlertMessage(message: "Apologies. This cannot be shared")
+        }
+        
+        self.database.fetch(withRecordID: shareRef.recordID) { (record, error) in
+            DispatchQueue.main.async {
+                guard error == nil, let share = record as? CKShare else {
+                    print("\(error?.localizedDescription ?? "No error occurred")")
+                    return self.reportError(message: "An error occurred in fetching the share details. Please ensure that the device has active internet connection")
+                }
+                
+                guard let url = share.url, let code = QRCode(url) else {
+                    print("Share \(share) has no url")
+                    return self.reportError(message: "Apologies. This cannot be shared")
+                }
+                
+                let qrController = self.presentingViewController.storyboard?.instantiateViewController(withIdentifier: "qrShareViewControllerID") as! QRShareViewController
+                qrController.code = code
+                self.presentingViewController.present(qrController, animated: true, completion: nil)
+            }
         }
     }
     

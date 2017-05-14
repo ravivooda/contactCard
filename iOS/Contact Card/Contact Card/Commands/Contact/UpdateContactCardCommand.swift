@@ -17,6 +17,10 @@ class UpdateContactCardCommand: Command {
     var progress:Float = -1 {
         didSet {
             NotificationCenter.contactCenter.post(name: self.record.getNotificationNameForRecord(), object: self.record, userInfo: [CCContact.ContactNotificationProgressInfoKey:self.progress])
+            
+            if self.progress == 1 {
+                NotificationCenter.contactCenter.post(name: CNContactStore.ContactsChangedNotification, object: self, userInfo: nil)
+            }
         }
     }
     
@@ -52,6 +56,7 @@ class UpdateContactCardCommand: Command {
                     mutableContact.imageData = imageData
                 }
                 mutableContact.parse(payload: jsonPayload)
+                mutableContact.setupContactIdentifier(record: record)
                 
                 // Save the contact
                 let saveRequest = CNSaveRequest()
@@ -59,6 +64,7 @@ class UpdateContactCardCommand: Command {
                 do {
                     try CNContactStore().execute(saveRequest)
                 } catch let error {
+                    print(error)
                     return self.reportError(message: error.localizedDescription)
                 }
                 self.progress = 1

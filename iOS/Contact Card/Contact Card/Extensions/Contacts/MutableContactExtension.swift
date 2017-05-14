@@ -21,6 +21,8 @@ extension CNMutableContact {
         if let asset = record[CNContact.ImageKey] as? CKAsset, let data = NSData(contentsOf: asset.fileURL) as Foundation.Data?, let _ = UIImage(data: data) {
             self.imageData = data
         }
+        
+        self.setupContactIdentifier(record: record)
     }
     
     func parse(payload:[String: Any]) {
@@ -119,6 +121,18 @@ extension CNMutableContact {
             }
             self.dates = datesArray
         }
+    }
+    
+    public func setupContactIdentifier(record:CKRecord) {
+        var notes = [String]()
+        for line in self.note.components(separatedBy: "\n") {
+            if !line.contains(CCContact.referenceKey) {
+                notes.append(line)
+            }
+        }
+        notes.append("\(CCContact.referenceKey)\(record.recordIdentifier)/\(record.recordChangeTag ?? "")")
+        
+        self.note = notes.joined(separator: "\n")
     }
     
     private func getPhoneNumber(payload:[String : [String:String]]) -> CNLabeledValue<CNPhoneNumber>? {
