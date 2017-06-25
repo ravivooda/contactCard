@@ -28,13 +28,16 @@ class ShowCardCommand: Command, CNContactViewControllerDelegate {
         contactController.allowsActions = false
         card.contact.note = ""
         
-        if let navigationController = presentingViewController.navigationController {
+        /*if let navigationController = presentingViewController.tabBarController?.navigationController {
             navigationController.pushViewController(contactController, animated: true)
         } else {
             let navigationController = UINavigationController(rootViewController: contactController)
             contactController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .plain, target: self, action: #selector(dismiss(sender:)))
             presentingViewController.present(navigationController, animated: true, completion: nil)
-        }
+        }*/
+        let navigationController = UINavigationController(rootViewController: contactController)
+        contactController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .plain, target: self, action: #selector(dismiss(sender:)))
+        presentingViewController.present(navigationController, animated: true, completion: nil)
         
         self.presentedViewController = contactController;
     }
