@@ -16,20 +16,22 @@ extension Data {
         let query = CKQuery(recordType: Manager.contactsRecordType, predicate: predicate)
         
         Manager.contactsContainer.sharedCloudDatabase.fetchAllRecordZones { (recordZones, error) in
-            if let error = error {
-                return reportError(error: error, fail: fail)
-            }
-
-            if recordZones == nil {
-                return reportSuccess(success: success, records: [])
-            }
-            
-            for recordZone in recordZones! {
-                if recordZone.zoneID.zoneName == Manager.contactsZone {
-                    return apiPerform(query, inZoneWith: recordZone.zoneID, database: Manager.contactsContainer.sharedCloudDatabase, viewController: callingViewController, success: success, fail: fail)
+            DispatchQueue.main.async {
+                guard error == nil else {
+                    return reportError(error: error!, fail: fail)
                 }
+                
+                guard let recordZones = recordZones else {
+                    return reportSuccess(success: success, records: [])
+                }
+                
+                for recordZone in recordZones {
+                    if recordZone.zoneID.zoneName == Manager.contactsZone {
+                        return apiPerform(query, inZoneWith: recordZone.zoneID, database: Manager.contactsContainer.sharedCloudDatabase, viewController: callingViewController, success: success, fail: fail)
+                    }
+                }
+                success?([])
             }
-            success?([])
         }
     }
 }

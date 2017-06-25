@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pTx-74-ZQf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pTx-74-ZQf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,7 +34,7 @@
             <objects>
                 <navigationController id="tmd-oe-Alw" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Contacts" id="1fn-UO-EbH"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="G0M-fQ-wnN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="G0M-fQ-wnN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -51,7 +51,7 @@
             <objects>
                 <navigationController id="bxz-dN-VFx" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Cards" id="JIw-On-BX3"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HF0-Ev-PHQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HF0-Ev-PHQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -398,18 +398,20 @@
                                                         <constraint firstAttribute="height" constant="90" id="Y6d-Nf-sh5"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ib1-aA-n6v">
-                                                    <rect key="frame" x="113" y="32" width="254" height="36"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Name" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ib1-aA-n6v">
+                                                    <rect key="frame" x="113" y="0.0" width="254" height="100"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Ib1-aA-n6v" firstAttribute="top" secondItem="AZF-6O-u3i" secondAttribute="top" id="3aF-rk-SA5"/>
                                                 <constraint firstItem="Ib1-aA-n6v" firstAttribute="trailing" secondItem="AZF-6O-u3i" secondAttribute="trailingMargin" id="E2F-gd-Q6g"/>
                                                 <constraint firstItem="UQc-EF-K0y" firstAttribute="leading" secondItem="AZF-6O-u3i" secondAttribute="leading" constant="15" id="ESv-1h-K9X"/>
                                                 <constraint firstItem="Ib1-aA-n6v" firstAttribute="centerY" secondItem="AZF-6O-u3i" secondAttribute="centerY" id="JiT-Vn-3W9"/>
                                                 <constraint firstItem="UQc-EF-K0y" firstAttribute="centerY" secondItem="AZF-6O-u3i" secondAttribute="centerY" id="Sdw-UT-mhS"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ib1-aA-n6v" secondAttribute="bottom" id="mzv-YU-0Rm"/>
                                                 <constraint firstItem="Ib1-aA-n6v" firstAttribute="leading" secondItem="UQc-EF-K0y" secondAttribute="trailing" constant="8" id="nBt-hN-nNG"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -446,7 +448,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pKq-Fd-kxa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2476" y="-161"/>
+            <point key="canvasLocation" x="2476" y="-161.46926536731635"/>
         </scene>
         <!--Reading View Controller-->
         <scene sceneID="qLa-XG-5bW">

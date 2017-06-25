@@ -26,6 +26,7 @@ class ShowCardCommand: Command, CNContactViewControllerDelegate {
         contactController.delegate = self
         contactController.allowsEditing = true
         contactController.allowsActions = false
+        card.contact.note = ""
         
         if let navigationController = presentingViewController.navigationController {
             navigationController.pushViewController(contactController, animated: true)

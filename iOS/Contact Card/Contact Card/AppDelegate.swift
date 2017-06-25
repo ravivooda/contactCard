@@ -19,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     static let moreCardsPurchaseProductIdentifier = "premium_card_purchase"
     
-    static var myContactsViewController:CCMyContactsViewController?
-    static var myCardsViewController:CCMyCardsViewController?
+    static weak var myContactsViewController:CCMyContactsViewController?
+    static weak var myCardsViewController:CCMyCardsViewController?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

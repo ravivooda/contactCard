@@ -208,6 +208,17 @@ class CCMyContactsViewController: UIViewController, UITableViewDataSource, UITab
         return retArray
     }
     
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.5
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView()
+        footerView.frame = CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1)
+        footerView.backgroundColor = tableView.separatorColor
+        return footerView
+    }
+    
     //MARK: - UITableViewDelegate -
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if newContactCellsCount > 0, indexPath.row == 0 {

@@ -20,7 +20,9 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     @IBAction func addNewCard(_ sender: Any) {
         self.addNewCardCommand = NewContactCardCommand(viewController: self, returningCommand: nil)
         self.addNewCardCommand!.execute {
-            self.refreshData()
+            DispatchQueue.main.async {
+                self.refreshData()
+            }
         }
         //NotificationCenter.contactCenter.addObserver(self, selector: #selector(syncLocalContactsWithRemoteUpdates(_:)), name: NSNotification.Name(rawValue: LoginCommand.AuthenticationChangedNotificationKey), object: nil)
     }
@@ -66,6 +68,17 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
             cardCell.card = Manager.defaultManager().cards[indexPath.row]
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.5
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView()
+        footerView.frame = CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1)
+        footerView.backgroundColor = tableView.separatorColor
+        return footerView
     }
     
     //MARK: - UITableViewDelegate -

@@ -14,7 +14,7 @@ class NewContactCardCommand: Command, CNContactViewControllerDelegate {
     
     override func execute(completed: CommandCompleted?) {
         super.execute(completed: completed)
-        /*let nameAlertController = UIAlertController(title: "Name your card", message: "Give your card a name", preferredStyle: .alert)
+        let nameAlertController = UIAlertController(title: "Name your card", message: "Give your card a name", preferredStyle: .alert)
         nameAlertController.addTextField { (textField) in
             
         }
@@ -32,9 +32,9 @@ class NewContactCardCommand: Command, CNContactViewControllerDelegate {
             }
         }))
         nameAlertController.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
-        self.presentingViewController.present(nameAlertController, animated: true, completion: nil)*/
-        self.returningCommand = PurchaseAdditionalCardsCommand(viewController: self.presentingViewController, returningCommand: self)
-        self.returningCommand!.execute(completed: nil)
+        self.presentingViewController.present(nameAlertController, animated: true, completion: nil)
+        /*self.returningCommand = PurchaseAdditionalCardsCommand(viewController: self.presentingViewController, returningCommand: self)
+        self.returningCommand!.execute(completed: nil)*/
     }
     
     //MARK: - CNContactViewControllerDelegate -
