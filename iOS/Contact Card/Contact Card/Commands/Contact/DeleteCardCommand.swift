@@ -9,7 +9,7 @@
 import UIKit
 import CloudKit
 
-class DeleteCardCommand: Command {
+class DeleteCardCommand: Command, UICloudSharingControllerDelegate {
     private let card:CCCard
     
     init(card:CCCard, viewController: UIViewController, returningCommand: Command?) {
@@ -29,13 +29,10 @@ class DeleteCardCommand: Command {
                                 return self.reportRetryError(message: error?.localizedDescription ?? "An error occurred while fetching share details")
                             }
                             
-                            if let participantsController = self.presentingViewController.storyboard?.instantiateViewController(withIdentifier: "participantsTableViewController") as? ParticipantsTableViewController {
-                                participantsController.share = share
-                                participantsController.command = self
-                                self.presentingViewController.present(UINavigationController(rootViewController: participantsController), animated: true, completion: nil)
-                            } else {
-                                return self.reportRetryError(message: "An error occurred while setting up your participants controller")
-                            }
+                            let shareController = UICloudSharingController(share: share, container: Manager.contactsContainer)
+                            shareController.delegate = self
+                            shareController.availablePermissions = [.allowReadOnly,.allowPublic]
+                            self.presentingViewController.present(shareController, animated: true, completion: nil)
                         }
                     })
                 }
@@ -54,5 +51,26 @@ class DeleteCardCommand: Command {
         }))
         confirmDeleteAction.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.presentingViewController.present(confirmDeleteAction, animated: true, completion: nil)
+    }
+    
+    //MARK: - UICloudSharingControllerDelegate -
+    func cloudSharingControllerDidSaveShare(_ csc: UICloudSharingController) {
+        print("Cloud Sharing Controller did save")
+    }
+    
+    func cloudSharingControllerDidStopSharing(_ csc: UICloudSharingController) {
+        print("Cloud Sharing controller did stop sharing")
+    }
+    
+    func cloudSharingController(_ csc: UICloudSharingController, failedToSaveShareWithError error: Error) {
+        print("Cloud sharing controller failed to save - \(error)")
+    }
+    
+    func itemTitle(for csc: UICloudSharingController) -> String? {
+        return "Sharing \(card.record[CNContact.CardNameKey] as? String ?? card.record.getContactName())"
+    }
+    
+    func itemThumbnailData(for csc: UICloudSharingController) -> Foundation.Data? {
+        return card.contact.thumbnailImageData
     }
 }
