@@ -20,6 +20,7 @@
 		9746211A1F1073A70000E8ED /* ContactsDisplayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974621191F1073A70000E8ED /* ContactsDisplayTableViewController.swift */; };
 		974621201F1077770000E8ED /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9746211E1F1077770000E8ED /* SearchResultsViewController.swift */; };
 		974621231F1078F10000E8ED /* SearchExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974621221F1078F10000E8ED /* SearchExtension.swift */; };
+		974621251F107DAF0000E8ED /* card@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 974621241F107DAF0000E8ED /* card@3x.png */; };
 		975AC8EC1E50CF7200AB4DBD /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975AC8EB1E50CF7200AB4DBD /* Card.swift */; };
 		97A2A2DD1E36C2F100D69F6A /* CCCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2DC1E36C2F100D69F6A /* CCCard.swift */; };
 		97A2A2E11E36CE0800D69F6A /* CCCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */; };
@@ -110,6 +111,7 @@
 		974621191F1073A70000E8ED /* ContactsDisplayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsDisplayTableViewController.swift; sourceTree = "<group>"; };
 		9746211E1F1077770000E8ED /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		974621221F1078F10000E8ED /* SearchExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchExtension.swift; sourceTree = "<group>"; };
+		974621241F107DAF0000E8ED /* card@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card@3x.png"; sourceTree = "<group>"; };
 		975AC8EB1E50CF7200AB4DBD /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		97A2A2DC1E36C2F100D69F6A /* CCCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCard.swift; sourceTree = "<group>"; };
 		97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardTableViewCell.swift; sourceTree = "<group>"; };
@@ -420,6 +422,7 @@
 		97B776E21D847B2700FC0A4B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				974621241F107DAF0000E8ED /* card@3x.png */,
 				97B549111EC40F7300668570 /* qr_code@3x.png */,
 				97C1EB301EB6B33000DB72F1 /* Nunito-Bold.ttf */,
 				97C1EB311EB6B33000DB72F1 /* Nunito-Light.ttf */,
@@ -692,6 +695,7 @@
 				97B776DA1D84751C00FC0A4B /* VersionUnsupportedViewController.xib in Resources */,
 				97C1EB331EB6B33000DB72F1 /* Nunito-Bold.ttf in Resources */,
 				97E650631E8819230074F112 /* Settings.bundle in Resources */,
+				974621251F107DAF0000E8ED /* card@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

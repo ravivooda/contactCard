@@ -197,12 +197,12 @@
             </objects>
             <point key="canvasLocation" x="2476" y="-830"/>
         </scene>
-        <!--Contacts-->
+        <!--Navigation Controller-->
         <scene sceneID="tJB-s6-izq">
             <objects>
                 <navigationController id="Ari-pO-1wd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Contacts" id="SWp-aG-Hh6"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xbk-FW-H57">
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="SWp-aG-Hh6"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Xbk-FW-H57">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -218,8 +218,8 @@
         <scene sceneID="Cz4-bI-iSo">
             <objects>
                 <navigationController id="bxz-dN-VFx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Cards" id="JIw-On-BX3"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HF0-Ev-PHQ">
+                    <tabBarItem key="tabBarItem" title="My Cards" image="card.png" id="JIw-On-BX3"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HF0-Ev-PHQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -580,4 +580,7 @@
             <point key="canvasLocation" x="4188" y="-43"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="card.png" width="16" height="16"/>
+    </resources>
 </document>
