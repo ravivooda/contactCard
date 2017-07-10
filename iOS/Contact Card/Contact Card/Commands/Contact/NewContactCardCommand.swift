@@ -16,7 +16,7 @@ class NewContactCardCommand: Command, CNContactViewControllerDelegate {
         super.execute(completed: completed)
         let nameAlertController = UIAlertController(title: "Name your card", message: "Give your card a name", preferredStyle: .alert)
         nameAlertController.addTextField { (textField) in
-            
+            textField.autocapitalizationType = .words
         }
         nameAlertController.addAction(UIAlertAction(title: "Next", style: .default, handler: { (action) in
             if let name = nameAlertController.textFields?.first?.text, name.characters.count > 0 {

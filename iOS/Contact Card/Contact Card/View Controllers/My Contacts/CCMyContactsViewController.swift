@@ -28,6 +28,7 @@ class CCMyContactsViewController: ContactsDisplayTableViewController, CNContactV
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(readQR(sender:)))
         
         self.searchResultsController = self.storyboard?.instantiateViewController(withIdentifier: "searchResultsTableViewController") as! SearchResultsViewController
+        self.searchResultsController.ownerDisplayViewController = self
         
         self.searchController = UISearchController(searchResultsController: self.searchResultsController)
         searchController.searchResultsUpdater = self
@@ -86,6 +87,8 @@ class CCMyContactsViewController: ContactsDisplayTableViewController, CNContactV
         if let _ = LoginCommand.user {
             syncLocalContactsWithRemoteUpdates(nil)
         }
+        
+        //self.openContactUpdate(userInfo: ["recordID": "_63a7116239850fe3777d08cedcd965d1.E318A8A3-2A3F-4103-A4A2-7F28903F8AFD"])
     }
     
     func reloadLocalContactsAndDisplay(store: CNContactStore) {
@@ -143,6 +146,21 @@ class CCMyContactsViewController: ContactsDisplayTableViewController, CNContactV
         }
     }
     
+    func openContactUpdate(userInfo: [AnyHashable: Any]) {
+        self.navigationController?.popToRootViewController(animated: true)
+        if let recordName = userInfo["recordID"] as? String {
+            for i in 0...self.contacts.count {
+                let contact = self.contacts[i]
+                if contact.contactIdentifier?.remoteID == recordName {
+                    self.tableView.scrollToRow(at: IndexPath(row: i, section: 0), at: .middle, animated: true)
+                    return
+                }
+            }
+        }
+        showAlertMessage(message: "An unexpected error occurred while fetching the update. Apologies")
+    }
+    
+    
     private func updateContacts(records:[CKRecord]) {
         print("Found shared contacts : \(records.count) ")
         var contactsToRefMap = [String:CCContact]()
@@ -155,6 +173,7 @@ class CCMyContactsViewController: ContactsDisplayTableViewController, CNContactV
         // Updating or creating new contacts
         self.newContacts = []
         for record in records {
+            print("Record: \(record.getContactName())")
             let recordIdentifier = record.recordIdentifier
             if let contact = contactsToRefMap[recordIdentifier] {
                 if record.recordChangeTag != contact.contactIdentifier!.version {

@@ -73,6 +73,7 @@ class ReadContactQRCommand: Command, AVCaptureMetadataOutputObjectsDelegate {
                 let url = URL(string: metadataObject.stringValue){
                 DispatchQueue.main.async {
                     self.qrController?.dismiss(animated: true, completion: {
+                        print("Found URL: \(url)")
                         UIApplication.shared.open(url, options: [:], completionHandler: nil)
                     })
                     self.qrController = nil

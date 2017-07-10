@@ -98,13 +98,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        print("User Info: \(userInfo)")
-    }
-    
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        print("User Info 2: \(userInfo)")
-        completionHandler(.noData)
+        if let contactViewController = self.window?.rootViewController as? TabBarViewController {
+            <#code#>
+        }
+        ((window!.rootViewController as! TabBarViewController).viewControllers![0] as! CCMyContactsViewController).openContactUpdate(userInfo: <#T##[AnyHashable : Any]#>)
+        AppDelegate.myContactsViewController?.openContactUpdate(userInfo: userInfo)
     }
     
     // MARK: - Core Data stack

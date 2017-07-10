@@ -50,7 +50,7 @@ class ShowCardCommand: Command, CNContactViewControllerDelegate {
     //MARK: - CNContactViewControllerDelegate -
     func contactViewController(_ viewController: CNContactViewController, didCompleteWith contact: CNContact?) {
         if let contact = contact?.mutableCopy() as? CNMutableContact{
-            print("Saving new card \(contact.description)")
+            print("Saving edit card \(contact.description)")
             // Deleting the contact first
             let deleteRequest = CNSaveRequest()
             deleteRequest.delete(contact)

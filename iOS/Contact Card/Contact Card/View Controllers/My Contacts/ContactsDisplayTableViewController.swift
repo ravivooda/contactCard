@@ -17,6 +17,9 @@ class ContactsDisplayTableViewController: UITableViewController {
         return newContacts.count > 0 ? 1 : 0;
     }
     
+    var ownerDisplayViewController:UIViewController? = nil
+    
+    
     var shareCommand:ShareCardCommand? = nil
     var reshareCommand:ReshareContactCardCommand? = nil
     var deleteCommand:DeleteContactCommand? = nil
@@ -37,18 +40,22 @@ class ContactsDisplayTableViewController: UITableViewController {
         return cell
     }
     
+    var getOwnerDisplayViewController:UIViewController {
+        return self.ownerDisplayViewController ?? self
+    }
+    
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         var retArray = [UITableViewRowAction]()
         let index = indexPath.row - self.newContactCellsCount
         if index >= 0 {
             let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete", handler: { (action, indexPath) in
                 let contact = self.contacts[indexPath.row - self.newContactCellsCount]
-                self.deleteCommand = DeleteContactCommand(contact: contact, viewController: self, returningCommand: nil)
+                self.deleteCommand = DeleteContactCommand(contact: contact, viewController: self.getOwnerDisplayViewController, returningCommand: nil)
                 self.deleteCommand?.execute(completed: nil)
             })
             if let _ = self.contacts[indexPath.row - self.newContactCellsCount].contactIdentifier {
                 let shareAction = UITableViewRowAction(style: .normal, title: "Share", handler: { (action, indexPath) in
-                    self.reshareCommand = ReshareContactCardCommand(contact: self.contacts[indexPath.row - self.newContactCellsCount], viewController: self, returningCommand: nil)
+                    self.reshareCommand = ReshareContactCardCommand(contact: self.contacts[indexPath.row - self.newContactCellsCount], viewController: self.getOwnerDisplayViewController, returningCommand: nil)
                     self.reshareCommand?.execute(completed: nil)
                 })
                 retArray.append(shareAction)
@@ -79,7 +86,7 @@ class ContactsDisplayTableViewController: UITableViewController {
             }
             return
         }
-        ShowContactCommand(contact: contacts[indexPath.row - self.newContactCellsCount].contact, viewController: self, returningCommand: nil).execute(completed: nil)
+        ShowContactCommand(contact: contacts[indexPath.row - self.newContactCellsCount].contact, viewController: self.getOwnerDisplayViewController, returningCommand: nil).execute(completed: nil)
     }
 
 }

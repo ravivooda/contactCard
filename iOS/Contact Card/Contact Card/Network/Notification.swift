@@ -48,8 +48,13 @@ extension Data {
                             participantUserIDs.append(userID)
                         }
                     }
+                    var recordID = record.recordIdentifier
+                    if let recordName = record.creatorUserRecordID?.recordName, recordName.contains("__defaultOwner__") {
+                        recordID = "\(LoginCommand.user!.id).\(record.recordID.recordName)"
+                    }
                     let parameters = ["users" : participantUserIDs.joined(separator: ","),
-                                      "message": message]
+                                      "message": message,
+                                      "recordID": recordID]
                     api(.post, api: "notify", parameters: parameters, viewController: nil, success: { (response) in
                         print("Succefully sent update to users \(participantUserIDs) for record \(record)")
                         self.reportSuccess(success: success, records: [])

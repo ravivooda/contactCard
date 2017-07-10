@@ -66,7 +66,6 @@
 		97C1EB1D1EB1AEE200DB72F1 /* UIViewConstraintsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB1C1EB1AEE200DB72F1 /* UIViewConstraintsExtensions.swift */; };
 		97C1EB241EB4499700DB72F1 /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB231EB4499700DB72F1 /* UserDefaultsExtensions.swift */; };
 		97C1EB261EB511BF00DB72F1 /* NotificationCenterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB251EB511BF00DB72F1 /* NotificationCenterExtension.swift */; };
-		97C1EB2A1EB58C4E00DB72F1 /* ParticipantsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB291EB58C4E00DB72F1 /* ParticipantsTableViewController.swift */; };
 		97C1EB2C1EB5A3A800DB72F1 /* ReshareContactCardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB2B1EB5A3A800DB72F1 /* ReshareContactCardCommand.swift */; };
 		97C1EB2F1EB693C700DB72F1 /* ThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB2E1EB693C700DB72F1 /* ThumbnailView.swift */; };
 		97C1EB331EB6B33000DB72F1 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97C1EB301EB6B33000DB72F1 /* Nunito-Bold.ttf */; };
@@ -157,7 +156,6 @@
 		97C1EB1C1EB1AEE200DB72F1 /* UIViewConstraintsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewConstraintsExtensions.swift; sourceTree = "<group>"; };
 		97C1EB231EB4499700DB72F1 /* UserDefaultsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensions.swift; sourceTree = "<group>"; };
 		97C1EB251EB511BF00DB72F1 /* NotificationCenterExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterExtension.swift; sourceTree = "<group>"; };
-		97C1EB291EB58C4E00DB72F1 /* ParticipantsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantsTableViewController.swift; sourceTree = "<group>"; };
 		97C1EB2B1EB5A3A800DB72F1 /* ReshareContactCardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReshareContactCardCommand.swift; sourceTree = "<group>"; };
 		97C1EB2E1EB693C700DB72F1 /* ThumbnailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailView.swift; sourceTree = "<group>"; };
 		97C1EB301EB6B33000DB72F1 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
@@ -308,7 +306,6 @@
 			isa = PBXGroup;
 			children = (
 				97B776BA1D83D3CE00FC0A4B /* CCMyCardsViewController.swift */,
-				97C1EB291EB58C4E00DB72F1 /* ParticipantsTableViewController.swift */,
 			);
 			path = "My Cards";
 			sourceTree = "<group>";
@@ -815,7 +812,6 @@
 				97C1EB391EB6CCD800DB72F1 /* QRReadingViewController.swift in Sources */,
 				97B776E71D847C6900FC0A4B /* Auth.swift in Sources */,
 				97B549221EC7FEAA00668570 /* PurchaseAdditionalCardsCommand.swift in Sources */,
-				97C1EB2A1EB58C4E00DB72F1 /* ParticipantsTableViewController.swift in Sources */,
 				97A2A2E11E36CE0800D69F6A /* CCCardTableViewCell.swift in Sources */,
 				97C1EB181EB1A73F00DB72F1 /* AddContactTableViewCell.swift in Sources */,
 				97064C6E1D83CF44008EF6B3 /* Contact_Card.xcdatamodeld in Sources */,

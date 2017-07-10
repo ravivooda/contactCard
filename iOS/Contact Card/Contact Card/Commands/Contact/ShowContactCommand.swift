@@ -12,12 +12,12 @@ import ContactsUI
 
 class ShowContactCommand: Command, CNContactViewControllerDelegate {
     let contact:CNContact
-    let cnController:CNContactViewController
+    let cnController:CCContactViewController
     
     
     init(contact:CNContact, viewController: UIViewController, returningCommand: Command?) {
         self.contact = contact
-        self.cnController = CNContactViewController(for: self.contact)
+        self.cnController = CCContactViewController(for: self.contact)
         super.init(viewController: viewController, returningCommand: returningCommand)
     }
     
@@ -26,6 +26,7 @@ class ShowContactCommand: Command, CNContactViewControllerDelegate {
         cnController.allowsEditing = false
         cnController.allowsActions = false
         cnController.delegate = self
+        cnController.command = self
         if let navigationController = presentingViewController.navigationController {
             navigationController.pushViewController(cnController, animated: true)
         } else {
