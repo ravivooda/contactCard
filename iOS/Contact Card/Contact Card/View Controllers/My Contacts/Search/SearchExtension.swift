@@ -15,16 +15,15 @@ extension CCMyContactsViewController: UISearchResultsUpdating {
             return
         }
         
-        self.searchResultsController.contactSections = []
-        
-        for section in self.searchResultsController.contactSections {
+        let sectionForResults:ContactsDisplayTableViewController.ContactSection = ContactSection(name: "", contacts: [])
+        for section in self.contactSections {
             for contact in section.contacts {
                 if contact.displayName().contains(searchText) {
-                    //self.searchResultsController.contacts.append(contact)
+                    sectionForResults.contacts.append(contact)
                 }
             }
         }
-        
+        self.searchResultsController.contactSections = [sectionForResults]
         self.searchResultsController.tableView.reloadData()
     }
 }

@@ -33,7 +33,7 @@ class ContactsDisplayTableViewController: UITableViewController {
     var shareCommand:ShareCardCommand? = nil
     var reshareCommand:ReshareContactCardCommand? = nil
     var deleteCommand:DeleteContactCommand? = nil
-
+    
     //MARK: - UITableViewDataSource -
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -81,23 +81,25 @@ class ContactsDisplayTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        var retArray = [UITableViewRowAction]()
-        let index = indexPath.row - self.newContactCellsCount
-        if index >= 0 {
-            /*let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete", handler: { (action, indexPath) in
-                let contact =  self.contacts[indexPath.row - self.newContactCellsCount]
-                self.deleteCommand = DeleteContactCommand(contact: contact, viewController: self.getOwnerDisplayViewController, returningCommand: nil)
-                self.deleteCommand?.execute(completed: nil)
-            })
-            if let _ = self.contacts[indexPath.row - self.newContactCellsCount].contactIdentifier {
-                let shareAction = UITableViewRowAction(style: .normal, title: "Share", handler: { (action, indexPath) in
-                    self.reshareCommand = ReshareContactCardCommand(contact: self.contacts[indexPath.row - self.newContactCellsCount], viewController: self.getOwnerDisplayViewController, returningCommand: nil)
-                    self.reshareCommand?.execute(completed: nil)
-                })
-                retArray.append(shareAction)
-            }
-            retArray.append(deleteAction)*/
+        if indexPath.section == 0 && newContactCellsCount != 0 {
+            return []
         }
+        
+        var retArray:[UITableViewRowAction] = []
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete", handler: { (action, indexPath) in
+            let contact = self.contactSections[indexPath.section - self.newContactCellsCount].contacts[indexPath.row]
+            self.deleteCommand = DeleteContactCommand(contact: contact, viewController: self.getOwnerDisplayViewController, returningCommand: nil)
+            self.deleteCommand?.execute(completed: nil)
+        })
+        if let _ = contactSections[indexPath.section - newContactCellsCount].contacts[indexPath.row].contactIdentifier {
+            let shareAction = UITableViewRowAction(style: .normal, title: "Share", handler: { (action, indexPath) in
+                let contact = self.contactSections[indexPath.section - self.newContactCellsCount].contacts[indexPath.row]
+                self.reshareCommand = ReshareContactCardCommand(contact: contact, viewController: self.getOwnerDisplayViewController, returningCommand: nil)
+                self.reshareCommand?.execute(completed: nil)
+            })
+            retArray.append(shareAction)
+        }
+        retArray.append(deleteAction)
         return retArray
     }
     
@@ -114,7 +116,7 @@ class ContactsDisplayTableViewController: UITableViewController {
     
     //MARK: - UITableViewDelegate -
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if newContactCellsCount > 0, indexPath.row == 0 {
+        if newContactCellsCount > 0, indexPath.section == 0 {
             if let addContactsViewController = self.storyboard?.instantiateViewController(withIdentifier: "addContactsViewController") as? AddContactsViewController {
                 let navigationController = UINavigationController(rootViewController: addContactsViewController)
                 addContactsViewController.cards = self.newContacts
@@ -122,7 +124,7 @@ class ContactsDisplayTableViewController: UITableViewController {
             }
             return
         }
-        //ShowContactCommand(contact: contacts[indexPath.row - self.newContactCellsCount].contact, viewController: self.getOwnerDisplayViewController, returningCommand: nil).execute(completed: nil)
+        ShowContactCommand(contact: contactSections[indexPath.section - newContactCellsCount].contacts[indexPath.row].contact, viewController: self.getOwnerDisplayViewController, returningCommand: nil).execute(completed: nil)
     }
-
+    
 }
