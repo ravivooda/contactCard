@@ -21,6 +21,7 @@
 		974621201F1077770000E8ED /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9746211E1F1077770000E8ED /* SearchResultsViewController.swift */; };
 		974621231F1078F10000E8ED /* SearchExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974621221F1078F10000E8ED /* SearchExtension.swift */; };
 		974621251F107DAF0000E8ED /* card@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 974621241F107DAF0000E8ED /* card@3x.png */; };
+		97552BF21F2CF008004DC0FE /* UpgradeAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97552BF11F2CF008004DC0FE /* UpgradeAccountViewController.swift */; };
 		975AC8EC1E50CF7200AB4DBD /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975AC8EB1E50CF7200AB4DBD /* Card.swift */; };
 		97A2A2DD1E36C2F100D69F6A /* CCCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2DC1E36C2F100D69F6A /* CCCard.swift */; };
 		97A2A2E11E36CE0800D69F6A /* CCCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */; };
@@ -111,6 +112,7 @@
 		9746211E1F1077770000E8ED /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		974621221F1078F10000E8ED /* SearchExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchExtension.swift; sourceTree = "<group>"; };
 		974621241F107DAF0000E8ED /* card@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card@3x.png"; sourceTree = "<group>"; };
+		97552BF11F2CF008004DC0FE /* UpgradeAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeAccountViewController.swift; sourceTree = "<group>"; };
 		975AC8EB1E50CF7200AB4DBD /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		97A2A2DC1E36C2F100D69F6A /* CCCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCard.swift; sourceTree = "<group>"; };
 		97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardTableViewCell.swift; sourceTree = "<group>"; };
@@ -265,6 +267,14 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		97552BF01F2CEFD8004DC0FE /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				97552BF11F2CF008004DC0FE /* UpgradeAccountViewController.swift */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
 		97B5490E1EC40B0800668570 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +302,7 @@
 		97B776B71D83D38A00FC0A4B /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				97552BF01F2CEFD8004DC0FE /* Payment */,
 				97B5491D1EC7EDE200668570 /* QR */,
 				BCEEE5381E4C0B5800D2651A /* Auth */,
 				97B776D11D8471E600FC0A4B /* Other */,
@@ -633,7 +644,7 @@
 				TargetAttributes = {
 					97064C611D83CF44008EF6B3 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = RKG87GFEV3;
+						DevelopmentTeam = 7G9ENUUMKQ;
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.ApplePay = {
@@ -797,6 +808,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97C1EB401EB98F2500DB72F1 /* MutableContactExtension.swift in Sources */,
+				97552BF21F2CF008004DC0FE /* UpgradeAccountViewController.swift in Sources */,
 				97E650581E8710B60074F112 /* Contact.swift in Sources */,
 				97C1EAFE1EAD09D300DB72F1 /* RecordExtension.swift in Sources */,
 				97C1EB441EBE3E0400DB72F1 /* NewContactsAvailableTableViewCell.swift in Sources */,
@@ -980,10 +992,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Contact Card/Contact Card.entitlements";
-				DEVELOPMENT_TEAM = RKG87GFEV3;
+				DEVELOPMENT_TEAM = 7G9ENUUMKQ;
 				INFOPLIST_FILE = "Contact Card/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Contacts.Contact-Card";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MN.Contact-Card";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -996,10 +1008,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Contact Card/Contact Card.entitlements";
-				DEVELOPMENT_TEAM = RKG87GFEV3;
+				DEVELOPMENT_TEAM = 7G9ENUUMKQ;
 				INFOPLIST_FILE = "Contact Card/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Contacts.Contact-Card";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MN.Contact-Card";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

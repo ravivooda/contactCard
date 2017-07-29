@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    static let moreCardsPurchaseProductIdentifier = "premium_card_purchase"
+    static let moreCardsPurchaseProductIdentifier = "com.MN.moreCards"
     
     static weak var myContactsViewController:CCMyContactsViewController?
     static weak var myCardsViewController:CCMyCardsViewController?

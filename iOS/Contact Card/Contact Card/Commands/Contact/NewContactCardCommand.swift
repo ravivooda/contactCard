@@ -12,8 +12,15 @@ class NewContactCardCommand: Command, CNContactViewControllerDelegate {
     private var name:String = ""
     private var contact:CNContact?
     
+    func purchaseCards() {
+        PurchaseAdditionalCardsCommand(viewController: self.presentingViewController, returningCommand: self).execute(completed: nil)
+    }
+    
     override func execute(completed: CommandCompleted?) {
         super.execute(completed: completed)
+        if true {
+            return purchaseCards()
+        }
         let nameAlertController = UIAlertController(title: "Name your card", message: "Give your card a name", preferredStyle: .alert)
         nameAlertController.addTextField { (textField) in
             textField.autocapitalizationType = .words
