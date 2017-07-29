@@ -10,4 +10,9 @@ import UIKit
 
 class SearchResultsViewController: ContactsDisplayTableViewController {
 
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return nil
+    }
+    
+    
 }

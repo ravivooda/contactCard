@@ -10,7 +10,17 @@ import UIKit
 
 class ContactsDisplayTableViewController: UITableViewController {
     
-    var contacts:[CCContact] = []
+    class ContactSection: AnyObject {
+        var name:String
+        var contacts:[CCContact]
+        
+        init(name:String, contacts:[CCContact]) {
+            self.name = name
+            self.contacts = contacts
+        }
+    }
+    
+    var contactSections:[ContactSection] = []
     var newContacts:[AddContactCardCommand] = []
     
     var newContactCellsCount: Int {
@@ -25,8 +35,34 @@ class ContactsDisplayTableViewController: UITableViewController {
     var deleteCommand:DeleteContactCommand? = nil
 
     //MARK: - UITableViewDataSource -
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return contactSections.count + newContactCellsCount;
+    }
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        var indexes:[String] = []
+        if newContactCellsCount > 0 {
+            indexes.append("+")
+        }
+        for section in self.contactSections {
+            indexes.append(section.name)
+        }
+        return indexes
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if newContactCellsCount > 0, section == 0 {
+            return "+"
+        }
+        return contactSections[section - newContactCellsCount].name
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contacts.count + newContactCellsCount;
+        if newContactCellsCount > 0, section == 0 {
+            return 1
+        }
+        return contactSections[section - newContactCellsCount].contacts.count;
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -36,7 +72,7 @@ class ContactsDisplayTableViewController: UITableViewController {
             return cell
         }
         let cell:CCContactTableViewCell = tableView.dequeueReusableCell(withIdentifier: "contactTableViewCellIdentifier", for: indexPath) as! CCContactTableViewCell
-        cell.contact = contacts[indexPath.row - self.newContactCellsCount]
+        cell.contact = contactSections[indexPath.section - newContactCellsCount].contacts[indexPath.row] //contacts[indexPath.row - self.newContactCellsCount]
         return cell
     }
     
@@ -48,8 +84,8 @@ class ContactsDisplayTableViewController: UITableViewController {
         var retArray = [UITableViewRowAction]()
         let index = indexPath.row - self.newContactCellsCount
         if index >= 0 {
-            let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete", handler: { (action, indexPath) in
-                let contact = self.contacts[indexPath.row - self.newContactCellsCount]
+            /*let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete", handler: { (action, indexPath) in
+                let contact =  self.contacts[indexPath.row - self.newContactCellsCount]
                 self.deleteCommand = DeleteContactCommand(contact: contact, viewController: self.getOwnerDisplayViewController, returningCommand: nil)
                 self.deleteCommand?.execute(completed: nil)
             })
@@ -60,7 +96,7 @@ class ContactsDisplayTableViewController: UITableViewController {
                 })
                 retArray.append(shareAction)
             }
-            retArray.append(deleteAction)
+            retArray.append(deleteAction)*/
         }
         return retArray
     }
@@ -86,7 +122,7 @@ class ContactsDisplayTableViewController: UITableViewController {
             }
             return
         }
-        ShowContactCommand(contact: contacts[indexPath.row - self.newContactCellsCount].contact, viewController: self.getOwnerDisplayViewController, returningCommand: nil).execute(completed: nil)
+        //ShowContactCommand(contact: contacts[indexPath.row - self.newContactCellsCount].contact, viewController: self.getOwnerDisplayViewController, returningCommand: nil).execute(completed: nil)
     }
 
 }

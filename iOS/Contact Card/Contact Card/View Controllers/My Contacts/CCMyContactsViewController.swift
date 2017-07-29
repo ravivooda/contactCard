@@ -42,9 +42,11 @@ class CCMyContactsViewController: ContactsDisplayTableViewController, CNContactV
     
     func contactUpdateChangedNotification(notification:Notification) {
         self.updateBarBadge()
-        for contact in self.contacts {
-            if let updateCommand = contact.updateContactCommand, updateCommand.progress != 1 {
-                return
+        for section in self.contactSections {
+            for contact in section.contacts {
+                if let updateCommand = contact.updateContactCommand, updateCommand.progress != 1 {
+                    return
+                }
             }
         }
         
@@ -57,9 +59,11 @@ class CCMyContactsViewController: ContactsDisplayTableViewController, CNContactV
     
     private func updateBarBadge() {
         var updateCount = 0;
-        for contact in self.contacts {
-            if let updateCommand = contact.updateContactCommand, updateCommand.progress != 1 {
-                updateCount += 1
+        for section in self.contactSections {
+            for contact in section.contacts {
+                if let updateCommand = contact.updateContactCommand, updateCommand.progress != 1 {
+                    updateCount += 1
+                }
             }
         }
         
@@ -77,8 +81,10 @@ class CCMyContactsViewController: ContactsDisplayTableViewController, CNContactV
     }
     
     func updateAllCallback(sender:UIBarButtonItem) {
-        for contact in self.contacts {
-            contact.updateContactCommand?.execute(completed: nil)
+        for section in self.contactSections {
+            for contact in section.contacts {
+                contact.updateContactCommand?.execute(completed: nil)
+            }
         }
     }
     
@@ -93,9 +99,44 @@ class CCMyContactsViewController: ContactsDisplayTableViewController, CNContactV
     
     func reloadLocalContactsAndDisplay(store: CNContactStore) {
         do {
-            try self.contacts = store.fetchAllContacts()
+            let contacts = try store.fetchAllContacts()
+            var sections:[String: ContactsDisplayTableViewController.ContactSection] = [:]
+            
+            for contact in contacts {
+                var name = "#"
+                if let character = contact.contact.familyName.characters.first ??
+                    contact.contact.givenName.characters.first ??
+                    contact.contact.fullName.characters.first {
+                    name = "\(character)"
+                }
+                
+                let sectionContact:ContactSection = sections[name] ?? ContactSection(name: name, contacts: [])
+                sectionContact.contacts.append(contact)
+                sections[name] = sectionContact
+            }
+            
+            var unorderedSections:[ContactsDisplayTableViewController.ContactSection] = []
+            
+            for (_,section) in sections {
+                unorderedSections.append(section)
+            }
+            unorderedSections.sort(by: { (a, b) -> Bool in
+                //print("Comparing: \(a.name) : \(b.name)")
+                if a.name.hasPrefix("#") {
+                    return false
+                } else if b.name.hasPrefix("#") {
+                    return true
+                } else if a.name.hasPrefix("+") {
+                    return true
+                } else if b.name.hasPrefix("+") {
+                    return false
+                }
+                return a.name.localizedCaseInsensitiveCompare(b.name) == .orderedAscending
+            })
+            
+            self.contactSections = unorderedSections // Ordered now
         } catch let error {
-            self.contacts = []
+            self.contactSections = []
             self.showAlertMessage(message: "An error occurred while reading your contacts - \(error.localizedDescription).\nPlease note, we never use your contact data for any other purpose")
         }
         
@@ -125,7 +166,7 @@ class CCMyContactsViewController: ContactsDisplayTableViewController, CNContactV
             showSettingsAlertMessage(message: "Apologies. We need access to your contacts for maintaining your contacts.\nPlease note, we never use your contact data for any other purpose")
             break
         case .authorized:
-            if self.contacts.count == 0 {
+            if self.contactSections.count == 0 {
                 reloadLocalContactsAndDisplay(store: store)
             }
             Data.syncContacts(callingViewController: nil, success: { (records) in
@@ -149,11 +190,14 @@ class CCMyContactsViewController: ContactsDisplayTableViewController, CNContactV
     func openContactUpdate(userInfo: [AnyHashable: Any]) {
         self.navigationController?.popToRootViewController(animated: true)
         if let recordName = userInfo["recordID"] as? String {
-            for i in 0...self.contacts.count {
-                let contact = self.contacts[i]
-                if contact.contactIdentifier?.remoteID == recordName {
-                    self.tableView.scrollToRow(at: IndexPath(row: i, section: 0), at: .middle, animated: true)
-                    return
+            for i in 0...self.contactSections.count {
+                let section = self.contactSections[i]
+                for j in 0...section.contacts.count {
+                    let contact = section.contacts[j]
+                    if contact.contactIdentifier?.remoteID == recordName {
+                        self.tableView.scrollToRow(at: IndexPath(row: i, section: 0), at: .middle, animated: true)
+                        return
+                    }
                 }
             }
         }
@@ -164,9 +208,11 @@ class CCMyContactsViewController: ContactsDisplayTableViewController, CNContactV
     private func updateContacts(records:[CKRecord]) {
         print("Found shared contacts : \(records.count) ")
         var contactsToRefMap = [String:CCContact]()
-        for contact in self.contacts {
-            if let identifier = contact.contactIdentifier {
-                contactsToRefMap[identifier.remoteID] = contact
+        for section in self.contactSections {
+            for contact in section.contacts {
+                if let identifier = contact.contactIdentifier {
+                    contactsToRefMap[identifier.remoteID] = contact
+                }
             }
         }
         

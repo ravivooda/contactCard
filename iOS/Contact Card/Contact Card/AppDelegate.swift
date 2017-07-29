@@ -99,10 +99,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        if let contactViewController = self.window?.rootViewController as? TabBarViewController {
-            <#code#>
-        }
-        ((window!.rootViewController as! TabBarViewController).viewControllers![0] as! CCMyContactsViewController).openContactUpdate(userInfo: <#T##[AnyHashable : Any]#>)
         AppDelegate.myContactsViewController?.openContactUpdate(userInfo: userInfo)
     }
     
