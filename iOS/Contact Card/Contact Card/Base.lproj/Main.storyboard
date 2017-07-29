@@ -285,11 +285,11 @@
             </objects>
             <point key="canvasLocation" x="3356" y="-832.53373313343332"/>
         </scene>
-        <!--I-->
+        <!--Contacts-->
         <scene sceneID="tJB-s6-izq">
             <objects>
                 <navigationController id="Ari-pO-1wd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="I" image="contacts.png" id="SWp-aG-Hh6"/>
+                    <tabBarItem key="tabBarItem" title="Contacts" image="contacts.png" id="SWp-aG-Hh6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xbk-FW-H57">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
