@@ -23,6 +23,7 @@
 		974621251F107DAF0000E8ED /* card@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 974621241F107DAF0000E8ED /* card@3x.png */; };
 		97552BF21F2CF008004DC0FE /* UpgradeAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97552BF11F2CF008004DC0FE /* UpgradeAccountViewController.swift */; };
 		975AC8EC1E50CF7200AB4DBD /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975AC8EB1E50CF7200AB4DBD /* Card.swift */; };
+		977769E41F2D311600FFC8E5 /* contacts@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 977769E31F2D311600FFC8E5 /* contacts@3x.png */; };
 		97A2A2DD1E36C2F100D69F6A /* CCCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2DC1E36C2F100D69F6A /* CCCard.swift */; };
 		97A2A2E11E36CE0800D69F6A /* CCCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */; };
 		97B5490B1EC3ED6900668570 /* InviteUserCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B5490A1EC3ED6900668570 /* InviteUserCommand.swift */; };
@@ -114,6 +115,7 @@
 		974621241F107DAF0000E8ED /* card@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card@3x.png"; sourceTree = "<group>"; };
 		97552BF11F2CF008004DC0FE /* UpgradeAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeAccountViewController.swift; sourceTree = "<group>"; };
 		975AC8EB1E50CF7200AB4DBD /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		977769E31F2D311600FFC8E5 /* contacts@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contacts@3x.png"; sourceTree = "<group>"; };
 		97A2A2DC1E36C2F100D69F6A /* CCCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCard.swift; sourceTree = "<group>"; };
 		97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardTableViewCell.swift; sourceTree = "<group>"; };
 		97B5490A1EC3ED6900668570 /* InviteUserCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteUserCommand.swift; sourceTree = "<group>"; };
@@ -430,6 +432,7 @@
 		97B776E21D847B2700FC0A4B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				977769E31F2D311600FFC8E5 /* contacts@3x.png */,
 				974621241F107DAF0000E8ED /* card@3x.png */,
 				97B549111EC40F7300668570 /* qr_code@3x.png */,
 				97C1EB301EB6B33000DB72F1 /* Nunito-Bold.ttf */,
@@ -700,6 +703,7 @@
 				97064C6B1D83CF44008EF6B3 /* Main.storyboard in Resources */,
 				97B776EF1D84812900FC0A4B /* LoadingViewController.xib in Resources */,
 				97B549121EC40F7300668570 /* qr_code@3x.png in Resources */,
+				977769E41F2D311600FFC8E5 /* contacts@3x.png in Resources */,
 				97B776DA1D84751C00FC0A4B /* VersionUnsupportedViewController.xib in Resources */,
 				97C1EB331EB6B33000DB72F1 /* Nunito-Bold.ttf in Resources */,
 				97E650631E8819230074F112 /* Settings.bundle in Resources */,

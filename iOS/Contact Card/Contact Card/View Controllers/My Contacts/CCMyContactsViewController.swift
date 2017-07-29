@@ -190,12 +190,10 @@ class CCMyContactsViewController: ContactsDisplayTableViewController, CNContactV
     func openContactUpdate(userInfo: [AnyHashable: Any]) {
         self.navigationController?.popToRootViewController(animated: true)
         if let recordName = userInfo["recordID"] as? String {
-            for i in 0...self.contactSections.count {
-                let section = self.contactSections[i]
-                for j in 0...section.contacts.count {
-                    let contact = section.contacts[j]
+            for (section, contactSection) in self.contactSections.enumerated() {
+                for (row, contact) in contactSection.contacts.enumerated() {
                     if contact.contactIdentifier?.remoteID == recordName {
-                        self.tableView.scrollToRow(at: IndexPath(row: i, section: 0), at: .middle, animated: true)
+                        self.tableView.scrollToRow(at: IndexPath(row: row, section:section), at: .middle, animated: true)
                         return
                     }
                 }

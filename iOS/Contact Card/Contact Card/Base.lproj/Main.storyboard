@@ -285,11 +285,11 @@
             </objects>
             <point key="canvasLocation" x="3356" y="-832.53373313343332"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--I-->
         <scene sceneID="tJB-s6-izq">
             <objects>
                 <navigationController id="Ari-pO-1wd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="SWp-aG-Hh6"/>
+                    <tabBarItem key="tabBarItem" title="I" image="contacts.png" id="SWp-aG-Hh6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xbk-FW-H57">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -670,5 +670,6 @@
     </scenes>
     <resources>
         <image name="card.png" width="16" height="16"/>
+        <image name="contacts.png" width="16" height="16"/>
     </resources>
 </document>
