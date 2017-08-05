@@ -15,6 +15,7 @@ class UpgradeAccountViewController: UIViewController {
 
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var restoreButton: UIButton!
+    @IBOutlet weak var maybeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,10 @@ class UpgradeAccountViewController: UIViewController {
         self.view.addBackgroundGradient(startColor: UIColor(hexString: "1fd1c7")!, endColor: UIColor(hexString: "1faee9")!)
     }
 
+    @IBAction func maybeLaterClicked(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func restoreClicked(_ sender: UIButton) {
         command.restore()
     }

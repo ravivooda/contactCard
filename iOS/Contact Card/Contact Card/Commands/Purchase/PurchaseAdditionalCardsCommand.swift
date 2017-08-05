@@ -61,12 +61,14 @@ class PurchaseAdditionalCardsCommand: Command, SKProductsRequestDelegate, SKPaym
         let upgradeViewController = self.presentedViewController as! UpgradeAccountViewController
         upgradeViewController.buyButton.isEnabled = true
         upgradeViewController.restoreButton.isEnabled = true
+        upgradeViewController.maybeButton.isEnabled = true
     }
     
     func disableUserInteraction() {
         let upgradeViewController = self.presentedViewController as! UpgradeAccountViewController
         upgradeViewController.buyButton.isEnabled = false
         upgradeViewController.restoreButton.isEnabled = false
+        upgradeViewController.maybeButton.isEnabled = false
     }
     
     //MARK: - SKProductsRequestDelegate -
@@ -156,5 +158,9 @@ class PurchaseAdditionalCardsCommand: Command, SKProductsRequestDelegate, SKPaym
         self.presentedViewController!.dismiss(animated: true) { 
             super.finished()
         }
+    }
+    
+    deinit {
+        SKPaymentQueue.default().remove(self)
     }
 }

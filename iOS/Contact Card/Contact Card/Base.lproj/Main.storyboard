@@ -218,6 +218,9 @@
                                 <state key="normal" title="Maybe Later">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="maybeLaterClicked:" destination="ZrI-uI-41k" eventType="touchUpInside" id="1RU-ml-X4x"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JHS-Zn-iCG">
                                 <rect key="frame" x="0.0" y="577" width="375" height="60"/>
@@ -387,6 +390,7 @@
                     </view>
                     <connections>
                         <outlet property="buyButton" destination="ojp-80-Rd7" id="LAa-M5-rnP"/>
+                        <outlet property="maybeButton" destination="zFw-SN-gIO" id="09w-8G-3WH"/>
                         <outlet property="restoreButton" destination="n1m-HF-Pxr" id="ApS-l4-OaI"/>
                     </connections>
                 </viewController>
