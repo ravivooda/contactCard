@@ -5,6 +5,7 @@ PODS:
     - Material/Core (= 2.4.8)
   - Material/Core (2.4.8)
   - QRCode (2.0)
+  - SwiftHEXColors (1.1.0)
   - SwiftKeychainWrapper (3.0.1)
 
 DEPENDENCIES:
@@ -12,6 +13,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - Material
   - QRCode
+  - SwiftHEXColors
   - SwiftKeychainWrapper
 
 SPEC CHECKSUMS:
@@ -19,8 +21,9 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: c04bc9f68473823f825eb44d958fce98d921bead
   Material: b5d946bf46c51bc83b726602cb04b7793b8256fe
   QRCode: f98a1886c8f37523704a7512a4c0cd45b34c18a4
+  SwiftHEXColors: 8f7e364df7929e32cff9f9eeb044bb215167d6be
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
 
-PODFILE CHECKSUM: fe4cc1405aafee97fd0cff4150318841481e3f4c
+PODFILE CHECKSUM: 9eb44dee83eb794e32681eff0334bc71813940f8
 
 COCOAPODS: 1.0.0

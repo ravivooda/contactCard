@@ -88,6 +88,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Material/Material.framework"
   install_framework "$BUILT_PRODUCTS_DIR/QRCode/QRCode.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SwiftHEXColors/SwiftHEXColors.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftKeychainWrapper/SwiftKeychainWrapper.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -95,5 +96,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Material/Material.framework"
   install_framework "$BUILT_PRODUCTS_DIR/QRCode/QRCode.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SwiftHEXColors/SwiftHEXColors.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftKeychainWrapper/SwiftKeychainWrapper.framework"
 fi

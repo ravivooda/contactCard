@@ -11,5 +11,6 @@ target 'Contact Card' do
   pod 'IQKeyboardManagerSwift'
   pod 'SwiftKeychainWrapper'
   pod 'QRCode'
+  pod 'SwiftHEXColors'
 
 end

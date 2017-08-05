@@ -39,6 +39,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwiftHEXColors.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SwiftKeychainWrapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,7 +67,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>67E09DB688802040331FF6E69EC34ACF</key>
+		<key>535E4A84986CFFC3BD940DF1D27CFE21</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6DF7AC117DD9E0483B414FBC1FA55E33</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7968FC9AEA32AE8E2A759C4A06224FF2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,12 +87,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9A3C4DC6D73E61F020B23687080154E0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D83A074F9F9C787A59D9A22A561DAB5D</key>
+		<key>B16B1A3BBACC15D903F66D627D291F38</key>
 		<dict>
 			<key>primary</key>
 			<true/>

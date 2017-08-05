@@ -26,6 +26,8 @@
 		977769E41F2D311600FFC8E5 /* contacts@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 977769E31F2D311600FFC8E5 /* contacts@3x.png */; };
 		97A2A2DD1E36C2F100D69F6A /* CCCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2DC1E36C2F100D69F6A /* CCCard.swift */; };
 		97A2A2E11E36CE0800D69F6A /* CCCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */; };
+		97AC31651F3620380083A553 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AC31641F3620380083A553 /* GradientView.swift */; };
+		97AC31671F362A990083A553 /* premium-diamond@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97AC31661F362A990083A553 /* premium-diamond@3x.png */; };
 		97B5490B1EC3ED6900668570 /* InviteUserCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B5490A1EC3ED6900668570 /* InviteUserCommand.swift */; };
 		97B549101EC40B3B00668570 /* QRCodeActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B5490F1EC40B3B00668570 /* QRCodeActivity.swift */; };
 		97B549121EC40F7300668570 /* qr_code@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B549111EC40F7300668570 /* qr_code@3x.png */; };
@@ -118,6 +120,8 @@
 		977769E31F2D311600FFC8E5 /* contacts@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contacts@3x.png"; sourceTree = "<group>"; };
 		97A2A2DC1E36C2F100D69F6A /* CCCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCard.swift; sourceTree = "<group>"; };
 		97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardTableViewCell.swift; sourceTree = "<group>"; };
+		97AC31641F3620380083A553 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		97AC31661F362A990083A553 /* premium-diamond@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "premium-diamond@3x.png"; sourceTree = "<group>"; };
 		97B5490A1EC3ED6900668570 /* InviteUserCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteUserCommand.swift; sourceTree = "<group>"; };
 		97B5490F1EC40B3B00668570 /* QRCodeActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeActivity.swift; sourceTree = "<group>"; };
 		97B549111EC40F7300668570 /* qr_code@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_code@3x.png"; sourceTree = "<group>"; };
@@ -277,6 +281,14 @@
 			path = Payment;
 			sourceTree = "<group>";
 		};
+		97AC31631F3620100083A553 /* Gradient */ = {
+			isa = PBXGroup;
+			children = (
+				97AC31641F3620380083A553 /* GradientView.swift */,
+			);
+			path = Gradient;
+			sourceTree = "<group>";
+		};
 		97B5490E1EC40B0800668570 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,6 +384,7 @@
 		97B776C71D846C8C00FC0A4B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				97AC31631F3620100083A553 /* Gradient */,
 				97C1EB2D1EB6939E00DB72F1 /* Contact Thumbnail */,
 				97C1EB191EB1ACC700DB72F1 /* Progress Views */,
 				97C1EB0A1EAD979200DB72F1 /* Buttons */,
@@ -432,6 +445,7 @@
 		97B776E21D847B2700FC0A4B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				97AC31661F362A990083A553 /* premium-diamond@3x.png */,
 				977769E31F2D311600FFC8E5 /* contacts@3x.png */,
 				974621241F107DAF0000E8ED /* card@3x.png */,
 				97B549111EC40F7300668570 /* qr_code@3x.png */,
@@ -705,6 +719,7 @@
 				97B549121EC40F7300668570 /* qr_code@3x.png in Resources */,
 				977769E41F2D311600FFC8E5 /* contacts@3x.png in Resources */,
 				97B776DA1D84751C00FC0A4B /* VersionUnsupportedViewController.xib in Resources */,
+				97AC31671F362A990083A553 /* premium-diamond@3x.png in Resources */,
 				97C1EB331EB6B33000DB72F1 /* Nunito-Bold.ttf in Resources */,
 				97E650631E8819230074F112 /* Settings.bundle in Resources */,
 				974621251F107DAF0000E8ED /* card@3x.png in Resources */,
@@ -813,6 +828,7 @@
 			files = (
 				97C1EB401EB98F2500DB72F1 /* MutableContactExtension.swift in Sources */,
 				97552BF21F2CF008004DC0FE /* UpgradeAccountViewController.swift in Sources */,
+				97AC31651F3620380083A553 /* GradientView.swift in Sources */,
 				97E650581E8710B60074F112 /* Contact.swift in Sources */,
 				97C1EAFE1EAD09D300DB72F1 /* RecordExtension.swift in Sources */,
 				97C1EB441EBE3E0400DB72F1 /* NewContactsAvailableTableViewCell.swift in Sources */,

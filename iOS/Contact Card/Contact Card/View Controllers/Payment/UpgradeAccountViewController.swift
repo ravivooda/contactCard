@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftHEXColors
 
 class UpgradeAccountViewController: UIViewController {
     
@@ -19,6 +20,8 @@ class UpgradeAccountViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.view.addBackgroundGradient(startColor: UIColor(hexString: "1fd1c7")!, endColor: UIColor(hexString: "1faee9")!)
     }
 
     @IBAction func restoreClicked(_ sender: UIButton) {
