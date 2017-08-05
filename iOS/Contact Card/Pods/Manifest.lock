@@ -5,22 +5,22 @@ PODS:
     - Material/Core (= 2.4.8)
   - Material/Core (2.4.8)
   - QRCode (2.0)
-  - SSKeychain (1.4.1)
+  - SwiftKeychainWrapper (3.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
   - IQKeyboardManagerSwift
   - Material
   - QRCode
-  - SSKeychain
+  - SwiftKeychainWrapper
 
 SPEC CHECKSUMS:
   Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
   IQKeyboardManagerSwift: c04bc9f68473823f825eb44d958fce98d921bead
   Material: b5d946bf46c51bc83b726602cb04b7793b8256fe
   QRCode: f98a1886c8f37523704a7512a4c0cd45b34c18a4
-  SSKeychain: 55cc80f66f5c73da827e3077f02e43528897db41
+  SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
 
-PODFILE CHECKSUM: 2d4c20d215e5a65b47f40ecf5de531b7b658ca52
+PODFILE CHECKSUM: fe4cc1405aafee97fd0cff4150318841481e3f4c
 
 COCOAPODS: 1.0.0

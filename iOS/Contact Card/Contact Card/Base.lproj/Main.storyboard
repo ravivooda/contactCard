@@ -214,11 +214,17 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n1m-HF-Pxr">
                                         <rect key="frame" x="8" y="8" width="175.5" height="44"/>
-                                        <state key="normal" title="Redeem"/>
+                                        <state key="normal" title="Restore"/>
+                                        <connections>
+                                            <action selector="restoreClicked:" destination="ZrI-uI-41k" eventType="touchUpInside" id="oyf-VI-Oty"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ojp-80-Rd7">
                                         <rect key="frame" x="191.5" y="8" width="175.5" height="44"/>
                                         <state key="normal" title="Buy"/>
+                                        <connections>
+                                            <action selector="buyClicked:" destination="ZrI-uI-41k" eventType="touchUpInside" id="H8v-ds-nfd"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -280,6 +286,10 @@
                             <constraint firstItem="JHS-Zn-iCG" firstAttribute="top" secondItem="e88-ab-Yf7" secondAttribute="bottom" constant="8" id="vsi-8V-wWq"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="buyButton" destination="ojp-80-Rd7" id="LAa-M5-rnP"/>
+                        <outlet property="restoreButton" destination="n1m-HF-Pxr" id="ApS-l4-OaI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gaH-HD-PLq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -290,7 +300,7 @@
             <objects>
                 <navigationController id="Ari-pO-1wd" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Contacts" image="contacts.png" id="SWp-aG-Hh6"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xbk-FW-H57">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Xbk-FW-H57">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -307,7 +317,7 @@
             <objects>
                 <navigationController id="bxz-dN-VFx" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Cards" image="card.png" id="JIw-On-BX3"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HF0-Ev-PHQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HF0-Ev-PHQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

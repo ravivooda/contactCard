@@ -9,7 +9,7 @@ target 'Contact Card' do
   pod 'Alamofire', '~> 4.0'
   pod 'Material'
   pod 'IQKeyboardManagerSwift'
-  pod 'SSKeychain'
+  pod 'SwiftKeychainWrapper'
   pod 'QRCode'
 
 end

@@ -18,7 +18,7 @@ class NewContactCardCommand: Command, CNContactViewControllerDelegate {
     
     override func execute(completed: CommandCompleted?) {
         super.execute(completed: completed)
-        if true {
+        if !PurchaseAdditionalCardsCommand.userHasPremiumAccount {
             return purchaseCards()
         }
         let nameAlertController = UIAlertController(title: "Name your card", message: "Give your card a name", preferredStyle: .alert)

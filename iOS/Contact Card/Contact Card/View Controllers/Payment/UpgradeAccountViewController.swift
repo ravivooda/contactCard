@@ -12,10 +12,20 @@ class UpgradeAccountViewController: UIViewController {
     
     var command:PurchaseAdditionalCardsCommand!
 
+    @IBOutlet weak var buyButton: UIButton!
+    @IBOutlet weak var restoreButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func restoreClicked(_ sender: UIButton) {
+        command.restore()
+    }
+    
+    @IBAction func buyClicked(_ sender: UIButton) {
+        command.buy()
+    }
 }

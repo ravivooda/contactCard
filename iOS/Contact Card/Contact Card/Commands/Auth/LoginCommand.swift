@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SSKeychain
 import CloudKit
 
 class LoginCommand: Command {
@@ -53,9 +52,11 @@ class LoginCommand: Command {
     
     override func finished() {
         DispatchQueue.main.async {
-            self.presentingViewController.dismiss(animated: true) {
+            // Fix this later
+            /*self.presentingViewController.dismiss(animated: true) {
                 
-            }
+            }*/
+            
             if let _ = LoginCommand.user {
                 NotificationCenter.contactCenter.post(name: LoginCommand.AuthenticationChangedNotificationKey, object: nil)
             }

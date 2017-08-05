@@ -39,7 +39,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SSKeychain.xcscheme</key>
+		<key>SwiftKeychainWrapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -62,7 +62,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>63BD8D6199EEE53A95CD9DBC17263BDB</key>
+		<key>67E09DB688802040331FF6E69EC34ACF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,12 +72,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B45F077CE92776BE7228C2DB49124272</key>
+		<key>9A3C4DC6D73E61F020B23687080154E0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C9B0AA84F1810B173B80634BDAF4F32B</key>
+		<key>D83A074F9F9C787A59D9A22A561DAB5D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
