@@ -33,6 +33,10 @@ class PurchaseAdditionalCardsCommand: Command, SKProductsRequestDelegate, SKPaym
     override func execute(completed: CommandCompleted?) {
         super.execute(completed: completed)
         
+        guard SKPaymentQueue.canMakePayments() else {
+            return self.reportError(message: "This device or user account seems to be disabled for purchases. Maybe parental controls? Please retry later")
+        }
+        
         self.productRequest.start()
         
         let purchaseCardsController = self.presentingViewController.storyboard!.instantiateViewController(withIdentifier: "upgradeViewController") as! UpgradeAccountViewController
