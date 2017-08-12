@@ -9,6 +9,9 @@
 import Contacts
 import CloudKit
 import UIKit
+import Crashlytics
+
+extension String : Error {}
 
 extension CNMutableContact {
     convenience init(withRecord record:CKRecord) {
@@ -16,7 +19,7 @@ extension CNMutableContact {
         if let jsonString = record["json"] as? String, let dictionary = convertToDictionary(text: jsonString) {
             self.parse(payload: dictionary)
         } else {
-            print("Unable to parse json string : \(String(describing: record["json"])) \n in record : \(record)")
+            Crashlytics.sharedInstance().recordError("Unable to parse json string : \(String(describing: record["json"])) \n in record : \(record)")
         }
         
         // Image Data

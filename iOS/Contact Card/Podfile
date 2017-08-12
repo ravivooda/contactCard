@@ -12,5 +12,7 @@ target 'Contact Card' do
   pod 'SwiftKeychainWrapper'
   pod 'QRCode'
   pod 'SwiftHEXColors'
+  pod 'Fabric'
+  pod 'Crashlytics'
 
 end

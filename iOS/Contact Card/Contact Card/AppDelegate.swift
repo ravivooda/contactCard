@@ -11,6 +11,8 @@ import CoreData
 import IQKeyboardManagerSwift
 import UserNotifications
 import CloudKit
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static weak var myCardsViewController:CCMyCardsViewController?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        Fabric.with([Crashlytics.self])
+        
         // Override point for customization after application launch.
         IQKeyboardManager.sharedManager().enable = true
         
