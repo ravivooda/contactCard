@@ -20,11 +20,8 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     @IBAction func addNewCard(_ sender: Any) {
         self.addNewCardCommand = NewContactCardCommand(viewController: self, returningCommand: nil)
         self.addNewCardCommand!.execute {
-            DispatchQueue.main.async {
-                self.refreshData()
-            }
+            self.reloadTableView()
         }
-        //NotificationCenter.contactCenter.addObserver(self, selector: #selector(syncLocalContactsWithRemoteUpdates(_:)), name: NSNotification.Name(rawValue: LoginCommand.AuthenticationChangedNotificationKey), object: nil)
     }
     
     override func viewDidLoad() {
@@ -47,6 +44,7 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func refreshData() {
+        print("Refreshing Data")
         Manager.defaultManager().refreshCards(callingViewController: self, success: { (records) in
             self.reloadTableView()
         }, fail: { (message, error) in

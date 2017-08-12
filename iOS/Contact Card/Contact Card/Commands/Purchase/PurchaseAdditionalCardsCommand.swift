@@ -12,7 +12,7 @@ import SwiftKeychainWrapper
 
 class PurchaseAdditionalCardsCommand: Command, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     static var userHasPremiumAccount: Bool {
-        return false //KeychainWrapper.standard.bool(forKey: userHasPremiumAccountKey) ?? false
+        return (Manager.defaultManager().cards.count < 1) || KeychainWrapper.standard.bool(forKey: userHasPremiumAccountKey) ?? false
     }
     
     static private let userHasPremiumAccountKey = "ContactCard.userHasPremiumAccount"

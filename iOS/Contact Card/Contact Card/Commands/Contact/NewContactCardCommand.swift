@@ -10,7 +10,6 @@ import ContactsUI
 
 class NewContactCardCommand: Command, CNContactViewControllerDelegate {
     private var name:String = ""
-    private var contact:CNContact?
     
     func purchaseCards() {
         PurchaseAdditionalCardsCommand(viewController: self.presentingViewController, returningCommand: self).execute(completed: nil)
@@ -40,8 +39,6 @@ class NewContactCardCommand: Command, CNContactViewControllerDelegate {
         }))
         nameAlertController.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
         self.presentingViewController.present(nameAlertController, animated: true, completion: nil)
-        /*self.returningCommand = PurchaseAdditionalCardsCommand(viewController: self.presentingViewController, returningCommand: self)
-        self.returningCommand!.execute(completed: nil)*/
     }
     
     //MARK: - CNContactViewControllerDelegate -
@@ -68,7 +65,6 @@ class NewContactCardCommand: Command, CNContactViewControllerDelegate {
     private func saveContactCard(contact:CNMutableContact) {
         Manager.defaultManager().addNewCard(name: self.name, card: contact, callingViewController: self.presentingViewController, success: { (records) in
             print("Added card - \(self.name) - successfully")
-            self.contact = contact
             self.finished()
         }, fail: { (errorMessage, error) in
             self.presentingViewController.showRetryAlertMessage(message: "Error occurred in saving your card. Please make sure you are connected to internet", retryHandler: { (action) in

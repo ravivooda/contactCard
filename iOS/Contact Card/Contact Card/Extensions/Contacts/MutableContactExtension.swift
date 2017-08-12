@@ -15,11 +15,15 @@ extension CNMutableContact {
         self.init()
         if let jsonString = record["json"] as? String, let dictionary = convertToDictionary(text: jsonString) {
             self.parse(payload: dictionary)
+        } else {
+            print("Unable to parse json string : \(String(describing: record["json"])) \n in record : \(record)")
         }
         
         // Image Data
         if let asset = record[CNContact.ImageKey] as? CKAsset, let data = NSData(contentsOf: asset.fileURL) as Foundation.Data?, let _ = UIImage(data: data) {
             self.imageData = data
+        } else {
+            print("Unable to use image data for record : \(record)")
         }
         
         self.setupContactIdentifier(record: record)

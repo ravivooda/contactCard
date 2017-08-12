@@ -30,7 +30,10 @@ class Manager: NSObject {
     
     func addNewCard(name: String, card:CNMutableContact, callingViewController:UIViewController, success:@escaping Data.newSuccess, fail:@escaping Data.newFail) -> Void {
         Data.addCard(name: name, contact: card, callingViewController: callingViewController, success: { (records) in
-            self.cards.append(CCCard(record: records[0], contact: card))
+            print(records)
+            if let record = records.last {
+                self.cards.append(CCCard(record: record))
+            }
             success(records)
         }, fail: fail)
     }
