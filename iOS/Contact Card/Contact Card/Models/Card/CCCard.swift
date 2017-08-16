@@ -32,6 +32,14 @@ class CCCard {
     
 }
 
+extension Array where Element == String {
+    mutating func addNonEmptyString(string:String?) {
+        if let nonNullableString = string, !nonNullableString.isEmpty {
+            self.append(nonNullableString)
+        }
+    }
+}
+
 extension CNMutableContact {
     func generateThumbnailImage() -> Self {
         if self.thumbnailImageData != nil {
@@ -56,5 +64,37 @@ extension CNMutableContact {
             print("Error occurred while deleting the request \(error)")
         }
         return self
+    }
+}
+
+extension CNContact {
+    var keywords: [String] {
+        let allKeywordsArray = [
+            self.givenName,
+            self.middleName,
+            self.familyName,
+            self.previousFamilyName,
+            self.nickname,
+            self.organizationName,
+            self.departmentName,
+            self.jobTitle,
+            self.phoneticGivenName,
+            self.phoneticMiddleName,
+            self.phoneticFamilyName,
+            self.phoneticOrganizationName,
+            ]
+        var returningKeywordsArray = [String]()
+        for key in allKeywordsArray {
+            returningKeywordsArray.addNonEmptyString(string: key)
+        }
+        return returningKeywordsArray
+    }
+    
+    var employmentDescription: String {
+        var array = [String]()
+        array.addNonEmptyString(string: self.jobTitle)
+        array.addNonEmptyString(string: self.departmentName)
+        array.addNonEmptyString(string: self.organizationName)
+        return array.joined(separator: ", ")
     }
 }

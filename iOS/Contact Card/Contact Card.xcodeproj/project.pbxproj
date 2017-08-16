@@ -55,6 +55,7 @@
 		97B776EA1D8480B900FC0A4B /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B776E91D8480B900FC0A4B /* UIViewControllerExtensions.swift */; };
 		97B776EE1D84812900FC0A4B /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B776EC1D84812900FC0A4B /* LoadingViewController.swift */; };
 		97B776EF1D84812900FC0A4B /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97B776ED1D84812900FC0A4B /* LoadingViewController.xib */; };
+		97BAADAA1F3F9FF200A48FA4 /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97BAADA91F3F9FF200A48FA4 /* CoreSpotlight.framework */; };
 		97C1EAFA1EACF91500DB72F1 /* ShareCardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EAF91EACF91500DB72F1 /* ShareCardCommand.swift */; };
 		97C1EAFE1EAD09D300DB72F1 /* RecordExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EAFD1EAD09D300DB72F1 /* RecordExtension.swift */; };
 		97C1EB031EAD413F00DB72F1 /* ShowContactCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C1EB021EAD413F00DB72F1 /* ShowContactCommand.swift */; };
@@ -149,6 +150,7 @@
 		97B776E91D8480B900FC0A4B /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		97B776EC1D84812900FC0A4B /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		97B776ED1D84812900FC0A4B /* LoadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
+		97BAADA91F3F9FF200A48FA4 /* CoreSpotlight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSpotlight.framework; path = System/Library/Frameworks/CoreSpotlight.framework; sourceTree = SDKROOT; };
 		97C1EAF91EACF91500DB72F1 /* ShareCardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareCardCommand.swift; sourceTree = "<group>"; };
 		97C1EAFD1EAD09D300DB72F1 /* RecordExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordExtension.swift; sourceTree = "<group>"; };
 		97C1EB021EAD413F00DB72F1 /* ShowContactCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowContactCommand.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97BAADAA1F3F9FF200A48FA4 /* CoreSpotlight.framework in Frameworks */,
 				97B776C11D83D41B00FC0A4B /* CoreData.framework in Frameworks */,
 				97B776BF1D83D41300FC0A4B /* Foundation.framework in Frameworks */,
 				971CF8241E50C6D1008F2C21 /* StoreKit.framework in Frameworks */,
@@ -576,6 +579,7 @@
 		A1B705ADEE12BA13282079A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				97BAADA91F3F9FF200A48FA4 /* CoreSpotlight.framework */,
 				9716103F1EA171D20032050D /* CloudKit.framework */,
 				971CF8231E50C6D1008F2C21 /* StoreKit.framework */,
 				97B776C01D83D41B00FC0A4B /* CoreData.framework */,

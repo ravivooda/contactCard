@@ -10,12 +10,18 @@ import UIKit
 import Contacts
 import ContactsUI
 import CloudKit
+import CoreSpotlight
+import Crashlytics
 
 class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CNContactViewControllerDelegate {
     @IBOutlet weak var tableView: UITableView!
     private var addNewCardCommand:NewContactCardCommand?
     private var sharingCardCommand:ShareCardCommand?
     private var deleteCardCommand:DeleteCardCommand?
+    
+    static func CardSearchUniqueIdentifier(identifier:String) -> String { return "com.MN.Contact-Card.My-Cards.\(identifier)" }
+    static let CardSearchDomainIdentifier = "my_cards"
+    
     
     @IBAction func addNewCard(_ sender: Any) {
         self.addNewCardCommand = NewContactCardCommand(viewController: self, returningCommand: nil)
@@ -39,8 +45,29 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
+    func setupSearchableContent() -> Void {
+        var searchableItems = [CSSearchableItem]()
+        for card in Manager.defaultManager().cards {
+            let searchableItemAttributeSet = CSSearchableItemAttributeSet(itemContentType: "My Cards")
+            searchableItemAttributeSet.title = card.cardName
+            searchableItemAttributeSet.displayName = "My card - \(card.cardName)"
+            searchableItemAttributeSet.thumbnailData = card.contact.thumbnailImageData
+            searchableItemAttributeSet.contentDescription = card.contact.employmentDescription
+            searchableItemAttributeSet.metadataModificationDate = card.record.modificationDate
+            searchableItemAttributeSet.keywords = card.contact.keywords
+            
+            searchableItems.append(CSSearchableItem(uniqueIdentifier: CCMyCardsViewController.CardSearchUniqueIdentifier(identifier: card.record.recordIdentifier), domainIdentifier: CCMyCardsViewController.CardSearchDomainIdentifier, attributeSet: searchableItemAttributeSet))
+        }
+        CSSearchableIndex.default().indexSearchableItems(searchableItems) { (error) in
+            guard error == nil else {
+                return Crashlytics.sharedInstance().recordError(error!)
+            }
+        }
+    }
+    
     func reloadTableView() {
         self.tableView.reloadData()
+        self.setupSearchableContent()
     }
     
     func refreshData() {
@@ -82,7 +109,6 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     //MARK: - UITableViewDelegate -
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         ShowCardCommand(card: Manager.defaultManager().cards[indexPath.row], viewController: self, returningCommand: nil).execute(completed: nil)
-        //ShowContactCommand(contact: Manager.defaultManager().cards[indexPath.row].contact, viewController: self, returningCommand: nil).execute(completed: nil)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
