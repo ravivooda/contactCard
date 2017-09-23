@@ -33,6 +33,10 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         AppDelegate.myCardsViewController = self
+        
+        let backGroundView = UINib(nibName: "EmptyCardBackgroundView", bundle: nil).instantiate(withOwner:nil, options: nil)[0] as! EmptyCardBackgroundView
+        backGroundView.addCardButton.addTarget(self, action: #selector(addNewCard(_:)), for: .touchUpInside)
+        self.tableView.backgroundView = backGroundView
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -84,7 +88,9 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     
     //MARK: - UITableViewDataSource -
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Manager.defaultManager().cards.count
+        let rows = Manager.defaultManager().cards
+        tableView.backgroundView?.isHidden = rows.count != 0
+        return rows.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -28,6 +28,9 @@
 		97A2A2E11E36CE0800D69F6A /* CCCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */; };
 		97AC31651F3620380083A553 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AC31641F3620380083A553 /* GradientView.swift */; };
 		97AC31671F362A990083A553 /* premium-diamond@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97AC31661F362A990083A553 /* premium-diamond@3x.png */; };
+		97B00F231F76B9C100A77C33 /* EmptyCardBackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97B00F221F76B9C100A77C33 /* EmptyCardBackgroundView.xib */; };
+		97B00F251F76BA6600A77C33 /* EmptyCardBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B00F241F76BA6600A77C33 /* EmptyCardBackgroundView.swift */; };
+		97B00F271F76BC7A00A77C33 /* hint_plus@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B00F261F76BC7A00A77C33 /* hint_plus@3x.png */; };
 		97B5490B1EC3ED6900668570 /* InviteUserCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B5490A1EC3ED6900668570 /* InviteUserCommand.swift */; };
 		97B549101EC40B3B00668570 /* QRCodeActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B5490F1EC40B3B00668570 /* QRCodeActivity.swift */; };
 		97B549121EC40F7300668570 /* qr_code@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B549111EC40F7300668570 /* qr_code@3x.png */; };
@@ -123,6 +126,9 @@
 		97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardTableViewCell.swift; sourceTree = "<group>"; };
 		97AC31641F3620380083A553 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		97AC31661F362A990083A553 /* premium-diamond@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "premium-diamond@3x.png"; sourceTree = "<group>"; };
+		97B00F221F76B9C100A77C33 /* EmptyCardBackgroundView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyCardBackgroundView.xib; sourceTree = "<group>"; };
+		97B00F241F76BA6600A77C33 /* EmptyCardBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCardBackgroundView.swift; sourceTree = "<group>"; };
+		97B00F261F76BC7A00A77C33 /* hint_plus@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hint_plus@3x.png"; sourceTree = "<group>"; };
 		97B5490A1EC3ED6900668570 /* InviteUserCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteUserCommand.swift; sourceTree = "<group>"; };
 		97B5490F1EC40B3B00668570 /* QRCodeActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeActivity.swift; sourceTree = "<group>"; };
 		97B549111EC40F7300668570 /* qr_code@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_code@3x.png"; sourceTree = "<group>"; };
@@ -292,6 +298,15 @@
 			path = Gradient;
 			sourceTree = "<group>";
 		};
+		97B00F1F1F76B96900A77C33 /* Empty */ = {
+			isa = PBXGroup;
+			children = (
+				97B00F221F76B9C100A77C33 /* EmptyCardBackgroundView.xib */,
+				97B00F241F76BA6600A77C33 /* EmptyCardBackgroundView.swift */,
+			);
+			path = Empty;
+			sourceTree = "<group>";
+		};
 		97B5490E1EC40B0800668570 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +402,7 @@
 		97B776C71D846C8C00FC0A4B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				97B00F1F1F76B96900A77C33 /* Empty */,
 				97AC31631F3620100083A553 /* Gradient */,
 				97C1EB2D1EB6939E00DB72F1 /* Contact Thumbnail */,
 				97C1EB191EB1ACC700DB72F1 /* Progress Views */,
@@ -448,6 +464,7 @@
 		97B776E21D847B2700FC0A4B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				97B00F261F76BC7A00A77C33 /* hint_plus@3x.png */,
 				97AC31661F362A990083A553 /* premium-diamond@3x.png */,
 				977769E31F2D311600FFC8E5 /* contacts@3x.png */,
 				974621241F107DAF0000E8ED /* card@3x.png */,
@@ -716,7 +733,9 @@
 			files = (
 				97C1EB351EB6B33000DB72F1 /* Nunito-Regular.ttf in Resources */,
 				97064C731D83CF44008EF6B3 /* LaunchScreen.storyboard in Resources */,
+				97B00F231F76B9C100A77C33 /* EmptyCardBackgroundView.xib in Resources */,
 				97064C701D83CF44008EF6B3 /* Assets.xcassets in Resources */,
+				97B00F271F76BC7A00A77C33 /* hint_plus@3x.png in Resources */,
 				97C1EB341EB6B33000DB72F1 /* Nunito-Light.ttf in Resources */,
 				BCEEE53C1E4C0B7500D2651A /* LoginViewController.xib in Resources */,
 				97064C6B1D83CF44008EF6B3 /* Main.storyboard in Resources */,
@@ -872,6 +891,7 @@
 				97C1EB1D1EB1AEE200DB72F1 /* UIViewConstraintsExtensions.swift in Sources */,
 				97C1EB261EB511BF00DB72F1 /* NotificationCenterExtension.swift in Sources */,
 				97B549181EC6958C00668570 /* ShowCardCommand.swift in Sources */,
+				97B00F251F76BA6600A77C33 /* EmptyCardBackgroundView.swift in Sources */,
 				97C1EB151EB1A2C500DB72F1 /* AddContactsViewController.swift in Sources */,
 				BCEEE53B1E4C0B7500D2651A /* LoginViewController.swift in Sources */,
 				97E650651E88AD640074F112 /* LogoutCommand.swift in Sources */,

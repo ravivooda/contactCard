@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="EmptyCardBackgroundView" customModule="Contact_Card" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7eh-QJ-1nN">
+                    <rect key="frame" x="20" y="273" width="335" height="120"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KGL-UQ-CnI">
+                            <rect key="frame" x="151" y="8" width="33" height="33"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="33" id="ZGb-Tf-Wkl"/>
+                                <constraint firstAttribute="height" constant="33" id="oRU-ju-OTj"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="hint_plus.png"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No worries, lets create a new card(identity) to get started!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Pg-yT-BIz">
+                            <rect key="frame" x="0.0" y="81" width="335" height="39"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Cards, Yet!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0H-Gx-gcH">
+                            <rect key="frame" x="0.0" y="41" width="335" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="nCP-78-efu"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="KGL-UQ-CnI" firstAttribute="centerX" secondItem="7eh-QJ-1nN" secondAttribute="centerX" id="1Iu-vV-MZ9"/>
+                        <constraint firstAttribute="height" constant="120" id="7l4-cD-0ol"/>
+                        <constraint firstItem="KGL-UQ-CnI" firstAttribute="top" secondItem="7eh-QJ-1nN" secondAttribute="top" constant="8" id="Cq4-hW-D7d"/>
+                        <constraint firstAttribute="trailing" secondItem="U0H-Gx-gcH" secondAttribute="trailing" id="Dhy-ht-AGe"/>
+                        <constraint firstAttribute="trailing" secondItem="6Pg-yT-BIz" secondAttribute="trailing" id="LQF-nQ-dgu"/>
+                        <constraint firstAttribute="bottom" secondItem="6Pg-yT-BIz" secondAttribute="bottom" id="MNF-pF-NdW"/>
+                        <constraint firstItem="6Pg-yT-BIz" firstAttribute="leading" secondItem="7eh-QJ-1nN" secondAttribute="leading" id="NUA-ib-aVe"/>
+                        <constraint firstItem="6Pg-yT-BIz" firstAttribute="top" secondItem="U0H-Gx-gcH" secondAttribute="bottom" id="PL4-iJ-lec"/>
+                        <constraint firstItem="U0H-Gx-gcH" firstAttribute="leading" secondItem="7eh-QJ-1nN" secondAttribute="leading" id="T0p-gz-kw4"/>
+                        <constraint firstItem="U0H-Gx-gcH" firstAttribute="top" secondItem="KGL-UQ-CnI" secondAttribute="bottom" id="sAI-UT-U7L"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.85194416921965932" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="7eh-QJ-1nN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Mns-kK-K52"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="7eh-QJ-1nN" secondAttribute="trailing" constant="20" id="dF4-cz-Giu"/>
+                <constraint firstItem="7eh-QJ-1nN" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="eaS-mq-yfD"/>
+                <constraint firstItem="7eh-QJ-1nN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="fI6-1m-aLz"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="addCardButton" destination="KGL-UQ-CnI" id="8FJ-dl-zDC"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="hint_plus.png" width="33" height="33"/>
+    </resources>
+</document>
