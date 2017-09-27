@@ -20,7 +20,7 @@ class NewContactCardCommand: Command, CNContactViewControllerDelegate {
         if !PurchaseAdditionalCardsCommand.userHasPremiumAccount {
             return purchaseCards()
         }
-        let nameAlertController = UIAlertController(title: "Name your card", message: "Give your card a name", preferredStyle: .alert)
+        let nameAlertController = UIAlertController(title: "Name your card", message: "Give your card a name.\n For ex. Family, Friends", preferredStyle: .alert)
         nameAlertController.addTextField { (textField) in
             textField.autocapitalizationType = .words
         }

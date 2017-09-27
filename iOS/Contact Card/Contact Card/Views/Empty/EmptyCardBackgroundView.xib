@@ -27,7 +27,7 @@
                             </constraints>
                             <state key="normal" backgroundImage="hint_plus.png"/>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No worries, lets create a new card(identity) to get started!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Pg-yT-BIz">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No worries, lets create a new card (identity) to get started!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Pg-yT-BIz">
                             <rect key="frame" x="0.0" y="81" width="335" height="39"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <nil key="textColor"/>
@@ -68,6 +68,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="addCardButton" destination="KGL-UQ-CnI" id="8FJ-dl-zDC"/>
+                <outlet property="containerView" destination="7eh-QJ-1nN" id="wDV-uo-Wzt"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
