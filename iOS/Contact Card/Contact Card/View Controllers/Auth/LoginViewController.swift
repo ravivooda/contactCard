@@ -14,7 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginInputContainer: UIView!
     @IBOutlet weak var loginButton: UIButton!
     
-    var loginCommand:LoginCommand? = nil
+    static var loginCommand:LoginCommand? = nil
     
     @IBAction func loginClicked(_ sender: UIButton) {
         if let settingsURL = URL(string: UIApplicationOpenSettingsURLString) {

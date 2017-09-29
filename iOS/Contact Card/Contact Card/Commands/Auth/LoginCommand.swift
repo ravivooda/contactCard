@@ -23,27 +23,33 @@ class LoginCommand: Command {
     
     static var user:User?
     
-    let loginViewController:LoginViewController
-    
     init(viewController:UIViewController, returnCommand:Command?) {
-        loginViewController = viewController as? LoginViewController ?? LoginViewController(nibName: "LoginViewController", bundle: nil)
         super.init(viewController: viewController, returningCommand: returnCommand)
+        LoginViewController.loginCommand = self;
     }
     
     override func execute(completed: CommandCompleted?) {
         super.execute(completed: completed)
         LoginCommand.user = nil
+        print("Trying to logging in")
         Manager.contactsContainer.fetchUserRecordID { (recordID, error) in
             if error != nil || isEmpty(recordID?.recordName) {
                 print("Login error: \(error?.localizedDescription ?? "")")
                 DispatchQueue.main.async {
-                    self.presentingViewController.present(self.loginViewController, animated: true, completion: nil)
+                    if self.presentingViewController.presentedViewController == nil {
+                        let loginViewController = self.presentingViewController as? LoginViewController ?? LoginViewController(nibName: "LoginViewController", bundle: nil)
+                        self.presentingViewController.present(loginViewController, animated: true, completion: nil)
+                    } else {
+                        print("Not showing controller again")
+                    }
                 }
             } else {
                 print("Logged in as user: \(recordID!.recordName)")
-                // Register for notifications
-                AppDelegate.registerForRemoteNotifications()
                 
+                DispatchQueue.main.async {
+                    // Register for notifications
+                    AppDelegate.registerForRemoteNotifications()
+                }
                 LoginCommand.user = User(id: recordID!.recordName)
                 self.finished()
             }
@@ -51,11 +57,11 @@ class LoginCommand: Command {
     }
     
     override func finished() {
+        LoginViewController.loginCommand = nil;
         DispatchQueue.main.async {
-            // Fix this later
-            /*self.presentingViewController.dismiss(animated: true) {
+            self.presentingViewController.dismiss(animated: true) {
                 
-            }*/
+            }
             
             if let _ = LoginCommand.user {
                 NotificationCenter.contactCenter.post(name: LoginCommand.AuthenticationChangedNotificationKey, object: nil)
