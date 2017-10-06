@@ -62,10 +62,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     static func registerForRemoteNotifications() -> Void {
         UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert, .badge]) { (granted, error) in
-            if granted {
-                UIApplication.shared.registerForRemoteNotifications()
-            } else {
-                print("Error occurred in registering for notification authorization \(error?.localizedDescription ?? "")")
+            DispatchQueue.main.async {
+                if granted {
+                    UIApplication.shared.registerForRemoteNotifications()
+                } else {
+                    print("Error occurred in registering for notification authorization \(error?.localizedDescription ?? "")")
+                }
             }
         }
     }
