@@ -22,6 +22,7 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     static func CardSearchUniqueIdentifier(identifier:String) -> String { return "com.MN.Contact-Card.My-Cards.\(identifier)" }
     static let CardSearchDomainIdentifier = "my_cards"
     
+    private var didLoadCards = false;
     
     @IBAction func addNewCard(_ sender: Any) {
         self.addNewCardCommand = NewContactCardCommand(viewController: self, returningCommand: nil)
@@ -77,6 +78,7 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     func refreshData() {
         print("Refreshing Data")
         Manager.defaultManager().refreshCards(callingViewController: self, success: { (records) in
+            self.didLoadCards = true
             self.reloadTableView()
         }, fail: { (message, error) in
             self.showRetryAlertMessage(message: message, retryHandler: { (action) in
@@ -89,7 +91,7 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     //MARK: - UITableViewDataSource -
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let rows = Manager.defaultManager().cards
-        tableView.backgroundView?.isHidden = rows.count != 0
+        tableView.backgroundView?.isHidden = !self.didLoadCards || rows.count != 0
         return rows.count
     }
     
