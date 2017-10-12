@@ -24,6 +24,8 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     
     private var didLoadCards = false;
     
+    private var refreshControl = UIRefreshControl()
+    
     @IBAction func addNewCard(_ sender: Any) {
         self.addNewCardCommand = NewContactCardCommand(viewController: self, returningCommand: nil)
         self.addNewCardCommand!.execute {
@@ -38,6 +40,9 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
         let backGroundView = UINib(nibName: "EmptyCardBackgroundView", bundle: nil).instantiate(withOwner:nil, options: nil)[0] as! EmptyCardBackgroundView
         backGroundView.addCardButton.addTarget(self, action: #selector(addNewCard(_:)), for: .touchUpInside)
         self.tableView.backgroundView = backGroundView
+        
+        self.tableView.refreshControl = self.refreshControl
+        self.refreshControl.addTarget(self, action: #selector(refreshControlActivated), for: .valueChanged)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -75,12 +80,18 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
         self.setupSearchableContent()
     }
     
+    func refreshControlActivated() {
+        self.perform(#selector(refreshData), with: nil, afterDelay: 1)
+    }
+    
     func refreshData() {
         print("Refreshing Data")
         Manager.defaultManager().refreshCards(callingViewController: self, success: { (records) in
+            self.refreshControl.endRefreshing()
             self.didLoadCards = true
             self.reloadTableView()
         }, fail: { (message, error) in
+            self.refreshControl.endRefreshing()
             self.showRetryAlertMessage(message: message, retryHandler: { (action) in
                 self.refreshData()
             })
