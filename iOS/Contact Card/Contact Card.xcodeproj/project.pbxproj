@@ -24,6 +24,11 @@
 		97552BF21F2CF008004DC0FE /* UpgradeAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97552BF11F2CF008004DC0FE /* UpgradeAccountViewController.swift */; };
 		975AC8EC1E50CF7200AB4DBD /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975AC8EB1E50CF7200AB4DBD /* Card.swift */; };
 		977769E41F2D311600FFC8E5 /* contacts@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 977769E31F2D311600FFC8E5 /* contacts@3x.png */; };
+		979334611F903C180078BF58 /* TutorialCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979334601F903C180078BF58 /* TutorialCommand.swift */; };
+		979334661F9047870078BF58 /* protected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 979334651F9047870078BF58 /* protected@3x.png */; };
+		979334681F904FBC0078BF58 /* protected_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 979334671F904FBC0078BF58 /* protected_icon@3x.png */; };
+		9793346A1F9051FE0078BF58 /* TutorialOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979334691F9051FE0078BF58 /* TutorialOnboarding.swift */; };
+		9793346C1F9054840078BF58 /* contact_intro@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9793346B1F9054840078BF58 /* contact_intro@3x.png */; };
 		97A2A2DD1E36C2F100D69F6A /* CCCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2DC1E36C2F100D69F6A /* CCCard.swift */; };
 		97A2A2E11E36CE0800D69F6A /* CCCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */; };
 		97AC31651F3620380083A553 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AC31641F3620380083A553 /* GradientView.swift */; };
@@ -122,6 +127,11 @@
 		97552BF11F2CF008004DC0FE /* UpgradeAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeAccountViewController.swift; sourceTree = "<group>"; };
 		975AC8EB1E50CF7200AB4DBD /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		977769E31F2D311600FFC8E5 /* contacts@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contacts@3x.png"; sourceTree = "<group>"; };
+		979334601F903C180078BF58 /* TutorialCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCommand.swift; sourceTree = "<group>"; };
+		979334651F9047870078BF58 /* protected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "protected@3x.png"; sourceTree = "<group>"; };
+		979334671F904FBC0078BF58 /* protected_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "protected_icon@3x.png"; sourceTree = "<group>"; };
+		979334691F9051FE0078BF58 /* TutorialOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialOnboarding.swift; sourceTree = "<group>"; };
+		9793346B1F9054840078BF58 /* contact_intro@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contact_intro@3x.png"; sourceTree = "<group>"; };
 		97A2A2DC1E36C2F100D69F6A /* CCCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCard.swift; sourceTree = "<group>"; };
 		97A2A2E01E36CE0800D69F6A /* CCCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardTableViewCell.swift; sourceTree = "<group>"; };
 		97AC31641F3620380083A553 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -290,6 +300,25 @@
 			path = Payment;
 			sourceTree = "<group>";
 		};
+		9793345F1F903B6C0078BF58 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				979334601F903C180078BF58 /* TutorialCommand.swift */,
+				979334691F9051FE0078BF58 /* TutorialOnboarding.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		979334641F9047870078BF58 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				9793346B1F9054840078BF58 /* contact_intro@3x.png */,
+				979334671F904FBC0078BF58 /* protected_icon@3x.png */,
+				979334651F9047870078BF58 /* protected@3x.png */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
 		97AC31631F3620100083A553 /* Gradient */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +397,7 @@
 		97B776C41D846C8C00FC0A4B /* Commands */ = {
 			isa = PBXGroup;
 			children = (
+				9793345F1F903B6C0078BF58 /* Tutorial */,
 				97B549201EC7FE8600668570 /* Purchase */,
 				97C1EB011EAD412D00DB72F1 /* Contact */,
 				97C1EAF81EACF8CA00DB72F1 /* Share */,
@@ -464,6 +494,7 @@
 		97B776E21D847B2700FC0A4B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				979334641F9047870078BF58 /* Tutorial */,
 				97B00F261F76BC7A00A77C33 /* hint_plus@3x.png */,
 				97AC31661F362A990083A553 /* premium-diamond@3x.png */,
 				977769E31F2D311600FFC8E5 /* contacts@3x.png */,
@@ -651,7 +682,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97064C771D83CF44008EF6B3 /* Build configuration list for PBXNativeTarget "Contact Card" */;
 			buildPhases = (
-				A7FCFDD8ECEB4197A4642D22 /* 📦 Check Pods Manifest.lock */,
+				A7FCFDD8ECEB4197A4642D22 /* [CP] Check Pods Manifest.lock */,
 				70937A34424EA1A49DA77C2D /* [CP] Check Pods Manifest.lock */,
 				97064C5E1D83CF44008EF6B3 /* Sources */,
 				97064C5F1D83CF44008EF6B3 /* Frameworks */,
@@ -744,6 +775,9 @@
 				977769E41F2D311600FFC8E5 /* contacts@3x.png in Resources */,
 				97B776DA1D84751C00FC0A4B /* VersionUnsupportedViewController.xib in Resources */,
 				97AC31671F362A990083A553 /* premium-diamond@3x.png in Resources */,
+				979334681F904FBC0078BF58 /* protected_icon@3x.png in Resources */,
+				979334661F9047870078BF58 /* protected@3x.png in Resources */,
+				9793346C1F9054840078BF58 /* contact_intro@3x.png in Resources */,
 				97C1EB331EB6B33000DB72F1 /* Nunito-Bold.ttf in Resources */,
 				97E650631E8819230074F112 /* Settings.bundle in Resources */,
 				974621251F107DAF0000E8ED /* card@3x.png in Resources */,
@@ -774,9 +808,24 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Contact Card/Pods-Contact Card-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Material/Material.framework",
+				"${BUILT_PRODUCTS_DIR}/OnboardingKit/OnboardingKit.framework",
+				"${BUILT_PRODUCTS_DIR}/QRCode/QRCode.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftHEXColors/SwiftHEXColors.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Material.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OnboardingKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCode.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHEXColors.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -826,19 +875,22 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Contact Card/Pods-Contact Card-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A7FCFDD8ECEB4197A4642D22 /* 📦 Check Pods Manifest.lock */ = {
+		A7FCFDD8ECEB4197A4642D22 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Contact Card-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DF3EBD7BD5A864C3736EB861 /* 📦 Copy Pods Resources */ = {
@@ -870,6 +922,7 @@
 				97C1EAFE1EAD09D300DB72F1 /* RecordExtension.swift in Sources */,
 				97C1EB441EBE3E0400DB72F1 /* NewContactsAvailableTableViewCell.swift in Sources */,
 				97C1EAFA1EACF91500DB72F1 /* ShareCardCommand.swift in Sources */,
+				979334611F903C180078BF58 /* TutorialCommand.swift in Sources */,
 				971CF81C1E4C2FA9008F2C21 /* UIViewExtensions.swift in Sources */,
 				9746211A1F1073A70000E8ED /* ContactsDisplayTableViewController.swift in Sources */,
 				97B5491A1EC6976500668570 /* CCContactViewController.swift in Sources */,
@@ -915,6 +968,7 @@
 				971CF8211E4E94B7008F2C21 /* TabBarViewController.swift in Sources */,
 				97C1EB0E1EB03FAE00DB72F1 /* CCContactUpdateExtension.swift in Sources */,
 				97A2A2DD1E36C2F100D69F6A /* CCCard.swift in Sources */,
+				9793346A1F9051FE0078BF58 /* TutorialOnboarding.swift in Sources */,
 				97B776E51D847B3900FC0A4B /* Data.swift in Sources */,
 				97064C661D83CF44008EF6B3 /* AppDelegate.swift in Sources */,
 				BC54A93A1E0F6ECF0062CE8B /* CCContactTableViewCell.swift in Sources */,

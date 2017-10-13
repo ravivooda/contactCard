@@ -9,23 +9,11 @@
 import UIKit
 
 class TabBarViewController: UITabBarController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if let loginCommand = LoginViewController.loginCommand {
-            loginCommand.execute(completed: nil)
-        } else if LoginCommand.user == nil {
-            login(returnCommand: nil)
-        }
-    }
-    
-    func login(returnCommand:Command?) {
-        LoginCommand(viewController: self, returnCommand: returnCommand).execute(completed: nil)
+        let loginCommand = LoginViewController.loginCommand ?? LoginCommand(viewController: self, returnCommand: nil)
+        loginCommand.execute(completed: loginCommand.completed)
+        TutorialCommand(viewController: self, returningCommand: nil).execute(completed: nil)
     }
 }
