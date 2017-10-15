@@ -88,11 +88,11 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
         self.setupSearchableContent()
     }
     
-    func refreshControlActivated() {
+    @objc func refreshControlActivated() {
         self.perform(#selector(refreshData), with: nil, afterDelay: 1)
     }
     
-    func refreshData() {
+    @objc func refreshData() {
         print("Refreshing Data")
         Manager.defaultManager().refreshCards(callingViewController: self, success: { (records) in
             self.refreshControl.endRefreshing()

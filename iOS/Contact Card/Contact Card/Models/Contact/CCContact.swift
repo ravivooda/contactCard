@@ -73,19 +73,19 @@ extension CNContact {
         let retAttributedString = NSMutableAttributedString()
         if !isEmpty(self.givenName) {
             let firstName = NSMutableAttributedString(string: "\(self.givenName) ")
-            firstName.addAttribute(NSFontAttributeName, value: isEmpty(self.familyName) ? UIFont.boldSystemFont(ofSize: 17) : UIFont.systemFont(ofSize: 17), range: NSMakeRange(0, self.givenName.characters.count))
+            firstName.addAttribute(NSAttributedStringKey.font, value: isEmpty(self.familyName) ? UIFont.boldSystemFont(ofSize: 17) : UIFont.systemFont(ofSize: 17), range: NSMakeRange(0, self.givenName.characters.count))
             retAttributedString.append(firstName)
         }
         
         if !isEmpty(self.middleName) {
             let middleName = NSMutableAttributedString(string: "\(self.middleName) ")
-            middleName.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 17), range: NSMakeRange(0, self.middleName.characters.count))
+            middleName.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 17), range: NSMakeRange(0, self.middleName.characters.count))
             retAttributedString.append(middleName)
         }
         
         if !isEmpty(self.familyName) {
             let familyName = NSMutableAttributedString(string: "\(self.familyName)")
-            familyName.addAttribute(NSFontAttributeName, value: UIFont.boldSystemFont(ofSize: 17), range: NSMakeRange(0, self.familyName.characters.count))
+            familyName.addAttribute(NSAttributedStringKey.font, value: UIFont.boldSystemFont(ofSize: 17), range: NSMakeRange(0, self.familyName.characters.count))
             retAttributedString.append(familyName)
         }
         return retAttributedString

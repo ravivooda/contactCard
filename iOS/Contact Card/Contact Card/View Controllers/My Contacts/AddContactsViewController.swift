@@ -33,7 +33,7 @@ class AddContactsViewController: UITableViewController {
         }
     }
     
-    func contactUpdate(notification:Notification) {
+    @objc func contactUpdate(notification:Notification) {
         if let record = notification.object as? CKRecord,
             let progress = notification.userInfo?[CCContact.ContactNotificationProgressInfoKey] as? Float, progress == 1 {
             for i in 0...cards.count {
@@ -50,13 +50,13 @@ class AddContactsViewController: UITableViewController {
         }
     }
     
-    func addAllContacts(sender:UIBarButtonItem) -> Void {
+    @objc func addAllContacts(sender:UIBarButtonItem) -> Void {
         for card in cards {
             card.execute(completed: nil)
         }
     }
     
-    func dismissClicked(sender:UIBarButtonItem) -> Void {
+    @objc func dismissClicked(sender:UIBarButtonItem) -> Void {
         self.dismiss(animated: true, completion: nil)
     }
     

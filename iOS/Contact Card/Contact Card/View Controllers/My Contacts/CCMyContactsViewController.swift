@@ -52,11 +52,11 @@ class CCMyContactsViewController: ContactsDisplayTableViewController, CNContactV
 		self.refreshControl?.addTarget(self, action: #selector(refreshControlActivated), for: .valueChanged)
     }
 	
-	func refreshControlActivated() {
+	@objc func refreshControlActivated() {
 		self.perform(#selector(syncLocalContactsWithRemoteUpdates(_:)), with: nil, afterDelay: 1)
 	}
     
-    func contactUpdateChangedNotification(notification:Notification) {
+    @objc func contactUpdateChangedNotification(notification:Notification) {
         self.updateBarBadge()
         for section in self.contactSections {
             for contact in section.contacts {
@@ -69,7 +69,7 @@ class CCMyContactsViewController: ContactsDisplayTableViewController, CNContactV
         self.syncLocalContactsWithRemoteUpdates(nil)
     }
     
-    func readQR(sender:UIBarButtonItem) {
+    @objc func readQR(sender:UIBarButtonItem) {
         ReadContactQRCommand(viewController: self, returningCommand: nil).execute(completed: nil)
     }
     
@@ -96,7 +96,7 @@ class CCMyContactsViewController: ContactsDisplayTableViewController, CNContactV
         print("Update count - \(updateCount), Tab count - \(tabCount)")
     }
     
-    func updateAllCallback(sender:UIBarButtonItem) {
+    @objc func updateAllCallback(sender:UIBarButtonItem) {
         for section in self.contactSections {
             for contact in section.contacts {
                 contact.updateContactCommand?.execute(completed: nil)
@@ -162,7 +162,7 @@ class CCMyContactsViewController: ContactsDisplayTableViewController, CNContactV
     }
     
     private var isSyncing = false
-    func syncLocalContactsWithRemoteUpdates(_ notification:NSNotification?) -> Void {
+    @objc func syncLocalContactsWithRemoteUpdates(_ notification:NSNotification?) -> Void {
         if isSyncing {
             print("Currently syncing")
             return

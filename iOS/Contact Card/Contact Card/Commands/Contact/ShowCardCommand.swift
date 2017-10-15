@@ -42,7 +42,7 @@ class ShowCardCommand: Command, CNContactViewControllerDelegate {
         self.presentedViewController = contactController;
     }
     
-    func dismiss(sender:Any) -> Void {
+    @objc func dismiss(sender:Any) -> Void {
         print("Dismissing shown controller")
         self.presentedViewController?.dismiss(animated: true, completion: nil)
     }

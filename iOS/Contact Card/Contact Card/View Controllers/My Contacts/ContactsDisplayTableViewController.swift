@@ -10,7 +10,7 @@ import UIKit
 
 class ContactsDisplayTableViewController: UITableViewController {
     
-    class ContactSection: AnyObject {
+    class ContactSection: Any {
         var name:String
         var contacts:[CCContact]
         

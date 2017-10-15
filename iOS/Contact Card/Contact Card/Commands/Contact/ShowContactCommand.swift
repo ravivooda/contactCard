@@ -37,7 +37,7 @@ class ShowContactCommand: Command, CNContactViewControllerDelegate {
     }
     
     
-    func dismiss(sender:Any) -> Void {
+    @objc func dismiss(sender:Any) -> Void {
         print("Dismissing shown controller")
         cnController.dismiss(animated: true, completion: nil)
     }
