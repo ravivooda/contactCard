@@ -31,6 +31,8 @@ class CCContact:CustomDebugStringConvertible {
 	
 	let contact:CNContact
     let contactIdentifier:ContactIdentifier?
+	
+	var record:CKRecord?
     
     init(contact:CNContact) {
 		self.contact = contact

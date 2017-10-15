@@ -14,7 +14,7 @@ class ThumbnailView: UIView {
     private let imageView = UIImageView()
     private let gradientLayer = CAGradientLayer()
     private let nameLabel = UILabel()
-    var availableWidth:CGFloat = 90
+    var availableWidth:CGFloat = 59.5
     var customBorderColor:UIColor?
     
 
@@ -31,7 +31,7 @@ class ThumbnailView: UIView {
         
         self.nameLabel.textAlignment = .center
         self.nameLabel.textColor = .white
-        self.nameLabel.font = UIFont(name: "Nunito-Regular", size: 30)
+        self.nameLabel.font = UIFont(name: "Nunito-Regular", size: 27)
         
         let startColor = UIColor.init(red: 167.0/255.0, green: 172.0/255.0, blue: 185.0/255.0, alpha: 1.0).cgColor as CGColor
         let endColor = UIColor.init(red: 132.0/255.0, green: 136.0/255.0, blue: 147.0/255.0, alpha: 1.0).cgColor as CGColor

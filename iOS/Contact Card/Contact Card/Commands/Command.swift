@@ -29,7 +29,7 @@ class Command: NSObject {
     
     internal func reportRetryError(message:String) {
         DispatchQueue.main.async {
-            self.presentingViewController.showRetryAlertMessage(message: message) { (action) in
+            self.topController.showRetryAlertMessage(message: message) { (action) in
                 self.execute(completed: self.completed)
             }
         }
@@ -37,9 +37,13 @@ class Command: NSObject {
     
     internal func reportError(message:String) {
         DispatchQueue.main.async {
-            self.presentingViewController.showAlertMessage(message: message)
+            self.topController.showAlertMessage(message: message)
         }
     }
+	
+	var topController: UIViewController {
+		return self.presentedViewController ?? self.presentingViewController
+	}
     
     func finished() {
         self.completed?()

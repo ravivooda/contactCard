@@ -19,16 +19,8 @@ class ReshareContactCardCommand: Command {
     
     override func execute(completed: CommandCompleted?) {
         super.execute(completed: completed)
-        if let identifier = self.contact.contactIdentifier?.remoteID {
-            Data.syncContacts(callingViewController: self.presentingViewController, success: { (records) in
-                for record in records {
-                    if record.recordIdentifier == identifier, let reference = record.share {
-                        self.fetchShareDetails(shareReference: reference)
-                    }
-                }
-            }, fail: { (message, error) in
-                self.reportError(message: message)
-            })
+        if let share = self.contact.record?.share {
+			self.fetchShareDetails(shareReference: share)
         } else {
             // This should never be executed.
             self.reportError(message: "Apologies. This contact cannot be shared")

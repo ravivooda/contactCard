@@ -240,6 +240,7 @@ class CCMyContactsViewController: ContactsDisplayTableViewController, CNContactV
             print("Record: \(record.getContactName())")
             let recordIdentifier = record.recordIdentifier
             if let contact = contactsToRefMap[recordIdentifier] {
+				contact.record = record
                 if record.recordChangeTag != contact.contactIdentifier!.version {
                     contact.updateContactCommand = UpdateContactCardCommand(contact: contact, record: record, viewController: self, returningCommand: nil)
                     if UserDefaults.isAutoSyncEnabled {
