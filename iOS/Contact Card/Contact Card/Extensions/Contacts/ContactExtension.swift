@@ -10,7 +10,11 @@ import Contacts
 
 extension CNContact {
     var fullName:String {
-        return ""
+		var fullName = "\(self.givenName)"
+		if !self.familyName.isEmpty {
+			fullName.append(" \(self.familyName)")
+		}
+		return fullName
     }
     
     static let ImageKey = "image"

@@ -86,6 +86,7 @@ class ShareCardCommand: Command, UICloudSharingControllerDelegate {
                 
                 let qrController = self.presentingViewController.storyboard?.instantiateViewController(withIdentifier: "qrShareViewControllerID") as! QRShareViewController
                 qrController.code = code
+				qrController.contact = self.card.contact
                 print("Showing QR Code for URL: \(url).")
                 self.presentingViewController.present(qrController, animated: true, completion: nil)
             }
