@@ -12,7 +12,8 @@ class CCCardTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var leftContainerView: ThumbnailView!
-    
+	@IBOutlet weak var qrShareButton: UIButton!
+	
     override func awakeFromNib() {
         super.awakeFromNib()
         self.leftContainerView.customBorderColor = UIColor.lightGray.withAlphaComponent(0.5)
@@ -25,4 +26,11 @@ class CCCardTableViewCell: UITableViewCell {
             self.leftContainerView.contact = self.card.contact
         }
     }
+	
+	
+	@IBAction func shareQR(_ sender: UIButton) {
+		if let controller = self.viewController() as? CCMyCardsViewController {
+			controller.share(card: self.card, qrOnly: true)
+		}
+	}
 }

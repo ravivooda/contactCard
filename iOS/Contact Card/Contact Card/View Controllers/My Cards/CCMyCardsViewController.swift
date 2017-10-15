@@ -140,8 +140,7 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let shareAction = UITableViewRowAction(style: .normal, title: "Share", handler: { (action, indexPath) in
-            self.sharingCardCommand = ShareCardCommand(withCard: Manager.defaultManager().cards[indexPath.row], database: Manager.contactsContainer.privateCloudDatabase, viewController: self, returningCommand: nil)
-            self.sharingCardCommand?.execute(completed: nil)
+            self.share(card: Manager.defaultManager().cards[indexPath.row])
         })
         shareAction.backgroundColor = .blue
         
@@ -154,4 +153,10 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
         
         return [shareAction, deleteAction]
     }
+	
+	func share(card:CCCard, qrOnly:Bool = false) {
+		self.sharingCardCommand = ShareCardCommand(withCard: card, database: Manager.contactsContainer.privateCloudDatabase, viewController: self, returningCommand: nil)
+		self.sharingCardCommand?.qrOnly = qrOnly
+		self.sharingCardCommand?.execute(completed: nil)
+	}
 }

@@ -407,7 +407,7 @@
                 <navigationController id="Ari-pO-1wd" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Contacts" image="contacts.png" id="SWp-aG-Hh6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Xbk-FW-H57">
-                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -424,7 +424,7 @@
                 <navigationController id="bxz-dN-VFx" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Cards" image="card.png" id="JIw-On-BX3"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HF0-Ev-PHQ">
-                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -556,17 +556,30 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Name" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ib1-aA-n6v">
-                                                    <rect key="frame" x="113" y="0.0" width="254" height="100"/>
+                                                    <rect key="frame" x="113" y="0.0" width="152" height="100"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Pk-jl-Res">
+                                                    <rect key="frame" x="341" y="37" width="26" height="26"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="4Pk-jl-Res" secondAttribute="height" multiplier="1:1" id="8w9-v2-hRv"/>
+                                                        <constraint firstAttribute="height" constant="26" id="Xzx-x5-CMC"/>
+                                                        <constraint firstAttribute="width" constant="26" id="xFy-wm-nWJ"/>
+                                                    </constraints>
+                                                    <state key="normal" backgroundImage="qr_share.png"/>
+                                                    <connections>
+                                                        <action selector="shareQR:" destination="OeG-mp-a4m" eventType="touchUpInside" id="qBi-hw-Aca"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Ib1-aA-n6v" firstAttribute="top" secondItem="AZF-6O-u3i" secondAttribute="top" id="3aF-rk-SA5"/>
-                                                <constraint firstItem="Ib1-aA-n6v" firstAttribute="trailing" secondItem="AZF-6O-u3i" secondAttribute="trailingMargin" id="E2F-gd-Q6g"/>
                                                 <constraint firstItem="UQc-EF-K0y" firstAttribute="leading" secondItem="AZF-6O-u3i" secondAttribute="leading" constant="15" id="ESv-1h-K9X"/>
+                                                <constraint firstItem="4Pk-jl-Res" firstAttribute="trailing" secondItem="AZF-6O-u3i" secondAttribute="trailingMargin" id="ESx-9l-CiM"/>
                                                 <constraint firstItem="Ib1-aA-n6v" firstAttribute="centerY" secondItem="AZF-6O-u3i" secondAttribute="centerY" id="JiT-Vn-3W9"/>
+                                                <constraint firstItem="4Pk-jl-Res" firstAttribute="centerY" secondItem="AZF-6O-u3i" secondAttribute="centerY" id="P0W-Qw-xto"/>
                                                 <constraint firstItem="UQc-EF-K0y" firstAttribute="centerY" secondItem="AZF-6O-u3i" secondAttribute="centerY" id="Sdw-UT-mhS"/>
                                                 <constraint firstAttribute="bottom" secondItem="Ib1-aA-n6v" secondAttribute="bottom" id="mzv-YU-0Rm"/>
                                                 <constraint firstItem="Ib1-aA-n6v" firstAttribute="leading" secondItem="UQc-EF-K0y" secondAttribute="trailing" constant="8" id="nBt-hN-nNG"/>
@@ -575,6 +588,7 @@
                                         <connections>
                                             <outlet property="leftContainerView" destination="UQc-EF-K0y" id="gdg-uq-m5Z"/>
                                             <outlet property="nameLabel" destination="Ib1-aA-n6v" id="6nV-AS-hPb"/>
+                                            <outlet property="qrShareButton" destination="4Pk-jl-Res" id="kI8-Ez-CoL"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -605,7 +619,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pKq-Fd-kxa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2476" y="-42"/>
+            <point key="canvasLocation" x="2476" y="-42.728635682158924"/>
         </scene>
         <!--Reading View Controller-->
         <scene sceneID="qLa-XG-5bW">
@@ -788,5 +802,6 @@
         <image name="card.png" width="25" height="25"/>
         <image name="contacts.png" width="25" height="25"/>
         <image name="premium-diamond.png" width="90" height="88"/>
+        <image name="qr_share.png" width="26" height="26"/>
     </resources>
 </document>

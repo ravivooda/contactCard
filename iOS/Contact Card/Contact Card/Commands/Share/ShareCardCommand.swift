@@ -15,6 +15,7 @@ class ShareCardCommand: Command, UICloudSharingControllerDelegate {
     let database:CKDatabase
     
     var activity:UIActivity?
+	var qrOnly = false
     
     init(withCard card:CCCard, database:CKDatabase, viewController:UIViewController, returningCommand: Command?) {
         self.database = database
@@ -24,6 +25,10 @@ class ShareCardCommand: Command, UICloudSharingControllerDelegate {
     
     override func execute(completed: CommandCompleted?) {
         super.execute(completed: completed)
+		
+		if qrOnly {
+			return self.showQRCode()
+		}
         
         let shareAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         shareAlertController.addAction(UIAlertAction(title: "QR Code", style: .default, handler: { (action) in
