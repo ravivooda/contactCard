@@ -102,7 +102,12 @@ class PurchaseAdditionalCardsCommand: Command, SKProductsRequestDelegate, SKPaym
     
     func request(_ request: SKRequest, didFailWithError error: Error) {
         print("Error occurred in fetching products \(error.localizedDescription)")
-        self.reportRetryError(message: "An error occurred in requesting product information")
+        //self.reportRetryError(message: "An error occurred in requesting product information")
+		self.presentedViewController?.showRetryAlertMessage(message: "An error occurred in requesting product information") { (action) in
+			self.presentingViewController.dismiss(animated: true, completion: {
+				self.execute(completed: self.completed)
+			})
+		}
     }
     
     //MARK: - SKPaymentTransactionObserver -

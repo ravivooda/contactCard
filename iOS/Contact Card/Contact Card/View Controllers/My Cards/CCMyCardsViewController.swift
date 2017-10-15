@@ -43,6 +43,14 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
         
         self.tableView.refreshControl = self.refreshControl
         self.refreshControl.addTarget(self, action: #selector(refreshControlActivated), for: .valueChanged)
+		
+		if #available(iOS 11.0, *) {
+			navigationController?.navigationBar.prefersLargeTitles = true
+		} else {
+			// Fallback on earlier versions
+			self.refreshControl.backgroundColor = UIColor(hex: 0x112234)
+			self.refreshControl.tintColor = .white
+		}
     }
     
     override func viewDidAppear(_ animated: Bool) {

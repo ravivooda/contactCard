@@ -33,12 +33,28 @@ class CCMyContactsViewController: ContactsDisplayTableViewController, CNContactV
         self.searchController = UISearchController(searchResultsController: self.searchResultsController)
         searchController.searchResultsUpdater = self
         searchController.searchBar.sizeToFit()
-        tableView.tableHeaderView = searchController.searchBar
+		tableView.sectionIndexBackgroundColor = UIColor.clear
         
         searchController.delegate = self
         searchController.searchBar.delegate = self    // so we can monitor text changes + others
         definesPresentationContext = true
+		
+		if #available(iOS 11.0, *) {
+			navigationController?.navigationBar.prefersLargeTitles = true
+			navigationItem.searchController = searchController
+			navigationItem.hidesSearchBarWhenScrolling = false
+		} else {
+			// Fallback on earlier versions
+			tableView.tableHeaderView = searchController.searchBar
+		}
+		
+		// Refresh Control
+		self.refreshControl?.addTarget(self, action: #selector(refreshControlActivated), for: .valueChanged)
     }
+	
+	func refreshControlActivated() {
+		self.perform(#selector(syncLocalContactsWithRemoteUpdates(_:)), with: nil, afterDelay: 1)
+	}
     
     func contactUpdateChangedNotification(notification:Notification) {
         self.updateBarBadge()
@@ -155,6 +171,7 @@ class CCMyContactsViewController: ContactsDisplayTableViewController, CNContactV
         let store = Manager.contactsStore
         switch CNContactStore.authorizationStatus(for: .contacts) {
         case .notDetermined:
+			self.refreshControl?.endRefreshing()
             store.requestAccess(for: .contacts, completionHandler: { (authorized, error) in
                 DispatchQueue.main.async {
                     self.isSyncing = false
@@ -163,6 +180,7 @@ class CCMyContactsViewController: ContactsDisplayTableViewController, CNContactV
             })
             break
         case .denied, .restricted:
+			self.refreshControl?.endRefreshing()
             showSettingsAlertMessage(message: "Apologies. We need access to your contacts for maintaining your contacts.\nPlease note, we never use your contact data for any other purpose")
             break
         case .authorized:
@@ -170,6 +188,7 @@ class CCMyContactsViewController: ContactsDisplayTableViewController, CNContactV
                 reloadLocalContactsAndDisplay(store: store)
             }
             Data.syncContacts(callingViewController: nil, success: { (records) in
+				self.refreshControl?.endRefreshing()
                 self.reloadLocalContactsAndDisplay(store: store)
                 self.updateContacts(records: records)
                 //UserDefaults.isAutoSyncEnabled ? self.reloadLocalContactsAndDisplay(store: store) : self.tableView.reloadData()
@@ -177,6 +196,7 @@ class CCMyContactsViewController: ContactsDisplayTableViewController, CNContactV
                 self.updateBarBadge()
                 self.isSyncing = false
             }, fail: { (errorMessage, error) in
+				self.refreshControl?.endRefreshing()
                 self.isSyncing = false
                 self.showRetryAlertMessage(message: error.localizedDescription, retryHandler: { (action) in
                     self.syncLocalContactsWithRemoteUpdates(notification)
