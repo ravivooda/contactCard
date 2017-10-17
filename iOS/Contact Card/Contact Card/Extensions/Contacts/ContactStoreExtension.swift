@@ -10,13 +10,14 @@ import Contacts
 import ContactsUI
 
 extension CNContactStore {
-    func fetchAllContacts() throws -> [CCContact] {
+	func fetchAllContacts(sortOrder:CNContactSortOrder = .userDefault) throws -> [CCContact] {
         var contacts:[CCContact] = []
         let keysToFetch = [CNContactViewController.descriptorForRequiredKeys(),
                            CNContactImageDataKey,
                            CNContactIdentifierKey,
                            CNContactNoteKey] as [Any]
         let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
+		fetchRequest.sortOrder = sortOrder
         try self.enumerateContacts(with: fetchRequest, usingBlock: { (contact, stop) in
             contacts.append(CCContact(contact: contact))
         })
