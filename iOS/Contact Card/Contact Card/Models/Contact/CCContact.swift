@@ -70,26 +70,48 @@ class CCContact:CustomDebugStringConvertible {
     }
 }
 
+extension Array where Element:NSMutableAttributedString {
+	func join(seperator:NSMutableAttributedString) -> NSMutableAttributedString {
+		guard self.count > 0 else {
+			return NSMutableAttributedString()
+		}
+		let retAttributedString = self[0]
+		for i in 1..<self.count {
+			retAttributedString.append(seperator)
+			retAttributedString.append(self[i])
+		}
+		return retAttributedString
+	}
+}
+
 extension CNContact {
     var attributedDisplayName:NSMutableAttributedString {
-        let retAttributedString = NSMutableAttributedString()
+		var attributedStringsArray = [NSMutableAttributedString]()
         if !isEmpty(self.givenName) {
-            let firstName = NSMutableAttributedString(string: "\(self.givenName) ")
+            let firstName = NSMutableAttributedString(string: "\(self.givenName)")
             firstName.addAttribute(NSAttributedStringKey.font, value: isEmpty(self.familyName) ? UIFont.boldSystemFont(ofSize: 17) : UIFont.systemFont(ofSize: 17), range: NSMakeRange(0, self.givenName.characters.count))
-            retAttributedString.append(firstName)
+            attributedStringsArray.append(firstName)
         }
         
         if !isEmpty(self.middleName) {
-            let middleName = NSMutableAttributedString(string: "\(self.middleName) ")
+            let middleName = NSMutableAttributedString(string: "\(self.middleName)")
             middleName.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 17), range: NSMakeRange(0, self.middleName.characters.count))
-            retAttributedString.append(middleName)
+            attributedStringsArray.append(middleName)
         }
         
         if !isEmpty(self.familyName) {
             let familyName = NSMutableAttributedString(string: "\(self.familyName)")
             familyName.addAttribute(NSAttributedStringKey.font, value: UIFont.boldSystemFont(ofSize: 17), range: NSMakeRange(0, self.familyName.characters.count))
-            retAttributedString.append(familyName)
+			switch (CNContactFormatter.nameOrder(for: self)) {
+			case .familyNameFirst:
+				attributedStringsArray.insert(familyName, at: 0)
+				break
+			default:
+				attributedStringsArray.append(familyName)
+			}
         }
-        return retAttributedString
+		
+		
+        return attributedStringsArray.join(seperator: NSMutableAttributedString(string: " "))
     }
 }

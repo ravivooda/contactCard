@@ -115,17 +115,22 @@ class CCMyContactsViewController: ContactsDisplayTableViewController, CNContactV
     
     func reloadLocalContactsAndDisplay(store: CNContactStore) {
         do {
-            let contacts = try store.fetchAllContacts()
+			let sortOrder = CNContactsUserDefaults.shared().sortOrder
+            let contacts = try store.fetchAllContacts(sortOrder: sortOrder)
             var sections:[String: ContactsDisplayTableViewController.ContactSection] = [:]
             
             for contact in contacts {
-                var name = "#"
-                if let character = contact.contact.familyName.characters.first ??
-                    contact.contact.givenName.characters.first ??
-                    contact.contact.fullName.characters.first {
-                    name = "\(character)"
-                }
-                
+                var char = String.CharacterView.Element("#")
+				switch (sortOrder) {
+				case .familyName:
+					char = contact.contact.familyName.characters.first ?? contact.contact.givenName.characters.first ?? char
+					break
+				default:
+					char = contact.contact.givenName.characters.first ?? contact.contact.familyName.characters.first ?? char
+					break;
+				}
+                let name = "\(char)"
+				//print("Contact Name: \(contact.contact.givenName) - Section: \(name)")
                 let sectionContact:ContactSection = sections[name] ?? ContactSection(name: name, contacts: [])
                 sectionContact.contacts.append(contact)
                 sections[name] = sectionContact
