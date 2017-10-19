@@ -4,9 +4,50 @@
 <dict>
 	<key>StringsTable</key>
 	<string>Acknowledgements</string>
-	<key>Title</key>
-	<string>Acknowledgements 2</string>
 	<key>PreferenceSpecifiers</key>
-	<array/>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Developer efforts: Ravi Vooda</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Alamofie: Network Request</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>IQKeyboardManagerSwift: Keyboard Management</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>SwiftKeychainWrapper: Keychain Management</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>QRCode: QR Code Generation</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>SwiftHEXColors: Hex to colors</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Fabric/Crashlytics: Collection of user behaviour (NO PERSONAL INFORMATION IS COLLECTED)</string>
+		</dict>
+	</array>
 </dict>
 </plist>
