@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -43,12 +43,26 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z3Q-Ae-hfo">
                     <rect key="frame" x="0.0" y="531" width="375" height="136"/>
                     <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Card is powered by CloudKit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIa-hX-poT">
+                            <rect key="frame" x="98" y="116" width="178" height="12"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="178" id="cKl-9e-bek"/>
+                                <constraint firstAttribute="height" constant="12" id="d8m-Eg-S2S"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Owt-ol-jYt">
-                            <rect key="frame" x="20" y="72" width="335" height="44"/>
+                            <rect key="frame" x="20" y="64" width="335" height="44"/>
+                            <color key="backgroundColor" red="0.28919047117233276" green="0.60053861141204834" blue="0.92610973119735718" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="BAm-21-98m"/>
                             </constraints>
-                            <state key="normal" title="Login"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                            <state key="normal" title="LOGIN">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
                             <connections>
                                 <action selector="loginClicked:" destination="-1" eventType="touchUpInside" id="NYg-G1-yQ8"/>
                             </connections>
@@ -56,21 +70,44 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="VIa-hX-poT" firstAttribute="top" secondItem="Owt-ol-jYt" secondAttribute="bottom" constant="8" id="0C5-uK-5Xa"/>
                         <constraint firstAttribute="height" constant="136" id="FNH-4p-3YQ"/>
-                        <constraint firstAttribute="bottom" secondItem="Owt-ol-jYt" secondAttribute="bottom" constant="20" id="YeH-6P-9AX"/>
+                        <constraint firstAttribute="bottom" secondItem="VIa-hX-poT" secondAttribute="bottom" constant="8" id="fC2-Qa-2Ad"/>
                         <constraint firstItem="Owt-ol-jYt" firstAttribute="leading" secondItem="z3Q-Ae-hfo" secondAttribute="leading" constant="20" id="if5-rX-mKe"/>
+                        <constraint firstItem="VIa-hX-poT" firstAttribute="centerX" secondItem="z3Q-Ae-hfo" secondAttribute="centerX" id="nGO-cR-ila"/>
                         <constraint firstAttribute="trailing" secondItem="Owt-ol-jYt" secondAttribute="trailing" constant="20" id="pKc-dR-Jfj"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3CU-sa-gOl">
+                    <rect key="frame" x="0.0" y="192.5" width="375" height="282"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Your information is stored in your iCloud account. Only you have access to this information." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OxN-ET-Bap">
+                            <rect key="frame" x="20" y="180" width="335" height="82"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="282" id="KID-bN-0zR"/>
+                        <constraint firstAttribute="trailing" secondItem="OxN-ET-Bap" secondAttribute="trailing" constant="20" id="NRb-Uz-8ny"/>
+                        <constraint firstItem="OxN-ET-Bap" firstAttribute="leading" secondItem="3CU-sa-gOl" secondAttribute="leading" constant="20" id="yW8-p9-Kzn"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="3CU-sa-gOl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1NJ-Ft-84w"/>
                 <constraint firstItem="Dry-9S-gUe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="3CF-ii-2vQ"/>
+                <constraint firstItem="3CU-sa-gOl" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="AGC-1Z-lpU"/>
                 <constraint firstItem="z3Q-Ae-hfo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="D1Y-80-nHf"/>
                 <constraint firstAttribute="trailing" secondItem="Dry-9S-gUe" secondAttribute="trailing" constant="16" id="Ref-3n-1Gf"/>
                 <constraint firstItem="Dry-9S-gUe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="STW-Er-BkX"/>
                 <constraint firstAttribute="bottom" secondItem="z3Q-Ae-hfo" secondAttribute="bottom" id="YSf-WF-5hh"/>
                 <constraint firstAttribute="trailing" secondItem="z3Q-Ae-hfo" secondAttribute="trailing" id="kXB-1W-4gN"/>
+                <constraint firstAttribute="trailing" secondItem="3CU-sa-gOl" secondAttribute="trailing" id="r3H-1k-cBf"/>
+                <constraint firstItem="3CU-sa-gOl" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="zn4-wT-hEa"/>
             </constraints>
             <point key="canvasLocation" x="34.5" y="53.5"/>
         </view>

@@ -15,9 +15,17 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     static var loginCommand:LoginCommand? = nil
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		self.loginButton.borderColor = UIColor(displayP3Red: 50.0/255.0, green: 70.0/255.0, blue: 190.0/255.0, alpha: 1.0)
+		self.loginButton.borderWidth = 1.0
+		self.loginButton.cornerRadius = 5.0
+	}
     
     @IBAction func loginClicked(_ sender: UIButton) {
-        if let settingsURL = URL(string: UIApplicationOpenSettingsURLString) {
+        if let settingsURL = URL(string: "App-Prefs:root=General&path=About") {
             UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
         }
     }
