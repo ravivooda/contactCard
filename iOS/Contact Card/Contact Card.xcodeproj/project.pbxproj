@@ -98,6 +98,9 @@
 		BC72E8701F93DDF6004DEB32 /* qr_share@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC72E86F1F93DDF5004DEB32 /* qr_share@3x.png */; };
 		BCEEE53B1E4C0B7500D2651A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEEE5391E4C0B7500D2651A /* LoginViewController.swift */; };
 		BCEEE53C1E4C0B7500D2651A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCEEE53A1E4C0B7500D2651A /* LoginViewController.xib */; };
+		BCFECB741F9BF0AC00B80B93 /* cloudKit@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECB731F9BF0AC00B80B93 /* cloudKit@3x.png */; };
+		BCFECB761F9BF16D00B80B93 /* cloudKit_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECB751F9BF16D00B80B93 /* cloudKit_icon@3x.png */; };
+		BCFECB781F9BF8E200B80B93 /* apple_logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECB771F9BF8E200B80B93 /* apple_logo@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -197,6 +200,9 @@
 		BC72E86F1F93DDF5004DEB32 /* qr_share@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_share@3x.png"; sourceTree = "<group>"; };
 		BCEEE5391E4C0B7500D2651A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BCEEE53A1E4C0B7500D2651A /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		BCFECB731F9BF0AC00B80B93 /* cloudKit@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloudKit@3x.png"; sourceTree = "<group>"; };
+		BCFECB751F9BF16D00B80B93 /* cloudKit_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloudKit_icon@3x.png"; sourceTree = "<group>"; };
+		BCFECB771F9BF8E200B80B93 /* apple_logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple_logo@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -466,6 +472,7 @@
 		97B776E21D847B2700FC0A4B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BCFECB721F9BF0AC00B80B93 /* Login */,
 				BC72E86E1F93DDF5004DEB32 /* Card */,
 				97B00F261F76BC7A00A77C33 /* hint_plus@3x.png */,
 				97AC31661F362A990083A553 /* premium-diamond@3x.png */,
@@ -655,6 +662,16 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		BCFECB721F9BF0AC00B80B93 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				BCFECB771F9BF8E200B80B93 /* apple_logo@3x.png */,
+				BCFECB751F9BF16D00B80B93 /* cloudKit_icon@3x.png */,
+				BCFECB731F9BF0AC00B80B93 /* cloudKit@3x.png */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -747,8 +764,10 @@
 				97064C701D83CF44008EF6B3 /* Assets.xcassets in Resources */,
 				97B00F271F76BC7A00A77C33 /* hint_plus@3x.png in Resources */,
 				97C1EB341EB6B33000DB72F1 /* Nunito-Light.ttf in Resources */,
+				BCFECB741F9BF0AC00B80B93 /* cloudKit@3x.png in Resources */,
 				BCEEE53C1E4C0B7500D2651A /* LoginViewController.xib in Resources */,
 				BC72E8701F93DDF6004DEB32 /* qr_share@3x.png in Resources */,
+				BCFECB781F9BF8E200B80B93 /* apple_logo@3x.png in Resources */,
 				97064C6B1D83CF44008EF6B3 /* Main.storyboard in Resources */,
 				97B776EF1D84812900FC0A4B /* LoadingViewController.xib in Resources */,
 				97B549121EC40F7300668570 /* qr_code@3x.png in Resources */,
@@ -758,6 +777,7 @@
 				97C1EB331EB6B33000DB72F1 /* Nunito-Bold.ttf in Resources */,
 				97E650631E8819230074F112 /* Settings.bundle in Resources */,
 				974621251F107DAF0000E8ED /* card@3x.png in Resources */,
+				BCFECB761F9BF16D00B80B93 /* cloudKit_icon@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

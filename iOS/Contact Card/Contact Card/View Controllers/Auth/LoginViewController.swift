@@ -19,8 +19,8 @@ class LoginViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		self.loginButton.borderColor = UIColor(displayP3Red: 50.0/255.0, green: 70.0/255.0, blue: 190.0/255.0, alpha: 1.0)
-		self.loginButton.borderWidth = 1.0
+		self.loginButton.borderColor = .black
+		self.loginButton.borderWidth = 1.5
 		self.loginButton.cornerRadius = 5.0
 	}
     

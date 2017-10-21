@@ -8,6 +8,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Contact_Card" customModuleProvider="target">
             <connections>
@@ -44,55 +49,62 @@
                     <rect key="frame" x="0.0" y="531" width="375" height="136"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Card is powered by CloudKit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIa-hX-poT">
-                            <rect key="frame" x="98" y="116" width="178" height="12"/>
+                            <rect key="frame" x="98.5" y="108" width="178" height="20"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="178" id="cKl-9e-bek"/>
-                                <constraint firstAttribute="height" constant="12" id="d8m-Eg-S2S"/>
+                                <constraint firstAttribute="height" constant="20" id="d8m-Eg-S2S"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Owt-ol-jYt">
-                            <rect key="frame" x="20" y="64" width="335" height="44"/>
-                            <color key="backgroundColor" red="0.28919047117233276" green="0.60053861141204834" blue="0.92610973119735718" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYW-Us-bKQ">
+                            <rect key="frame" x="10" y="36" width="355" height="44"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Owt-ol-jYt">
+                                    <rect key="frame" x="10" y="0.0" width="335" height="44"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="BAm-21-98m"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                    <state key="normal" title="LOGIN">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="loginClicked:" destination="-1" eventType="touchUpInside" id="NYg-G1-yQ8"/>
+                                    </connections>
+                                </button>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="apple_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="DO9-AM-StL">
+                                    <rect key="frame" x="51" y="8.5" width="22" height="27"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="44" id="BAm-21-98m"/>
+                                <constraint firstAttribute="height" constant="44" id="DaF-5D-Sff"/>
+                                <constraint firstAttribute="trailing" secondItem="Owt-ol-jYt" secondAttribute="trailing" constant="10" id="EGA-6e-bj1"/>
+                                <constraint firstItem="Owt-ol-jYt" firstAttribute="leading" secondItem="oYW-Us-bKQ" secondAttribute="leading" constant="10" id="GnG-W0-oN5"/>
+                                <constraint firstItem="DO9-AM-StL" firstAttribute="centerY" secondItem="oYW-Us-bKQ" secondAttribute="centerY" id="Jog-qN-axh"/>
+                                <constraint firstItem="Owt-ol-jYt" firstAttribute="top" secondItem="oYW-Us-bKQ" secondAttribute="top" id="KLs-lD-RpX"/>
+                                <constraint firstItem="DO9-AM-StL" firstAttribute="leading" secondItem="oYW-Us-bKQ" secondAttribute="leading" constant="51" id="NTe-kj-CYM"/>
+                                <constraint firstAttribute="bottom" secondItem="Owt-ol-jYt" secondAttribute="bottom" id="PC1-6A-y6C"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                            <state key="normal" title="LOGIN">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="loginClicked:" destination="-1" eventType="touchUpInside" id="NYg-G1-yQ8"/>
-                            </connections>
-                        </button>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="VIa-hX-poT" firstAttribute="top" secondItem="Owt-ol-jYt" secondAttribute="bottom" constant="8" id="0C5-uK-5Xa"/>
+                        <constraint firstItem="VIa-hX-poT" firstAttribute="top" secondItem="oYW-Us-bKQ" secondAttribute="bottom" constant="28" id="Esf-d9-Zep"/>
                         <constraint firstAttribute="height" constant="136" id="FNH-4p-3YQ"/>
+                        <constraint firstItem="oYW-Us-bKQ" firstAttribute="leading" secondItem="z3Q-Ae-hfo" secondAttribute="leading" constant="10" id="IHc-0N-T5t"/>
+                        <constraint firstAttribute="trailing" secondItem="oYW-Us-bKQ" secondAttribute="trailing" constant="10" id="Ps0-Ft-8DO"/>
                         <constraint firstAttribute="bottom" secondItem="VIa-hX-poT" secondAttribute="bottom" constant="8" id="fC2-Qa-2Ad"/>
-                        <constraint firstItem="Owt-ol-jYt" firstAttribute="leading" secondItem="z3Q-Ae-hfo" secondAttribute="leading" constant="20" id="if5-rX-mKe"/>
                         <constraint firstItem="VIa-hX-poT" firstAttribute="centerX" secondItem="z3Q-Ae-hfo" secondAttribute="centerX" id="nGO-cR-ila"/>
-                        <constraint firstAttribute="trailing" secondItem="Owt-ol-jYt" secondAttribute="trailing" constant="20" id="pKc-dR-Jfj"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3CU-sa-gOl">
                     <rect key="frame" x="0.0" y="192.5" width="375" height="282"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Your information is stored in your iCloud account. Only you have access to this information." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OxN-ET-Bap">
-                            <rect key="frame" x="20" y="180" width="335" height="82"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="282" id="KID-bN-0zR"/>
-                        <constraint firstAttribute="trailing" secondItem="OxN-ET-Bap" secondAttribute="trailing" constant="20" id="NRb-Uz-8ny"/>
-                        <constraint firstItem="OxN-ET-Bap" firstAttribute="leading" secondItem="3CU-sa-gOl" secondAttribute="leading" constant="20" id="yW8-p9-Kzn"/>
                     </constraints>
                 </view>
             </subviews>
@@ -112,4 +124,7 @@
             <point key="canvasLocation" x="34.5" y="53.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="apple_logo.png" width="22" height="27"/>
+    </resources>
 </document>
