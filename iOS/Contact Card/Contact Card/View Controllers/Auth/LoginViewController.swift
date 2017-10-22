@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
 	}
     
     @IBAction func loginClicked(_ sender: UIButton) {
-        if let settingsURL = URL(string: "App-Prefs:root=General&path=About") {
+        if let settingsURL = URL(string: UIApplicationOpenSettingsURLString) {
             UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
         }
     }
