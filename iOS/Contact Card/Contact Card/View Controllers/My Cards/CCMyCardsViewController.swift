@@ -51,6 +51,8 @@ class CCMyCardsViewController: UIViewController, UITableViewDataSource, UITableV
 			self.refreshControl.backgroundColor = UIColor(hex: 0x112234)
 			self.refreshControl.tintColor = .white
 		}
+		
+		NotificationCenter.contactCenter.addObserver(self, selector: #selector(refreshData), name: LoginCommand.AuthenticationChangedNotificationKey, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
