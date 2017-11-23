@@ -9,9 +9,11 @@
 import UIKit
 import Contacts
 import ContactsUI
+import Crashlytics
 
 class ShowCardCommand: Command, CNContactViewControllerDelegate {
     let card:CCCard
+	var editedCard:CNContact?
     
     init(card:CCCard, viewController: UIViewController, returningCommand: Command?) {
         self.card = card
@@ -27,14 +29,7 @@ class ShowCardCommand: Command, CNContactViewControllerDelegate {
         contactController.allowsEditing = true
         contactController.allowsActions = false
         card.contact.note = ""
-        
-        /*if let navigationController = presentingViewController.tabBarController?.navigationController {
-            navigationController.pushViewController(contactController, animated: true)
-        } else {
-            let navigationController = UINavigationController(rootViewController: contactController)
-            contactController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .plain, target: self, action: #selector(dismiss(sender:)))
-            presentingViewController.present(navigationController, animated: true, completion: nil)
-        }*/
+		
         let navigationController = UINavigationController(rootViewController: contactController)
         contactController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .plain, target: self, action: #selector(dismiss(sender:)))
         presentingViewController.present(navigationController, animated: true, completion: nil)
@@ -49,22 +44,16 @@ class ShowCardCommand: Command, CNContactViewControllerDelegate {
     
     //MARK: - CNContactViewControllerDelegate -
     func contactViewController(_ viewController: CNContactViewController, didCompleteWith contact: CNContact?) {
-        if let contact = contact?.mutableCopy() as? CNMutableContact{
-            print("Saving edit card \(contact.description)")
-            // Deleting the contact first
-            let deleteRequest = CNSaveRequest()
-            deleteRequest.delete(contact)
-            
-            do {
-                try Manager.contactsStore.execute(deleteRequest)
-            } catch let error {
-                self.presentingViewController.showAlertMessage(message: "An error occurred in saving your card - \(error.localizedDescription)")
-                print(error.localizedDescription)
-                return
-            }
-            
-            self.saveContactCard(contact: contact)
-        }
+		guard let contact = contact else {
+			let errorString = "Contact View Controller didCompleteWith empty"
+			Crashlytics.sharedInstance().recordError(NSError(domain:"Unexpected errors", code:101, userInfo:["Error": errorString]))
+			return print(errorString)
+		}
+		
+		print("Saving edited card \(contact.description)")
+        self.saveContactCard(contact: contact)
+		
+		self.editedCard = contact
     }
     
     func saveContactCard(contact:CNContact) {
@@ -78,4 +67,26 @@ class ShowCardCommand: Command, CNContactViewControllerDelegate {
         })
     }
 
+	func deleteSavedCopy() {
+		print("Checking for deleting contact")
+		if let deleteContact = self.editedCard?.mutableCopy() as? CNMutableContact {
+			print("Deleting contact: \(deleteContact)")
+			
+			let deleteRequest = CNSaveRequest()
+			deleteRequest.delete(deleteContact)
+			
+			do {
+				try Manager.contactsStore.execute(deleteRequest)
+			} catch let error {
+				self.presentingViewController.showAlertMessage(message: "An error occurred in saving your card - \(error.localizedDescription)")
+				return print(error.localizedDescription)
+			}
+			
+			self.editedCard = nil
+		}
+	}
+	
+	deinit {
+		deleteSavedCopy()
+	}
 }
