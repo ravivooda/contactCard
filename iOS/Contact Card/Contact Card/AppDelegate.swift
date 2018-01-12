@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static weak var myContactsViewController:CCMyContactsViewController?
     static weak var myCardsViewController:CCMyCardsViewController?
     
+    static weak var showCardCommand:ShowCardCommand?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Fabric.with([Crashlytics.self])
         
@@ -58,6 +60,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        AppDelegate.showCardCommand?.deleteSavedCopy()
     }
     
     static func registerForRemoteNotifications() -> Void {

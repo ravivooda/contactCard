@@ -35,6 +35,8 @@ class ShowCardCommand: Command, CNContactViewControllerDelegate {
         presentingViewController.present(navigationController, animated: true, completion: nil)
         
         self.presentedViewController = contactController;
+        
+        AppDelegate.showCardCommand = self
     }
     
     @objc func dismiss(sender:Any) -> Void {
