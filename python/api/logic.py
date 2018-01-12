@@ -36,10 +36,11 @@ def login(email, password):
     del user_info['password']
     return user_info, None
 
-def notify_update(user_ids, message):
+def notify_update(user_ids, message, payload):
+    print(payload)
     if not user_ids or not message:
         return False, "Invalid params"
-    notification.send_update(user_ids, message)
+    notification.send_update(user_ids, message, payload=payload)
     return True, None
 
 def register_device(user_id,device_id,device_type):

@@ -183,7 +183,9 @@ def register_device():
 def notify_update():
     user_ids = request.values['users'].split(",")
     message = request.values['message']
-    success, error = logic.notify_update(user_ids, message)
+    record_id = request.values['recordID']
+    payload = {'recordID': record_id}
+    success, error = logic.notify_update(user_ids, message, payload)
     if error:
         return report_error(error)
     return {'success': True}

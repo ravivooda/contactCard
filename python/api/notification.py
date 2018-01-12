@@ -30,30 +30,34 @@ def register_device(user_id, device_id, device_type):
 def unregister_device(user_id,device_id,device_type):
     db.write("DELETE from devices WHERE user_id = %s AND device_id = %s AND device_type = %s", (user_id, device_id, device_type))
 
-def send_update(user_ids, message):
+def send_update(user_ids, message, payload={}):
+    print("Sending update: ")
     ios_devices = []
     android_devices = []
     for user_id in user_ids:
-        devices = db.read("SELECT device_id, device_type FROM devices WHERE user_id = %s",(user_id))
+        devices = db.read("SELECT device_id, device_type FROM devices WHERE user_id = %s",(user_id,))
+        print devices
         for device in devices:
             if device['device_type'] == "ios":
                 ios_devices.append(device['device_id'])
             elif device['device_type'] == "android":
                 android_devices.append(device['device_id'])
-    push_ios_notifications(ios_devices, message)
+    print("Sending update: ios devices: " % ios_devices)
+    push_ios_notifications(ios_devices, message, payload=payload)
     push_android_notifications(android_devices, message)
 
-def push_ios_notifications(devices, message):
+def push_ios_notifications(devices, message, payload={}):
     options = {
         'badge': 1,
         'title': 'Contact Card Update',
+        'extra': payload
     }
-    print("Sending update message - " + message + " to devices " + str(devices))
+    print("Sending update message - " + message + " to devices " + str(devices) + "with options " + str(options))
     res = ios_client.send(devices, message, **options)
     ios_client.close()
     print(res.errors)
 
-def push_android_notifications(devices, message):
+def push_android_notifications(devices, message, payload={}):
     pass
 
 def push_notification(user_id, message):
